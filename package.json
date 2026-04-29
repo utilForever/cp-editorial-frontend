@@ -1,0 +1,37 @@
+{
+  "name": "cp-editorial-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "index:generate": "node scripts/generate-editorial-index.mjs",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "analyze": "tsc -b --pretty false",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "i18next": "^26.0.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^17.0.4",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.13",
+    "prettier": "^3.8.3",
+    "typescript": "~5.3.3",
+    "vite": "^4.5.14"
+  }
+}
