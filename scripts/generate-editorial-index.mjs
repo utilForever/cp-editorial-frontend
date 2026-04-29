@@ -8,6 +8,7 @@ const DATA_REPO = 'cp-editorial-data'
 const DATA_BRANCH = 'main'
 const OUTPUT_PATH = fileURLToPath(new URL('../public/data/editorial-index.json', import.meta.url))
 const CONFIG_PATH = fileURLToPath(new URL('./editorial-index.config.json', import.meta.url))
+const REQUEST_TIMEOUT_MS = 15_000
 const DEFAULT_CONFIG = {
   supportedExtensions: ['.pdf', '.md', '.txt'],
   excludeFileNames: ['README.md', 'LICENSE'],
@@ -70,6 +71,7 @@ function requestJson(pathname) {
           body += chunk
         })
         response.on('end', () => {
+          clearTimeout(timeout)
           if ((response.statusCode ?? 500) >= 400) {
             reject(
               new Error(
@@ -87,8 +89,14 @@ function requestJson(pathname) {
         })
       },
     )
+    const timeout = setTimeout(() => {
+      req.destroy(new Error(`GitHub API request timed out after ${REQUEST_TIMEOUT_MS}ms.`))
+    }, REQUEST_TIMEOUT_MS)
 
-    req.on('error', reject)
+    req.on('error', (error) => {
+      clearTimeout(timeout)
+      reject(error)
+    })
     req.end()
   })
 }
