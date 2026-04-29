@@ -6,15 +6,21 @@ export function getLocalizedText(
   content: LocalizedContent,
   preferredLocale: string | undefined,
 ): string {
-  if (preferredLocale && content[preferredLocale]) {
-    return content[preferredLocale]
+  const preferredText = preferredLocale ? content[preferredLocale]?.trim() : undefined
+  if (preferredText) {
+    return preferredText
   }
 
-  const fallback = FALLBACK_LOCALES.find((locale) => content[locale])
+  const fallback = FALLBACK_LOCALES.find((locale) => {
+    const value = content[locale]
+    return typeof value === 'string' && value.trim().length > 0
+  })
   if (fallback) {
-    return content[fallback]
+    return content[fallback].trim()
   }
 
-  const firstAvailable = Object.values(content).find((value) => value.trim().length > 0)
+  const firstAvailable = Object.values(content)
+    .map((value) => value.trim())
+    .find((value) => value.length > 0)
   return firstAvailable ?? ''
 }
