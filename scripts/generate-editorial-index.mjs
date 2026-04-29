@@ -19,27 +19,29 @@ const DEFAULT_CONFIG = {
 async function loadConfig() {
   const rawConfig = await readFile(CONFIG_PATH, 'utf8')
   const parsed = JSON.parse(rawConfig)
+  const configRoot =
+    parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {}
 
   return {
     supportedExtensions:
-      Array.isArray(parsed.supportedExtensions) &&
-      parsed.supportedExtensions.every((value) => typeof value === 'string')
-        ? parsed.supportedExtensions
+      Array.isArray(configRoot.supportedExtensions) &&
+      configRoot.supportedExtensions.every((value) => typeof value === 'string')
+        ? configRoot.supportedExtensions
         : DEFAULT_CONFIG.supportedExtensions,
     excludeFileNames:
-      Array.isArray(parsed.excludeFileNames) &&
-      parsed.excludeFileNames.every((value) => typeof value === 'string')
-        ? parsed.excludeFileNames
+      Array.isArray(configRoot.excludeFileNames) &&
+      configRoot.excludeFileNames.every((value) => typeof value === 'string')
+        ? configRoot.excludeFileNames
         : DEFAULT_CONFIG.excludeFileNames,
     excludePathPrefixes:
-      Array.isArray(parsed.excludePathPrefixes) &&
-      parsed.excludePathPrefixes.every((value) => typeof value === 'string')
-        ? parsed.excludePathPrefixes
+      Array.isArray(configRoot.excludePathPrefixes) &&
+      configRoot.excludePathPrefixes.every((value) => typeof value === 'string')
+        ? configRoot.excludePathPrefixes
         : DEFAULT_CONFIG.excludePathPrefixes,
     excludePathPatterns:
-      Array.isArray(parsed.excludePathPatterns) &&
-      parsed.excludePathPatterns.every((value) => typeof value === 'string')
-        ? parsed.excludePathPatterns
+      Array.isArray(configRoot.excludePathPatterns) &&
+      configRoot.excludePathPatterns.every((value) => typeof value === 'string')
+        ? configRoot.excludePathPatterns
         : DEFAULT_CONFIG.excludePathPatterns,
   }
 }
