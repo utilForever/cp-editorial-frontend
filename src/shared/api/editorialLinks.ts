@@ -1,11 +1,16 @@
 const CP_EDITORIAL_DATA_REPOSITORY = 'utilForever/cp-editorial-data'
 
 function encodePath(path: string): string {
-  return path
+  const segments = path
     .split('/')
+    .map((segment) => segment.trim())
     .filter((segment) => segment.length > 0)
-    .map((segment) => encodeURIComponent(segment))
-    .join('/')
+
+  if (segments.some((segment) => segment === '.' || segment === '..')) {
+    throw new Error('Invalid editorial path: dot segments are not allowed.')
+  }
+
+  return segments.map((segment) => encodeURIComponent(segment)).join('/')
 }
 
 export function buildEditorialLinks(path: string) {
