@@ -1,5 +1,5 @@
 import { normalizeEditorialIndex } from '../../entities/editorial/model/normalize'
-import type { EditorialIndex, RawEditorialIndex } from '../../entities/editorial/model/types'
+import type { EditorialIndex } from '../../entities/editorial/model/types'
 
 const EDITORIAL_INDEX_URL = '/data/editorial-index.json'
 
@@ -9,6 +9,6 @@ export async function fetchEditorialIndex(): Promise<EditorialIndex> {
     throw new Error(`Unable to fetch editorial index (${response.status}).`)
   }
 
-  const payload = (await response.json()) as RawEditorialIndex
+  const payload = await response.json()
   return normalizeEditorialIndex(payload)
 }

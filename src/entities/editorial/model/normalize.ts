@@ -99,17 +99,22 @@ export function normalizeEditorialRecord(rawRecord: RawEditorialRecord): Editori
   }
 }
 
-export function normalizeEditorialIndex(rawIndex: RawEditorialIndex): EditorialIndex {
-  if (!Array.isArray(rawIndex.editorials)) {
+export function normalizeEditorialIndex(rawIndex: unknown): EditorialIndex {
+  if (rawIndex === null || typeof rawIndex !== 'object' || Array.isArray(rawIndex)) {
+    throw new Error('Invalid editorial index: top-level value must be an object.')
+  }
+
+  const candidate = rawIndex as RawEditorialIndex
+  if (!Array.isArray(candidate.editorials)) {
     throw new Error('Invalid editorial index: "editorials" must be an array.')
   }
 
   return {
     version:
-      typeof rawIndex.version === 'string' && rawIndex.version.trim().length > 0
-        ? rawIndex.version.trim()
+      typeof candidate.version === 'string' && candidate.version.trim().length > 0
+        ? candidate.version.trim()
         : DEFAULT_INDEX_VERSION,
-    generatedAt: rawIndex.generatedAt,
-    editorials: rawIndex.editorials.map(normalizeEditorialRecord),
+    generatedAt: candidate.generatedAt,
+    editorials: candidate.editorials.map(normalizeEditorialRecord),
   }
 }
