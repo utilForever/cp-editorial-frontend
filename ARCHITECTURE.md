@@ -123,15 +123,15 @@ Normalization rejects invalid index data (missing required fields or empty local
 
 ## 5. Routing model
 
-| Route                                    | Purpose                                                                         |
-| ---------------------------------------- | ------------------------------------------------------------------------------- |
-| `/`                                      | Home summary, index stats, and “What is CP Editorial?” article                 |
-| `/search`                                | Keyword search grouped by category + contest, then editorial entries            |
-| `/categories`                            | Category listing                                                                |
-| `/categories/:category`                  | Contest listing within a category                                               |
-| `/categories/:category/contests/:contest` | Editorial listing within a selected contest                                     |
-| `/editorials/:editorialId`               | Editorial detail page                                                           |
-| `/contribute`                            | Upload/contribution guide for `cp-editorial-data`                               |
+| Route                                     | Purpose                                                              |
+| ----------------------------------------- | -------------------------------------------------------------------- |
+| `/`                                       | Home summary, index stats, and “What is CP Editorial?” article       |
+| `/search`                                 | Keyword search grouped by category + contest, then editorial entries |
+| `/categories`                             | Category listing                                                     |
+| `/categories/:category`                   | Contest listing within a category                                    |
+| `/categories/:category/contests/:contest` | Editorial listing within a selected contest                          |
+| `/editorials/:editorialId`                | Editorial detail page                                                |
+| `/contribute`                             | Upload/contribution guide for `cp-editorial-data`                    |
 
 ## 6. Internationalization
 
