@@ -55,6 +55,17 @@ function normalizeCategories(categories: unknown): string[] {
     .filter((category) => category.length > 0)
 }
 
+function assertNoDotSegments(path: string, label: string) {
+  const segments = path
+    .split('/')
+    .map((segment) => segment.trim())
+    .filter((segment) => segment.length > 0)
+
+  if (segments.some((segment) => segment === '.' || segment === '..')) {
+    throw new Error(`Invalid editorial index: "${label}" must not include dot-segment paths.`)
+  }
+}
+
 function hashStableString(value: string): string {
   let hash = 0
 
@@ -85,6 +96,7 @@ export function normalizeEditorialRecord(rawRecord: RawEditorialRecord): Editori
   const contest = assertString(rawRecord.contest, 'contest')
   const problem = assertString(rawRecord.problem, 'problem')
   const path = assertString(rawRecord.path, 'path')
+  assertNoDotSegments(path, 'path')
   const filename = assertString(rawRecord.filename, 'filename')
   const title = normalizeLocalizedContent(rawRecord.title, 'title')
   const summary =
