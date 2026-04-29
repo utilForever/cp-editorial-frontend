@@ -1,0 +1,550 @@
+{
+  "version": "2026.04.18",
+  "generatedAt": "2026-04-18T07:17:51.401Z",
+  "editorials": [
+    {
+      "contest": "Russian Olympiad in Informatics",
+      "problem": "Russia Team High School Programming Contest 2020",
+      "categories": ["Olympiad"],
+      "path": "Olympiad/Russian Olympiad in Informatics/Russia Team High School Programming Contest 2020.pdf",
+      "filename": "Russia Team High School Programming Contest 2020.pdf",
+      "title": {
+        "en": "Russia Team High School Programming Contest 2020",
+        "ko": "Russia Team High School Programming Contest 2020",
+        "ja": "Russia Team High School Programming Contest 2020"
+      },
+      "summary": {
+        "en": "Russian Olympiad in Informatics editorial",
+        "ko": "Russian Olympiad in Informatics 해설",
+        "ja": "Russian Olympiad in Informatics 解説"
+      }
+    },
+    {
+      "contest": "XX Open Cup named after E.V. Pankratiev",
+      "problem": "Stage 14 - Grand Prix of Wroclaw",
+      "categories": ["Open Cup"],
+      "path": "Open Cup/XX Open Cup named after E.V. Pankratiev/Stage 14 - Grand Prix of Wroclaw.pdf",
+      "filename": "Stage 14 - Grand Prix of Wroclaw.pdf",
+      "title": {
+        "en": "Stage 14 - Grand Prix of Wroclaw",
+        "ko": "Stage 14 - Grand Prix of Wroclaw",
+        "ja": "Stage 14 - Grand Prix of Wroclaw"
+      },
+      "summary": {
+        "en": "XX Open Cup named after E.V. Pankratiev editorial",
+        "ko": "XX Open Cup named after E.V. Pankratiev 해설",
+        "ja": "XX Open Cup named after E.V. Pankratiev 解説"
+      }
+    },
+    {
+      "contest": "XXI Open Cup named after E.V. Pankratiev",
+      "problem": "Stage 14 - Grand Prix of Tokyo",
+      "categories": ["Open Cup"],
+      "path": "Open Cup/XXI Open Cup named after E.V. Pankratiev/Stage 14 - Grand Prix of Tokyo.pdf",
+      "filename": "Stage 14 - Grand Prix of Tokyo.pdf",
+      "title": {
+        "en": "Stage 14 - Grand Prix of Tokyo",
+        "ko": "Stage 14 - Grand Prix of Tokyo",
+        "ja": "Stage 14 - Grand Prix of Tokyo"
+      },
+      "summary": {
+        "en": "XXI Open Cup named after E.V. Pankratiev editorial",
+        "ko": "XXI Open Cup named after E.V. Pankratiev 해설",
+        "ja": "XXI Open Cup named after E.V. Pankratiev 解説"
+      }
+    },
+    {
+      "contest": "Summer 2019",
+      "problem": "Day 1 - Songyang Chen Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2019/Day 1 - Songyang Chen Contest 2.pdf",
+      "filename": "Day 1 - Songyang Chen Contest 2.pdf",
+      "title": {
+        "en": "Day 1 - Songyang Chen Contest 2",
+        "ko": "Day 1 - Songyang Chen Contest 2",
+        "ja": "Day 1 - Songyang Chen Contest 2"
+      },
+      "summary": {
+        "en": "Summer 2019 editorial",
+        "ko": "Summer 2019 해설",
+        "ja": "Summer 2019 解説"
+      }
+    },
+    {
+      "contest": "Summer 2019",
+      "problem": "Day 2 - 300iq Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2019/Day 2 - 300iq Contest 2.pdf",
+      "filename": "Day 2 - 300iq Contest 2.pdf",
+      "title": {
+        "en": "Day 2 - 300iq Contest 2",
+        "ko": "Day 2 - 300iq Contest 2",
+        "ja": "Day 2 - 300iq Contest 2"
+      },
+      "summary": {
+        "en": "Summer 2019 editorial",
+        "ko": "Summer 2019 해설",
+        "ja": "Summer 2019 解説"
+      }
+    },
+    {
+      "contest": "Summer 2019",
+      "problem": "Day 6 - MIPT Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2019/Day 6 - MIPT Contest.pdf",
+      "filename": "Day 6 - MIPT Contest.pdf",
+      "title": {
+        "en": "Day 6 - MIPT Contest",
+        "ko": "Day 6 - MIPT Contest",
+        "ja": "Day 6 - MIPT Contest"
+      },
+      "summary": {
+        "en": "Summer 2019 editorial",
+        "ko": "Summer 2019 해설",
+        "ja": "Summer 2019 解説"
+      }
+    },
+    {
+      "contest": "Summer 2021",
+      "problem": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 6 - Xi’an JTU Contest 1, GP of Xi’an.pdf",
+      "filename": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an.pdf",
+      "title": {
+        "en": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an",
+        "ko": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an",
+        "ja": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an"
+      },
+      "summary": {
+        "en": "Summer 2021 editorial",
+        "ko": "Summer 2021 해설",
+        "ja": "Summer 2021 解説"
+      }
+    },
+    {
+      "contest": "Summer 2021",
+      "problem": "Day 7 - Moscow IPT Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 7 - Moscow IPT Contest.pdf",
+      "filename": "Day 7 - Moscow IPT Contest.pdf",
+      "title": {
+        "en": "Day 7 - Moscow IPT Contest",
+        "ko": "Day 7 - Moscow IPT Contest",
+        "ja": "Day 7 - Moscow IPT Contest"
+      },
+      "summary": {
+        "en": "Summer 2021 editorial",
+        "ko": "Summer 2021 해설",
+        "ja": "Summer 2021 解説"
+      }
+    },
+    {
+      "contest": "Summer 2022",
+      "problem": "Day 6 - Heltion Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2022/Day 6 - Heltion Contest.pdf",
+      "filename": "Day 6 - Heltion Contest.pdf",
+      "title": {
+        "en": "Day 6 - Heltion Contest",
+        "ko": "Day 6 - Heltion Contest",
+        "ja": "Day 6 - Heltion Contest"
+      },
+      "summary": {
+        "en": "Summer 2022 editorial",
+        "ko": "Summer 2022 해설",
+        "ja": "Summer 2022 解説"
+      }
+    },
+    {
+      "contest": "Summer 2023",
+      "problem": "Day 4 - LVII SPb SU Championship, Part 1",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 4 - LVII SPb SU Championship, Part 1.pdf",
+      "filename": "Day 4 - LVII SPb SU Championship, Part 1.pdf",
+      "title": {
+        "en": "Day 4 - LVII SPb SU Championship, Part 1",
+        "ko": "Day 4 - LVII SPb SU Championship, Part 1",
+        "ja": "Day 4 - LVII SPb SU Championship, Part 1"
+      },
+      "summary": {
+        "en": "Summer 2023 editorial",
+        "ko": "Summer 2023 해설",
+        "ja": "Summer 2023 解説"
+      }
+    },
+    {
+      "contest": "Summer 2023",
+      "problem": "Day 4 - LVII SPb SU Championship, Part 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 4 - LVII SPb SU Championship, Part 2.pdf",
+      "filename": "Day 4 - LVII SPb SU Championship, Part 2.pdf",
+      "title": {
+        "en": "Day 4 - LVII SPb SU Championship, Part 2",
+        "ko": "Day 4 - LVII SPb SU Championship, Part 2",
+        "ja": "Day 4 - LVII SPb SU Championship, Part 2"
+      },
+      "summary": {
+        "en": "Summer 2023 editorial",
+        "ko": "Summer 2023 해설",
+        "ja": "Summer 2023 解説"
+      }
+    },
+    {
+      "contest": "Summer 2023",
+      "problem": "Day 4 - LVII SPb SU Championship, Part 3",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 4 - LVII SPb SU Championship, Part 3.pdf",
+      "filename": "Day 4 - LVII SPb SU Championship, Part 3.pdf",
+      "title": {
+        "en": "Day 4 - LVII SPb SU Championship, Part 3",
+        "ko": "Day 4 - LVII SPb SU Championship, Part 3",
+        "ja": "Day 4 - LVII SPb SU Championship, Part 3"
+      },
+      "summary": {
+        "en": "Summer 2023 editorial",
+        "ko": "Summer 2023 해설",
+        "ja": "Summer 2023 解説"
+      }
+    },
+    {
+      "contest": "Summer 2023",
+      "problem": "Day 5 - Moscow IPT Yolki-Palki Contest 1",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 5 - Moscow IPT Yolki-Palki Contest 1.pdf",
+      "filename": "Day 5 - Moscow IPT Yolki-Palki Contest 1.pdf",
+      "title": {
+        "en": "Day 5 - Moscow IPT Yolki-Palki Contest 1",
+        "ko": "Day 5 - Moscow IPT Yolki-Palki Contest 1",
+        "ja": "Day 5 - Moscow IPT Yolki-Palki Contest 1"
+      },
+      "summary": {
+        "en": "Summer 2023 editorial",
+        "ko": "Summer 2023 해설",
+        "ja": "Summer 2023 解説"
+      }
+    },
+    {
+      "contest": "Summer 2023",
+      "problem": "Day 6 - olmrgcsi And His Friends’ Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 6 - olmrgcsi And His Friends’ Contest.pdf",
+      "filename": "Day 6 - olmrgcsi And His Friends’ Contest.pdf",
+      "title": {
+        "en": "Day 6 - olmrgcsi And His Friends’ Contest",
+        "ko": "Day 6 - olmrgcsi And His Friends’ Contest",
+        "ja": "Day 6 - olmrgcsi And His Friends’ Contest"
+      },
+      "summary": {
+        "en": "Summer 2023 editorial",
+        "ko": "Summer 2023 해설",
+        "ja": "Summer 2023 解説"
+      }
+    },
+    {
+      "contest": "Summer 2023",
+      "problem": "Day 7 - Peking U Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 7 - Peking U Contest.pdf",
+      "filename": "Day 7 - Peking U Contest.pdf",
+      "title": {
+        "en": "Day 7 - Peking U Contest",
+        "ko": "Day 7 - Peking U Contest",
+        "ja": "Day 7 - Peking U Contest"
+      },
+      "summary": {
+        "en": "Summer 2023 editorial",
+        "ko": "Summer 2023 해설",
+        "ja": "Summer 2023 解説"
+      }
+    },
+    {
+      "contest": "Summer 2024",
+      "problem": "Day 1 - Welcome Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2024/Day 1 - Welcome Contest.pdf",
+      "filename": "Day 1 - Welcome Contest.pdf",
+      "title": {
+        "en": "Day 1 - Welcome Contest",
+        "ko": "Day 1 - Welcome Contest",
+        "ja": "Day 1 - Welcome Contest"
+      },
+      "summary": {
+        "en": "Summer 2024 editorial",
+        "ko": "Summer 2024 해설",
+        "ja": "Summer 2024 解説"
+      }
+    },
+    {
+      "contest": "Summer 2024",
+      "problem": "Day 2 - K-ontest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2024/Day 2 - K-ontest.pdf",
+      "filename": "Day 2 - K-ontest.pdf",
+      "title": {
+        "en": "Day 2 - K-ontest",
+        "ko": "Day 2 - K-ontest",
+        "ja": "Day 2 - K-ontest"
+      },
+      "summary": {
+        "en": "Summer 2024 editorial",
+        "ko": "Summer 2024 해설",
+        "ja": "Summer 2024 解説"
+      }
+    },
+    {
+      "contest": "Summer 2024",
+      "problem": "Day 4 - Danil Zashikhin && Atilla Gün Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2024/Day 4 - Danil Zashikhin && Atilla Gün Contest.pdf",
+      "filename": "Day 4 - Danil Zashikhin && Atilla Gün Contest.pdf",
+      "title": {
+        "en": "Day 4 - Danil Zashikhin && Atilla Gün Contest",
+        "ko": "Day 4 - Danil Zashikhin && Atilla Gün Contest",
+        "ja": "Day 4 - Danil Zashikhin && Atilla Gün Contest"
+      },
+      "summary": {
+        "en": "Summer 2024 editorial",
+        "ko": "Summer 2024 해설",
+        "ja": "Summer 2024 解説"
+      }
+    },
+    {
+      "contest": "Summer 2024",
+      "problem": "Day 5 - Der Kontest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2024/Day 5 - Der Kontest.pdf",
+      "filename": "Day 5 - Der Kontest.pdf",
+      "title": {
+        "en": "Day 5 - Der Kontest",
+        "ko": "Day 5 - Der Kontest",
+        "ja": "Day 5 - Der Kontest"
+      },
+      "summary": {
+        "en": "Summer 2024 editorial",
+        "ko": "Summer 2024 해설",
+        "ja": "Summer 2024 解説"
+      }
+    },
+    {
+      "contest": "Winter 2019",
+      "problem": "Day 1 - 300iq Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 1 - 300iq Contest.pdf",
+      "filename": "Day 1 - 300iq Contest.pdf",
+      "title": {
+        "en": "Day 1 - 300iq Contest",
+        "ko": "Day 1 - 300iq Contest",
+        "ja": "Day 1 - 300iq Contest"
+      },
+      "summary": {
+        "en": "Winter 2019 editorial",
+        "ko": "Winter 2019 해설",
+        "ja": "Winter 2019 解説"
+      }
+    },
+    {
+      "contest": "Winter 2019",
+      "problem": "Day 4 - Yandex Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 4 - Yandex Contest.pdf",
+      "filename": "Day 4 - Yandex Contest.pdf",
+      "title": {
+        "en": "Day 4 - Yandex Contest",
+        "ko": "Day 4 - Yandex Contest",
+        "ja": "Day 4 - Yandex Contest"
+      },
+      "summary": {
+        "en": "Winter 2019 editorial",
+        "ko": "Winter 2019 해설",
+        "ja": "Winter 2019 解説"
+      }
+    },
+    {
+      "contest": "Winter 2019",
+      "problem": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup.pdf",
+      "filename": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup.pdf",
+      "title": {
+        "en": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup",
+        "ko": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup",
+        "ja": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup"
+      },
+      "summary": {
+        "en": "Winter 2019 editorial",
+        "ko": "Winter 2019 해설",
+        "ja": "Winter 2019 解説"
+      }
+    },
+    {
+      "contest": "Winter 2020",
+      "problem": "Day 3 - 300iq Petrozavodsk Contest III",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 3 - 300iq Petrozavodsk Contest III.pdf",
+      "filename": "Day 3 - 300iq Petrozavodsk Contest III.pdf",
+      "title": {
+        "en": "Day 3 - 300iq Petrozavodsk Contest III",
+        "ko": "Day 3 - 300iq Petrozavodsk Contest III",
+        "ja": "Day 3 - 300iq Petrozavodsk Contest III"
+      },
+      "summary": {
+        "en": "Winter 2020 editorial",
+        "ko": "Winter 2020 해설",
+        "ja": "Winter 2020 解説"
+      }
+    },
+    {
+      "contest": "Winter 2022",
+      "problem": "Day 5 - Yandex Cup",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2022/Day 5 - Yandex Cup.pdf",
+      "filename": "Day 5 - Yandex Cup.pdf",
+      "title": {
+        "en": "Day 5 - Yandex Cup",
+        "ko": "Day 5 - Yandex Cup",
+        "ja": "Day 5 - Yandex Cup"
+      },
+      "summary": {
+        "en": "Winter 2022 editorial",
+        "ko": "Winter 2022 해설",
+        "ja": "Winter 2022 解説"
+      }
+    },
+    {
+      "contest": "Winter 2023",
+      "problem": "Day 2 - GP of ainta",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2023/Day 2 - GP of ainta.pdf",
+      "filename": "Day 2 - GP of ainta.pdf",
+      "title": {
+        "en": "Day 2 - GP of ainta",
+        "ko": "Day 2 - GP of ainta",
+        "ja": "Day 2 - GP of ainta"
+      },
+      "summary": {
+        "en": "Winter 2023 editorial",
+        "ko": "Winter 2023 해설",
+        "ja": "Winter 2023 解説"
+      }
+    },
+    {
+      "contest": "Winter 2023",
+      "problem": "Day 5 - LOUD Enough Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2023/Day 5 - LOUD Enough Contest 2.pdf",
+      "filename": "Day 5 - LOUD Enough Contest 2.pdf",
+      "title": {
+        "en": "Day 5 - LOUD Enough Contest 2",
+        "ko": "Day 5 - LOUD Enough Contest 2",
+        "ja": "Day 5 - LOUD Enough Contest 2"
+      },
+      "summary": {
+        "en": "Winter 2023 editorial",
+        "ko": "Winter 2023 해설",
+        "ja": "Winter 2023 解説"
+      }
+    },
+    {
+      "contest": "Winter 2024",
+      "problem": "Day 3 - ZJU Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 3 - ZJU Contest.pdf",
+      "filename": "Day 3 - ZJU Contest.pdf",
+      "title": {
+        "en": "Day 3 - ZJU Contest",
+        "ko": "Day 3 - ZJU Contest",
+        "ja": "Day 3 - ZJU Contest"
+      },
+      "summary": {
+        "en": "Winter 2024 editorial",
+        "ko": "Winter 2024 해설",
+        "ja": "Winter 2024 解説"
+      }
+    },
+    {
+      "contest": "Winter 2024",
+      "problem": "Day 4 - Peking U Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 4 - Peking U Contest 2.pdf",
+      "filename": "Day 4 - Peking U Contest 2.pdf",
+      "title": {
+        "en": "Day 4 - Peking U Contest 2",
+        "ko": "Day 4 - Peking U Contest 2",
+        "ja": "Day 4 - Peking U Contest 2"
+      },
+      "summary": {
+        "en": "Winter 2024 editorial",
+        "ko": "Winter 2024 해설",
+        "ja": "Winter 2024 解説"
+      }
+    },
+    {
+      "contest": "Winter 2024",
+      "problem": "Day 7 - Kazakhstan Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 7 - Kazakhstan Contest.pdf",
+      "filename": "Day 7 - Kazakhstan Contest.pdf",
+      "title": {
+        "en": "Day 7 - Kazakhstan Contest",
+        "ko": "Day 7 - Kazakhstan Contest",
+        "ja": "Day 7 - Kazakhstan Contest"
+      },
+      "summary": {
+        "en": "Winter 2024 editorial",
+        "ko": "Winter 2024 해설",
+        "ja": "Winter 2024 解説"
+      }
+    },
+    {
+      "contest": "한국디지털미디어고등학교",
+      "problem": "제4회 디미고 프로그래밍 챌린지",
+      "categories": ["School"],
+      "path": "School/한국디지털미디어고등학교/제4회 디미고 프로그래밍 챌린지.pdf",
+      "filename": "제4회 디미고 프로그래밍 챌린지.pdf",
+      "title": {
+        "en": "제4회 디미고 프로그래밍 챌린지",
+        "ko": "제4회 디미고 프로그래밍 챌린지",
+        "ja": "제4회 디미고 프로그래밍 챌린지"
+      },
+      "summary": {
+        "en": "한국디지털미디어고등학교 editorial",
+        "ko": "한국디지털미디어고등학교 해설",
+        "ja": "한국디지털미디어고등학교 解説"
+      }
+    },
+    {
+      "contest": "중앙대학교",
+      "problem": "2026 중앙대학교 프로그래밍 경진대회 (CPC)",
+      "categories": ["University"],
+      "path": "University/중앙대학교/중앙대학교 프로그래밍 경진대회 (CPC)/2026 중앙대학교 프로그래밍 경진대회 (CPC).pdf",
+      "filename": "2026 중앙대학교 프로그래밍 경진대회 (CPC).pdf",
+      "title": {
+        "en": "2026 중앙대학교 프로그래밍 경진대회 (CPC)",
+        "ko": "2026 중앙대학교 프로그래밍 경진대회 (CPC)",
+        "ja": "2026 중앙대학교 프로그래밍 경진대회 (CPC)"
+      },
+      "summary": {
+        "en": "중앙대학교 editorial",
+        "ko": "중앙대학교 해설",
+        "ja": "중앙대학교 解説"
+      }
+    },
+    {
+      "contest": "흐즈로컵",
+      "problem": "제3회 흐즈로컵 (The 3rd Chromate Cup) Algorithm Division",
+      "categories": ["User Contest"],
+      "path": "User Contest/흐즈로컵/제3회 흐즈로컵 (The 3rd Chromate Cup) Algorithm Division.pdf",
+      "filename": "제3회 흐즈로컵 (The 3rd Chromate Cup) Algorithm Division.pdf",
+      "title": {
+        "en": "제3회 흐즈로컵 (The 3rd Chromate Cup) Algorithm Division",
+        "ko": "제3회 흐즈로컵 (The 3rd Chromate Cup) Algorithm Division",
+        "ja": "제3회 흐즈로컵 (The 3rd Chromate Cup) Algorithm Division"
+      },
+      "summary": {
+        "en": "흐즈로컵 editorial",
+        "ko": "흐즈로컵 해설",
+        "ja": "흐즈로컵 解説"
+      }
+    }
+  ]
+}
