@@ -9,6 +9,6 @@ export async function fetchEditorialIndex(): Promise<EditorialIndex> {
     throw new Error(`Unable to fetch editorial index (${response.status}).`)
   }
 
-  const payload = await response.json()
+  const payload: unknown = await response.json()
   return normalizeEditorialIndex(payload)
 }
