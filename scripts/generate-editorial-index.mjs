@@ -167,6 +167,11 @@ async function generateIndex() {
   )
   const treePath = `/repos/${DATA_OWNER}/${DATA_REPO}/git/trees/${DATA_BRANCH}?recursive=1`
   const payload = await requestJson(treePath)
+  if (payload.truncated === true) {
+    throw new Error(
+      `GitHub tree response is truncated for ${DATA_OWNER}/${DATA_REPO}@${DATA_BRANCH}.`,
+    )
+  }
   const tree = Array.isArray(payload.tree) ? payload.tree : []
 
   const editorialPaths = tree
