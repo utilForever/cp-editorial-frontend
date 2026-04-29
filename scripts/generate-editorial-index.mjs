@@ -135,7 +135,8 @@ function shouldExcludePath(path, config) {
 }
 
 function createRecordFromPath(path) {
-  const directories = dirname(path)
+  const directoryPath = dirname(path)
+  const directories = (directoryPath === '.' ? '' : directoryPath)
     .split('/')
     .filter((segment) => segment.length > 0)
   const filename = basename(path)
