@@ -16,7 +16,7 @@ export function Layout() {
         <div className="layout__header-inner">
           <div className="layout__brand">{t('appTitle')}</div>
           <nav className="layout__nav">
-            <NavLink className={navLinkClassName} to="/">
+            <NavLink className={navLinkClassName} to="/" end>
               {t('nav.home')}
             </NavLink>
             <NavLink className={navLinkClassName} to="/search">
