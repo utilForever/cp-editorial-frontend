@@ -73,6 +73,14 @@ export function createStableEditorialId(
   return `ed-${hashStableString(base)}`
 }
 
+function assertRawEditorialRecord(value: unknown, index: number): RawEditorialRecord {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error(`Invalid editorial index: "editorials[${index}]" must be an object.`)
+  }
+
+  return value as RawEditorialRecord
+}
+
 export function normalizeEditorialRecord(rawRecord: RawEditorialRecord): EditorialRecord {
   const contest = assertString(rawRecord.contest, 'contest')
   const problem = assertString(rawRecord.problem, 'problem')
@@ -115,6 +123,8 @@ export function normalizeEditorialIndex(rawIndex: unknown): EditorialIndex {
         ? candidate.version.trim()
         : DEFAULT_INDEX_VERSION,
     generatedAt: candidate.generatedAt,
-    editorials: candidate.editorials.map(normalizeEditorialRecord),
+    editorials: candidate.editorials.map((record, index) =>
+      normalizeEditorialRecord(assertRawEditorialRecord(record, index)),
+    ),
   }
 }
