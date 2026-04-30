@@ -75,11 +75,10 @@ npm run build
 ## Commit Style
 
 - Conventional Commits: `feat:`, `fix:`, `refactor:`, `perf:`, `test:`, `docs:`, `chore:`
-- Split commits by behavior or another meaningful unit of change.
 - Release commits: `feat: vX.Y.Z — short summary`
 - Hotfix: `fix: description` (no version in message)
 
-## Agent working rules
+## Agent Working Rules
 
 - Keep edits tightly scoped to the user request; do not refactor unrelated areas.
 - Follow existing file/module boundaries and naming conventions.
@@ -87,15 +86,16 @@ npm run build
 - Preserve type safety (`tsc -b` must remain clean); avoid `any` unless already established in nearby code.
 - For UI text changes, keep i18n behavior consistent with existing locale handling (`en`, `ko`, `ja`).
 - If behavior or architecture expectations change, update docs in the same change set.
+- Split commits by behavior or another meaningful unit of change.
 
-## Editorial index and routing notes
+## Editorial Index and Routing Notes
 
 - Index generation script: `scripts/generate-editorial-index.mjs`.
 - Index generation config: `scripts/editorial-index.config.json`.
 - Path conventions are important: first segment = category, second = contest/organizer.
 - Routing should continue to rely on stable editorial identifiers rather than filename language.
 
-## Change checklist for agents
+## Change Checklist for Agents
 
 - Confirm assumptions from existing docs/code before editing.
 - Implement minimal complete changes for the requested scope.
