@@ -19,6 +19,14 @@ export function HomePage() {
     <section className="page">
       <h1>{t('home.heading')}</h1>
       <p className="page__description">{t('home.description')}</p>
+      <div className="home-hero-icon-wrap">
+        <img
+          alt={t('appTitle')}
+          className="home-icon"
+          decoding="async"
+          src="/home-icon.png?v=8eac82ad"
+        />
+      </div>
 
       <div className="stats-grid">
         <div className="stat-card">
