@@ -1,7 +1,7 @@
 export const resources = {
   en: {
     translation: {
-      appTitle: 'CP Editorial',
+      appTitle: 'Coduck - CP Editorial',
       common: {
         loading: 'Loading editorial index...',
       },
@@ -31,7 +31,7 @@ export const resources = {
           discussions: 'Discussions',
         },
         site: 'editorial.coduck.io',
-        copyright: '© {{year}} CP Editorial',
+        copyright: '© {{year}} Coduck',
       },
       home: {
         heading: 'Find Contest Editorials',
@@ -139,7 +139,7 @@ export const resources = {
   },
   ko: {
     translation: {
-      appTitle: 'CP Editorial',
+      appTitle: 'Coduck - CP Editorial',
       common: {
         loading: '에디토리얼 인덱스를 불러오는 중입니다...',
       },
@@ -169,7 +169,7 @@ export const resources = {
           discussions: '토론',
         },
         site: 'editorial.coduck.io',
-        copyright: '© {{year}} CP Editorial',
+        copyright: '© {{year}} Coduck',
       },
       home: {
         heading: '대회 에디토리얼 찾기',
@@ -274,7 +274,7 @@ export const resources = {
   },
   ja: {
     translation: {
-      appTitle: 'CP Editorial',
+      appTitle: 'Coduck - CP Editorial',
       common: {
         loading: 'エディトリアルインデックスを読み込み中...',
       },
@@ -304,7 +304,7 @@ export const resources = {
           discussions: 'ディスカッション',
         },
         site: 'editorial.coduck.io',
-        copyright: '© {{year}} CP Editorial',
+        copyright: '© {{year}} Coduck',
       },
       home: {
         heading: '大会エディトリアルを探す',
