@@ -165,7 +165,13 @@ The website includes a dedicated `/contribute` page with instructions:
 
 Runs on pull requests and pushes to `main`.
 
-Dependabot PRs are also validated by the same CI workflow, and dependency updates are managed via `.github/dependabot.yml`.
+`sonarcloud.yml` adds code-quality scanning on pull requests and pushes to `main`:
+
+1. Validates SonarCloud repository configuration (`SONAR_TOKEN`, `SONAR_ORGANIZATION`, `SONAR_PROJECT_KEY`)
+2. Runs SonarCloud scan with repository-level settings from `sonar-project.properties`
+3. Enforces merge-blocking quality gate status through the SonarCloud quality gate action
+
+Dependabot PRs are also validated by the CI workflow, and dependency updates are managed via `.github/dependabot.yml`.
 
 ## 9. Deployment architecture
 
