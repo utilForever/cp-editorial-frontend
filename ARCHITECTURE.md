@@ -165,6 +165,8 @@ The website includes a dedicated `/contribute` page with instructions:
 
 Runs on pull requests and pushes to `main`.
 
+Dependabot PRs are also validated by the same CI workflow, and dependency updates are managed via `.github/dependabot.yml`.
+
 ## 9. Deployment architecture
 
 ### Trigger policy
