@@ -50,6 +50,7 @@ npm run build
 ```
 
 CI runs these gates in the same order (`format:check` -> `lint` -> `analyze` -> `build`).
+SonarCloud runs in a separate workflow (`.github/workflows/sonarcloud.yml`) and should be configured as a required PR status check.
 
 Formatting and linting rules are configured in:
 
