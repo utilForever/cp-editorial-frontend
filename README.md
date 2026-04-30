@@ -1,15 +1,34 @@
 # cp-editorial-frontend
 
+[![CI](https://img.shields.io/github/actions/workflow/status/utilForever/cp-editorial-frontend/ci.yml?branch=main&label=CI)](https://github.com/utilForever/cp-editorial-frontend/actions/workflows/ci.yml)
+[![Deploy Frontend](https://img.shields.io/github/actions/workflow/status/utilForever/cp-editorial-frontend/deploy.yml?branch=main&label=Deploy)](https://github.com/utilForever/cp-editorial-frontend/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=utilForever_cp-editorial-frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=utilForever_cp-editorial-frontend)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=utilForever_cp-editorial-frontend&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=utilForever_cp-editorial-frontend)
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=utilForever_cp-editorial-frontend&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=utilForever_cp-editorial-frontend)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=utilForever_cp-editorial-frontend&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=utilForever_cp-editorial-frontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=utilForever_cp-editorial-frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=utilForever_cp-editorial-frontend)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=utilForever_cp-editorial-frontend&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=utilForever_cp-editorial-frontend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=utilForever_cp-editorial-frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=utilForever_cp-editorial-frontend)
+
 Frontend for discovering competitive-programming editorials managed in `cp-editorial-data`.
 
-## Local development
+## Quick Start
+
+### Prerequisites
+
+- Node.js 20
+- npm
+
+### Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Quality scripts
+### Quality and build commands
 
 ```bash
 npm run index:generate
@@ -19,36 +38,33 @@ npm run analyze
 npm run build
 ```
 
-### SonarCloud setup
+## The way the system works
 
-Static analysis runs in `.github/workflows/sonarcloud.yml` for pushes and pull
-requests to `main`.
+1. Editorial files are managed in `cp-editorial-data`.
+2. Updates on `cp-editorial-data` trigger a `repository_dispatch` event for this repository.
+3. The frontend workflow runs `npm run index:generate` to regenerate `public/data/editorial-index.json`.
+4. The app is built and deployed to GitHub Pages at **https://editorial.coduck.io**.
 
-1. Import `utilForever/cp-editorial-frontend` into SonarCloud.
-2. Confirm `sonar.projectKey` and `sonar.organization` in
-   `sonar-project.properties` match your SonarCloud project.
-3. Add `SONAR_TOKEN` as a repository secret in GitHub.
+For full architecture details, see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-> For pull requests from forks, the SonarCloud job is skipped because
-> repository secrets are not available in untrusted fork contexts.
+## Contributing
 
-## Deployment
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
-- Production target: **https://editorial.coduck.io**
-- `cp-editorial-data` updates on `main` regenerate the static index (`npm run index:generate`) and trigger frontend deployment.
+- local quality checks
+- coding and commit conventions
+- pull request workflow
 
-## Index generation rules
+## License
 
-- Config file: `scripts/editorial-index.config.json`
-- You can exclude files and paths with:
-  - `excludeFileNames` (exact file names, e.g. `README.md`)
-  - `excludePathPrefixes` (prefix paths, e.g. `School/Draft`)
-  - `excludePathPatterns` (regex patterns)
-- Path parsing:
-  - first directory = category (e.g. `Olympiad`)
-  - second directory = contest name / organizer (e.g. `Russian Olympiad in Informatics`)
-  - filename stem = contest entry / editorial title
+<img align="right" src="https://149753425.v2.pressablecdn.com/wp-content/uploads/2009/06/OSIApproved_100X125.png">
 
-## Architecture
+The class is licensed under the [MIT License](https://opensource.org/licenses/MIT):
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for architecture, data model, routing, CI, and deployment design.
+Copyright &copy; 2026 [Chris Ohk](https://www.github.com/utilForever).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
