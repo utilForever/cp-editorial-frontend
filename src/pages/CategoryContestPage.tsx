@@ -58,16 +58,18 @@ export function CategoryContestPage() {
           <ul className="card-list">
             {editorials.map((editorial) => {
               const links = buildEditorialLinks(editorial.path)
+              const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
 
               return (
                 <li className="card" key={editorial.id}>
                   <Link className="card__title" to={`/editorials/${editorial.id}`}>
-                    {getLocalizedText(editorial.title, i18n.resolvedLanguage)}
+                    {localizedTitle}
                   </Link>
                   <p className="card__meta">{editorial.filename}</p>
                   <p className="card__meta">{editorial.path}</p>
                   <div className="action-links">
                     <a
+                      aria-label={t('editorial.viewAria', { title: localizedTitle })}
                       className="action-link"
                       href={links.viewUrl}
                       rel="noreferrer"
@@ -76,6 +78,7 @@ export function CategoryContestPage() {
                       {t('editorial.view')}
                     </a>
                     <a
+                      aria-label={t('editorial.downloadAria', { title: localizedTitle })}
                       className="action-link action-link--secondary"
                       href={links.downloadUrl}
                       rel="noreferrer"
