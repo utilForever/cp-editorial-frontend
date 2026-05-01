@@ -5,10 +5,23 @@ const SUPPORTED_LANGUAGES = [
   { code: 'ko', label: '한국어' },
   { code: 'ja', label: '日本語' },
 ]
+const SUPPORTED_LANGUAGE_CODES = new Set(SUPPORTED_LANGUAGES.map((language) => language.code))
+const DEFAULT_LANGUAGE = 'en'
+
+function normalizeLanguage(language: string | undefined) {
+  if (!language) {
+    return DEFAULT_LANGUAGE
+  }
+
+  return language.toLowerCase().split(/[-_]/)[0] ?? DEFAULT_LANGUAGE
+}
 
 export function LanguageSelector() {
   const { t, i18n } = useTranslation()
-  const currentLanguage = i18n.resolvedLanguage ?? 'en'
+  const normalizedLanguage = normalizeLanguage(i18n.resolvedLanguage ?? i18n.language)
+  const currentLanguage = SUPPORTED_LANGUAGE_CODES.has(normalizedLanguage)
+    ? normalizedLanguage
+    : DEFAULT_LANGUAGE
 
   return (
     <label className="muted" htmlFor="language-selector">

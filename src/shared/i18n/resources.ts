@@ -163,6 +163,13 @@ export const resources = {
       language: {
         label: 'Language',
       },
+      theme: {
+        label: 'Theme',
+        light: 'Light',
+        dark: 'Dark',
+        switchToLight: 'Switch to light theme',
+        switchToDark: 'Switch to dark theme',
+      },
     },
   },
   ko: {
@@ -324,6 +331,13 @@ export const resources = {
       },
       language: {
         label: '언어',
+      },
+      theme: {
+        label: '테마',
+        light: '라이트',
+        dark: '다크',
+        switchToLight: '라이트 테마로 전환',
+        switchToDark: '다크 테마로 전환',
       },
     },
   },
@@ -489,6 +503,13 @@ export const resources = {
       },
       language: {
         label: '言語',
+      },
+      theme: {
+        label: 'テーマ',
+        light: 'ライト',
+        dark: 'ダーク',
+        switchToLight: 'ライトテーマに切り替え',
+        switchToDark: 'ダークテーマに切り替え',
       },
     },
   },

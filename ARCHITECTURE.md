@@ -11,6 +11,7 @@ Core goals:
 3. Consume editorial metadata from `cp-editorial-data`.
 4. Support Unicode editorial filenames safely.
 5. Automatically deploy to `https://editorial.coduck.io` when editorial data is updated.
+6. Support user-selectable light/dark theme with persisted preference.
 
 ## 2. System context
 
@@ -145,7 +146,13 @@ Normalization rejects invalid index data (missing required fields or empty local
   4. `ja`
   5. first available value
 
-## 7. Upload guidance flow
+## 7. UI preferences
+
+- Theme supports `light` and `dark`.
+- Active theme is selected in the header and persisted in browser local storage.
+- Theme is applied at the document root via `data-theme`, so all routed pages share one consistent palette.
+
+## 8. Upload guidance flow
 
 The website includes a dedicated `/contribute` page with instructions:
 
@@ -154,7 +161,7 @@ The website includes a dedicated `/contribute` page with instructions:
 3. Keep only editorial source files in target folders (non-editorial files are excluded by config).
 4. Merge PR to `main` to trigger index regeneration + frontend deployment.
 
-## 8. CI quality architecture
+## 9. CI quality architecture
 
 `ci.yml` enforces:
 
@@ -173,7 +180,7 @@ Runs on pull requests and pushes to `main`.
 
 Dependabot PRs are also validated by the CI workflow, and dependency updates are managed via `.github/dependabot.yml`.
 
-## 9. Deployment architecture
+## 10. Deployment architecture
 
 ### Trigger policy
 
@@ -197,7 +204,7 @@ On `cp-editorial-data` main updates:
 3. Frontend rebuilds with latest index.
 4. Updated site is published to `https://editorial.coduck.io`.
 
-## 10. Future extensions
+## 11. Future extensions
 
 - Incremental index partitions for very large editorial sets.
 - Full-text search index generation in data pipeline.
