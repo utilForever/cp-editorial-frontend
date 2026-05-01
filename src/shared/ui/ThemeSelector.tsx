@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next'
 import type { Theme } from '../hooks/useThemePreference'
 
 interface ThemeSelectorProps {
-  theme: Theme
-  onThemeChange: (theme: Theme) => void
+  readonly theme: Theme
+  readonly onThemeChange: (theme: Theme) => void
 }
 
 function SunIcon() {
