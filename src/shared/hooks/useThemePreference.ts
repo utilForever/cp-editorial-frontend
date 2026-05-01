@@ -13,11 +13,42 @@ function toTheme(value: string | null): Theme | null {
 }
 
 function getSystemTheme(): Theme {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
+function isStorageUnavailableError(error: unknown): boolean {
+  return (
+    error instanceof DOMException &&
+    (error.name === 'SecurityError' || error.name === 'QuotaExceededError')
+  )
+}
+
+function getStoredTheme(): Theme | null {
+  try {
+    return toTheme(globalThis.localStorage.getItem(THEME_STORAGE_KEY))
+  } catch (error) {
+    if (isStorageUnavailableError(error)) {
+      return null
+    }
+
+    throw error
+  }
+}
+
+function persistTheme(theme: Theme) {
+  try {
+    globalThis.localStorage.setItem(THEME_STORAGE_KEY, theme)
+  } catch (error) {
+    if (isStorageUnavailableError(error)) {
+      return
+    }
+
+    throw error
+  }
 }
 
 function getInitialTheme(): Theme {
-  const savedTheme = toTheme(window.localStorage.getItem(THEME_STORAGE_KEY))
+  const savedTheme = getStoredTheme()
   if (savedTheme) {
     return savedTheme
   }
@@ -26,8 +57,8 @@ function getInitialTheme(): Theme {
 }
 
 function applyThemeToDocument(theme: Theme) {
-  document.documentElement.dataset.theme = theme
-  document.documentElement.style.colorScheme = theme
+  globalThis.document.documentElement.dataset.theme = theme
+  globalThis.document.documentElement.style.colorScheme = theme
 }
 
 export function useThemePreference() {
@@ -35,7 +66,7 @@ export function useThemePreference() {
 
   useEffect(() => {
     applyThemeToDocument(theme)
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+    persistTheme(theme)
   }, [theme])
 
   return { theme, setTheme }
