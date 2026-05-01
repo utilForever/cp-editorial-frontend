@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, Outlet } from 'react-router-dom'
+import { useThemePreference } from '../hooks/useThemePreference'
 import { LanguageSelector } from './LanguageSelector'
+import { ThemeSelector } from './ThemeSelector'
 
 function navLinkClassName({ isActive }: { isActive: boolean }) {
   return `layout__link${isActive ? ' layout__link--active' : ''}`
@@ -8,6 +10,7 @@ function navLinkClassName({ isActive }: { isActive: boolean }) {
 
 export function Layout() {
   const { t } = useTranslation()
+  const { theme, setTheme } = useThemePreference()
   const year = new Date().getFullYear()
 
   return (
@@ -31,6 +34,7 @@ export function Layout() {
             <NavLink className={navLinkClassName} to="/copyright">
               {t('nav.copyright')}
             </NavLink>
+            <ThemeSelector onThemeChange={setTheme} theme={theme} />
             <LanguageSelector />
           </nav>
         </div>

@@ -38,6 +38,11 @@ npm run analyze
 npm run build
 ```
 
+## UI preferences
+
+- Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.
+- Language: switch UI language at runtime (`en`, `ko`, `ja`).
+
 ## The way the system works
 
 1. Editorial files are managed in `cp-editorial-data`.
