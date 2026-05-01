@@ -291,7 +291,8 @@ a {
 }
 
 .home-icon {
-  width: min(440px, 120vw);
+  width: min(440px, 100%);
+  max-width: 100%;
   height: auto;
   border-radius: 1rem;
 }
