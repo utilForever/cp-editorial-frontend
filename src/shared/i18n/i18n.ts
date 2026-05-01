@@ -26,8 +26,40 @@ function toSupportedLanguage(value: string | null | undefined): SupportedLanguag
   return normalized as SupportedLanguage
 }
 
+function isStorageUnavailableError(error: unknown): boolean {
+  return (
+    error instanceof DOMException &&
+    (error.name === 'SecurityError' || error.name === 'QuotaExceededError')
+  )
+}
+
+function getLanguageStorage(): Storage | null {
+  try {
+    return globalThis.localStorage
+  } catch (error) {
+    if (isStorageUnavailableError(error)) {
+      return null
+    }
+
+    throw error
+  }
+}
+
 function resolveInitialLanguage() {
-  return toSupportedLanguage(globalThis.localStorage.getItem(LANGUAGE_STORAGE_KEY)) ?? DEFAULT_LANGUAGE
+  const storage = getLanguageStorage()
+  if (!storage) {
+    return DEFAULT_LANGUAGE
+  }
+
+  try {
+    return toSupportedLanguage(storage.getItem(LANGUAGE_STORAGE_KEY)) ?? DEFAULT_LANGUAGE
+  } catch (error) {
+    if (isStorageUnavailableError(error)) {
+      return DEFAULT_LANGUAGE
+    }
+
+    throw error
+  }
 }
 
 function syncDocumentLanguage(language: string) {
@@ -35,12 +67,25 @@ function syncDocumentLanguage(language: string) {
 }
 
 function syncLanguagePreference(language: string) {
+  const storage = getLanguageStorage()
+  if (!storage) {
+    return
+  }
+
   const supportedLanguage = toSupportedLanguage(language)
   if (!supportedLanguage) {
     return
   }
 
-  globalThis.localStorage.setItem(LANGUAGE_STORAGE_KEY, supportedLanguage)
+  try {
+    storage.setItem(LANGUAGE_STORAGE_KEY, supportedLanguage)
+  } catch (error) {
+    if (isStorageUnavailableError(error)) {
+      return
+    }
+
+    throw error
+  }
 }
 
 function handleLanguageChange(language: string) {
