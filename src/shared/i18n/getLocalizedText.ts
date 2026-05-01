@@ -2,11 +2,20 @@ import type { LocalizedContent } from '../../entities/editorial/model/types'
 
 const FALLBACK_LOCALES = ['en', 'ko', 'ja']
 
+function normalizeLocale(value: string | undefined): string | undefined {
+  if (!value) {
+    return undefined
+  }
+
+  return value.toLowerCase().split(/[-_]/)[0]
+}
+
 export function getLocalizedText(
   content: LocalizedContent,
   preferredLocale: string | undefined,
 ): string {
-  const preferredText = preferredLocale ? content[preferredLocale]?.trim() : undefined
+  const normalizedLocale = normalizeLocale(preferredLocale)
+  const preferredText = normalizedLocale ? content[normalizedLocale]?.trim() : undefined
   if (preferredText) {
     return preferredText
   }
