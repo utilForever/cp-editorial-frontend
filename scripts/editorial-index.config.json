@@ -1,6 +1,6 @@
 {
   "supportedExtensions": [".pdf", ".md", ".txt"],
-  "excludeFileNames": ["README.md", "LICENSE"],
+  "excludeFileNames": ["README.md", "LICENSE", "CONTRIBUTING.md"],
   "excludePathPrefixes": [".github"],
   "excludePathPatterns": []
 }
