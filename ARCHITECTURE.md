@@ -111,6 +111,7 @@ The frontend consumes a static index with this shape:
   - `excludeFileNames`
   - `excludePathPrefixes`
   - `excludePathPatterns`
+- Current defaults exclude repository-management content such as `README.md`, `LICENSE`, and the `.github/` folder.
 
 ### Stable ID policy
 
