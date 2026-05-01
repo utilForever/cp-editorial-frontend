@@ -27,7 +27,7 @@ function toSupportedLanguage(value: string | null | undefined): SupportedLanguag
 }
 
 function resolveInitialLanguage() {
-  return toSupportedLanguage(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)) ?? DEFAULT_LANGUAGE
+  return toSupportedLanguage(globalThis.localStorage.getItem(LANGUAGE_STORAGE_KEY)) ?? DEFAULT_LANGUAGE
 }
 
 function syncDocumentLanguage(language: string) {
