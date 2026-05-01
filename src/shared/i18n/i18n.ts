@@ -40,7 +40,7 @@ function syncLanguagePreference(language: string) {
     return
   }
 
-  window.localStorage.setItem(LANGUAGE_STORAGE_KEY, supportedLanguage)
+  globalThis.localStorage.setItem(LANGUAGE_STORAGE_KEY, supportedLanguage)
 }
 
 function handleLanguageChange(language: string) {
