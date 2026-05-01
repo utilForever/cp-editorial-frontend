@@ -28,6 +28,9 @@ export function Layout() {
             <NavLink className={navLinkClassName} to="/contribute">
               {t('nav.contribute')}
             </NavLink>
+            <NavLink className={navLinkClassName} to="/copyright">
+              {t('nav.copyright')}
+            </NavLink>
             <LanguageSelector />
           </nav>
         </div>
@@ -64,6 +67,9 @@ export function Layout() {
               </Link>
               <Link className="layout__footer-link" to="/contribute">
                 {t('footer.explore.contribute')}
+              </Link>
+              <Link className="layout__footer-link" to="/copyright">
+                {t('footer.explore.copyright')}
               </Link>
             </section>
 
