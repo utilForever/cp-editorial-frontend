@@ -134,6 +134,7 @@ export function SearchPage() {
               <ul className="competition-editorials">
                 {result.editorials.map((editorial) => {
                   const links = buildEditorialLinks(editorial.path)
+                  const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
 
                   return (
                     <li className="competition-editorials__item" key={editorial.id}>
@@ -142,26 +143,28 @@ export function SearchPage() {
                           className="competition-editorials__title"
                           to={`/editorials/${editorial.id}`}
                         >
-                          {getLocalizedText(editorial.title, i18n.resolvedLanguage)}
+                          {localizedTitle}
                         </Link>
                         <p className="card__meta">{editorial.path}</p>
                       </div>
                       <div className="action-links">
                         <a
+                          aria-label={t('editorial.viewAria', { title: localizedTitle })}
                           className="action-link"
                           href={links.viewUrl}
                           rel="noreferrer"
                           target="_blank"
                         >
-                          {t('search.view')}
+                          {t('editorial.view')}
                         </a>
                         <a
+                          aria-label={t('editorial.downloadAria', { title: localizedTitle })}
                           className="action-link action-link--secondary"
                           href={links.downloadUrl}
                           rel="noreferrer"
                           target="_blank"
                         >
-                          {t('search.download')}
+                          {t('editorial.download')}
                         </a>
                       </div>
                     </li>

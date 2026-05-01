@@ -28,11 +28,12 @@ export function EditorialDetailPage() {
   }
 
   const links = buildEditorialLinks(editorial.path)
+  const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
   const categoryLabel = editorial.categories.length > 0 ? editorial.categories.join(', ') : '-'
 
   return (
     <article className="page">
-      <h1>{getLocalizedText(editorial.title, i18n.resolvedLanguage)}</h1>
+      <h1>{localizedTitle}</h1>
       <p className="page__description">
         {getLocalizedText(editorial.summary, i18n.resolvedLanguage)}
       </p>
@@ -51,10 +52,17 @@ export function EditorialDetailPage() {
       <p className="muted">{`${t('editorial.path')}: ${editorial.path}`}</p>
       <p className="muted">{`${t('editorial.filename')}: ${editorial.filename}`}</p>
       <div className="action-links">
-        <a className="action-link" href={links.viewUrl} rel="noreferrer" target="_blank">
+        <a
+          aria-label={t('editorial.viewAria', { title: localizedTitle })}
+          className="action-link"
+          href={links.viewUrl}
+          rel="noreferrer"
+          target="_blank"
+        >
           {t('editorial.view')}
         </a>
         <a
+          aria-label={t('editorial.downloadAria', { title: localizedTitle })}
           className="action-link action-link--secondary"
           href={links.downloadUrl}
           rel="noreferrer"
