@@ -1,4 +1,8 @@
-# cp-editorial-frontend
+# Frontend for Competitive Programming Editorials
+
+<p align="center">
+  <img src="./Logo.png" alt="cp-editorial" width="400">
+</p>
 
 [![CI](https://img.shields.io/github/actions/workflow/status/utilForever/cp-editorial-frontend/ci.yml?branch=main&label=CI)](https://github.com/utilForever/cp-editorial-frontend/actions/workflows/ci.yml)
 [![Deploy Frontend](https://img.shields.io/github/actions/workflow/status/utilForever/cp-editorial-frontend/deploy.yml?branch=main&label=Deploy)](https://github.com/utilForever/cp-editorial-frontend/actions/workflows/deploy.yml)
