@@ -10,6 +10,7 @@ export const resources = {
         search: 'Search',
         categories: 'Categories',
         contribute: 'Upload Guide',
+        copyright: 'Copyright',
       },
       footer: {
         description: 'A curated archive for competitive-programming contest editorials.',
@@ -19,6 +20,7 @@ export const resources = {
           search: 'Find Competitions',
           categories: 'Browse Categories',
           contribute: 'Upload Guide',
+          copyright: 'Copyright Policy',
         },
         links: {
           heading: 'Repositories',
@@ -134,6 +136,30 @@ export const resources = {
         footer:
           'If deployment did not refresh data, check the cross-repo dispatch workflow and static index artifact version.',
       },
+      copyrightPage: {
+        heading: 'Editorial Copyright & Usage',
+        description:
+          'This page explains ownership, attribution, and usage expectations for editorial content listed in CP Editorial.',
+        ownership: {
+          heading: 'Ownership',
+          body: 'Editorial files listed here remain the property of their original authors or rights holders. CP Editorial only indexes and links files managed in <dataRepo>cp-editorial-data</dataRepo>.',
+        },
+        attribution: {
+          heading: 'Attribution expectations',
+          item1:
+            'When sharing or quoting editorial content, preserve original author, contest, and source information.',
+          item2: 'Include a clear reference to the original source repository or publication.',
+          item3: 'Do not remove existing credit, watermark, or license notices from files.',
+        },
+        usage: {
+          heading: 'Permitted use',
+          body: 'Use this archive for learning and reference. Redistribution or republication should follow each source author or organization policy.',
+        },
+        removal: {
+          heading: 'Contact and removal requests',
+          body: 'If you are a rights holder and need a correction, attribution update, or removal, open an issue in <issues>Issues in utilForever/cp-editorial-data</issues> with the file path and request details.',
+        },
+      },
       language: {
         label: 'Language',
       },
@@ -150,6 +176,7 @@ export const resources = {
         search: '검색',
         categories: '카테고리',
         contribute: '업로드 가이드',
+        copyright: '저작권',
       },
       footer: {
         description: '경쟁 프로그래밍 대회 에디토리얼을 모아 둔 아카이브입니다.',
@@ -159,6 +186,7 @@ export const resources = {
           search: '대회 찾기',
           categories: '카테고리 보기',
           contribute: '업로드 가이드',
+          copyright: '저작권 안내',
         },
         links: {
           heading: '저장소',
@@ -271,6 +299,29 @@ export const resources = {
         footer:
           '데이터가 갱신되지 않으면 cross-repo dispatch 워크플로와 인덱스 아티팩트 버전을 확인하세요.',
       },
+      copyrightPage: {
+        heading: '에디토리얼 저작권 및 이용 안내',
+        description:
+          '이 페이지는 CP Editorial에 등록된 에디토리얼 콘텐츠의 소유권, 출처 표기, 이용 기준을 설명합니다.',
+        ownership: {
+          heading: '소유권',
+          body: '이 사이트에 표시되는 에디토리얼 파일의 권리는 원저자 또는 권리자에게 있습니다. CP Editorial은 <dataRepo>cp-editorial-data</dataRepo>에서 관리되는 파일을 인덱싱하고 링크만 제공합니다.',
+        },
+        attribution: {
+          heading: '출처 표기 원칙',
+          item1: '에디토리얼 내용을 공유하거나 인용할 때 원저자, 대회명, 출처 정보를 유지하세요.',
+          item2: '원본 저장소 또는 게시 위치를 명확히 함께 표기하세요.',
+          item3: '파일에 포함된 저작권 고지, 워터마크, 라이선스 문구를 제거하지 마세요.',
+        },
+        usage: {
+          heading: '이용 범위',
+          body: '이 아카이브는 학습과 참고 용도로 사용하세요. 재배포 또는 재게시는 각 원저자/기관의 정책을 따라야 합니다.',
+        },
+        removal: {
+          heading: '문의 및 삭제 요청',
+          body: '권리자이며 정정, 출처 수정, 삭제가 필요한 경우 파일 경로와 요청 사유를 포함해 <issues>utilForever/cp-editorial-data의 Issues</issues>에 이슈를 등록해 주세요.',
+        },
+      },
       language: {
         label: '언어',
       },
@@ -287,6 +338,7 @@ export const resources = {
         search: '検索',
         categories: 'カテゴリ',
         contribute: 'アップロードガイド',
+        copyright: '著作権',
       },
       footer: {
         description: '競技プログラミング大会のエディトリアルを集約したアーカイブです。',
@@ -296,6 +348,7 @@ export const resources = {
           search: '大会を探す',
           categories: 'カテゴリを見る',
           contribute: 'アップロードガイド',
+          copyright: '著作権案内',
         },
         links: {
           heading: 'リポジトリ',
@@ -409,6 +462,30 @@ export const resources = {
         },
         footer:
           '更新が反映されない場合は、cross-repo dispatch ワークフローとインデックス成果物のバージョンを確認してください。',
+      },
+      copyrightPage: {
+        heading: 'エディトリアルの著作権と利用方針',
+        description:
+          'このページでは、CP Editorial に掲載されるエディトリアルの権利帰属、出典表記、利用上の注意を説明します。',
+        ownership: {
+          heading: '権利帰属',
+          body: '掲載されているエディトリアルファイルの権利は、元の著者または権利者に帰属します。CP Editorial は <dataRepo>cp-editorial-data</dataRepo> で管理されるファイルを索引化し、リンクのみを提供します。',
+        },
+        attribution: {
+          heading: '出典表記の方針',
+          item1:
+            'エディトリアル内容を共有・引用する際は、著者名・大会名・出典情報を維持してください。',
+          item2: '元のリポジトリまたは公開元への明確な参照を付けてください。',
+          item3: '既存のクレジット、ウォーターマーク、ライセンス表記を削除しないでください。',
+        },
+        usage: {
+          heading: '利用範囲',
+          body: '本アーカイブは学習・参照目的で利用してください。再配布や再掲載は、各著者・団体の方針に従ってください。',
+        },
+        removal: {
+          heading: '問い合わせ・削除依頼',
+          body: '権利者として修正、出典更新、削除が必要な場合は、対象ファイルのパスと依頼内容を添えて <issues>utilForever/cp-editorial-data の Issues</issues> に issue を作成してください。',
+        },
       },
       language: {
         label: '言語',

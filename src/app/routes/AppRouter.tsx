@@ -3,6 +3,7 @@ import { CategoryPage } from '../../pages/CategoryPage'
 import { CategoryContestPage } from '../../pages/CategoryContestPage'
 import { CategoriesPage } from '../../pages/CategoriesPage'
 import { ContributePage } from '../../pages/ContributePage'
+import { CopyrightPage } from '../../pages/CopyrightPage'
 import { EditorialDetailPage } from '../../pages/EditorialDetailPage'
 import { HomePage } from '../../pages/HomePage'
 import { SearchPage } from '../../pages/SearchPage'
@@ -19,6 +20,7 @@ export function AppRouter() {
         <Route element={<CategoryContestPage />} path="categories/:category/contests/:contest" />
         <Route element={<EditorialDetailPage />} path="editorials/:editorialId" />
         <Route element={<ContributePage />} path="contribute" />
+        <Route element={<CopyrightPage />} path="copyright" />
       </Route>
       <Route element={<Navigate replace to="/" />} path="*" />
     </Routes>
