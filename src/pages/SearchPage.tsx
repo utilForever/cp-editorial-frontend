@@ -125,11 +125,13 @@ export function SearchPage() {
         <ul className="card-list">
           {contestResults.map((result) => (
             <li className="card" key={`${result.category}::${result.contest}`}>
-              <p className="card__meta">{result.category}</p>
-              <h2 className="card__title">{result.contest}</h2>
-              <p className="card__meta">
-                {t('search.editorialCount', { count: result.editorials.length })}
-              </p>
+              <div className="card__header">
+                <p className="card__meta">{result.category}</p>
+                <h2 className="card__title">{result.contest}</h2>
+                <p className="card__meta">
+                  {t('search.editorialCount', { count: result.editorials.length })}
+                </p>
+              </div>
 
               <ul className="competition-editorials">
                 {result.editorials.map((editorial) => {
