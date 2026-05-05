@@ -1,5 +1,6 @@
 const { FlatCompat } = require('@eslint/eslintrc')
 const js = require('@eslint/js')
+const { reactRefresh } = require('eslint-plugin-react-refresh')
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -19,7 +20,7 @@ module.exports = [
       project: ['./tsconfig.app.json', './tsconfig.node.json'],
       tsconfigRootDir: __dirname,
     },
-    plugins: ['@typescript-eslint', 'react-hooks', 'react-refresh'],
+    plugins: ['@typescript-eslint', 'react-hooks'],
     extends: [
       'eslint:recommended',
       'plugin:@typescript-eslint/recommended-type-checked',
@@ -28,8 +29,8 @@ module.exports = [
     rules: {
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
     },
   }),
+  reactRefresh.configs.vite(),
 ]
