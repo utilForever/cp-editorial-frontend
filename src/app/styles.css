@@ -308,9 +308,19 @@ a {
   border: 1px solid var(--color-border);
   border-radius: 0.6rem;
   background-color: var(--color-surface);
+  overflow: hidden;
   padding: 0.9rem 1rem;
   display: grid;
   gap: 0.45rem;
+}
+
+.card__header {
+  background-color: var(--color-primary-soft);
+  border-bottom: 1px solid var(--color-border);
+  margin: -0.9rem -1rem 0.45rem;
+  padding: 0.75rem 1rem;
+  display: grid;
+  gap: 0.3rem;
 }
 
 .card__title {
