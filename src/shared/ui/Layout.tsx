@@ -17,7 +17,9 @@ export function Layout() {
     <div className="layout">
       <header className="layout__header">
         <div className="layout__header-inner">
-          <div className="layout__brand">{t('appTitle')}</div>
+          <Link className="layout__brand" to="/">
+            {t('appTitle')}
+          </Link>
           <nav className="layout__nav">
             <NavLink className={navLinkClassName} to="/" end>
               {t('nav.home')}
