@@ -108,11 +108,13 @@ export const resources = {
         structure: {
           heading: '1) Folder structure and file placement',
           description:
-            'Use the hierarchy `Category / Contest(or Organization) / Editorial file` so the site can map category, contest, and entry title correctly.',
+            'Use the hierarchy `Category hierarchy / Contest(or Organization) / Editorial file` so the site can map category, contest, and entry title correctly.',
           example:
             'Open Cup/XXI Open Cup named after E.V. Pankratiev/Stage 14 - Grand Prix of Tokyo.pdf',
-          rule1: 'The first folder is the category (example: University, Olympiad, Open Cup).',
-          rule2: 'The second folder is the contest or organization name.',
+          rule1:
+            'All folders before the final contest folder are treated as category hierarchy (example: ICPC > Regionals > Asia Pacific).',
+          rule2:
+            'The last folder right before the file is treated as the contest or organization name.',
           rule3:
             'The file name becomes the editorial entry title shown in search and contest pages.',
         },
@@ -129,7 +131,7 @@ export const resources = {
         checklist: {
           heading: '3) Pre-PR checklist',
           item1: 'File opens correctly and is not corrupted.',
-          item2: 'Path follows `Category/Contest/File` hierarchy.',
+          item2: 'Path follows `Category hierarchy/Contest/File` hierarchy.',
           item3: 'No accidental docs or unrelated files are included.',
           item4: 'Title/year wording in filename is accurate and final.',
         },
@@ -280,11 +282,12 @@ export const resources = {
         structure: {
           heading: '1) 폴더 구조와 파일 배치',
           description:
-            '사이트가 카테고리/대회/항목을 정확히 인식하려면 `카테고리 / 대회(또는 기관) / 에디토리얼 파일` 구조를 지켜주세요.',
+            '사이트가 카테고리/대회/항목을 정확히 인식하려면 `카테고리 계층 / 대회(또는 기관) / 에디토리얼 파일` 구조를 지켜주세요.',
           example:
             'Open Cup/XXI Open Cup named after E.V. Pankratiev/Stage 14 - Grand Prix of Tokyo.pdf',
-          rule1: '첫 번째 폴더는 카테고리입니다. (예: University, Olympiad, Open Cup)',
-          rule2: '두 번째 폴더는 대회 또는 주관 기관명입니다.',
+          rule1:
+            '파일 바로 앞 마지막 폴더를 제외한 앞쪽 폴더들은 카테고리 계층으로 사용합니다. (예: ICPC > Regionals > Asia Pacific)',
+          rule2: '파일 바로 앞 마지막 폴더는 대회 또는 주관 기관명으로 사용합니다.',
           rule3: '파일명은 검색/대회 페이지에 표시되는 에디토리얼 항목 제목이 됩니다.',
         },
         workflow: {
@@ -299,7 +302,7 @@ export const resources = {
         checklist: {
           heading: '3) PR 전 체크리스트',
           item1: '파일이 정상적으로 열리고 손상되지 않았습니다.',
-          item2: '경로가 `카테고리/대회/파일` 구조를 따릅니다.',
+          item2: '경로가 `카테고리 계층/대회/파일` 구조를 따릅니다.',
           item3: 'README 등 불필요한 파일이 포함되지 않았습니다.',
           item4: '파일명(대회명/연도)이 최종 표기와 일치합니다.',
         },
@@ -450,11 +453,12 @@ export const resources = {
         structure: {
           heading: '1) フォルダ構成と配置ルール',
           description:
-            'サイトでカテゴリ・大会・項目を正しく解釈するため、`カテゴリ / 大会(または団体) / エディトリアルファイル` 構成を使用します。',
+            'サイトでカテゴリ・大会・項目を正しく解釈するため、`カテゴリ階層 / 大会(または団体) / エディトリアルファイル` 構成を使用します。',
           example:
             'Open Cup/XXI Open Cup named after E.V. Pankratiev/Stage 14 - Grand Prix of Tokyo.pdf',
-          rule1: '1階層目はカテゴリです（例: University, Olympiad, Open Cup）。',
-          rule2: '2階層目は大会名または主催団体名です。',
+          rule1:
+            '最終の大会フォルダより前のフォルダは、カテゴリ階層として扱います（例: ICPC > Regionals > Asia Pacific）。',
+          rule2: 'ファイル直前の最後のフォルダを、大会名または主催団体名として扱います。',
           rule3: 'ファイル名は検索画面と大会画面で表示されるエディトリアル項目名になります。',
         },
         workflow: {
@@ -470,7 +474,7 @@ export const resources = {
         checklist: {
           heading: '3) PR 前チェックリスト',
           item1: 'ファイルが正常に開けて破損していない。',
-          item2: 'パスが `カテゴリ/大会/ファイル` 構造になっている。',
+          item2: 'パスが `カテゴリ階層/大会/ファイル` 構造になっている。',
           item3: 'README など不要なファイルを含めていない。',
           item4: 'ファイル名の大会名・年表記が最終版と一致している。',
         },

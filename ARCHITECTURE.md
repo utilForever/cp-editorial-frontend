@@ -96,14 +96,18 @@ The frontend consumes a static index with this shape:
 
 ### Path mapping policy
 
-- First path segment is treated as **category**.
-- Second path segment is treated as **contest name / organizer**.
+- All directory segments before the final directory are treated as the **category hierarchy**.
+- The final directory segment is treated as the **contest name / organizer**.
 - File stem is treated as **contest entry title**.
 - Examples:
   - `Olympiad/Russian Olympiad in Informatics/Russia Team High School Programming Contest 2020.pdf`
-    - category: `Olympiad`
+    - category hierarchy: `Olympiad`
     - contest: `Russian Olympiad in Informatics`
     - entry title: `Russia Team High School Programming Contest 2020`
+  - `ICPC/Regionals/Latin America/Latin America Championship/The 2024 ICPC Latin America Championship.pdf`
+    - category hierarchy: `ICPC > Regionals > Latin America`
+    - contest: `Latin America Championship`
+    - entry title: `The 2024 ICPC Latin America Championship`
 
 ### Exclusion policy
 
@@ -125,15 +129,17 @@ Normalization rejects invalid index data (missing required fields or empty local
 
 ## 5. Routing model
 
-| Route                                     | Purpose                                                              |
-| ----------------------------------------- | -------------------------------------------------------------------- |
-| `/`                                       | Home summary, index stats, and “What is CP Editorial?” article       |
-| `/search`                                 | Keyword search grouped by category + contest, then editorial entries |
-| `/categories`                             | Category listing                                                     |
-| `/categories/:category`                   | Contest listing within a category                                    |
-| `/categories/:category/contests/:contest` | Editorial listing within a selected contest                          |
-| `/editorials/:editorialId`                | Editorial detail page                                                |
-| `/contribute`                             | Upload/contribution guide for `cp-editorial-data`                    |
+| Route                      | Purpose                                                              |
+| -------------------------- | -------------------------------------------------------------------- |
+| `/`                        | Home summary, index stats, and “What is CP Editorial?” article       |
+| `/search`                  | Keyword search grouped by category + contest, then editorial entries |
+| `/categories`              | Category listing                                                     |
+| `/categories/*`            | Hierarchical browse pages for each directory level                   |
+| `/editorials/:editorialId` | Editorial detail page                                                |
+| `/contribute`              | Upload/contribution guide for `cp-editorial-data`                    |
+
+Category browsing is path-hierarchy driven, so nested folders like
+`ICPC/Regionals/Asia Pacific/Asia Pacific Championship` are navigable at each level.
 
 ## 6. Internationalization
 
@@ -157,7 +163,7 @@ Normalization rejects invalid index data (missing required fields or empty local
 
 The website includes a dedicated `/contribute` page with instructions:
 
-1. Add files in `Category/Contest(or Organization)/Editorial file` hierarchy.
+1. Add files in `Category hierarchy/Contest(or Organization)/Editorial file` hierarchy.
 2. Use clear filenames because the filename stem becomes the displayed editorial entry title.
 3. Keep only editorial source files in target folders (non-editorial files are excluded by config).
 4. Merge PR to `main` to trigger index regeneration + frontend deployment.

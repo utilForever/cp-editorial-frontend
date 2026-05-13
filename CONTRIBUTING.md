@@ -69,7 +69,7 @@ Before creating a PR:
 4. Use clear, conventional commit messages:
    - `feat:`, `fix:`, `refactor:`, `perf:`, `test:`, `docs:`, `chore:`
 
-For editorial content onboarding rules (`Category/Contest(or Organization)/Editorial file`), follow the website `/contribute` guidance and the `cp-editorial-data` repository flow.
+For editorial content onboarding rules (`Category hierarchy/Contest(or Organization)/Editorial file`), follow the website `/contribute` guidance and the `cp-editorial-data` repository flow.
 
 ## Releasing
 
