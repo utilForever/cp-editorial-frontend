@@ -161,15 +161,15 @@ export function CategoryPage() {
                   <p className="card__meta">{editorial.filename}</p>
                   <p className="card__meta">{editorial.path}</p>
                   <div className="action-links">
-                    <a
+                    <Link
                       aria-label={t('editorial.viewAria', { title: localizedTitle })}
                       className="action-link"
-                      href={links.viewUrl}
                       rel="noreferrer"
                       target="_blank"
+                      to={`/editorials/${editorial.id}/view`}
                     >
                       {t('editorial.view')}
-                    </a>
+                    </Link>
                     <a
                       aria-label={t('editorial.downloadAria', { title: localizedTitle })}
                       className="action-link action-link--secondary"

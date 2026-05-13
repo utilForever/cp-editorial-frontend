@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
@@ -52,15 +52,15 @@ export function EditorialDetailPage() {
       <p className="muted">{`${t('editorial.path')}: ${editorial.path}`}</p>
       <p className="muted">{`${t('editorial.filename')}: ${editorial.filename}`}</p>
       <div className="action-links">
-        <a
+        <Link
           aria-label={t('editorial.viewAria', { title: localizedTitle })}
           className="action-link"
-          href={links.viewUrl}
           rel="noreferrer"
           target="_blank"
+          to={`/editorials/${editorial.id}/view`}
         >
           {t('editorial.view')}
-        </a>
+        </Link>
         <a
           aria-label={t('editorial.downloadAria', { title: localizedTitle })}
           className="action-link action-link--secondary"
