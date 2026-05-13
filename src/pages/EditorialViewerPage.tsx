@@ -74,7 +74,7 @@ export function EditorialViewerPage() {
         setPdfError(nextError)
       })
       .finally(() => {
-        window.clearTimeout(timeoutId)
+        globalThis.clearTimeout(timeoutId)
       })
 
     return () => {
