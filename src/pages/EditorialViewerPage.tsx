@@ -80,7 +80,7 @@ export function EditorialViewerPage() {
     return () => {
       isMounted = false
       abortController.abort()
-      window.clearTimeout(timeoutId)
+      globalThis.clearTimeout(timeoutId)
       if (objectUrl) {
         URL.revokeObjectURL(objectUrl)
       }
