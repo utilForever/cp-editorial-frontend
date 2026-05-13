@@ -445,6 +445,14 @@ a {
   color: var(--color-download-text);
 }
 
+.editorial-viewer {
+  width: 100%;
+  min-height: 78vh;
+  border: 1px solid var(--color-border);
+  border-radius: 0.6rem;
+  background-color: var(--color-surface);
+}
+
 .tag-list {
   display: flex;
   gap: 0.4rem;

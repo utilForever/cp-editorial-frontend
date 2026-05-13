@@ -4,6 +4,7 @@ import { CategoriesPage } from '../../pages/CategoriesPage'
 import { ContributePage } from '../../pages/ContributePage'
 import { CopyrightPage } from '../../pages/CopyrightPage'
 import { EditorialDetailPage } from '../../pages/EditorialDetailPage'
+import { EditorialViewerPage } from '../../pages/EditorialViewerPage'
 import { HomePage } from '../../pages/HomePage'
 import { SearchPage } from '../../pages/SearchPage'
 import { Layout } from '../../shared/ui/Layout'
@@ -17,6 +18,7 @@ export function AppRouter() {
         <Route element={<CategoriesPage />} path="categories" />
         <Route element={<CategoryPage />} path="categories/*" />
         <Route element={<EditorialDetailPage />} path="editorials/:editorialId" />
+        <Route element={<EditorialViewerPage />} path="editorials/:editorialId/view" />
         <Route element={<ContributePage />} path="contribute" />
         <Route element={<CopyrightPage />} path="copyright" />
       </Route>

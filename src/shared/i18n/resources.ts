@@ -100,6 +100,10 @@ export const resources = {
         viewAria: 'View editorial: {{title}}',
         downloadAria: 'Download editorial: {{title}}',
         notFound: 'Editorial not found.',
+        viewerDescription: 'Preview this editorial PDF directly in your browser.',
+        viewerLoading: 'Preparing PDF viewer...',
+        viewerLoadFailed: 'Unable to load this PDF in the browser viewer.',
+        viewerFallback: 'If preview is not available, use:',
       },
       contribute: {
         heading: 'How to Upload Editorial Data',
@@ -274,6 +278,10 @@ export const resources = {
         viewAria: '{{title}} 에디토리얼 열기',
         downloadAria: '{{title}} 에디토리얼 다운로드',
         notFound: '에디토리얼을 찾을 수 없습니다.',
+        viewerDescription: '브라우저에서 이 에디토리얼 PDF를 바로 볼 수 있습니다.',
+        viewerLoading: 'PDF 뷰어를 준비하는 중입니다...',
+        viewerLoadFailed: '브라우저 뷰어에서 이 PDF를 불러오지 못했습니다.',
+        viewerFallback: '미리보기가 불가능하면 다음을 사용하세요:',
       },
       contribute: {
         heading: '에디토리얼 데이터 업로드 방법',
@@ -445,6 +453,10 @@ export const resources = {
         viewAria: '{{title}} のエディトリアルを表示',
         downloadAria: '{{title}} のエディトリアルをダウンロード',
         notFound: 'エディトリアルが見つかりません。',
+        viewerDescription: 'このエディトリアル PDF をブラウザで直接表示します。',
+        viewerLoading: 'PDF ビューアーを準備しています...',
+        viewerLoadFailed: 'ブラウザビューアーでこの PDF を読み込めませんでした。',
+        viewerFallback: 'プレビューできない場合は次を使用してください:',
       },
       contribute: {
         heading: 'エディトリアルデータのアップロード方法',
