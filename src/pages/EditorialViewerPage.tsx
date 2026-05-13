@@ -27,11 +27,17 @@ export function EditorialViewerPage() {
     const links = buildEditorialLinks(editorial.path)
     let isMounted = true
     let objectUrl: string | null = null
+    const abortController = new AbortController()
+    let didTimeout = false
+    const timeoutId = window.setTimeout(() => {
+      didTimeout = true
+      abortController.abort()
+    }, 15000)
 
     setPdfUrl(null)
     setPdfError(null)
 
-    void fetch(links.downloadUrl)
+    void fetch(links.downloadUrl, { signal: abortController.signal })
       .then(async (response) => {
         if (!response.ok) {
           throw new Error(`Failed to load PDF. Status: ${response.status}`)
@@ -53,6 +59,13 @@ export function EditorialViewerPage() {
           return
         }
 
+        if (fetchError instanceof DOMException && fetchError.name === 'AbortError') {
+          if (didTimeout) {
+            setPdfError(new Error('Timed out while loading editorial PDF.'))
+          }
+          return
+        }
+
         const nextError =
           fetchError instanceof Error
             ? fetchError
@@ -60,9 +73,14 @@ export function EditorialViewerPage() {
 
         setPdfError(nextError)
       })
+      .finally(() => {
+        window.clearTimeout(timeoutId)
+      })
 
     return () => {
       isMounted = false
+      abortController.abort()
+      window.clearTimeout(timeoutId)
       if (objectUrl) {
         URL.revokeObjectURL(objectUrl)
       }
