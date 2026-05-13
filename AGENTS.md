@@ -92,7 +92,7 @@ npm run build
 
 - Index generation script: `scripts/generate-editorial-index.mjs`.
 - Index generation config: `scripts/editorial-index.config.json`.
-- Path conventions are important: first segment = category, second = contest/organizer.
+- Path conventions are important: all segments before the final directory are category hierarchy, and the final directory is contest/organizer.
 - Routing should continue to rely on stable editorial identifiers rather than filename language.
 
 ## Change Checklist for Agents
