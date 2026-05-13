@@ -70,6 +70,10 @@ export function CategoryPage() {
       editorialsAtCurrentNode.push(editorial)
     })
 
+    const sortedEditorialsAtNode = [...editorialsAtCurrentNode].sort((left, right) =>
+      left.filename.localeCompare(right.filename),
+    )
+
     return {
       childNodes: Array.from(childNodeCounts.entries())
         .map(([name, count]) => ({
@@ -78,9 +82,7 @@ export function CategoryPage() {
           route: `/categories/${[...selectedSegments, name].map(encodeURIComponent).join('/')}`,
         }))
         .sort((left, right) => left.name.localeCompare(right.name)),
-      editorialsAtNode: editorialsAtCurrentNode.sort((left, right) =>
-        left.filename.localeCompare(right.filename),
-      ),
+      editorialsAtNode: sortedEditorialsAtNode,
       hasMatches: matchingEditorials.length > 0,
     }
   }, [data.editorials, selectedSegments])
