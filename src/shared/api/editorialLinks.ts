@@ -15,9 +15,9 @@ function encodePath(path: string): string {
 
 export function buildEditorialLinks(path: string) {
   const encodedPath = encodePath(path)
+  const rawFileUrl = `https://raw.githubusercontent.com/${CP_EDITORIAL_DATA_REPOSITORY}/main/${encodedPath}`
 
   return {
-    viewUrl: `https://github.com/${CP_EDITORIAL_DATA_REPOSITORY}/blob/main/${encodedPath}`,
-    downloadUrl: `https://raw.githubusercontent.com/${CP_EDITORIAL_DATA_REPOSITORY}/main/${encodedPath}`,
+    downloadUrl: rawFileUrl,
   }
 }
