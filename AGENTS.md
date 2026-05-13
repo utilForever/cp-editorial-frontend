@@ -69,7 +69,7 @@ npm run build
 - Keep pull requests focused and scoped to a single behavior or documentation change.
 - Follow existing module boundaries and avoid unrelated refactors.
 - If behavior changes, update related docs (`README.md`, `ARCHITECTURE.md`, or this file) in the same change set.
-- For editorial content onboarding, follow `/contribute` guidance and use `Category/Contest(or Organization)/Editorial file` hierarchy in `cp-editorial-data`.
+- For editorial content onboarding, follow `/contribute` guidance and use `Category hierarchy/Contest(or Organization)/Editorial file` hierarchy in `cp-editorial-data`.
 - Preserve index generation rules and path conventions in `scripts/editorial-index.config.json`.
 
 ## Commit Style
@@ -92,7 +92,7 @@ npm run build
 
 - Index generation script: `scripts/generate-editorial-index.mjs`.
 - Index generation config: `scripts/editorial-index.config.json`.
-- Path conventions are important: first segment = category, second = contest/organizer.
+- Path conventions are important: all segments before the final directory are category hierarchy, and the final directory is contest/organizer.
 - Routing should continue to rely on stable editorial identifiers rather than filename language.
 
 ## Change Checklist for Agents

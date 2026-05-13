@@ -141,13 +141,13 @@ function createRecordFromPath(path) {
     .filter((segment) => segment.length > 0)
   const filename = basename(path)
   const fileStem = filename.replace(/\.[^.]+$/u, '')
-  const category = directories[0] ?? 'Uncategorized'
-  const contest = directories[1] ?? category
+  const contest = directories.length > 0 ? directories[directories.length - 1] : 'Uncategorized'
+  const categories = directories.length > 1 ? directories.slice(0, -1) : []
 
   return {
     contest,
     problem: fileStem,
-    categories: category ? [category] : [],
+    categories,
     path,
     filename,
     title: {

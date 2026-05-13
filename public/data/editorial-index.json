@@ -1,7 +1,2404 @@
 {
-  "version": "2026.04.18",
-  "generatedAt": "2026-04-18T07:17:51.401Z",
+  "version": "2026.05.13",
+  "generatedAt": "2026-05-13T02:44:22.596Z",
   "editorials": [
+    {
+      "contest": "Asia Pacific Championship",
+      "problem": "The 2024 ICPC Asia Pacific Championship",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Asia Pacific Championship/The 2024 ICPC Asia Pacific Championship.pdf",
+      "filename": "The 2024 ICPC Asia Pacific Championship.pdf",
+      "title": {
+        "en": "The 2024 ICPC Asia Pacific Championship",
+        "ko": "The 2024 ICPC Asia Pacific Championship",
+        "ja": "The 2024 ICPC Asia Pacific Championship"
+      },
+      "summary": {
+        "en": "Asia Pacific Championship editorial",
+        "ko": "Asia Pacific Championship 해설",
+        "ja": "Asia Pacific Championship 解説"
+      }
+    },
+    {
+      "contest": "Asia Pacific Championship",
+      "problem": "The 2025 ICPC Asia Pacific Championship",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Asia Pacific Championship/The 2025 ICPC Asia Pacific Championship.pdf",
+      "filename": "The 2025 ICPC Asia Pacific Championship.pdf",
+      "title": {
+        "en": "The 2025 ICPC Asia Pacific Championship",
+        "ko": "The 2025 ICPC Asia Pacific Championship",
+        "ja": "The 2025 ICPC Asia Pacific Championship"
+      },
+      "summary": {
+        "en": "Asia Pacific Championship editorial",
+        "ko": "Asia Pacific Championship 해설",
+        "ja": "Asia Pacific Championship 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2017 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2017 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2017 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2017 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2017 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2017 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2018 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2018 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2018 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2018 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2018 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2018 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2019 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2019 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2019 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2019 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2019 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2019 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2021 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2021 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2021 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2021 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2021 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2021 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2022 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2022 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2022 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2022 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2022 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2022 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2023 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2023 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2023 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2023 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2023 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2023 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2024 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2024 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2024 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2024 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2024 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2024 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Jakarta",
+      "problem": "The 2025 ICPC Asia Jakarta Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific", "Indonesia"],
+      "path": "ICPC/Regionals/Asia Pacific/Indonesia/Jakarta/The 2025 ICPC Asia Jakarta Regional Contest.pdf",
+      "filename": "The 2025 ICPC Asia Jakarta Regional Contest.pdf",
+      "title": {
+        "en": "The 2025 ICPC Asia Jakarta Regional Contest",
+        "ko": "The 2025 ICPC Asia Jakarta Regional Contest",
+        "ja": "The 2025 ICPC Asia Jakarta Regional Contest"
+      },
+      "summary": {
+        "en": "Jakarta editorial",
+        "ko": "Jakarta 해설",
+        "ja": "Jakarta 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2012 ACM-ICPC Asia Tokyo Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2012 ACM-ICPC Asia Tokyo Regional Contest.pdf",
+      "filename": "The 2012 ACM-ICPC Asia Tokyo Regional Contest.pdf",
+      "title": {
+        "en": "The 2012 ACM-ICPC Asia Tokyo Regional Contest",
+        "ko": "The 2012 ACM-ICPC Asia Tokyo Regional Contest",
+        "ja": "The 2012 ACM-ICPC Asia Tokyo Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2013 ACM-ICPC Asia Aizu Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2013 ACM-ICPC Asia Aizu Regional Contest.pdf",
+      "filename": "The 2013 ACM-ICPC Asia Aizu Regional Contest.pdf",
+      "title": {
+        "en": "The 2013 ACM-ICPC Asia Aizu Regional Contest",
+        "ko": "The 2013 ACM-ICPC Asia Aizu Regional Contest",
+        "ja": "The 2013 ACM-ICPC Asia Aizu Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2014 ACM-ICPC Asia Tokyo Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2014 ACM-ICPC Asia Tokyo Regional Contest.pdf",
+      "filename": "The 2014 ACM-ICPC Asia Tokyo Regional Contest.pdf",
+      "title": {
+        "en": "The 2014 ACM-ICPC Asia Tokyo Regional Contest",
+        "ko": "The 2014 ACM-ICPC Asia Tokyo Regional Contest",
+        "ja": "The 2014 ACM-ICPC Asia Tokyo Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2015 ACM-ICPC Asia Tsukuba Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2015 ACM-ICPC Asia Tsukuba Regional Contest.pdf",
+      "filename": "The 2015 ACM-ICPC Asia Tsukuba Regional Contest.pdf",
+      "title": {
+        "en": "The 2015 ACM-ICPC Asia Tsukuba Regional Contest",
+        "ko": "The 2015 ACM-ICPC Asia Tsukuba Regional Contest",
+        "ja": "The 2015 ACM-ICPC Asia Tsukuba Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2016 ACM-ICPC Asia Tsukuba Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2016 ACM-ICPC Asia Tsukuba Regional Contest.pdf",
+      "filename": "The 2016 ACM-ICPC Asia Tsukuba Regional Contest.pdf",
+      "title": {
+        "en": "The 2016 ACM-ICPC Asia Tsukuba Regional Contest",
+        "ko": "The 2016 ACM-ICPC Asia Tsukuba Regional Contest",
+        "ja": "The 2016 ACM-ICPC Asia Tsukuba Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2017 ACM-ICPC Asia Tsukuba Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2017 ACM-ICPC Asia Tsukuba Regional Contest.pdf",
+      "filename": "The 2017 ACM-ICPC Asia Tsukuba Regional Contest.pdf",
+      "title": {
+        "en": "The 2017 ACM-ICPC Asia Tsukuba Regional Contest",
+        "ko": "The 2017 ACM-ICPC Asia Tsukuba Regional Contest",
+        "ja": "The 2017 ACM-ICPC Asia Tsukuba Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2018 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2018 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2018 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2018 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2018 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2018 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2019 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2019 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2019 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2019 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2019 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2019 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2020 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2020 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2020 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2020 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2020 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2020 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2021 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2021 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2021 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2021 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2021 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2021 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2022 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2022 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2022 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2022 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2022 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2022 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2023 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2023 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2023 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2023 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2023 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2023 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2024 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2024 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2024 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2024 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2024 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2024 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Japan",
+      "problem": "The 2025 ICPC Asia Yokohama Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Japan/The 2025 ICPC Asia Yokohama Regional Contest.pdf",
+      "filename": "The 2025 ICPC Asia Yokohama Regional Contest.pdf",
+      "title": {
+        "en": "The 2025 ICPC Asia Yokohama Regional Contest",
+        "ko": "The 2025 ICPC Asia Yokohama Regional Contest",
+        "ja": "The 2025 ICPC Asia Yokohama Regional Contest"
+      },
+      "summary": {
+        "en": "Japan editorial",
+        "ko": "Japan 해설",
+        "ja": "Japan 解説"
+      }
+    },
+    {
+      "contest": "Korea",
+      "problem": "The 2021 ICPC Asia Seoul Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Korea/The 2021 ICPC Asia Seoul Regional Contest.pdf",
+      "filename": "The 2021 ICPC Asia Seoul Regional Contest.pdf",
+      "title": {
+        "en": "The 2021 ICPC Asia Seoul Regional Contest",
+        "ko": "The 2021 ICPC Asia Seoul Regional Contest",
+        "ja": "The 2021 ICPC Asia Seoul Regional Contest"
+      },
+      "summary": {
+        "en": "Korea editorial",
+        "ko": "Korea 해설",
+        "ja": "Korea 解説"
+      }
+    },
+    {
+      "contest": "Korea",
+      "problem": "The 2024 ICPC Asia Seoul Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Korea/The 2024 ICPC Asia Seoul Regional Contest.pdf",
+      "filename": "The 2024 ICPC Asia Seoul Regional Contest.pdf",
+      "title": {
+        "en": "The 2024 ICPC Asia Seoul Regional Contest",
+        "ko": "The 2024 ICPC Asia Seoul Regional Contest",
+        "ja": "The 2024 ICPC Asia Seoul Regional Contest"
+      },
+      "summary": {
+        "en": "Korea editorial",
+        "ko": "Korea 해설",
+        "ja": "Korea 解説"
+      }
+    },
+    {
+      "contest": "Korea",
+      "problem": "The 2025 ICPC Asia Seoul Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Korea/The 2025 ICPC Asia Seoul Regional Contest.pdf",
+      "filename": "The 2025 ICPC Asia Seoul Regional Contest.pdf",
+      "title": {
+        "en": "The 2025 ICPC Asia Seoul Regional Contest",
+        "ko": "The 2025 ICPC Asia Seoul Regional Contest",
+        "ja": "The 2025 ICPC Asia Seoul Regional Contest"
+      },
+      "summary": {
+        "en": "Korea editorial",
+        "ko": "Korea 해설",
+        "ja": "Korea 解説"
+      }
+    },
+    {
+      "contest": "Philippines",
+      "problem": "The 2016 ICPC Asia Manila Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Philippines/The 2016 ICPC Asia Manila Regional Contest.pdf",
+      "filename": "The 2016 ICPC Asia Manila Regional Contest.pdf",
+      "title": {
+        "en": "The 2016 ICPC Asia Manila Regional Contest",
+        "ko": "The 2016 ICPC Asia Manila Regional Contest",
+        "ja": "The 2016 ICPC Asia Manila Regional Contest"
+      },
+      "summary": {
+        "en": "Philippines editorial",
+        "ko": "Philippines 해설",
+        "ja": "Philippines 解説"
+      }
+    },
+    {
+      "contest": "Philippines",
+      "problem": "The 2017 ICPC Asia Manila Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Philippines/The 2017 ICPC Asia Manila Regional Contest.pdf",
+      "filename": "The 2017 ICPC Asia Manila Regional Contest.pdf",
+      "title": {
+        "en": "The 2017 ICPC Asia Manila Regional Contest",
+        "ko": "The 2017 ICPC Asia Manila Regional Contest",
+        "ja": "The 2017 ICPC Asia Manila Regional Contest"
+      },
+      "summary": {
+        "en": "Philippines editorial",
+        "ko": "Philippines 해설",
+        "ja": "Philippines 解説"
+      }
+    },
+    {
+      "contest": "Philippines",
+      "problem": "The 2019 ICPC Asia Manila Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Philippines/The 2019 ICPC Asia Manila Regional Contest.pdf",
+      "filename": "The 2019 ICPC Asia Manila Regional Contest.pdf",
+      "title": {
+        "en": "The 2019 ICPC Asia Manila Regional Contest",
+        "ko": "The 2019 ICPC Asia Manila Regional Contest",
+        "ja": "The 2019 ICPC Asia Manila Regional Contest"
+      },
+      "summary": {
+        "en": "Philippines editorial",
+        "ko": "Philippines 해설",
+        "ja": "Philippines 解説"
+      }
+    },
+    {
+      "contest": "Philippines",
+      "problem": "The 2022 ICPC Asia Manila Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Philippines/The 2022 ICPC Asia Manila Regional Contest.pdf",
+      "filename": "The 2022 ICPC Asia Manila Regional Contest.pdf",
+      "title": {
+        "en": "The 2022 ICPC Asia Manila Regional Contest",
+        "ko": "The 2022 ICPC Asia Manila Regional Contest",
+        "ja": "The 2022 ICPC Asia Manila Regional Contest"
+      },
+      "summary": {
+        "en": "Philippines editorial",
+        "ko": "Philippines 해설",
+        "ja": "Philippines 解説"
+      }
+    },
+    {
+      "contest": "Taiwan",
+      "problem": "The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Taiwan/The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest.pdf",
+      "filename": "The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest.pdf",
+      "title": {
+        "en": "The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest",
+        "ko": "The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest",
+        "ja": "The 2020 ICPC Asia Taipei-Hsinchu Site Programming Contest"
+      },
+      "summary": {
+        "en": "Taiwan editorial",
+        "ko": "Taiwan 해설",
+        "ja": "Taiwan 解説"
+      }
+    },
+    {
+      "contest": "Taiwan",
+      "problem": "The 2021 ICPC Asia Taipei Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Taiwan/The 2021 ICPC Asia Taipei Regional Contest.pdf",
+      "filename": "The 2021 ICPC Asia Taipei Regional Contest.pdf",
+      "title": {
+        "en": "The 2021 ICPC Asia Taipei Regional Contest",
+        "ko": "The 2021 ICPC Asia Taipei Regional Contest",
+        "ja": "The 2021 ICPC Asia Taipei Regional Contest"
+      },
+      "summary": {
+        "en": "Taiwan editorial",
+        "ko": "Taiwan 해설",
+        "ja": "Taiwan 解説"
+      }
+    },
+    {
+      "contest": "Taiwan",
+      "problem": "The 2022 ICPC Asia Taoyuan Regional Programming Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Taiwan/The 2022 ICPC Asia Taoyuan Regional Programming Contest.pdf",
+      "filename": "The 2022 ICPC Asia Taoyuan Regional Programming Contest.pdf",
+      "title": {
+        "en": "The 2022 ICPC Asia Taoyuan Regional Programming Contest",
+        "ko": "The 2022 ICPC Asia Taoyuan Regional Programming Contest",
+        "ja": "The 2022 ICPC Asia Taoyuan Regional Programming Contest"
+      },
+      "summary": {
+        "en": "Taiwan editorial",
+        "ko": "Taiwan 해설",
+        "ja": "Taiwan 解説"
+      }
+    },
+    {
+      "contest": "Taiwan",
+      "problem": "The 2023 ICPC Asia Taoyuan Regional Programming Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Taiwan/The 2023 ICPC Asia Taoyuan Regional Programming Contest.pdf",
+      "filename": "The 2023 ICPC Asia Taoyuan Regional Programming Contest.pdf",
+      "title": {
+        "en": "The 2023 ICPC Asia Taoyuan Regional Programming Contest",
+        "ko": "The 2023 ICPC Asia Taoyuan Regional Programming Contest",
+        "ja": "The 2023 ICPC Asia Taoyuan Regional Programming Contest"
+      },
+      "summary": {
+        "en": "Taiwan editorial",
+        "ko": "Taiwan 해설",
+        "ja": "Taiwan 解説"
+      }
+    },
+    {
+      "contest": "Taiwan",
+      "problem": "The 2024 ICPC Asia Taichung Regional Programming Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Taiwan/The 2024 ICPC Asia Taichung Regional Programming Contest.pdf",
+      "filename": "The 2024 ICPC Asia Taichung Regional Programming Contest.pdf",
+      "title": {
+        "en": "The 2024 ICPC Asia Taichung Regional Programming Contest",
+        "ko": "The 2024 ICPC Asia Taichung Regional Programming Contest",
+        "ja": "The 2024 ICPC Asia Taichung Regional Programming Contest"
+      },
+      "summary": {
+        "en": "Taiwan editorial",
+        "ko": "Taiwan 해설",
+        "ja": "Taiwan 解説"
+      }
+    },
+    {
+      "contest": "Thailand",
+      "problem": "The 2025 ICPC Asia Bangkok Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Thailand/The 2025 ICPC Asia Bangkok Regional Contest.pdf",
+      "filename": "The 2025 ICPC Asia Bangkok Regional Contest.pdf",
+      "title": {
+        "en": "The 2025 ICPC Asia Bangkok Regional Contest",
+        "ko": "The 2025 ICPC Asia Bangkok Regional Contest",
+        "ja": "The 2025 ICPC Asia Bangkok Regional Contest"
+      },
+      "summary": {
+        "en": "Thailand editorial",
+        "ko": "Thailand 해설",
+        "ja": "Thailand 解説"
+      }
+    },
+    {
+      "contest": "Vietnam",
+      "problem": "The 2016 ACM-ICPC Asia Nha Trang Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Vietnam/The 2016 ACM-ICPC Asia Nha Trang Regional Contest.pdf",
+      "filename": "The 2016 ACM-ICPC Asia Nha Trang Regional Contest.pdf",
+      "title": {
+        "en": "The 2016 ACM-ICPC Asia Nha Trang Regional Contest",
+        "ko": "The 2016 ACM-ICPC Asia Nha Trang Regional Contest",
+        "ja": "The 2016 ACM-ICPC Asia Nha Trang Regional Contest"
+      },
+      "summary": {
+        "en": "Vietnam editorial",
+        "ko": "Vietnam 해설",
+        "ja": "Vietnam 解説"
+      }
+    },
+    {
+      "contest": "Vietnam",
+      "problem": "The 2017 ACM-ICPC Asia Ho Chi Minh City Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Vietnam/The 2017 ACM-ICPC Asia Ho Chi Minh City Regional Contest.pdf",
+      "filename": "The 2017 ACM-ICPC Asia Ho Chi Minh City Regional Contest.pdf",
+      "title": {
+        "en": "The 2017 ACM-ICPC Asia Ho Chi Minh City Regional Contest",
+        "ko": "The 2017 ACM-ICPC Asia Ho Chi Minh City Regional Contest",
+        "ja": "The 2017 ACM-ICPC Asia Ho Chi Minh City Regional Contest"
+      },
+      "summary": {
+        "en": "Vietnam editorial",
+        "ko": "Vietnam 해설",
+        "ja": "Vietnam 解説"
+      }
+    },
+    {
+      "contest": "Vietnam",
+      "problem": "The 2018 ICPC Asia Hanoi Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Vietnam/The 2018 ICPC Asia Hanoi Regional Contest.pdf",
+      "filename": "The 2018 ICPC Asia Hanoi Regional Contest.pdf",
+      "title": {
+        "en": "The 2018 ICPC Asia Hanoi Regional Contest",
+        "ko": "The 2018 ICPC Asia Hanoi Regional Contest",
+        "ja": "The 2018 ICPC Asia Hanoi Regional Contest"
+      },
+      "summary": {
+        "en": "Vietnam editorial",
+        "ko": "Vietnam 해설",
+        "ja": "Vietnam 解説"
+      }
+    },
+    {
+      "contest": "Vietnam",
+      "problem": "The 2019 ICPC Asia Danang Regional Contest",
+      "categories": ["ICPC", "Regionals", "Asia Pacific"],
+      "path": "ICPC/Regionals/Asia Pacific/Vietnam/The 2019 ICPC Asia Danang Regional Contest.pdf",
+      "filename": "The 2019 ICPC Asia Danang Regional Contest.pdf",
+      "title": {
+        "en": "The 2019 ICPC Asia Danang Regional Contest",
+        "ko": "The 2019 ICPC Asia Danang Regional Contest",
+        "ja": "The 2019 ICPC Asia Danang Regional Contest"
+      },
+      "summary": {
+        "en": "Vietnam editorial",
+        "ko": "Vietnam 해설",
+        "ja": "Vietnam 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2010",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2010.pdf",
+      "filename": "CERC 2010.pdf",
+      "title": {
+        "en": "CERC 2010",
+        "ko": "CERC 2010",
+        "ja": "CERC 2010"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2011",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2011.pdf",
+      "filename": "CERC 2011.pdf",
+      "title": {
+        "en": "CERC 2011",
+        "ko": "CERC 2011",
+        "ja": "CERC 2011"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2012",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2012.pdf",
+      "filename": "CERC 2012.pdf",
+      "title": {
+        "en": "CERC 2012",
+        "ko": "CERC 2012",
+        "ja": "CERC 2012"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2013",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2013.pdf",
+      "filename": "CERC 2013.pdf",
+      "title": {
+        "en": "CERC 2013",
+        "ko": "CERC 2013",
+        "ja": "CERC 2013"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2014",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2014.pdf",
+      "filename": "CERC 2014.pdf",
+      "title": {
+        "en": "CERC 2014",
+        "ko": "CERC 2014",
+        "ja": "CERC 2014"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2015",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2015.pdf",
+      "filename": "CERC 2015.pdf",
+      "title": {
+        "en": "CERC 2015",
+        "ko": "CERC 2015",
+        "ja": "CERC 2015"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2016",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2016.pdf",
+      "filename": "CERC 2016.pdf",
+      "title": {
+        "en": "CERC 2016",
+        "ko": "CERC 2016",
+        "ja": "CERC 2016"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2017",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2017.pdf",
+      "filename": "CERC 2017.pdf",
+      "title": {
+        "en": "CERC 2017",
+        "ko": "CERC 2017",
+        "ja": "CERC 2017"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2018",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2018.pdf",
+      "filename": "CERC 2018.pdf",
+      "title": {
+        "en": "CERC 2018",
+        "ko": "CERC 2018",
+        "ja": "CERC 2018"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2019",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2019.pdf",
+      "filename": "CERC 2019.pdf",
+      "title": {
+        "en": "CERC 2019",
+        "ko": "CERC 2019",
+        "ja": "CERC 2019"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2020",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2020.pdf",
+      "filename": "CERC 2020.pdf",
+      "title": {
+        "en": "CERC 2020",
+        "ko": "CERC 2020",
+        "ja": "CERC 2020"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2021",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2021.pdf",
+      "filename": "CERC 2021.pdf",
+      "title": {
+        "en": "CERC 2021",
+        "ko": "CERC 2021",
+        "ja": "CERC 2021"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2022",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2022.pdf",
+      "filename": "CERC 2022.pdf",
+      "title": {
+        "en": "CERC 2022",
+        "ko": "CERC 2022",
+        "ja": "CERC 2022"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2023",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2023.pdf",
+      "filename": "CERC 2023.pdf",
+      "title": {
+        "en": "CERC 2023",
+        "ko": "CERC 2023",
+        "ja": "CERC 2023"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2024",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2024.pdf",
+      "filename": "CERC 2024.pdf",
+      "title": {
+        "en": "CERC 2024",
+        "ko": "CERC 2024",
+        "ja": "CERC 2024"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Central Europe Regional Contest",
+      "problem": "CERC 2025",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Central Europe Regional Contest/CERC 2025.pdf",
+      "filename": "CERC 2025.pdf",
+      "title": {
+        "en": "CERC 2025",
+        "ko": "CERC 2025",
+        "ja": "CERC 2025"
+      },
+      "summary": {
+        "en": "Central Europe Regional Contest editorial",
+        "ko": "Central Europe Regional Contest 해설",
+        "ja": "Central Europe Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "European Championship",
+      "problem": "The 2024 ICPC European Championship",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/European Championship/The 2024 ICPC European Championship.pdf",
+      "filename": "The 2024 ICPC European Championship.pdf",
+      "title": {
+        "en": "The 2024 ICPC European Championship",
+        "ko": "The 2024 ICPC European Championship",
+        "ja": "The 2024 ICPC European Championship"
+      },
+      "summary": {
+        "en": "European Championship editorial",
+        "ko": "European Championship 해설",
+        "ja": "European Championship 解説"
+      }
+    },
+    {
+      "contest": "European Championship",
+      "problem": "The 2025 ICPC European Championship",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/European Championship/The 2025 ICPC European Championship.pdf",
+      "filename": "The 2025 ICPC European Championship.pdf",
+      "title": {
+        "en": "The 2025 ICPC European Championship",
+        "ko": "The 2025 ICPC European Championship",
+        "ja": "The 2025 ICPC European Championship"
+      },
+      "summary": {
+        "en": "European Championship editorial",
+        "ko": "European Championship 해설",
+        "ja": "European Championship 解説"
+      }
+    },
+    {
+      "contest": "European Championship",
+      "problem": "The 2026 ICPC European Championship",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/European Championship/The 2026 ICPC European Championship.pdf",
+      "filename": "The 2026 ICPC European Championship.pdf",
+      "title": {
+        "en": "The 2026 ICPC European Championship",
+        "ko": "The 2026 ICPC European Championship",
+        "ja": "The 2026 ICPC European Championship"
+      },
+      "summary": {
+        "en": "European Championship editorial",
+        "ko": "European Championship 해설",
+        "ja": "European Championship 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2004",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2004.pdf",
+      "filename": "NWERC 2004.pdf",
+      "title": {
+        "en": "NWERC 2004",
+        "ko": "NWERC 2004",
+        "ja": "NWERC 2004"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2008",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2008.pdf",
+      "filename": "NWERC 2008.pdf",
+      "title": {
+        "en": "NWERC 2008",
+        "ko": "NWERC 2008",
+        "ja": "NWERC 2008"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2009",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2009.pdf",
+      "filename": "NWERC 2009.pdf",
+      "title": {
+        "en": "NWERC 2009",
+        "ko": "NWERC 2009",
+        "ja": "NWERC 2009"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2010",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2010.pdf",
+      "filename": "NWERC 2010.pdf",
+      "title": {
+        "en": "NWERC 2010",
+        "ko": "NWERC 2010",
+        "ja": "NWERC 2010"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2011",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2011.pdf",
+      "filename": "NWERC 2011.pdf",
+      "title": {
+        "en": "NWERC 2011",
+        "ko": "NWERC 2011",
+        "ja": "NWERC 2011"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2012",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2012.pdf",
+      "filename": "NWERC 2012.pdf",
+      "title": {
+        "en": "NWERC 2012",
+        "ko": "NWERC 2012",
+        "ja": "NWERC 2012"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2013",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2013.pdf",
+      "filename": "NWERC 2013.pdf",
+      "title": {
+        "en": "NWERC 2013",
+        "ko": "NWERC 2013",
+        "ja": "NWERC 2013"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2014",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2014.pdf",
+      "filename": "NWERC 2014.pdf",
+      "title": {
+        "en": "NWERC 2014",
+        "ko": "NWERC 2014",
+        "ja": "NWERC 2014"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2015",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2015.pdf",
+      "filename": "NWERC 2015.pdf",
+      "title": {
+        "en": "NWERC 2015",
+        "ko": "NWERC 2015",
+        "ja": "NWERC 2015"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2016",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2016.pdf",
+      "filename": "NWERC 2016.pdf",
+      "title": {
+        "en": "NWERC 2016",
+        "ko": "NWERC 2016",
+        "ja": "NWERC 2016"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2017",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2017.pdf",
+      "filename": "NWERC 2017.pdf",
+      "title": {
+        "en": "NWERC 2017",
+        "ko": "NWERC 2017",
+        "ja": "NWERC 2017"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2018",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2018.pdf",
+      "filename": "NWERC 2018.pdf",
+      "title": {
+        "en": "NWERC 2018",
+        "ko": "NWERC 2018",
+        "ja": "NWERC 2018"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2019",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2019.pdf",
+      "filename": "NWERC 2019.pdf",
+      "title": {
+        "en": "NWERC 2019",
+        "ko": "NWERC 2019",
+        "ja": "NWERC 2019"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2020",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2020.pdf",
+      "filename": "NWERC 2020.pdf",
+      "title": {
+        "en": "NWERC 2020",
+        "ko": "NWERC 2020",
+        "ja": "NWERC 2020"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2021",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2021.pdf",
+      "filename": "NWERC 2021.pdf",
+      "title": {
+        "en": "NWERC 2021",
+        "ko": "NWERC 2021",
+        "ja": "NWERC 2021"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2022",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2022.pdf",
+      "filename": "NWERC 2022.pdf",
+      "title": {
+        "en": "NWERC 2022",
+        "ko": "NWERC 2022",
+        "ja": "NWERC 2022"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2023",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2023.pdf",
+      "filename": "NWERC 2023.pdf",
+      "title": {
+        "en": "NWERC 2023",
+        "ko": "NWERC 2023",
+        "ja": "NWERC 2023"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2024",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2024.pdf",
+      "filename": "NWERC 2024.pdf",
+      "title": {
+        "en": "NWERC 2024",
+        "ko": "NWERC 2024",
+        "ja": "NWERC 2024"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Northwestern European Regional Contest",
+      "problem": "NWERC 2025",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Northwestern European Regional Contest/NWERC 2025.pdf",
+      "filename": "NWERC 2025.pdf",
+      "title": {
+        "en": "NWERC 2025",
+        "ko": "NWERC 2025",
+        "ja": "NWERC 2025"
+      },
+      "summary": {
+        "en": "Northwestern European Regional Contest editorial",
+        "ko": "Northwestern European Regional Contest 해설",
+        "ja": "Northwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southeastern European Regional Contest",
+      "problem": "SEERC 2019",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southeastern European Regional Contest/SEERC 2019.pdf",
+      "filename": "SEERC 2019.pdf",
+      "title": {
+        "en": "SEERC 2019",
+        "ko": "SEERC 2019",
+        "ja": "SEERC 2019"
+      },
+      "summary": {
+        "en": "Southeastern European Regional Contest editorial",
+        "ko": "Southeastern European Regional Contest 해설",
+        "ja": "Southeastern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southeastern European Regional Contest",
+      "problem": "SEERC 2020",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southeastern European Regional Contest/SEERC 2020.pdf",
+      "filename": "SEERC 2020.pdf",
+      "title": {
+        "en": "SEERC 2020",
+        "ko": "SEERC 2020",
+        "ja": "SEERC 2020"
+      },
+      "summary": {
+        "en": "Southeastern European Regional Contest editorial",
+        "ko": "Southeastern European Regional Contest 해설",
+        "ja": "Southeastern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southeastern European Regional Contest",
+      "problem": "SEERC 2021",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southeastern European Regional Contest/SEERC 2021.pdf",
+      "filename": "SEERC 2021.pdf",
+      "title": {
+        "en": "SEERC 2021",
+        "ko": "SEERC 2021",
+        "ja": "SEERC 2021"
+      },
+      "summary": {
+        "en": "Southeastern European Regional Contest editorial",
+        "ko": "Southeastern European Regional Contest 해설",
+        "ja": "Southeastern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southeastern European Regional Contest",
+      "problem": "SEERC 2022",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southeastern European Regional Contest/SEERC 2022.pdf",
+      "filename": "SEERC 2022.pdf",
+      "title": {
+        "en": "SEERC 2022",
+        "ko": "SEERC 2022",
+        "ja": "SEERC 2022"
+      },
+      "summary": {
+        "en": "Southeastern European Regional Contest editorial",
+        "ko": "Southeastern European Regional Contest 해설",
+        "ja": "Southeastern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southeastern European Regional Contest",
+      "problem": "SEERC 2023",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southeastern European Regional Contest/SEERC 2023.pdf",
+      "filename": "SEERC 2023.pdf",
+      "title": {
+        "en": "SEERC 2023",
+        "ko": "SEERC 2023",
+        "ja": "SEERC 2023"
+      },
+      "summary": {
+        "en": "Southeastern European Regional Contest editorial",
+        "ko": "Southeastern European Regional Contest 해설",
+        "ja": "Southeastern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southeastern European Regional Contest",
+      "problem": "SEERC 2024",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southeastern European Regional Contest/SEERC 2024.pdf",
+      "filename": "SEERC 2024.pdf",
+      "title": {
+        "en": "SEERC 2024",
+        "ko": "SEERC 2024",
+        "ja": "SEERC 2024"
+      },
+      "summary": {
+        "en": "Southeastern European Regional Contest editorial",
+        "ko": "Southeastern European Regional Contest 해설",
+        "ja": "Southeastern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southeastern European Regional Contest",
+      "problem": "SEERC 2025",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southeastern European Regional Contest/SEERC 2025.pdf",
+      "filename": "SEERC 2025.pdf",
+      "title": {
+        "en": "SEERC 2025",
+        "ko": "SEERC 2025",
+        "ja": "SEERC 2025"
+      },
+      "summary": {
+        "en": "Southeastern European Regional Contest editorial",
+        "ko": "Southeastern European Regional Contest 해설",
+        "ja": "Southeastern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2008",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2008.pdf",
+      "filename": "SWERC 2008.pdf",
+      "title": {
+        "en": "SWERC 2008",
+        "ko": "SWERC 2008",
+        "ja": "SWERC 2008"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2009",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2009.pdf",
+      "filename": "SWERC 2009.pdf",
+      "title": {
+        "en": "SWERC 2009",
+        "ko": "SWERC 2009",
+        "ja": "SWERC 2009"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2010",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2010.pdf",
+      "filename": "SWERC 2010.pdf",
+      "title": {
+        "en": "SWERC 2010",
+        "ko": "SWERC 2010",
+        "ja": "SWERC 2010"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2011",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2011.pdf",
+      "filename": "SWERC 2011.pdf",
+      "title": {
+        "en": "SWERC 2011",
+        "ko": "SWERC 2011",
+        "ja": "SWERC 2011"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2012",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2012.pdf",
+      "filename": "SWERC 2012.pdf",
+      "title": {
+        "en": "SWERC 2012",
+        "ko": "SWERC 2012",
+        "ja": "SWERC 2012"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2013",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2013.pdf",
+      "filename": "SWERC 2013.pdf",
+      "title": {
+        "en": "SWERC 2013",
+        "ko": "SWERC 2013",
+        "ja": "SWERC 2013"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2014",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2014.pdf",
+      "filename": "SWERC 2014.pdf",
+      "title": {
+        "en": "SWERC 2014",
+        "ko": "SWERC 2014",
+        "ja": "SWERC 2014"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2015",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2015.pdf",
+      "filename": "SWERC 2015.pdf",
+      "title": {
+        "en": "SWERC 2015",
+        "ko": "SWERC 2015",
+        "ja": "SWERC 2015"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2016",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2016.pdf",
+      "filename": "SWERC 2016.pdf",
+      "title": {
+        "en": "SWERC 2016",
+        "ko": "SWERC 2016",
+        "ja": "SWERC 2016"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2017",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2017.pdf",
+      "filename": "SWERC 2017.pdf",
+      "title": {
+        "en": "SWERC 2017",
+        "ko": "SWERC 2017",
+        "ja": "SWERC 2017"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2018",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2018.pdf",
+      "filename": "SWERC 2018.pdf",
+      "title": {
+        "en": "SWERC 2018",
+        "ko": "SWERC 2018",
+        "ja": "SWERC 2018"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2019",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2019.pdf",
+      "filename": "SWERC 2019.pdf",
+      "title": {
+        "en": "SWERC 2019",
+        "ko": "SWERC 2019",
+        "ja": "SWERC 2019"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2021",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2021.pdf",
+      "filename": "SWERC 2021.pdf",
+      "title": {
+        "en": "SWERC 2021",
+        "ko": "SWERC 2021",
+        "ja": "SWERC 2021"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2022",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2022.pdf",
+      "filename": "SWERC 2022.pdf",
+      "title": {
+        "en": "SWERC 2022",
+        "ko": "SWERC 2022",
+        "ja": "SWERC 2022"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2023",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2023.pdf",
+      "filename": "SWERC 2023.pdf",
+      "title": {
+        "en": "SWERC 2023",
+        "ko": "SWERC 2023",
+        "ja": "SWERC 2023"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2024",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2024.pdf",
+      "filename": "SWERC 2024.pdf",
+      "title": {
+        "en": "SWERC 2024",
+        "ko": "SWERC 2024",
+        "ja": "SWERC 2024"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Southwestern European Regional Contest",
+      "problem": "SWERC 2025",
+      "categories": ["ICPC", "Regionals", "Europe"],
+      "path": "ICPC/Regionals/Europe/Southwestern European Regional Contest/SWERC 2025.pdf",
+      "filename": "SWERC 2025.pdf",
+      "title": {
+        "en": "SWERC 2025",
+        "ko": "SWERC 2025",
+        "ja": "SWERC 2025"
+      },
+      "summary": {
+        "en": "Southwestern European Regional Contest editorial",
+        "ko": "Southwestern European Regional Contest 해설",
+        "ja": "Southwestern European Regional Contest 解説"
+      }
+    },
+    {
+      "contest": "Latin America Championship",
+      "problem": "The 2024 ICPC Latin America Championship",
+      "categories": ["ICPC", "Regionals", "Latin America"],
+      "path": "ICPC/Regionals/Latin America/Latin America Championship/The 2024 ICPC Latin America Championship.pdf",
+      "filename": "The 2024 ICPC Latin America Championship.pdf",
+      "title": {
+        "en": "The 2024 ICPC Latin America Championship",
+        "ko": "The 2024 ICPC Latin America Championship",
+        "ja": "The 2024 ICPC Latin America Championship"
+      },
+      "summary": {
+        "en": "Latin America Championship editorial",
+        "ko": "Latin America Championship 해설",
+        "ja": "Latin America Championship 解説"
+      }
+    },
+    {
+      "contest": "Latin America Championship",
+      "problem": "The 2025 ICPC Latin America Championship",
+      "categories": ["ICPC", "Regionals", "Latin America"],
+      "path": "ICPC/Regionals/Latin America/Latin America Championship/The 2025 ICPC Latin America Championship.pdf",
+      "filename": "The 2025 ICPC Latin America Championship.pdf",
+      "title": {
+        "en": "The 2025 ICPC Latin America Championship",
+        "ko": "The 2025 ICPC Latin America Championship",
+        "ja": "The 2025 ICPC Latin America Championship"
+      },
+      "summary": {
+        "en": "Latin America Championship editorial",
+        "ko": "Latin America Championship 해설",
+        "ja": "Latin America Championship 解説"
+      }
+    },
+    {
+      "contest": "North America Championship",
+      "problem": "2020 ICPC North America Championship",
+      "categories": ["ICPC", "Regionals", "North America"],
+      "path": "ICPC/Regionals/North America/North America Championship/2020 ICPC North America Championship.pdf",
+      "filename": "2020 ICPC North America Championship.pdf",
+      "title": {
+        "en": "2020 ICPC North America Championship",
+        "ko": "2020 ICPC North America Championship",
+        "ja": "2020 ICPC North America Championship"
+      },
+      "summary": {
+        "en": "North America Championship editorial",
+        "ko": "North America Championship 해설",
+        "ja": "North America Championship 解説"
+      }
+    },
+    {
+      "contest": "North America Championship",
+      "problem": "2021 ICPC North America Championship",
+      "categories": ["ICPC", "Regionals", "North America"],
+      "path": "ICPC/Regionals/North America/North America Championship/2021 ICPC North America Championship.pdf",
+      "filename": "2021 ICPC North America Championship.pdf",
+      "title": {
+        "en": "2021 ICPC North America Championship",
+        "ko": "2021 ICPC North America Championship",
+        "ja": "2021 ICPC North America Championship"
+      },
+      "summary": {
+        "en": "North America Championship editorial",
+        "ko": "North America Championship 해설",
+        "ja": "North America Championship 解説"
+      }
+    },
+    {
+      "contest": "North America Championship",
+      "problem": "2025 ICPC North America Championship",
+      "categories": ["ICPC", "Regionals", "North America"],
+      "path": "ICPC/Regionals/North America/North America Championship/2025 ICPC North America Championship.pdf",
+      "filename": "2025 ICPC North America Championship.pdf",
+      "title": {
+        "en": "2025 ICPC North America Championship",
+        "ko": "2025 ICPC North America Championship",
+        "ja": "2025 ICPC North America Championship"
+      },
+      "summary": {
+        "en": "North America Championship editorial",
+        "ko": "North America Championship 해설",
+        "ja": "North America Championship 解説"
+      }
+    },
+    {
+      "contest": "North America Championship",
+      "problem": "2026 ICPC North America Championship",
+      "categories": ["ICPC", "Regionals", "North America"],
+      "path": "ICPC/Regionals/North America/North America Championship/2026 ICPC North America Championship.pdf",
+      "filename": "2026 ICPC North America Championship.pdf",
+      "title": {
+        "en": "2026 ICPC North America Championship",
+        "ko": "2026 ICPC North America Championship",
+        "ja": "2026 ICPC North America Championship"
+      },
+      "summary": {
+        "en": "North America Championship editorial",
+        "ko": "North America Championship 해설",
+        "ja": "North America Championship 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2010",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2010.pdf",
+      "filename": "NEERC 2010.pdf",
+      "title": {
+        "en": "NEERC 2010",
+        "ko": "NEERC 2010",
+        "ja": "NEERC 2010"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2011",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2011.pdf",
+      "filename": "NEERC 2011.pdf",
+      "title": {
+        "en": "NEERC 2011",
+        "ko": "NEERC 2011",
+        "ja": "NEERC 2011"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2012",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2012.pdf",
+      "filename": "NEERC 2012.pdf",
+      "title": {
+        "en": "NEERC 2012",
+        "ko": "NEERC 2012",
+        "ja": "NEERC 2012"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2013",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2013.pdf",
+      "filename": "NEERC 2013.pdf",
+      "title": {
+        "en": "NEERC 2013",
+        "ko": "NEERC 2013",
+        "ja": "NEERC 2013"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2014",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2014.pdf",
+      "filename": "NEERC 2014.pdf",
+      "title": {
+        "en": "NEERC 2014",
+        "ko": "NEERC 2014",
+        "ja": "NEERC 2014"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2015",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2015.pdf",
+      "filename": "NEERC 2015.pdf",
+      "title": {
+        "en": "NEERC 2015",
+        "ko": "NEERC 2015",
+        "ja": "NEERC 2015"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2016",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2016.pdf",
+      "filename": "NEERC 2016.pdf",
+      "title": {
+        "en": "NEERC 2016",
+        "ko": "NEERC 2016",
+        "ja": "NEERC 2016"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2017",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2017.pdf",
+      "filename": "NEERC 2017.pdf",
+      "title": {
+        "en": "NEERC 2017",
+        "ko": "NEERC 2017",
+        "ja": "NEERC 2017"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "NEERC 2018",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/NEERC 2018.pdf",
+      "filename": "NEERC 2018.pdf",
+      "title": {
+        "en": "NEERC 2018",
+        "ko": "NEERC 2018",
+        "ja": "NEERC 2018"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2019",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2019.pdf",
+      "filename": "Northern Eurasia Finals 2019.pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2019",
+        "ko": "Northern Eurasia Finals 2019",
+        "ja": "Northern Eurasia Finals 2019"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2020 (Offline)",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2020 (Offline).pdf",
+      "filename": "Northern Eurasia Finals 2020 (Offline).pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2020 (Offline)",
+        "ko": "Northern Eurasia Finals 2020 (Offline)",
+        "ja": "Northern Eurasia Finals 2020 (Offline)"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2020 (Online)",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2020 (Online).pdf",
+      "filename": "Northern Eurasia Finals 2020 (Online).pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2020 (Online)",
+        "ko": "Northern Eurasia Finals 2020 (Online)",
+        "ja": "Northern Eurasia Finals 2020 (Online)"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2021",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2021.pdf",
+      "filename": "Northern Eurasia Finals 2021.pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2021",
+        "ko": "Northern Eurasia Finals 2021",
+        "ja": "Northern Eurasia Finals 2021"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2022",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2022.pdf",
+      "filename": "Northern Eurasia Finals 2022.pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2022",
+        "ko": "Northern Eurasia Finals 2022",
+        "ja": "Northern Eurasia Finals 2022"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2023",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2023.pdf",
+      "filename": "Northern Eurasia Finals 2023.pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2023",
+        "ko": "Northern Eurasia Finals 2023",
+        "ja": "Northern Eurasia Finals 2023"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2024",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2024.pdf",
+      "filename": "Northern Eurasia Finals 2024.pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2024",
+        "ko": "Northern Eurasia Finals 2024",
+        "ja": "Northern Eurasia Finals 2024"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "Northern Eurasia Finals",
+      "problem": "Northern Eurasia Finals 2025",
+      "categories": ["ICPC", "Regionals", "Northern Eurasia"],
+      "path": "ICPC/Regionals/Northern Eurasia/Northern Eurasia Finals/Northern Eurasia Finals 2025.pdf",
+      "filename": "Northern Eurasia Finals 2025.pdf",
+      "title": {
+        "en": "Northern Eurasia Finals 2025",
+        "ko": "Northern Eurasia Finals 2025",
+        "ja": "Northern Eurasia Finals 2025"
+      },
+      "summary": {
+        "en": "Northern Eurasia Finals editorial",
+        "ko": "Northern Eurasia Finals 해설",
+        "ja": "Northern Eurasia Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2008 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2008 ICPC World Finals.pdf",
+      "filename": "2008 ICPC World Finals.pdf",
+      "title": {
+        "en": "2008 ICPC World Finals",
+        "ko": "2008 ICPC World Finals",
+        "ja": "2008 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2009 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2009 ICPC World Finals.pdf",
+      "filename": "2009 ICPC World Finals.pdf",
+      "title": {
+        "en": "2009 ICPC World Finals",
+        "ko": "2009 ICPC World Finals",
+        "ja": "2009 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2010 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2010 ICPC World Finals.pdf",
+      "filename": "2010 ICPC World Finals.pdf",
+      "title": {
+        "en": "2010 ICPC World Finals",
+        "ko": "2010 ICPC World Finals",
+        "ja": "2010 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2011 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2011 ICPC World Finals.pdf",
+      "filename": "2011 ICPC World Finals.pdf",
+      "title": {
+        "en": "2011 ICPC World Finals",
+        "ko": "2011 ICPC World Finals",
+        "ja": "2011 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2012 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2012 ICPC World Finals.pdf",
+      "filename": "2012 ICPC World Finals.pdf",
+      "title": {
+        "en": "2012 ICPC World Finals",
+        "ko": "2012 ICPC World Finals",
+        "ja": "2012 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2013 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2013 ICPC World Finals.pdf",
+      "filename": "2013 ICPC World Finals.pdf",
+      "title": {
+        "en": "2013 ICPC World Finals",
+        "ko": "2013 ICPC World Finals",
+        "ja": "2013 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2015 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2015 ICPC World Finals.pdf",
+      "filename": "2015 ICPC World Finals.pdf",
+      "title": {
+        "en": "2015 ICPC World Finals",
+        "ko": "2015 ICPC World Finals",
+        "ja": "2015 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2016 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2016 ICPC World Finals.pdf",
+      "filename": "2016 ICPC World Finals.pdf",
+      "title": {
+        "en": "2016 ICPC World Finals",
+        "ko": "2016 ICPC World Finals",
+        "ja": "2016 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2017 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2017 ICPC World Finals.pdf",
+      "filename": "2017 ICPC World Finals.pdf",
+      "title": {
+        "en": "2017 ICPC World Finals",
+        "ko": "2017 ICPC World Finals",
+        "ja": "2017 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2018 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2018 ICPC World Finals.pdf",
+      "filename": "2018 ICPC World Finals.pdf",
+      "title": {
+        "en": "2018 ICPC World Finals",
+        "ko": "2018 ICPC World Finals",
+        "ja": "2018 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2019 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2019 ICPC World Finals.pdf",
+      "filename": "2019 ICPC World Finals.pdf",
+      "title": {
+        "en": "2019 ICPC World Finals",
+        "ko": "2019 ICPC World Finals",
+        "ja": "2019 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2022 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2022 ICPC World Finals.pdf",
+      "filename": "2022 ICPC World Finals.pdf",
+      "title": {
+        "en": "2022 ICPC World Finals",
+        "ko": "2022 ICPC World Finals",
+        "ja": "2022 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2023 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2023 ICPC World Finals.pdf",
+      "filename": "2023 ICPC World Finals.pdf",
+      "title": {
+        "en": "2023 ICPC World Finals",
+        "ko": "2023 ICPC World Finals",
+        "ja": "2023 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "World Finals",
+      "problem": "2025 ICPC World Finals",
+      "categories": ["ICPC"],
+      "path": "ICPC/World Finals/2025 ICPC World Finals.pdf",
+      "filename": "2025 ICPC World Finals.pdf",
+      "title": {
+        "en": "2025 ICPC World Finals",
+        "ko": "2025 ICPC World Finals",
+        "ja": "2025 ICPC World Finals"
+      },
+      "summary": {
+        "en": "World Finals editorial",
+        "ko": "World Finals 해설",
+        "ja": "World Finals 解説"
+      }
+    },
+    {
+      "contest": "Croatian Open Competition in Informatics",
+      "problem": "COCI 2009-2010 Contest #5",
+      "categories": ["Olympiad"],
+      "path": "Olympiad/Croatian Open Competition in Informatics/COCI 2009-2010 Contest #5.pdf",
+      "filename": "COCI 2009-2010 Contest #5.pdf",
+      "title": {
+        "en": "COCI 2009-2010 Contest #5",
+        "ko": "COCI 2009-2010 Contest #5",
+        "ja": "COCI 2009-2010 Contest #5"
+      },
+      "summary": {
+        "en": "Croatian Open Competition in Informatics editorial",
+        "ko": "Croatian Open Competition in Informatics 해설",
+        "ja": "Croatian Open Competition in Informatics 解説"
+      }
+    },
     {
       "contest": "Russian Olympiad in Informatics",
       "problem": "Russia Team High School Programming Contest 2020",
@@ -54,6 +2451,23 @@
       }
     },
     {
+      "contest": "Summer 2018",
+      "problem": "Day 2 - Ivan Kazmenko Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2018/Day 2 - Ivan Kazmenko Contest 2.pdf",
+      "filename": "Day 2 - Ivan Kazmenko Contest 2.pdf",
+      "title": {
+        "en": "Day 2 - Ivan Kazmenko Contest 2",
+        "ko": "Day 2 - Ivan Kazmenko Contest 2",
+        "ja": "Day 2 - Ivan Kazmenko Contest 2"
+      },
+      "summary": {
+        "en": "Summer 2018 editorial",
+        "ko": "Summer 2018 해설",
+        "ja": "Summer 2018 解説"
+      }
+    },
+    {
       "contest": "Summer 2019",
       "problem": "Day 1 - Songyang Chen Contest 2",
       "categories": ["Petrozavodsk Programming Camp"],
@@ -89,6 +2503,40 @@
     },
     {
       "contest": "Summer 2019",
+      "problem": "Day 3 - Quailty and His Friends' Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2019/Day 3 - Quailty and His Friends' Contest.pdf",
+      "filename": "Day 3 - Quailty and His Friends' Contest.pdf",
+      "title": {
+        "en": "Day 3 - Quailty and His Friends' Contest",
+        "ko": "Day 3 - Quailty and His Friends' Contest",
+        "ja": "Day 3 - Quailty and His Friends' Contest"
+      },
+      "summary": {
+        "en": "Summer 2019 editorial",
+        "ko": "Summer 2019 해설",
+        "ja": "Summer 2019 解説"
+      }
+    },
+    {
+      "contest": "Summer 2019",
+      "problem": "Day 5 - Radewoosh + mnbvmar Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2019/Day 5 - Radewoosh + mnbvmar Contest.pdf",
+      "filename": "Day 5 - Radewoosh + mnbvmar Contest.pdf",
+      "title": {
+        "en": "Day 5 - Radewoosh + mnbvmar Contest",
+        "ko": "Day 5 - Radewoosh + mnbvmar Contest",
+        "ja": "Day 5 - Radewoosh + mnbvmar Contest"
+      },
+      "summary": {
+        "en": "Summer 2019 editorial",
+        "ko": "Summer 2019 해설",
+        "ja": "Summer 2019 解説"
+      }
+    },
+    {
+      "contest": "Summer 2019",
       "problem": "Day 6 - MIPT Contest",
       "categories": ["Petrozavodsk Programming Camp"],
       "path": "Petrozavodsk Programming Camp/Summer 2019/Day 6 - MIPT Contest.pdf",
@@ -105,15 +2553,100 @@
       }
     },
     {
-      "contest": "Summer 2021",
-      "problem": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an",
+      "contest": "Summer 2019",
+      "problem": "Day 8 - Jingzhe Tang Contest 2",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 6 - Xi’an JTU Contest 1, GP of Xi’an.pdf",
-      "filename": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an.pdf",
+      "path": "Petrozavodsk Programming Camp/Summer 2019/Day 8 - Jingzhe Tang Contest 2.pdf",
+      "filename": "Day 8 - Jingzhe Tang Contest 2.pdf",
       "title": {
-        "en": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an",
-        "ko": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an",
-        "ja": "Day 6 - Xi’an JTU Contest 1, GP of Xi’an"
+        "en": "Day 8 - Jingzhe Tang Contest 2",
+        "ko": "Day 8 - Jingzhe Tang Contest 2",
+        "ja": "Day 8 - Jingzhe Tang Contest 2"
+      },
+      "summary": {
+        "en": "Summer 2019 editorial",
+        "ko": "Summer 2019 해설",
+        "ja": "Summer 2019 解説"
+      }
+    },
+    {
+      "contest": "Summer 2019",
+      "problem": "Day 9 - MEX Foundation Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2019/Day 9 - MEX Foundation Contest.pdf",
+      "filename": "Day 9 - MEX Foundation Contest.pdf",
+      "title": {
+        "en": "Day 9 - MEX Foundation Contest",
+        "ko": "Day 9 - MEX Foundation Contest",
+        "ja": "Day 9 - MEX Foundation Contest"
+      },
+      "summary": {
+        "en": "Summer 2019 editorial",
+        "ko": "Summer 2019 해설",
+        "ja": "Summer 2019 解説"
+      }
+    },
+    {
+      "contest": "Summer 2020",
+      "problem": "Day 2 - SPb SU LOUD ENOUGH Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2020/Day 2 - SPb SU LOUD ENOUGH Contest.pdf",
+      "filename": "Day 2 - SPb SU LOUD ENOUGH Contest.pdf",
+      "title": {
+        "en": "Day 2 - SPb SU LOUD ENOUGH Contest",
+        "ko": "Day 2 - SPb SU LOUD ENOUGH Contest",
+        "ja": "Day 2 - SPb SU LOUD ENOUGH Contest"
+      },
+      "summary": {
+        "en": "Summer 2020 editorial",
+        "ko": "Summer 2020 해설",
+        "ja": "Summer 2020 解説"
+      }
+    },
+    {
+      "contest": "Summer 2020",
+      "problem": "Day 3 - Songyang Chen Contest 3",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2020/Day 3 - Songyang Chen Contest 3.pdf",
+      "filename": "Day 3 - Songyang Chen Contest 3.pdf",
+      "title": {
+        "en": "Day 3 - Songyang Chen Contest 3",
+        "ko": "Day 3 - Songyang Chen Contest 3",
+        "ja": "Day 3 - Songyang Chen Contest 3"
+      },
+      "summary": {
+        "en": "Summer 2020 editorial",
+        "ko": "Summer 2020 해설",
+        "ja": "Summer 2020 解説"
+      }
+    },
+    {
+      "contest": "Summer 2020",
+      "problem": "Day 4 - Xi Lin Contest 6",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2020/Day 4 - Xi Lin Contest 6.pdf",
+      "filename": "Day 4 - Xi Lin Contest 6.pdf",
+      "title": {
+        "en": "Day 4 - Xi Lin Contest 6",
+        "ko": "Day 4 - Xi Lin Contest 6",
+        "ja": "Day 4 - Xi Lin Contest 6"
+      },
+      "summary": {
+        "en": "Summer 2020 editorial",
+        "ko": "Summer 2020 해설",
+        "ja": "Summer 2020 解説"
+      }
+    },
+    {
+      "contest": "Summer 2021",
+      "problem": "Day 1 - Kyoto U Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 1 - Kyoto U Contest.pdf",
+      "filename": "Day 1 - Kyoto U Contest.pdf",
+      "title": {
+        "en": "Day 1 - Kyoto U Contest",
+        "ko": "Day 1 - Kyoto U Contest",
+        "ja": "Day 1 - Kyoto U Contest"
       },
       "summary": {
         "en": "Summer 2021 editorial",
@@ -123,19 +2656,155 @@
     },
     {
       "contest": "Summer 2021",
-      "problem": "Day 7 - Moscow IPT Contest",
+      "problem": "Day 2 - The American Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 7 - Moscow IPT Contest.pdf",
-      "filename": "Day 7 - Moscow IPT Contest.pdf",
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 2 - The American Contest.pdf",
+      "filename": "Day 2 - The American Contest.pdf",
       "title": {
-        "en": "Day 7 - Moscow IPT Contest",
-        "ko": "Day 7 - Moscow IPT Contest",
-        "ja": "Day 7 - Moscow IPT Contest"
+        "en": "Day 2 - The American Contest",
+        "ko": "Day 2 - The American Contest",
+        "ja": "Day 2 - The American Contest"
       },
       "summary": {
         "en": "Summer 2021 editorial",
         "ko": "Summer 2021 해설",
         "ja": "Summer 2021 解説"
+      }
+    },
+    {
+      "contest": "Summer 2021",
+      "problem": "Day 3 - IQ test by kefaa2, antontrygubO_o, and gepardo",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 3 - IQ test by kefaa2, antontrygubO_o, and gepardo.pdf",
+      "filename": "Day 3 - IQ test by kefaa2, antontrygubO_o, and gepardo.pdf",
+      "title": {
+        "en": "Day 3 - IQ test by kefaa2, antontrygubO_o, and gepardo",
+        "ko": "Day 3 - IQ test by kefaa2, antontrygubO_o, and gepardo",
+        "ja": "Day 3 - IQ test by kefaa2, antontrygubO_o, and gepardo"
+      },
+      "summary": {
+        "en": "Summer 2021 editorial",
+        "ko": "Summer 2021 해설",
+        "ja": "Summer 2021 解説"
+      }
+    },
+    {
+      "contest": "Summer 2021",
+      "problem": "Day 5 - Shanghai ICPC Camp 2021 Onsite Day 2 by PKU",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 5 - Shanghai ICPC Camp 2021 Onsite Day 2 by PKU.pdf",
+      "filename": "Day 5 - Shanghai ICPC Camp 2021 Onsite Day 2 by PKU.pdf",
+      "title": {
+        "en": "Day 5 - Shanghai ICPC Camp 2021 Onsite Day 2 by PKU",
+        "ko": "Day 5 - Shanghai ICPC Camp 2021 Onsite Day 2 by PKU",
+        "ja": "Day 5 - Shanghai ICPC Camp 2021 Onsite Day 2 by PKU"
+      },
+      "summary": {
+        "en": "Summer 2021 editorial",
+        "ko": "Summer 2021 해설",
+        "ja": "Summer 2021 解説"
+      }
+    },
+    {
+      "contest": "Summer 2021",
+      "problem": "Day 6 - XJTU Contest, GP of XJTU",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 6 - XJTU Contest, GP of XJTU.pdf",
+      "filename": "Day 6 - XJTU Contest, GP of XJTU.pdf",
+      "title": {
+        "en": "Day 6 - XJTU Contest, GP of XJTU",
+        "ko": "Day 6 - XJTU Contest, GP of XJTU",
+        "ja": "Day 6 - XJTU Contest, GP of XJTU"
+      },
+      "summary": {
+        "en": "Summer 2021 editorial",
+        "ko": "Summer 2021 해설",
+        "ja": "Summer 2021 解説"
+      }
+    },
+    {
+      "contest": "Summer 2021",
+      "problem": "Day 7 - MIPT Contest, GP of Dolgoprudny",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2021/Day 7 - MIPT Contest, GP of Dolgoprudny.pdf",
+      "filename": "Day 7 - MIPT Contest, GP of Dolgoprudny.pdf",
+      "title": {
+        "en": "Day 7 - MIPT Contest, GP of Dolgoprudny",
+        "ko": "Day 7 - MIPT Contest, GP of Dolgoprudny",
+        "ja": "Day 7 - MIPT Contest, GP of Dolgoprudny"
+      },
+      "summary": {
+        "en": "Summer 2021 editorial",
+        "ko": "Summer 2021 해설",
+        "ja": "Summer 2021 解説"
+      }
+    },
+    {
+      "contest": "Summer 2022",
+      "problem": "Day 2 - ZJU Contest 1",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2022/Day 2 - ZJU Contest 1.pdf",
+      "filename": "Day 2 - ZJU Contest 1.pdf",
+      "title": {
+        "en": "Day 2 - ZJU Contest 1",
+        "ko": "Day 2 - ZJU Contest 1",
+        "ja": "Day 2 - ZJU Contest 1"
+      },
+      "summary": {
+        "en": "Summer 2022 editorial",
+        "ko": "Summer 2022 해설",
+        "ja": "Summer 2022 解説"
+      }
+    },
+    {
+      "contest": "Summer 2022",
+      "problem": "Day 3 - Qingyu, flower and their friends’ Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2022/Day 3 - Qingyu, flower and their friends’ Contest.pdf",
+      "filename": "Day 3 - Qingyu, flower and their friends’ Contest.pdf",
+      "title": {
+        "en": "Day 3 - Qingyu, flower and their friends’ Contest",
+        "ko": "Day 3 - Qingyu, flower and their friends’ Contest",
+        "ja": "Day 3 - Qingyu, flower and their friends’ Contest"
+      },
+      "summary": {
+        "en": "Summer 2022 editorial",
+        "ko": "Summer 2022 해설",
+        "ja": "Summer 2022 解説"
+      }
+    },
+    {
+      "contest": "Summer 2022",
+      "problem": "Day 4 - Ivan Kazmenko Contest 3",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2022/Day 4 - Ivan Kazmenko Contest 3.pdf",
+      "filename": "Day 4 - Ivan Kazmenko Contest 3.pdf",
+      "title": {
+        "en": "Day 4 - Ivan Kazmenko Contest 3",
+        "ko": "Day 4 - Ivan Kazmenko Contest 3",
+        "ja": "Day 4 - Ivan Kazmenko Contest 3"
+      },
+      "summary": {
+        "en": "Summer 2022 editorial",
+        "ko": "Summer 2022 해설",
+        "ja": "Summer 2022 解説"
+      }
+    },
+    {
+      "contest": "Summer 2022",
+      "problem": "Day 5 - ZJU Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2022/Day 5 - ZJU Contest 2.pdf",
+      "filename": "Day 5 - ZJU Contest 2.pdf",
+      "title": {
+        "en": "Day 5 - ZJU Contest 2",
+        "ko": "Day 5 - ZJU Contest 2",
+        "ja": "Day 5 - ZJU Contest 2"
+      },
+      "summary": {
+        "en": "Summer 2022 editorial",
+        "ko": "Summer 2022 해설",
+        "ja": "Summer 2022 解説"
       }
     },
     {
@@ -156,15 +2825,32 @@
       }
     },
     {
-      "contest": "Summer 2023",
-      "problem": "Day 4 - LVII SPb SU Championship, Part 1",
+      "contest": "Summer 2022",
+      "problem": "Day 7 - HSE Koresha Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 4 - LVII SPb SU Championship, Part 1.pdf",
-      "filename": "Day 4 - LVII SPb SU Championship, Part 1.pdf",
+      "path": "Petrozavodsk Programming Camp/Summer 2022/Day 7 - HSE Koresha Contest.pdf",
+      "filename": "Day 7 - HSE Koresha Contest.pdf",
       "title": {
-        "en": "Day 4 - LVII SPb SU Championship, Part 1",
-        "ko": "Day 4 - LVII SPb SU Championship, Part 1",
-        "ja": "Day 4 - LVII SPb SU Championship, Part 1"
+        "en": "Day 7 - HSE Koresha Contest",
+        "ko": "Day 7 - HSE Koresha Contest",
+        "ja": "Day 7 - HSE Koresha Contest"
+      },
+      "summary": {
+        "en": "Summer 2022 editorial",
+        "ko": "Summer 2022 해설",
+        "ja": "Summer 2022 解説"
+      }
+    },
+    {
+      "contest": "Summer 2023",
+      "problem": "Day 1 - Starting Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 1 - Starting Contest.pdf",
+      "filename": "Day 1 - Starting Contest.pdf",
+      "title": {
+        "en": "Day 1 - Starting Contest",
+        "ko": "Day 1 - Starting Contest",
+        "ja": "Day 1 - Starting Contest"
       },
       "summary": {
         "en": "Summer 2023 editorial",
@@ -174,31 +2860,14 @@
     },
     {
       "contest": "Summer 2023",
-      "problem": "Day 4 - LVII SPb SU Championship, Part 2",
+      "problem": "Day 4 - LVII SPb SU Championship",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 4 - LVII SPb SU Championship, Part 2.pdf",
-      "filename": "Day 4 - LVII SPb SU Championship, Part 2.pdf",
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 4 - LVII SPb SU Championship.pdf",
+      "filename": "Day 4 - LVII SPb SU Championship.pdf",
       "title": {
-        "en": "Day 4 - LVII SPb SU Championship, Part 2",
-        "ko": "Day 4 - LVII SPb SU Championship, Part 2",
-        "ja": "Day 4 - LVII SPb SU Championship, Part 2"
-      },
-      "summary": {
-        "en": "Summer 2023 editorial",
-        "ko": "Summer 2023 해설",
-        "ja": "Summer 2023 解説"
-      }
-    },
-    {
-      "contest": "Summer 2023",
-      "problem": "Day 4 - LVII SPb SU Championship, Part 3",
-      "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 4 - LVII SPb SU Championship, Part 3.pdf",
-      "filename": "Day 4 - LVII SPb SU Championship, Part 3.pdf",
-      "title": {
-        "en": "Day 4 - LVII SPb SU Championship, Part 3",
-        "ko": "Day 4 - LVII SPb SU Championship, Part 3",
-        "ja": "Day 4 - LVII SPb SU Championship, Part 3"
+        "en": "Day 4 - LVII SPb SU Championship",
+        "ko": "Day 4 - LVII SPb SU Championship",
+        "ja": "Day 4 - LVII SPb SU Championship"
       },
       "summary": {
         "en": "Summer 2023 editorial",
@@ -225,14 +2894,14 @@
     },
     {
       "contest": "Summer 2023",
-      "problem": "Day 6 - olmrgcsi And His Friends’ Contest",
+      "problem": "Day 6 - olmrgcsi And His Friends' Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 6 - olmrgcsi And His Friends’ Contest.pdf",
-      "filename": "Day 6 - olmrgcsi And His Friends’ Contest.pdf",
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 6 - olmrgcsi And His Friends' Contest.pdf",
+      "filename": "Day 6 - olmrgcsi And His Friends' Contest.pdf",
       "title": {
-        "en": "Day 6 - olmrgcsi And His Friends’ Contest",
-        "ko": "Day 6 - olmrgcsi And His Friends’ Contest",
-        "ja": "Day 6 - olmrgcsi And His Friends’ Contest"
+        "en": "Day 6 - olmrgcsi And His Friends' Contest",
+        "ko": "Day 6 - olmrgcsi And His Friends' Contest",
+        "ja": "Day 6 - olmrgcsi And His Friends' Contest"
       },
       "summary": {
         "en": "Summer 2023 editorial",
@@ -242,14 +2911,14 @@
     },
     {
       "contest": "Summer 2023",
-      "problem": "Day 7 - Peking U Contest",
+      "problem": "Day 7 - PKU Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 7 - Peking U Contest.pdf",
-      "filename": "Day 7 - Peking U Contest.pdf",
+      "path": "Petrozavodsk Programming Camp/Summer 2023/Day 7 - PKU Contest.pdf",
+      "filename": "Day 7 - PKU Contest.pdf",
       "title": {
-        "en": "Day 7 - Peking U Contest",
-        "ko": "Day 7 - Peking U Contest",
-        "ja": "Day 7 - Peking U Contest"
+        "en": "Day 7 - PKU Contest",
+        "ko": "Day 7 - PKU Contest",
+        "ja": "Day 7 - PKU Contest"
       },
       "summary": {
         "en": "Summer 2023 editorial",
@@ -326,6 +2995,210 @@
       }
     },
     {
+      "contest": "Summer 2025",
+      "problem": "Day 4 - Polar Bear Transform Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2025/Day 4 - Polar Bear Transform Contest.pdf",
+      "filename": "Day 4 - Polar Bear Transform Contest.pdf",
+      "title": {
+        "en": "Day 4 - Polar Bear Transform Contest",
+        "ko": "Day 4 - Polar Bear Transform Contest",
+        "ja": "Day 4 - Polar Bear Transform Contest"
+      },
+      "summary": {
+        "en": "Summer 2025 editorial",
+        "ko": "Summer 2025 해설",
+        "ja": "Summer 2025 解説"
+      }
+    },
+    {
+      "contest": "Summer 2025",
+      "problem": "Day 6 - Xeppelin Contest supported by Yandex",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Summer 2025/Day 6 - Xeppelin Contest supported by Yandex.pdf",
+      "filename": "Day 6 - Xeppelin Contest supported by Yandex.pdf",
+      "title": {
+        "en": "Day 6 - Xeppelin Contest supported by Yandex",
+        "ko": "Day 6 - Xeppelin Contest supported by Yandex",
+        "ja": "Day 6 - Xeppelin Contest supported by Yandex"
+      },
+      "summary": {
+        "en": "Summer 2025 editorial",
+        "ko": "Summer 2025 해설",
+        "ja": "Summer 2025 解説"
+      }
+    },
+    {
+      "contest": "Winter 2017",
+      "problem": "Day 1 - Jagiellonian U Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2017/Day 1 - Jagiellonian U Contest.pdf",
+      "filename": "Day 1 - Jagiellonian U Contest.pdf",
+      "title": {
+        "en": "Day 1 - Jagiellonian U Contest",
+        "ko": "Day 1 - Jagiellonian U Contest",
+        "ja": "Day 1 - Jagiellonian U Contest"
+      },
+      "summary": {
+        "en": "Winter 2017 editorial",
+        "ko": "Winter 2017 해설",
+        "ja": "Winter 2017 解説"
+      }
+    },
+    {
+      "contest": "Winter 2017",
+      "problem": "Day 2 - Xiaoxu Guo Contest 5",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2017/Day 2 - Xiaoxu Guo Contest 5.pdf",
+      "filename": "Day 2 - Xiaoxu Guo Contest 5.pdf",
+      "title": {
+        "en": "Day 2 - Xiaoxu Guo Contest 5",
+        "ko": "Day 2 - Xiaoxu Guo Contest 5",
+        "ja": "Day 2 - Xiaoxu Guo Contest 5"
+      },
+      "summary": {
+        "en": "Winter 2017 editorial",
+        "ko": "Winter 2017 해설",
+        "ja": "Winter 2017 解説"
+      }
+    },
+    {
+      "contest": "Winter 2017",
+      "problem": "Day 3 - U of Tokyo Selection 1 (Karelia Head Cup day 1)",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2017/Day 3 - U of Tokyo Selection 1 (Karelia Head Cup day 1).pdf",
+      "filename": "Day 3 - U of Tokyo Selection 1 (Karelia Head Cup day 1).pdf",
+      "title": {
+        "en": "Day 3 - U of Tokyo Selection 1 (Karelia Head Cup day 1)",
+        "ko": "Day 3 - U of Tokyo Selection 1 (Karelia Head Cup day 1)",
+        "ja": "Day 3 - U of Tokyo Selection 1 (Karelia Head Cup day 1)"
+      },
+      "summary": {
+        "en": "Winter 2017 editorial",
+        "ko": "Winter 2017 해설",
+        "ja": "Winter 2017 解説"
+      }
+    },
+    {
+      "contest": "Winter 2017",
+      "problem": "Day 4 - Yandex Cup 2017",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2017/Day 4 - Yandex Cup 2017.pdf",
+      "filename": "Day 4 - Yandex Cup 2017.pdf",
+      "title": {
+        "en": "Day 4 - Yandex Cup 2017",
+        "ko": "Day 4 - Yandex Cup 2017",
+        "ja": "Day 4 - Yandex Cup 2017"
+      },
+      "summary": {
+        "en": "Winter 2017 editorial",
+        "ko": "Winter 2017 해설",
+        "ja": "Winter 2017 解説"
+      }
+    },
+    {
+      "contest": "Winter 2017",
+      "problem": "Day 5 - Tsinghua U Deep Dark Fantasy Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2017/Day 5 - Tsinghua U Deep Dark Fantasy Contest.pdf",
+      "filename": "Day 5 - Tsinghua U Deep Dark Fantasy Contest.pdf",
+      "title": {
+        "en": "Day 5 - Tsinghua U Deep Dark Fantasy Contest",
+        "ko": "Day 5 - Tsinghua U Deep Dark Fantasy Contest",
+        "ja": "Day 5 - Tsinghua U Deep Dark Fantasy Contest"
+      },
+      "summary": {
+        "en": "Winter 2017 editorial",
+        "ko": "Winter 2017 해설",
+        "ja": "Winter 2017 解説"
+      }
+    },
+    {
+      "contest": "Winter 2017",
+      "problem": "Day 9 - Xi Lin Contest 3",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2017/Day 9 - Xi Lin Contest 3.pdf",
+      "filename": "Day 9 - Xi Lin Contest 3.pdf",
+      "title": {
+        "en": "Day 9 - Xi Lin Contest 3",
+        "ko": "Day 9 - Xi Lin Contest 3",
+        "ja": "Day 9 - Xi Lin Contest 3"
+      },
+      "summary": {
+        "en": "Winter 2017 editorial",
+        "ko": "Winter 2017 해설",
+        "ja": "Winter 2017 解説"
+      }
+    },
+    {
+      "contest": "Winter 2018",
+      "problem": "Day 2 - ITMO U 1 Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2018/Day 2 - ITMO U 1 Contest.pdf",
+      "filename": "Day 2 - ITMO U 1 Contest.pdf",
+      "title": {
+        "en": "Day 2 - ITMO U 1 Contest",
+        "ko": "Day 2 - ITMO U 1 Contest",
+        "ja": "Day 2 - ITMO U 1 Contest"
+      },
+      "summary": {
+        "en": "Winter 2018 editorial",
+        "ko": "Winter 2018 해설",
+        "ja": "Winter 2018 解説"
+      }
+    },
+    {
+      "contest": "Winter 2018",
+      "problem": "Day 3 - AtCoder Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2018/Day 3 - AtCoder Contest.pdf",
+      "filename": "Day 3 - AtCoder Contest.pdf",
+      "title": {
+        "en": "Day 3 - AtCoder Contest",
+        "ko": "Day 3 - AtCoder Contest",
+        "ja": "Day 3 - AtCoder Contest"
+      },
+      "summary": {
+        "en": "Winter 2018 editorial",
+        "ko": "Winter 2018 해설",
+        "ja": "Winter 2018 解説"
+      }
+    },
+    {
+      "contest": "Winter 2018",
+      "problem": "Day 5 - Grand Prix of Korea (Seoul Contest)",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2018/Day 5 - Grand Prix of Korea (Seoul Contest).pdf",
+      "filename": "Day 5 - Grand Prix of Korea (Seoul Contest).pdf",
+      "title": {
+        "en": "Day 5 - Grand Prix of Korea (Seoul Contest)",
+        "ko": "Day 5 - Grand Prix of Korea (Seoul Contest)",
+        "ja": "Day 5 - Grand Prix of Korea (Seoul Contest)"
+      },
+      "summary": {
+        "en": "Winter 2018 editorial",
+        "ko": "Winter 2018 해설",
+        "ja": "Winter 2018 解説"
+      }
+    },
+    {
+      "contest": "Winter 2018",
+      "problem": "Day 6 - Gennady Korotkevich Contest 3, Grand Prix of Gomel",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2018/Day 6 - Gennady Korotkevich Contest 3, Grand Prix of Gomel.pdf",
+      "filename": "Day 6 - Gennady Korotkevich Contest 3, Grand Prix of Gomel.pdf",
+      "title": {
+        "en": "Day 6 - Gennady Korotkevich Contest 3, Grand Prix of Gomel",
+        "ko": "Day 6 - Gennady Korotkevich Contest 3, Grand Prix of Gomel",
+        "ja": "Day 6 - Gennady Korotkevich Contest 3, Grand Prix of Gomel"
+      },
+      "summary": {
+        "en": "Winter 2018 editorial",
+        "ko": "Winter 2018 해설",
+        "ja": "Winter 2018 解説"
+      }
+    },
+    {
       "contest": "Winter 2019",
       "problem": "Day 1 - 300iq Contest",
       "categories": ["Petrozavodsk Programming Camp"],
@@ -344,14 +3217,14 @@
     },
     {
       "contest": "Winter 2019",
-      "problem": "Day 4 - Yandex Contest",
+      "problem": "Day 2 - Jingzhe Tang Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 4 - Yandex Contest.pdf",
-      "filename": "Day 4 - Yandex Contest.pdf",
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 2 - Jingzhe Tang Contest.pdf",
+      "filename": "Day 2 - Jingzhe Tang Contest.pdf",
       "title": {
-        "en": "Day 4 - Yandex Contest",
-        "ko": "Day 4 - Yandex Contest",
-        "ja": "Day 4 - Yandex Contest"
+        "en": "Day 2 - Jingzhe Tang Contest",
+        "ko": "Day 2 - Jingzhe Tang Contest",
+        "ja": "Day 2 - Jingzhe Tang Contest"
       },
       "summary": {
         "en": "Winter 2019 editorial",
@@ -361,14 +3234,65 @@
     },
     {
       "contest": "Winter 2019",
-      "problem": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup",
+      "problem": "Day 3 - Japanese Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup.pdf",
-      "filename": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup.pdf",
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 3 - Japanese Contest.pdf",
+      "filename": "Day 3 - Japanese Contest.pdf",
       "title": {
-        "en": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup",
-        "ko": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup",
-        "ja": "Day 7 - Oleksandr Kulkov Contest 1, Botan Investment Cup"
+        "en": "Day 3 - Japanese Contest",
+        "ko": "Day 3 - Japanese Contest",
+        "ja": "Day 3 - Japanese Contest"
+      },
+      "summary": {
+        "en": "Winter 2019 editorial",
+        "ko": "Winter 2019 해설",
+        "ja": "Winter 2019 解説"
+      }
+    },
+    {
+      "contest": "Winter 2019",
+      "problem": "Day 4 - Yandex Cup",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 4 - Yandex Cup.pdf",
+      "filename": "Day 4 - Yandex Cup.pdf",
+      "title": {
+        "en": "Day 4 - Yandex Cup",
+        "ko": "Day 4 - Yandex Cup",
+        "ja": "Day 4 - Yandex Cup"
+      },
+      "summary": {
+        "en": "Winter 2019 editorial",
+        "ko": "Winter 2019 해설",
+        "ja": "Winter 2019 解説"
+      }
+    },
+    {
+      "contest": "Winter 2019",
+      "problem": "Day 6 - Belarusian SU Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 6 - Belarusian SU Contest.pdf",
+      "filename": "Day 6 - Belarusian SU Contest.pdf",
+      "title": {
+        "en": "Day 6 - Belarusian SU Contest",
+        "ko": "Day 6 - Belarusian SU Contest",
+        "ja": "Day 6 - Belarusian SU Contest"
+      },
+      "summary": {
+        "en": "Winter 2019 editorial",
+        "ko": "Winter 2019 해설",
+        "ja": "Winter 2019 解説"
+      }
+    },
+    {
+      "contest": "Winter 2019",
+      "problem": "Day 7 - Oleksandr Kulkov Contest 1, AI Factory Cup",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2019/Day 7 - Oleksandr Kulkov Contest 1, AI Factory Cup.pdf",
+      "filename": "Day 7 - Oleksandr Kulkov Contest 1, AI Factory Cup.pdf",
+      "title": {
+        "en": "Day 7 - Oleksandr Kulkov Contest 1, AI Factory Cup",
+        "ko": "Day 7 - Oleksandr Kulkov Contest 1, AI Factory Cup",
+        "ja": "Day 7 - Oleksandr Kulkov Contest 1, AI Factory Cup"
       },
       "summary": {
         "en": "Winter 2019 editorial",
@@ -378,19 +3302,274 @@
     },
     {
       "contest": "Winter 2020",
-      "problem": "Day 3 - 300iq Petrozavodsk Contest III",
+      "problem": "Day 1 - SPb SU Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 3 - 300iq Petrozavodsk Contest III.pdf",
-      "filename": "Day 3 - 300iq Petrozavodsk Contest III.pdf",
+      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 1 - SPb SU Contest.pdf",
+      "filename": "Day 1 - SPb SU Contest.pdf",
       "title": {
-        "en": "Day 3 - 300iq Petrozavodsk Contest III",
-        "ko": "Day 3 - 300iq Petrozavodsk Contest III",
-        "ja": "Day 3 - 300iq Petrozavodsk Contest III"
+        "en": "Day 1 - SPb SU Contest",
+        "ko": "Day 1 - SPb SU Contest",
+        "ja": "Day 1 - SPb SU Contest"
       },
       "summary": {
         "en": "Winter 2020 editorial",
         "ko": "Winter 2020 해설",
         "ja": "Winter 2020 解説"
+      }
+    },
+    {
+      "contest": "Winter 2020",
+      "problem": "Day 2 - Japanese Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 2 - Japanese Contest.pdf",
+      "filename": "Day 2 - Japanese Contest.pdf",
+      "title": {
+        "en": "Day 2 - Japanese Contest",
+        "ko": "Day 2 - Japanese Contest",
+        "ja": "Day 2 - Japanese Contest"
+      },
+      "summary": {
+        "en": "Winter 2020 editorial",
+        "ko": "Winter 2020 해설",
+        "ja": "Winter 2020 解説"
+      }
+    },
+    {
+      "contest": "Winter 2020",
+      "problem": "Day 3 - 300iq Contest 3",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 3 - 300iq Contest 3.pdf",
+      "filename": "Day 3 - 300iq Contest 3.pdf",
+      "title": {
+        "en": "Day 3 - 300iq Contest 3",
+        "ko": "Day 3 - 300iq Contest 3",
+        "ja": "Day 3 - 300iq Contest 3"
+      },
+      "summary": {
+        "en": "Winter 2020 editorial",
+        "ko": "Winter 2020 해설",
+        "ja": "Winter 2020 解説"
+      }
+    },
+    {
+      "contest": "Winter 2020",
+      "problem": "Day 5 - Jagiellonian U Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 5 - Jagiellonian U Contest.pdf",
+      "filename": "Day 5 - Jagiellonian U Contest.pdf",
+      "title": {
+        "en": "Day 5 - Jagiellonian U Contest",
+        "ko": "Day 5 - Jagiellonian U Contest",
+        "ja": "Day 5 - Jagiellonian U Contest"
+      },
+      "summary": {
+        "en": "Winter 2020 editorial",
+        "ko": "Winter 2020 해설",
+        "ja": "Winter 2020 解説"
+      }
+    },
+    {
+      "contest": "Winter 2020",
+      "problem": "Day 7 - Gennady Korotkevich Contest 5",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 7 - Gennady Korotkevich Contest 5.pdf",
+      "filename": "Day 7 - Gennady Korotkevich Contest 5.pdf",
+      "title": {
+        "en": "Day 7 - Gennady Korotkevich Contest 5",
+        "ko": "Day 7 - Gennady Korotkevich Contest 5",
+        "ja": "Day 7 - Gennady Korotkevich Contest 5"
+      },
+      "summary": {
+        "en": "Winter 2020 editorial",
+        "ko": "Winter 2020 해설",
+        "ja": "Winter 2020 解説"
+      }
+    },
+    {
+      "contest": "Winter 2020",
+      "problem": "Day 8 - Almost Algorithmic Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2020/Day 8 - Almost Algorithmic Contest.pdf",
+      "filename": "Day 8 - Almost Algorithmic Contest.pdf",
+      "title": {
+        "en": "Day 8 - Almost Algorithmic Contest",
+        "ko": "Day 8 - Almost Algorithmic Contest",
+        "ja": "Day 8 - Almost Algorithmic Contest"
+      },
+      "summary": {
+        "en": "Winter 2020 editorial",
+        "ko": "Winter 2020 해설",
+        "ja": "Winter 2020 解説"
+      }
+    },
+    {
+      "contest": "Winter 2021",
+      "problem": "Day 1 - Jagiellonian U Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2021/Day 1 - Jagiellonian U Contest.pdf",
+      "filename": "Day 1 - Jagiellonian U Contest.pdf",
+      "title": {
+        "en": "Day 1 - Jagiellonian U Contest",
+        "ko": "Day 1 - Jagiellonian U Contest",
+        "ja": "Day 1 - Jagiellonian U Contest"
+      },
+      "summary": {
+        "en": "Winter 2021 editorial",
+        "ko": "Winter 2021 해설",
+        "ja": "Winter 2021 解説"
+      }
+    },
+    {
+      "contest": "Winter 2021",
+      "problem": "Day 2 - UPC Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2021/Day 2 - UPC Contest.pdf",
+      "filename": "Day 2 - UPC Contest.pdf",
+      "title": {
+        "en": "Day 2 - UPC Contest",
+        "ko": "Day 2 - UPC Contest",
+        "ja": "Day 2 - UPC Contest"
+      },
+      "summary": {
+        "en": "Winter 2021 editorial",
+        "ko": "Winter 2021 해설",
+        "ja": "Winter 2021 解説"
+      }
+    },
+    {
+      "contest": "Winter 2021",
+      "problem": "Day 3 - Nordic+ Contest 2020",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2021/Day 3 - Nordic+ Contest 2020.pdf",
+      "filename": "Day 3 - Nordic+ Contest 2020.pdf",
+      "title": {
+        "en": "Day 3 - Nordic+ Contest 2020",
+        "ko": "Day 3 - Nordic+ Contest 2020",
+        "ja": "Day 3 - Nordic+ Contest 2020"
+      },
+      "summary": {
+        "en": "Winter 2021 editorial",
+        "ko": "Winter 2021 해설",
+        "ja": "Winter 2021 解説"
+      }
+    },
+    {
+      "contest": "Winter 2021",
+      "problem": "Day 4 - PKU Contest (Common Contest 1)",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2021/Day 4 - PKU Contest (Common Contest 1).pdf",
+      "filename": "Day 4 - PKU Contest (Common Contest 1).pdf",
+      "title": {
+        "en": "Day 4 - PKU Contest (Common Contest 1)",
+        "ko": "Day 4 - PKU Contest (Common Contest 1)",
+        "ja": "Day 4 - PKU Contest (Common Contest 1)"
+      },
+      "summary": {
+        "en": "Winter 2021 editorial",
+        "ko": "Winter 2021 해설",
+        "ja": "Winter 2021 解説"
+      }
+    },
+    {
+      "contest": "Winter 2021",
+      "problem": "Day 5 - Almost Retired Dandelion Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2021/Day 5 - Almost Retired Dandelion Contest.pdf",
+      "filename": "Day 5 - Almost Retired Dandelion Contest.pdf",
+      "title": {
+        "en": "Day 5 - Almost Retired Dandelion Contest",
+        "ko": "Day 5 - Almost Retired Dandelion Contest",
+        "ja": "Day 5 - Almost Retired Dandelion Contest"
+      },
+      "summary": {
+        "en": "Winter 2021 editorial",
+        "ko": "Winter 2021 해설",
+        "ja": "Winter 2021 解説"
+      }
+    },
+    {
+      "contest": "Winter 2021",
+      "problem": "Day 8 - Belarusian SU Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2021/Day 8 - Belarusian SU Contest.pdf",
+      "filename": "Day 8 - Belarusian SU Contest.pdf",
+      "title": {
+        "en": "Day 8 - Belarusian SU Contest",
+        "ko": "Day 8 - Belarusian SU Contest",
+        "ja": "Day 8 - Belarusian SU Contest"
+      },
+      "summary": {
+        "en": "Winter 2021 editorial",
+        "ko": "Winter 2021 해설",
+        "ja": "Winter 2021 解説"
+      }
+    },
+    {
+      "contest": "Winter 2022",
+      "problem": "Day 1 - Kyoto U Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2022/Day 1 - Kyoto U Contest 2.pdf",
+      "filename": "Day 1 - Kyoto U Contest 2.pdf",
+      "title": {
+        "en": "Day 1 - Kyoto U Contest 2",
+        "ko": "Day 1 - Kyoto U Contest 2",
+        "ja": "Day 1 - Kyoto U Contest 2"
+      },
+      "summary": {
+        "en": "Winter 2022 editorial",
+        "ko": "Winter 2022 해설",
+        "ja": "Winter 2022 解説"
+      }
+    },
+    {
+      "contest": "Winter 2022",
+      "problem": "Day 2 - KAIST Contest + KOI TST 2021",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2022/Day 2 - KAIST Contest + KOI TST 2021.pdf",
+      "filename": "Day 2 - KAIST Contest + KOI TST 2021.pdf",
+      "title": {
+        "en": "Day 2 - KAIST Contest + KOI TST 2021",
+        "ko": "Day 2 - KAIST Contest + KOI TST 2021",
+        "ja": "Day 2 - KAIST Contest + KOI TST 2021"
+      },
+      "summary": {
+        "en": "Winter 2022 editorial",
+        "ko": "Winter 2022 해설",
+        "ja": "Winter 2022 解説"
+      }
+    },
+    {
+      "contest": "Winter 2022",
+      "problem": "Day 3 - Kazakhstan Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2022/Day 3 - Kazakhstan Contest.pdf",
+      "filename": "Day 3 - Kazakhstan Contest.pdf",
+      "title": {
+        "en": "Day 3 - Kazakhstan Contest",
+        "ko": "Day 3 - Kazakhstan Contest",
+        "ja": "Day 3 - Kazakhstan Contest"
+      },
+      "summary": {
+        "en": "Winter 2022 editorial",
+        "ko": "Winter 2022 해설",
+        "ja": "Winter 2022 解説"
+      }
+    },
+    {
+      "contest": "Winter 2022",
+      "problem": "Day 4 - Almost Northern Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2022/Day 4 - Almost Northern Contest.pdf",
+      "filename": "Day 4 - Almost Northern Contest.pdf",
+      "title": {
+        "en": "Day 4 - Almost Northern Contest",
+        "ko": "Day 4 - Almost Northern Contest",
+        "ja": "Day 4 - Almost Northern Contest"
+      },
+      "summary": {
+        "en": "Winter 2022 editorial",
+        "ko": "Winter 2022 해설",
+        "ja": "Winter 2022 解説"
       }
     },
     {
@@ -411,6 +3590,57 @@
       }
     },
     {
+      "contest": "Winter 2022",
+      "problem": "Day 6 - ICPC Camp Day 1",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2022/Day 6 - ICPC Camp Day 1.pdf",
+      "filename": "Day 6 - ICPC Camp Day 1.pdf",
+      "title": {
+        "en": "Day 6 - ICPC Camp Day 1",
+        "ko": "Day 6 - ICPC Camp Day 1",
+        "ja": "Day 6 - ICPC Camp Day 1"
+      },
+      "summary": {
+        "en": "Winter 2022 editorial",
+        "ko": "Winter 2022 해설",
+        "ja": "Winter 2022 解説"
+      }
+    },
+    {
+      "contest": "Winter 2022",
+      "problem": "Day 7 - Gennady Korotkevich Contest 6",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2022/Day 7 - Gennady Korotkevich Contest 6.pdf",
+      "filename": "Day 7 - Gennady Korotkevich Contest 6.pdf",
+      "title": {
+        "en": "Day 7 - Gennady Korotkevich Contest 6",
+        "ko": "Day 7 - Gennady Korotkevich Contest 6",
+        "ja": "Day 7 - Gennady Korotkevich Contest 6"
+      },
+      "summary": {
+        "en": "Winter 2022 editorial",
+        "ko": "Winter 2022 해설",
+        "ja": "Winter 2022 解説"
+      }
+    },
+    {
+      "contest": "Winter 2023",
+      "problem": "Day 1 - JAGain in Petrozavodsk",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2023/Day 1 - JAGain in Petrozavodsk.pdf",
+      "filename": "Day 1 - JAGain in Petrozavodsk.pdf",
+      "title": {
+        "en": "Day 1 - JAGain in Petrozavodsk",
+        "ko": "Day 1 - JAGain in Petrozavodsk",
+        "ja": "Day 1 - JAGain in Petrozavodsk"
+      },
+      "summary": {
+        "en": "Winter 2023 editorial",
+        "ko": "Winter 2023 해설",
+        "ja": "Winter 2023 解説"
+      }
+    },
+    {
       "contest": "Winter 2023",
       "problem": "Day 2 - GP of ainta",
       "categories": ["Petrozavodsk Programming Camp"],
@@ -420,6 +3650,40 @@
         "en": "Day 2 - GP of ainta",
         "ko": "Day 2 - GP of ainta",
         "ja": "Day 2 - GP of ainta"
+      },
+      "summary": {
+        "en": "Winter 2023 editorial",
+        "ko": "Winter 2023 해설",
+        "ja": "Winter 2023 解説"
+      }
+    },
+    {
+      "contest": "Winter 2023",
+      "problem": "Day 3 - 2023 ICPC Asia Hong Kong Regional",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2023/Day 3 - 2023 ICPC Asia Hong Kong Regional.pdf",
+      "filename": "Day 3 - 2023 ICPC Asia Hong Kong Regional.pdf",
+      "title": {
+        "en": "Day 3 - 2023 ICPC Asia Hong Kong Regional",
+        "ko": "Day 3 - 2023 ICPC Asia Hong Kong Regional",
+        "ja": "Day 3 - 2023 ICPC Asia Hong Kong Regional"
+      },
+      "summary": {
+        "en": "Winter 2023 editorial",
+        "ko": "Winter 2023 해설",
+        "ja": "Winter 2023 解説"
+      }
+    },
+    {
+      "contest": "Winter 2023",
+      "problem": "Day 4 - KAIST+KOI Contest, Grand Prix of Korea",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2023/Day 4 - KAIST+KOI Contest, Grand Prix of Korea.pdf",
+      "filename": "Day 4 - KAIST+KOI Contest, Grand Prix of Korea.pdf",
+      "title": {
+        "en": "Day 4 - KAIST+KOI Contest, Grand Prix of Korea",
+        "ko": "Day 4 - KAIST+KOI Contest, Grand Prix of Korea",
+        "ja": "Day 4 - KAIST+KOI Contest, Grand Prix of Korea"
       },
       "summary": {
         "en": "Winter 2023 editorial",
@@ -445,15 +3709,49 @@
       }
     },
     {
-      "contest": "Winter 2024",
-      "problem": "Day 3 - ZJU Contest",
+      "contest": "Winter 2023",
+      "problem": "Day 6 - Um_nik mod 998 244 353 Contest",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 3 - ZJU Contest.pdf",
-      "filename": "Day 3 - ZJU Contest.pdf",
+      "path": "Petrozavodsk Programming Camp/Winter 2023/Day 6 - Um_nik mod 998 244 353 Contest.pdf",
+      "filename": "Day 6 - Um_nik mod 998 244 353 Contest.pdf",
       "title": {
-        "en": "Day 3 - ZJU Contest",
-        "ko": "Day 3 - ZJU Contest",
-        "ja": "Day 3 - ZJU Contest"
+        "en": "Day 6 - Um_nik mod 998 244 353 Contest",
+        "ko": "Day 6 - Um_nik mod 998 244 353 Contest",
+        "ja": "Day 6 - Um_nik mod 998 244 353 Contest"
+      },
+      "summary": {
+        "en": "Winter 2023 editorial",
+        "ko": "Winter 2023 해설",
+        "ja": "Winter 2023 解説"
+      }
+    },
+    {
+      "contest": "Winter 2023",
+      "problem": "Day 7 - Gennady Korotkevich Contest 7",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2023/Day 7 - Gennady Korotkevich Contest 7.pdf",
+      "filename": "Day 7 - Gennady Korotkevich Contest 7.pdf",
+      "title": {
+        "en": "Day 7 - Gennady Korotkevich Contest 7",
+        "ko": "Day 7 - Gennady Korotkevich Contest 7",
+        "ja": "Day 7 - Gennady Korotkevich Contest 7"
+      },
+      "summary": {
+        "en": "Winter 2023 editorial",
+        "ko": "Winter 2023 해설",
+        "ja": "Winter 2023 解説"
+      }
+    },
+    {
+      "contest": "Winter 2024",
+      "problem": "Day 1 - Welcome Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 1 - Welcome Contest.pdf",
+      "filename": "Day 1 - Welcome Contest.pdf",
+      "title": {
+        "en": "Day 1 - Welcome Contest",
+        "ko": "Day 1 - Welcome Contest",
+        "ja": "Day 1 - Welcome Contest"
       },
       "summary": {
         "en": "Winter 2024 editorial",
@@ -463,14 +3761,48 @@
     },
     {
       "contest": "Winter 2024",
-      "problem": "Day 4 - Peking U Contest 2",
+      "problem": "Day 2 - CCPC Contest 1",
       "categories": ["Petrozavodsk Programming Camp"],
-      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 4 - Peking U Contest 2.pdf",
-      "filename": "Day 4 - Peking U Contest 2.pdf",
+      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 2 - CCPC Contest 1.pdf",
+      "filename": "Day 2 - CCPC Contest 1.pdf",
       "title": {
-        "en": "Day 4 - Peking U Contest 2",
-        "ko": "Day 4 - Peking U Contest 2",
-        "ja": "Day 4 - Peking U Contest 2"
+        "en": "Day 2 - CCPC Contest 1",
+        "ko": "Day 2 - CCPC Contest 1",
+        "ja": "Day 2 - CCPC Contest 1"
+      },
+      "summary": {
+        "en": "Winter 2024 editorial",
+        "ko": "Winter 2024 해설",
+        "ja": "Winter 2024 解説"
+      }
+    },
+    {
+      "contest": "Winter 2024",
+      "problem": "Day 3 - ZJU Contest 1",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 3 - ZJU Contest 1.pdf",
+      "filename": "Day 3 - ZJU Contest 1.pdf",
+      "title": {
+        "en": "Day 3 - ZJU Contest 1",
+        "ko": "Day 3 - ZJU Contest 1",
+        "ja": "Day 3 - ZJU Contest 1"
+      },
+      "summary": {
+        "en": "Winter 2024 editorial",
+        "ko": "Winter 2024 해설",
+        "ja": "Winter 2024 解説"
+      }
+    },
+    {
+      "contest": "Winter 2024",
+      "problem": "Day 4 - PKU Contest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2024/Day 4 - PKU Contest 2.pdf",
+      "filename": "Day 4 - PKU Contest 2.pdf",
+      "title": {
+        "en": "Day 4 - PKU Contest 2",
+        "ko": "Day 4 - PKU Contest 2",
+        "ja": "Day 4 - PKU Contest 2"
       },
       "summary": {
         "en": "Winter 2024 editorial",
@@ -496,6 +3828,91 @@
       }
     },
     {
+      "contest": "Winter 2025",
+      "problem": "Day 5 - K-ontest 2",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2025/Day 5 - K-ontest 2.pdf",
+      "filename": "Day 5 - K-ontest 2.pdf",
+      "title": {
+        "en": "Day 5 - K-ontest 2",
+        "ko": "Day 5 - K-ontest 2",
+        "ja": "Day 5 - K-ontest 2"
+      },
+      "summary": {
+        "en": "Winter 2025 editorial",
+        "ko": "Winter 2025 해설",
+        "ja": "Winter 2025 解説"
+      }
+    },
+    {
+      "contest": "Winter 2025",
+      "problem": "Day 7 - SPb SU Contest",
+      "categories": ["Petrozavodsk Programming Camp"],
+      "path": "Petrozavodsk Programming Camp/Winter 2025/Day 7 - SPb SU Contest.pdf",
+      "filename": "Day 7 - SPb SU Contest.pdf",
+      "title": {
+        "en": "Day 7 - SPb SU Contest",
+        "ko": "Day 7 - SPb SU Contest",
+        "ja": "Day 7 - SPb SU Contest"
+      },
+      "summary": {
+        "en": "Winter 2025 editorial",
+        "ko": "Winter 2025 해설",
+        "ja": "Winter 2025 解説"
+      }
+    },
+    {
+      "contest": "대전과학고등학교",
+      "problem": "제1회 대전과학고등학교 프로그래밍 경진대회 DSHStack",
+      "categories": ["School"],
+      "path": "School/대전과학고등학교/제1회 대전과학고등학교 프로그래밍 경진대회 DSHStack.pdf",
+      "filename": "제1회 대전과학고등학교 프로그래밍 경진대회 DSHStack.pdf",
+      "title": {
+        "en": "제1회 대전과학고등학교 프로그래밍 경진대회 DSHStack",
+        "ko": "제1회 대전과학고등학교 프로그래밍 경진대회 DSHStack",
+        "ja": "제1회 대전과학고등학교 프로그래밍 경진대회 DSHStack"
+      },
+      "summary": {
+        "en": "대전과학고등학교 editorial",
+        "ko": "대전과학고등학교 해설",
+        "ja": "대전과학고등학교 解説"
+      }
+    },
+    {
+      "contest": "대전과학고등학교",
+      "problem": "제2회 대전과학고등학교 프로그래밍 경진대회 DSHStack",
+      "categories": ["School"],
+      "path": "School/대전과학고등학교/제2회 대전과학고등학교 프로그래밍 경진대회 DSHStack.pdf",
+      "filename": "제2회 대전과학고등학교 프로그래밍 경진대회 DSHStack.pdf",
+      "title": {
+        "en": "제2회 대전과학고등학교 프로그래밍 경진대회 DSHStack",
+        "ko": "제2회 대전과학고등학교 프로그래밍 경진대회 DSHStack",
+        "ja": "제2회 대전과학고등학교 프로그래밍 경진대회 DSHStack"
+      },
+      "summary": {
+        "en": "대전과학고등학교 editorial",
+        "ko": "대전과학고등학교 해설",
+        "ja": "대전과학고등학교 解説"
+      }
+    },
+    {
+      "contest": "한국디지털미디어고등학교",
+      "problem": "제2회 디미고 프로그래밍 챌린지",
+      "categories": ["School"],
+      "path": "School/한국디지털미디어고등학교/제2회 디미고 프로그래밍 챌린지.pdf",
+      "filename": "제2회 디미고 프로그래밍 챌린지.pdf",
+      "title": {
+        "en": "제2회 디미고 프로그래밍 챌린지",
+        "ko": "제2회 디미고 프로그래밍 챌린지",
+        "ja": "제2회 디미고 프로그래밍 챌린지"
+      },
+      "summary": {
+        "en": "한국디지털미디어고등학교 editorial",
+        "ko": "한국디지털미디어고등학교 해설",
+        "ja": "한국디지털미디어고등학교 解説"
+      }
+    },
+    {
       "contest": "한국디지털미디어고등학교",
       "problem": "제4회 디미고 프로그래밍 챌린지",
       "categories": ["School"],
@@ -513,9 +3930,247 @@
       }
     },
     {
-      "contest": "중앙대학교",
-      "problem": "2026 중앙대학교 프로그래밍 경진대회 (CPC)",
+      "contest": "Centroid 연합",
+      "problem": "2024 국민대학교 & 중앙대학교 연합 프로그래밍 경진대회",
       "categories": ["University"],
+      "path": "University/Centroid 연합/2024 국민대학교 & 중앙대학교 연합 프로그래밍 경진대회.pdf",
+      "filename": "2024 국민대학교 & 중앙대학교 연합 프로그래밍 경진대회.pdf",
+      "title": {
+        "en": "2024 국민대학교 & 중앙대학교 연합 프로그래밍 경진대회",
+        "ko": "2024 국민대학교 & 중앙대학교 연합 프로그래밍 경진대회",
+        "ja": "2024 국민대학교 & 중앙대학교 연합 프로그래밍 경진대회"
+      },
+      "summary": {
+        "en": "Centroid 연합 editorial",
+        "ko": "Centroid 연합 해설",
+        "ja": "Centroid 연합 解説"
+      }
+    },
+    {
+      "contest": "Centroid 연합",
+      "problem": "2025 Centroid Cup",
+      "categories": ["University"],
+      "path": "University/Centroid 연합/2025 Centroid Cup.pdf",
+      "filename": "2025 Centroid Cup.pdf",
+      "title": {
+        "en": "2025 Centroid Cup",
+        "ko": "2025 Centroid Cup",
+        "ja": "2025 Centroid Cup"
+      },
+      "summary": {
+        "en": "Centroid 연합 editorial",
+        "ko": "Centroid 연합 해설",
+        "ja": "Centroid 연합 解説"
+      }
+    },
+    {
+      "contest": "KAIST RUN Spring Contest",
+      "problem": "2026 KAIST RUN Spring Contest",
+      "categories": ["University", "KAIST"],
+      "path": "University/KAIST/KAIST RUN Spring Contest/2026 KAIST RUN Spring Contest.pdf",
+      "filename": "2026 KAIST RUN Spring Contest.pdf",
+      "title": {
+        "en": "2026 KAIST RUN Spring Contest",
+        "ko": "2026 KAIST RUN Spring Contest",
+        "ja": "2026 KAIST RUN Spring Contest"
+      },
+      "summary": {
+        "en": "KAIST RUN Spring Contest editorial",
+        "ko": "KAIST RUN Spring Contest 해설",
+        "ja": "KAIST RUN Spring Contest 解説"
+      }
+    },
+    {
+      "contest": "건국대학교",
+      "problem": "2023 건국대학교 프로그래밍 경진대회 (KUPC)",
+      "categories": ["University"],
+      "path": "University/건국대학교/2023 건국대학교 프로그래밍 경진대회 (KUPC).pdf",
+      "filename": "2023 건국대학교 프로그래밍 경진대회 (KUPC).pdf",
+      "title": {
+        "en": "2023 건국대학교 프로그래밍 경진대회 (KUPC)",
+        "ko": "2023 건국대학교 프로그래밍 경진대회 (KUPC)",
+        "ja": "2023 건국대학교 프로그래밍 경진대회 (KUPC)"
+      },
+      "summary": {
+        "en": "건국대학교 editorial",
+        "ko": "건국대학교 해설",
+        "ja": "건국대학교 解説"
+      }
+    },
+    {
+      "contest": "건국대학교",
+      "problem": "2024 건국대학교 프로그래밍 경진대회 (KUPC)",
+      "categories": ["University"],
+      "path": "University/건국대학교/2024 건국대학교 프로그래밍 경진대회 (KUPC).pdf",
+      "filename": "2024 건국대학교 프로그래밍 경진대회 (KUPC).pdf",
+      "title": {
+        "en": "2024 건국대학교 프로그래밍 경진대회 (KUPC)",
+        "ko": "2024 건국대학교 프로그래밍 경진대회 (KUPC)",
+        "ja": "2024 건국대학교 프로그래밍 경진대회 (KUPC)"
+      },
+      "summary": {
+        "en": "건국대학교 editorial",
+        "ko": "건국대학교 해설",
+        "ja": "건국대학교 解説"
+      }
+    },
+    {
+      "contest": "건국대학교",
+      "problem": "2025 건국대학교 프로그래밍 경진대회 (KUPC)",
+      "categories": ["University"],
+      "path": "University/건국대학교/2025 건국대학교 프로그래밍 경진대회 (KUPC).pdf",
+      "filename": "2025 건국대학교 프로그래밍 경진대회 (KUPC).pdf",
+      "title": {
+        "en": "2025 건국대학교 프로그래밍 경진대회 (KUPC)",
+        "ko": "2025 건국대학교 프로그래밍 경진대회 (KUPC)",
+        "ja": "2025 건국대학교 프로그래밍 경진대회 (KUPC)"
+      },
+      "summary": {
+        "en": "건국대학교 editorial",
+        "ko": "건국대학교 해설",
+        "ja": "건국대학교 解説"
+      }
+    },
+    {
+      "contest": "MatKor Cup",
+      "problem": "제2회 MatKor Cup - 2023 Winter",
+      "categories": ["University", "고려대학교"],
+      "path": "University/고려대학교/MatKor Cup/제2회 MatKor Cup - 2023 Winter.pdf",
+      "filename": "제2회 MatKor Cup - 2023 Winter.pdf",
+      "title": {
+        "en": "제2회 MatKor Cup - 2023 Winter",
+        "ko": "제2회 MatKor Cup - 2023 Winter",
+        "ja": "제2회 MatKor Cup - 2023 Winter"
+      },
+      "summary": {
+        "en": "MatKor Cup editorial",
+        "ko": "MatKor Cup 해설",
+        "ja": "MatKor Cup 解説"
+      }
+    },
+    {
+      "contest": "MatKor Cup",
+      "problem": "제3회 MatKor Cup - 2023 Summer",
+      "categories": ["University", "고려대학교"],
+      "path": "University/고려대학교/MatKor Cup/제3회 MatKor Cup - 2023 Summer.pdf",
+      "filename": "제3회 MatKor Cup - 2023 Summer.pdf",
+      "title": {
+        "en": "제3회 MatKor Cup - 2023 Summer",
+        "ko": "제3회 MatKor Cup - 2023 Summer",
+        "ja": "제3회 MatKor Cup - 2023 Summer"
+      },
+      "summary": {
+        "en": "MatKor Cup editorial",
+        "ko": "MatKor Cup 해설",
+        "ja": "MatKor Cup 解説"
+      }
+    },
+    {
+      "contest": "Algorithm Challenge",
+      "problem": "2025 KPSC Summer Algorithm Challenge",
+      "categories": ["University", "국민대학교"],
+      "path": "University/국민대학교/Algorithm Challenge/2025 KPSC Summer Algorithm Challenge.pdf",
+      "filename": "2025 KPSC Summer Algorithm Challenge.pdf",
+      "title": {
+        "en": "2025 KPSC Summer Algorithm Challenge",
+        "ko": "2025 KPSC Summer Algorithm Challenge",
+        "ja": "2025 KPSC Summer Algorithm Challenge"
+      },
+      "summary": {
+        "en": "Algorithm Challenge editorial",
+        "ko": "Algorithm Challenge 해설",
+        "ja": "Algorithm Challenge 解説"
+      }
+    },
+    {
+      "contest": "Algorithm Challenge",
+      "problem": "2026 KPSC Spring Algorithm Challenge",
+      "categories": ["University", "국민대학교"],
+      "path": "University/국민대학교/Algorithm Challenge/2026 KPSC Spring Algorithm Challenge.pdf",
+      "filename": "2026 KPSC Spring Algorithm Challenge.pdf",
+      "title": {
+        "en": "2026 KPSC Spring Algorithm Challenge",
+        "ko": "2026 KPSC Spring Algorithm Challenge",
+        "ja": "2026 KPSC Spring Algorithm Challenge"
+      },
+      "summary": {
+        "en": "Algorithm Challenge editorial",
+        "ko": "Algorithm Challenge 해설",
+        "ja": "Algorithm Challenge 解説"
+      }
+    },
+    {
+      "contest": "Welcome Contest",
+      "problem": "KPSC Welcome Contest 2024",
+      "categories": ["University", "국민대학교"],
+      "path": "University/국민대학교/Welcome Contest/KPSC Welcome Contest 2024.pdf",
+      "filename": "KPSC Welcome Contest 2024.pdf",
+      "title": {
+        "en": "KPSC Welcome Contest 2024",
+        "ko": "KPSC Welcome Contest 2024",
+        "ja": "KPSC Welcome Contest 2024"
+      },
+      "summary": {
+        "en": "Welcome Contest editorial",
+        "ko": "Welcome Contest 해설",
+        "ja": "Welcome Contest 解説"
+      }
+    },
+    {
+      "contest": "서울대학교 SCSC 프로그래밍 경시대회",
+      "problem": "2023 서울대학교 SCSC 프로그래밍 경시대회",
+      "categories": ["University", "서울대학교"],
+      "path": "University/서울대학교/서울대학교 SCSC 프로그래밍 경시대회/2023 서울대학교 SCSC 프로그래밍 경시대회.pdf",
+      "filename": "2023 서울대학교 SCSC 프로그래밍 경시대회.pdf",
+      "title": {
+        "en": "2023 서울대학교 SCSC 프로그래밍 경시대회",
+        "ko": "2023 서울대학교 SCSC 프로그래밍 경시대회",
+        "ja": "2023 서울대학교 SCSC 프로그래밍 경시대회"
+      },
+      "summary": {
+        "en": "서울대학교 SCSC 프로그래밍 경시대회 editorial",
+        "ko": "서울대학교 SCSC 프로그래밍 경시대회 해설",
+        "ja": "서울대학교 SCSC 프로그래밍 경시대회 解説"
+      }
+    },
+    {
+      "contest": "서울대학교 SCSC 프로그래밍 경시대회",
+      "problem": "2024 서울대학교 SCSC 프로그래밍 경시대회",
+      "categories": ["University", "서울대학교"],
+      "path": "University/서울대학교/서울대학교 SCSC 프로그래밍 경시대회/2024 서울대학교 SCSC 프로그래밍 경시대회.pdf",
+      "filename": "2024 서울대학교 SCSC 프로그래밍 경시대회.pdf",
+      "title": {
+        "en": "2024 서울대학교 SCSC 프로그래밍 경시대회",
+        "ko": "2024 서울대학교 SCSC 프로그래밍 경시대회",
+        "ja": "2024 서울대학교 SCSC 프로그래밍 경시대회"
+      },
+      "summary": {
+        "en": "서울대학교 SCSC 프로그래밍 경시대회 editorial",
+        "ko": "서울대학교 SCSC 프로그래밍 경시대회 해설",
+        "ja": "서울대학교 SCSC 프로그래밍 경시대회 解説"
+      }
+    },
+    {
+      "contest": "서울대학교 SCSC 프로그래밍 경시대회",
+      "problem": "2025 서울대학교 SCSC 프로그래밍 경시대회",
+      "categories": ["University", "서울대학교"],
+      "path": "University/서울대학교/서울대학교 SCSC 프로그래밍 경시대회/2025 서울대학교 SCSC 프로그래밍 경시대회.pdf",
+      "filename": "2025 서울대학교 SCSC 프로그래밍 경시대회.pdf",
+      "title": {
+        "en": "2025 서울대학교 SCSC 프로그래밍 경시대회",
+        "ko": "2025 서울대학교 SCSC 프로그래밍 경시대회",
+        "ja": "2025 서울대학교 SCSC 프로그래밍 경시대회"
+      },
+      "summary": {
+        "en": "서울대학교 SCSC 프로그래밍 경시대회 editorial",
+        "ko": "서울대학교 SCSC 프로그래밍 경시대회 해설",
+        "ja": "서울대학교 SCSC 프로그래밍 경시대회 解説"
+      }
+    },
+    {
+      "contest": "중앙대학교 프로그래밍 경진대회 (CPC)",
+      "problem": "2026 중앙대학교 프로그래밍 경진대회 (CPC)",
+      "categories": ["University", "중앙대학교"],
       "path": "University/중앙대학교/중앙대학교 프로그래밍 경진대회 (CPC)/2026 중앙대학교 프로그래밍 경진대회 (CPC).pdf",
       "filename": "2026 중앙대학교 프로그래밍 경진대회 (CPC).pdf",
       "title": {
@@ -524,9 +4179,9 @@
         "ja": "2026 중앙대학교 프로그래밍 경진대회 (CPC)"
       },
       "summary": {
-        "en": "중앙대학교 editorial",
-        "ko": "중앙대학교 해설",
-        "ja": "중앙대학교 解説"
+        "en": "중앙대학교 프로그래밍 경진대회 (CPC) editorial",
+        "ko": "중앙대학교 프로그래밍 경진대회 (CPC) 해설",
+        "ja": "중앙대학교 프로그래밍 경진대회 (CPC) 解説"
       }
     },
     {

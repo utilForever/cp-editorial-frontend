@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import type { EditorialRecord } from '../entities/editorial/model/types'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
 
-function categoriesWithCount(categories: string[]) {
+function categoriesWithCount(editorials: EditorialRecord[]) {
   const countMap = new Map<string, number>()
 
-  categories.forEach((category) => {
+  editorials.forEach((editorial) => {
+    const category = editorial.categories[0] ?? 'Uncategorized'
     countMap.set(category, (countMap.get(category) ?? 0) + 1)
   })
 
@@ -24,9 +26,7 @@ export function CategoriesPage() {
     return <p className="error">{error.message}</p>
   }
 
-  const categories = categoriesWithCount(
-    data.editorials.flatMap((editorial) => editorial.categories),
-  )
+  const categories = categoriesWithCount(data.editorials)
 
   return (
     <section className="page">
