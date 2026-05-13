@@ -29,7 +29,7 @@ export function EditorialViewerPage() {
     let objectUrl: string | null = null
     const abortController = new AbortController()
     let didTimeout = false
-    const timeoutId = window.setTimeout(() => {
+    const timeoutId = globalThis.setTimeout(() => {
       didTimeout = true
       abortController.abort()
     }, 15000)
