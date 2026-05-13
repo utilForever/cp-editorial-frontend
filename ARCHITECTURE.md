@@ -37,7 +37,7 @@ src/
     providers/
     routes/
   pages/
-    Home, Search, Categories, Category, CategoryContest, EditorialDetail, Contribute
+    Home, Search, Categories, Category, EditorialDetail, Contribute
   entities/
     editorial/model/
       types.ts
