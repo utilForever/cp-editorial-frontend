@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
 
 export function EditorialViewerPage() {
@@ -16,6 +17,23 @@ export function EditorialViewerPage() {
     () => data.editorials.find((item) => item.id === editorialId),
     [data.editorials, editorialId],
   )
+
+  const appTitle = t('appTitle')
+  const localizedTitle = editorial
+    ? getLocalizedText(editorial.title, i18n.resolvedLanguage)
+    : appTitle
+  const metadataDescription = editorial
+    ? getLocalizedText(editorial.summary, i18n.resolvedLanguage)
+    : t('editorial.viewerDescription')
+
+  usePageMetadata({
+    title: editorial
+      ? `${localizedTitle} (${t('editorial.view')}) | ${appTitle}`
+      : `${t('editorial.view')} | ${appTitle}`,
+    description: metadataDescription,
+    locale: i18n.resolvedLanguage,
+    type: editorial ? 'article' : 'website',
+  })
 
   useEffect(() => {
     if (!editorial) {
@@ -99,7 +117,6 @@ export function EditorialViewerPage() {
     return <p className="error">{t('editorial.notFound')}</p>
   }
 
-  const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
   const links = buildEditorialLinks(editorial.path)
 
   return (

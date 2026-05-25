@@ -158,6 +158,8 @@ Category browsing is path-hierarchy driven, so nested folders like
 - Theme supports `light` and `dark`.
 - Active theme is selected in the header and persisted in browser local storage.
 - Theme is applied at the document root via `data-theme`, so all routed pages share one consistent palette.
+- Open Graph/Twitter metadata has static defaults in `index.html` and `public/404.html`, then route-level values are updated client-side in the SPA.
+- Due to static hosting constraints, non-JS crawlers may still consume the default metadata rather than route-specific values.
 
 ## 8. Upload guidance flow
 

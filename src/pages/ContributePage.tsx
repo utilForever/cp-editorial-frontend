@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 
 function renderBacktickBold(text: string) {
   const segments = text.split(/`([^`]+)`/g)
@@ -14,7 +15,13 @@ function renderBacktickBold(text: string) {
 }
 
 export function ContributePage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  usePageMetadata({
+    title: `${t('contribute.heading')} | ${t('appTitle')}`,
+    description: t('contribute.footer'),
+    locale: i18n.resolvedLanguage,
+  })
 
   return (
     <section className="page">

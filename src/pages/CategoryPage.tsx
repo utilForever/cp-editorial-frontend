@@ -4,6 +4,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
 
 function decodePathSegment(value: string): string {
@@ -87,6 +88,24 @@ export function CategoryPage() {
     }
   }, [data.editorials, selectedSegments])
 
+  const currentSegment = selectedSegments[selectedSegments.length - 1] ?? t('category.unknown')
+  const isLeafNode = childNodes.length === 0
+  const heading = isLeafNode
+    ? t('contest.heading', { contest: currentSegment })
+    : t('category.heading', { category: currentSegment })
+
+  usePageMetadata({
+    title:
+      selectedSegments.length > 0
+        ? `${heading} | ${t('appTitle')}`
+        : `${t('categories.heading')} | ${t('appTitle')}`,
+    description:
+      selectedSegments.length > 0
+        ? `${t('categories.heading')}: ${selectedSegments.join(' > ')}`
+        : t('footer.description'),
+    locale: i18n.resolvedLanguage,
+  })
+
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
   }
@@ -102,12 +121,6 @@ export function CategoryPage() {
   if (!hasMatches) {
     return <p className="muted">{t('contest.empty')}</p>
   }
-
-  const currentSegment = selectedSegments[selectedSegments.length - 1] ?? t('category.unknown')
-  const isLeafNode = childNodes.length === 0
-  const heading = isLeafNode
-    ? t('contest.heading', { contest: currentSegment })
-    : t('category.heading', { category: currentSegment })
 
   return (
     <section className="page">
