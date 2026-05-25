@@ -62,9 +62,7 @@ export function usePageMetadata({
   type = 'website',
 }: PageMetadata) {
   useEffect(() => {
-    const pageUrl = toAbsoluteUrl(
-      `${globalThis.location.pathname}${globalThis.location.search}`,
-    )
+    const pageUrl = toAbsoluteUrl(`${globalThis.location.pathname}${globalThis.location.search}`)
     const ogLocale = normalizeLocale(locale)
     const resolvedImageUrl = toAbsoluteUrl(imageUrl)
 
