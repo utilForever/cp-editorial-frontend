@@ -46,6 +46,7 @@ npm run build
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.
 - Language: switch UI language at runtime (`en`, `ko`, `ja`); the selected language is also saved in local storage.
+- Social previews: Open Graph/Twitter metadata is provided with static defaults and client-side route updates for richer link cards.
 
 ## The way the system works
 
