@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { EditorialRecord } from '../entities/editorial/model/types'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 
 function categoriesWithCount(editorials: EditorialRecord[]) {
   const countMap = new Map<string, number>()
@@ -15,8 +16,14 @@ function categoriesWithCount(editorials: EditorialRecord[]) {
 }
 
 export function CategoriesPage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
+
+  usePageMetadata({
+    title: `${t('categories.heading')} | ${t('appTitle')}`,
+    description: t('footer.description'),
+    locale: i18n.resolvedLanguage,
+  })
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>

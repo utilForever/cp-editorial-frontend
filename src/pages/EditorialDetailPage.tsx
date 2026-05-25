@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
 
 export function EditorialDetailPage() {
@@ -14,6 +15,21 @@ export function EditorialDetailPage() {
     () => data.editorials.find((item) => item.id === editorialId),
     [data.editorials, editorialId],
   )
+
+  const appTitle = t('appTitle')
+  const localizedTitle = editorial
+    ? getLocalizedText(editorial.title, i18n.resolvedLanguage)
+    : appTitle
+  const metadataDescription = editorial
+    ? getLocalizedText(editorial.summary, i18n.resolvedLanguage)
+    : t('editorial.notFound')
+
+  usePageMetadata({
+    title: editorial ? `${localizedTitle} | ${appTitle}` : appTitle,
+    description: metadataDescription,
+    locale: i18n.resolvedLanguage,
+    type: editorial ? 'article' : 'website',
+  })
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
@@ -28,7 +44,6 @@ export function EditorialDetailPage() {
   }
 
   const links = buildEditorialLinks(editorial.path)
-  const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
   const categoryLabel = editorial.categories.length > 0 ? editorial.categories.join(', ') : '-'
 
   return (

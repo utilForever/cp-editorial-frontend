@@ -1,7 +1,14 @@
 import { Trans, useTranslation } from 'react-i18next'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 
 export function CopyrightPage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  usePageMetadata({
+    title: `${t('copyrightPage.heading')} | ${t('appTitle')}`,
+    description: t('copyrightPage.description'),
+    locale: i18n.resolvedLanguage,
+  })
 
   return (
     <section className="page">

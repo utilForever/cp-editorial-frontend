@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
 
 interface ContestResult {
@@ -87,6 +88,12 @@ export function SearchPage() {
   const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
   const [query, setQuery] = useState('')
+
+  usePageMetadata({
+    title: `${t('search.heading')} | ${t('appTitle')}`,
+    description: t('search.description'),
+    locale: i18n.resolvedLanguage,
+  })
 
   const contestResults = useMemo(() => {
     const grouped = groupByContest(data.editorials)

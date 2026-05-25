@@ -1,9 +1,16 @@
 import { Trans, useTranslation } from 'react-i18next'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
+import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 
 export function HomePage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
+
+  usePageMetadata({
+    title: t('appTitle'),
+    description: t('home.description'),
+    locale: i18n.resolvedLanguage,
+  })
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
