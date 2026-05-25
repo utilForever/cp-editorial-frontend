@@ -9,7 +9,11 @@ interface PageMetadata {
 }
 
 const SITE_URL = 'https://editorial.coduck.io'
-const DEFAULT_IMAGE_URL = `${SITE_URL}/images/editorial-home.png`
+const OG_IMAGE_VERSION = '20260525'
+const DEFAULT_IMAGE_URL = `${SITE_URL}/images/editorial-home.png?v=${OG_IMAGE_VERSION}`
+const OG_IMAGE_TYPE = 'image/png'
+const OG_IMAGE_WIDTH = '1200'
+const OG_IMAGE_HEIGHT = '630'
 
 function toAbsoluteUrl(value: string): string {
   return new URL(value, SITE_URL).toString()
@@ -75,6 +79,9 @@ export function usePageMetadata({
     setMetaTag('property', 'og:description', description)
     setMetaTag('property', 'og:url', pageUrl)
     setMetaTag('property', 'og:image', resolvedImageUrl)
+    setMetaTag('property', 'og:image:type', OG_IMAGE_TYPE)
+    setMetaTag('property', 'og:image:width', OG_IMAGE_WIDTH)
+    setMetaTag('property', 'og:image:height', OG_IMAGE_HEIGHT)
     setMetaTag('property', 'og:image:alt', 'Coduck - CP Editorial preview image')
     setMetaTag('property', 'og:locale', ogLocale)
     setMetaTag('name', 'twitter:card', 'summary_large_image')
