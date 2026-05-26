@@ -393,7 +393,7 @@ function appendWrappedWord(word, currentLine, lines, { maxWidth, fontSize }) {
   return {
     currentLine: '',
     consumedWord: remainingWord.length === 0,
-    hasOverflow: remainingWord.length > 0,
+    hasOverflow: false,
     remainingWord,
   }
 }
