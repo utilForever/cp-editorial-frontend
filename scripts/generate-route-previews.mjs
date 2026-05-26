@@ -299,7 +299,7 @@ function wrapText(value, maxChars, maxLines) {
 
   const hasRemainingWords = consumedWords < words.length
   if (hasRemainingWords && lines.length > 0) {
-    const lastLine = lines[lines.length - 1]
+    const lastLine = lines.at(-1)
     lines[lines.length - 1] =
       lastLine.length > maxChars - 3 ? `${lastLine.slice(0, maxChars - 3)}...` : `${lastLine}...`
   }
