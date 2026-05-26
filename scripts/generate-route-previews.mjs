@@ -495,8 +495,10 @@ async function main() {
   )
 }
 
-main().catch((error) => {
+try {
+  await main()
+} catch (error) {
   console.error('[route-previews] Failed to generate route previews.')
   console.error(error)
   process.exitCode = 1
-})
+}
