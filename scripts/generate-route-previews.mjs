@@ -189,7 +189,7 @@ function normalizeEditorialIndex(rawIndex) {
     const editorialPath = assertString(rawRecord.path, 'path')
     const title = normalizeLocalizedContent(rawRecord.title, 'title')
     const summary =
-      rawRecord.summary !== undefined ? normalizeLocalizedContent(rawRecord.summary, 'summary') : {}
+      rawRecord.summary === undefined ? {} : normalizeLocalizedContent(rawRecord.summary, 'summary')
 
     const id =
       typeof rawRecord.id === 'string' && rawRecord.id.trim().length > 0
