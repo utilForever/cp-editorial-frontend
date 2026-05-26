@@ -256,6 +256,21 @@ function upsertRouteMetadata(template, metadata) {
   return html
 }
 
+function appendWrappedWord(lines, currentLine, word, maxChars) {
+  const candidate = currentLine.length === 0 ? word : `${currentLine} ${word}`
+  if (candidate.length <= maxChars) {
+    return candidate
+  }
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine)
+    return word
+  }
+
+  lines.push(word.slice(0, maxChars))
+  return ''
+}
+
 function wrapText(value, maxChars, maxLines) {
   const words = value
     .trim()
@@ -270,22 +285,8 @@ function wrapText(value, maxChars, maxLines) {
   let consumedWords = 0
 
   for (const word of words) {
-    const candidate = currentLine.length === 0 ? word : `${currentLine} ${word}`
-    if (candidate.length <= maxChars) {
-      currentLine = candidate
-      consumedWords += 1
-      continue
-    }
-
-    if (currentLine.length > 0) {
-      lines.push(currentLine)
-      currentLine = word
-      consumedWords += 1
-    } else {
-      lines.push(word.slice(0, maxChars))
-      currentLine = ''
-      consumedWords += 1
-    }
+    currentLine = appendWrappedWord(lines, currentLine, word, maxChars)
+    consumedWords += 1
 
     if (lines.length === maxLines) {
       break
