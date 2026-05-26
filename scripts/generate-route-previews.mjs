@@ -20,7 +20,7 @@ const EDITORIAL_IMAGE_OUTPUT_DIR = path.join(DIST_DIR, 'images', 'editorials')
 const EDITORIAL_INFO_BASE_IMAGE_DIST_PATH = path.join(DIST_DIR, 'images', 'editorial-info-base.png')
 
 function escapeRegExp(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return value.replace(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`)
 }
 
 function escapeHtml(value) {
