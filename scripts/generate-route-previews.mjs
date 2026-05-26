@@ -176,7 +176,7 @@ function normalizeEditorialIndex(rawIndex) {
   }
 
   if (!Array.isArray(rawIndex.editorials)) {
-    throw new Error('Invalid editorial index: "editorials" must be an array.')
+    throw new TypeError('Invalid editorial index: "editorials" must be an array.')
   }
 
   return rawIndex.editorials.map((rawRecord, index) => {
