@@ -430,7 +430,8 @@ function wrapText(value, { maxWidth, maxLines, fontSize }) {
   }
 
   if (hasOverflow && lines.length > 0) {
-    lines[lines.length - 1] = appendEllipsis(lines[lines.length - 1], maxWidth, fontSize)
+    const lastLine = lines.at(-1) ?? ''
+    lines.splice(-1, 1, appendEllipsis(lastLine, maxWidth, fontSize))
   }
 
   return lines
