@@ -374,6 +374,26 @@ function fitTextToWidth(value, maxWidth, fontSize) {
   return appendEllipsis(normalized, maxWidth, fontSize)
 }
 
+function appendWrappedWord(word, currentLine, lines, { maxWidth, fontSize }) {
+  const candidate = currentLine.length === 0 ? word : `${currentLine} ${word}`
+  if (estimateTextWidth(candidate, fontSize) <= maxWidth) {
+    return { currentLine: candidate, consumedWord: true, hasOverflow: false }
+  }
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine)
+    return { currentLine: '', consumedWord: false, hasOverflow: false }
+  }
+
+  const clampedWord = clampTextToWidth(word, maxWidth, fontSize)
+  lines.push(clampedWord.length > 0 ? clampedWord : word[0])
+  return {
+    currentLine: '',
+    consumedWord: true,
+    hasOverflow: clampedWord.length < word.length,
+  }
+}
+
 function wrapText(value, { maxWidth, maxLines, fontSize }) {
   const words = value
     .replace(/\s+/g, ' ')
@@ -390,27 +410,15 @@ function wrapText(value, { maxWidth, maxLines, fontSize }) {
   let hasOverflow = false
 
   while (wordIndex < words.length && lines.length < maxLines) {
-    const word = words[wordIndex]
-    const candidate = currentLine.length === 0 ? word : `${currentLine} ${word}`
-
-    if (estimateTextWidth(candidate, fontSize) <= maxWidth) {
-      currentLine = candidate
+    const result = appendWrappedWord(words[wordIndex], currentLine, lines, {
+      maxWidth,
+      fontSize,
+    })
+    currentLine = result.currentLine
+    if (result.consumedWord) {
       wordIndex += 1
-      continue
     }
-
-    if (currentLine.length === 0) {
-      const clampedWord = clampTextToWidth(word, maxWidth, fontSize)
-      lines.push(clampedWord.length > 0 ? clampedWord : word[0])
-      if (clampedWord.length < word.length) {
-        hasOverflow = true
-      }
-      wordIndex += 1
-      continue
-    }
-
-    lines.push(currentLine)
-    currentLine = ''
+    hasOverflow = hasOverflow || result.hasOverflow
   }
 
   if (currentLine.length > 0 && lines.length < maxLines) {
