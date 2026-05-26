@@ -307,7 +307,7 @@ function estimateCharacterWidth(character, fontSize) {
   if (character === ' ') {
     return fontSize * 0.32
   }
-  if (/[\.,:;'"]/u.test(character)) {
+  if (/[.,:;'"]/u.test(character)) {
     return fontSize * 0.28
   }
   if (/[\-_/\\|]/u.test(character)) {
