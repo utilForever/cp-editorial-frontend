@@ -18,6 +18,29 @@ const TEMPLATE_HTML_PATH = path.join(DIST_DIR, 'index.html')
 const INDEX_DATA_PATH = path.join(DIST_DIR, 'data', 'editorial-index.json')
 const EDITORIAL_IMAGE_OUTPUT_DIR = path.join(DIST_DIR, 'images', 'editorials')
 const EDITORIAL_INFO_BASE_IMAGE_DIST_PATH = path.join(DIST_DIR, 'images', 'editorial-info-base.png')
+const OG_TEXT_FONT_FAMILY = "'Segoe UI', Arial, sans-serif"
+
+const OG_CARD_X = 64
+const OG_CARD_Y = 72
+const OG_CARD_WIDTH = 724
+const OG_CARD_HEIGHT = 500
+const OG_CARD_RADIUS = 28
+const OG_TEXT_X = 88
+const OG_TEXT_SAFE_RIGHT_PADDING = 24
+const OG_TEXT_MAX_WIDTH = OG_CARD_X + OG_CARD_WIDTH - OG_TEXT_X - OG_TEXT_SAFE_RIGHT_PADDING
+
+const OG_BRAND_Y = 112
+const OG_BRAND_FONT_SIZE = 30
+const OG_CONTEST_Y = 198
+const OG_CONTEST_FONT_SIZE = 34
+const OG_CONTEST_LINE_HEIGHT = 42
+const OG_CONTEST_MAX_LINES = 2
+const OG_TITLE_Y = 326
+const OG_TITLE_FONT_SIZE = 50
+const OG_TITLE_LINE_HEIGHT = 58
+const OG_TITLE_MAX_LINES = 4
+const OG_FOOTER_Y = 546
+const OG_FOOTER_FONT_SIZE = 28
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`)
@@ -256,25 +279,95 @@ function upsertRouteMetadata(template, metadata) {
   return html
 }
 
-function appendWrappedWord(lines, currentLine, word, maxChars) {
-  const candidate = currentLine.length === 0 ? word : `${currentLine} ${word}`
-  if (candidate.length <= maxChars) {
-    return candidate
-  }
-
-  if (currentLine.length > 0) {
-    lines.push(currentLine)
-    return word
-  }
-
-  lines.push(word.slice(0, maxChars))
-  return ''
+function isWideCodePoint(codePoint) {
+  return (
+    (codePoint >= 0x1100 && codePoint <= 0x11ff) ||
+    (codePoint >= 0x2e80 && codePoint <= 0xa4cf) ||
+    (codePoint >= 0xac00 && codePoint <= 0xd7a3) ||
+    (codePoint >= 0xf900 && codePoint <= 0xfaff) ||
+    (codePoint >= 0xfe10 && codePoint <= 0xfe6f) ||
+    (codePoint >= 0xff01 && codePoint <= 0xff60) ||
+    (codePoint >= 0xffe0 && codePoint <= 0xffe6) ||
+    (codePoint >= 0x1f300 && codePoint <= 0x1faff)
+  )
 }
 
-function wrapText(value, maxChars, maxLines) {
+function estimateCharacterWidth(character, fontSize) {
+  if (character === ' ') {
+    return fontSize * 0.32
+  }
+  if (/[\.,:;'"]/u.test(character)) {
+    return fontSize * 0.28
+  }
+  if (/[\-_/\\|]/u.test(character)) {
+    return fontSize * 0.35
+  }
+  if (/[ilIjt]/u.test(character)) {
+    return fontSize * 0.33
+  }
+  if (/[A-Z]/u.test(character)) {
+    return fontSize * 0.66
+  }
+  if (/[a-z]/u.test(character)) {
+    return fontSize * 0.56
+  }
+  if (/[0-9]/u.test(character)) {
+    return fontSize * 0.58
+  }
+
+  const codePoint = character.codePointAt(0) ?? 0
+  if (isWideCodePoint(codePoint)) {
+    return fontSize * 0.98
+  }
+
+  return fontSize * 0.62
+}
+
+function estimateTextWidth(value, fontSize) {
+  let width = 0
+  for (const character of value) {
+    width += estimateCharacterWidth(character, fontSize)
+  }
+
+  return width
+}
+
+function clampTextToWidth(value, maxWidth, fontSize) {
+  let clamped = value.trimEnd()
+  while (clamped.length > 0 && estimateTextWidth(clamped, fontSize) > maxWidth) {
+    clamped = clamped.slice(0, -1).trimEnd()
+  }
+
+  return clamped
+}
+
+function appendEllipsis(line, maxWidth, fontSize) {
+  const ellipsis = '...'
+  let base = line.trimEnd()
+  while (base.length > 0 && estimateTextWidth(`${base}${ellipsis}`, fontSize) > maxWidth) {
+    base = base.slice(0, -1).trimEnd()
+  }
+
+  return base.length > 0 ? `${base}${ellipsis}` : ellipsis
+}
+
+function fitTextToWidth(value, maxWidth, fontSize) {
+  const normalized = value.replace(/\s+/g, ' ').trim()
+  if (normalized.length === 0) {
+    return ''
+  }
+  if (estimateTextWidth(normalized, fontSize) <= maxWidth) {
+    return normalized
+  }
+
+  return appendEllipsis(normalized, maxWidth, fontSize)
+}
+
+function wrapText(value, { maxWidth, maxLines, fontSize }) {
   const words = value
+    .replace(/\s+/g, ' ')
     .trim()
-    .split(/\s+/)
+    .split(' ')
     .filter((word) => word.length > 0)
   if (words.length === 0) {
     return []
@@ -282,46 +375,75 @@ function wrapText(value, maxChars, maxLines) {
 
   const lines = []
   let currentLine = ''
-  let consumedWords = 0
+  let wordIndex = 0
+  let hasOverflow = false
 
-  for (const word of words) {
-    currentLine = appendWrappedWord(lines, currentLine, word, maxChars)
-    consumedWords += 1
+  while (wordIndex < words.length && lines.length < maxLines) {
+    const word = words[wordIndex]
+    const candidate = currentLine.length === 0 ? word : `${currentLine} ${word}`
 
-    if (lines.length === maxLines) {
-      break
+    if (estimateTextWidth(candidate, fontSize) <= maxWidth) {
+      currentLine = candidate
+      wordIndex += 1
+      continue
     }
+
+    if (currentLine.length === 0) {
+      const clampedWord = clampTextToWidth(word, maxWidth, fontSize)
+      lines.push(clampedWord.length > 0 ? clampedWord : word[0])
+      if (clampedWord.length < word.length) {
+        hasOverflow = true
+      }
+      wordIndex += 1
+      continue
+    }
+
+    lines.push(currentLine)
+    currentLine = ''
   }
 
-  if (lines.length < maxLines && currentLine.length > 0) {
+  if (currentLine.length > 0 && lines.length < maxLines) {
     lines.push(currentLine)
   }
 
-  const hasRemainingWords = consumedWords < words.length
-  if (hasRemainingWords && lines.length > 0) {
-    const lastLine = lines.at(-1)
-    lines[lines.length - 1] =
-      lastLine.length > maxChars - 3 ? `${lastLine.slice(0, maxChars - 3)}...` : `${lastLine}...`
+  if (wordIndex < words.length) {
+    hasOverflow = true
   }
 
-  return lines.slice(0, maxLines)
+  if (hasOverflow && lines.length > 0) {
+    lines[lines.length - 1] = appendEllipsis(lines[lines.length - 1], maxWidth, fontSize)
+  }
+
+  return lines
 }
 
 function buildEditorialImageSvg(editorial, title, description, backgroundImageDataUri) {
-  const contestLines = wrapText(editorial.contest, 46, 2)
-  const titleLines = wrapText(title, 38, 3)
-  const footerLine = toMetaDescription(description, `${editorial.contest} editorial`)
+  const contestLines = wrapText(editorial.contest, {
+    maxWidth: OG_TEXT_MAX_WIDTH,
+    maxLines: OG_CONTEST_MAX_LINES,
+    fontSize: OG_CONTEST_FONT_SIZE,
+  })
+  const titleLines = wrapText(title, {
+    maxWidth: OG_TEXT_MAX_WIDTH,
+    maxLines: OG_TITLE_MAX_LINES,
+    fontSize: OG_TITLE_FONT_SIZE,
+  })
+  const footerLine = fitTextToWidth(
+    toMetaDescription(description, `${editorial.contest} editorial`),
+    OG_TEXT_MAX_WIDTH,
+    OG_FOOTER_FONT_SIZE,
+  )
 
   const contestText = contestLines
     .map(
       (line, index) =>
-        `<text x="88" y="${198 + index * 42}" fill="#7a5528" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">${escapeXml(line)}</text>`,
+        `<text x="${OG_TEXT_X}" y="${OG_CONTEST_Y + index * OG_CONTEST_LINE_HEIGHT}" fill="#7a5528" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_CONTEST_FONT_SIZE}" font-weight="700">${escapeXml(line)}</text>`,
     )
     .join('\n')
   const titleText = titleLines
     .map(
       (line, index) =>
-        `<text x="88" y="${344 + index * 64}" fill="#3b2712" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">${escapeXml(line)}</text>`,
+        `<text x="${OG_TEXT_X}" y="${OG_TITLE_Y + index * OG_TITLE_LINE_HEIGHT}" fill="#3b2712" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_TITLE_FONT_SIZE}" font-weight="700">${escapeXml(line)}</text>`,
     )
     .join('\n')
 
@@ -336,11 +458,11 @@ function buildEditorialImageSvg(editorial, title, description, backgroundImageDa
   </defs>
   <image href="${backgroundImageDataUri}" x="0" y="0" width="1200" height="630" preserveAspectRatio="xMidYMid slice" />
   <rect width="1200" height="630" fill="url(#overlay)" />
-  <rect x="64" y="72" width="724" height="500" rx="28" fill="#ffffff" fill-opacity="0.50" />
-  <text x="88" y="112" fill="#9a6a2f" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">Coduck · CP Editorial</text>
+  <rect x="${OG_CARD_X}" y="${OG_CARD_Y}" width="${OG_CARD_WIDTH}" height="${OG_CARD_HEIGHT}" rx="${OG_CARD_RADIUS}" fill="#ffffff" fill-opacity="0.50" />
+  <text x="${OG_TEXT_X}" y="${OG_BRAND_Y}" fill="#9a6a2f" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_BRAND_FONT_SIZE}" font-weight="700">Coduck · CP Editorial</text>
   ${contestText}
   ${titleText}
-  <text x="88" y="546" fill="#6f4d26" font-family="Segoe UI, Arial, sans-serif" font-size="28">${escapeXml(footerLine)}</text>
+  <text x="${OG_TEXT_X}" y="${OG_FOOTER_Y}" fill="#6f4d26" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_FOOTER_FONT_SIZE}">${escapeXml(footerLine)}</text>
 </svg>`.trim()
 }
 
