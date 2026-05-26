@@ -129,14 +129,16 @@ Normalization rejects invalid index data (missing required fields or empty local
 
 ## 5. Routing model
 
-| Route                      | Purpose                                                              |
-| -------------------------- | -------------------------------------------------------------------- |
-| `/`                        | Home summary, index stats, and “What is CP Editorial?” article       |
-| `/search`                  | Keyword search grouped by category + contest, then editorial entries |
-| `/categories`              | Category listing                                                     |
-| `/categories/*`            | Hierarchical browse pages for each directory level                   |
-| `/editorials/:editorialId` | Editorial detail page                                                |
-| `/contribute`              | Upload/contribution guide for `cp-editorial-data`                    |
+| Route                           | Purpose                                                              |
+| ------------------------------- | -------------------------------------------------------------------- |
+| `/`                             | Home summary, index stats, and “What is CP Editorial?” article       |
+| `/search`                       | Keyword search grouped by category + contest, then editorial entries |
+| `/categories`                   | Category listing                                                     |
+| `/categories/*`                 | Hierarchical browse pages for each directory level                   |
+| `/editorials/:editorialId`      | Editorial detail page                                                |
+| `/editorials/:editorialId/view` | Inline PDF viewer for editorial content                              |
+| `/contribute`                   | Upload/contribution guide for `cp-editorial-data`                    |
+| `/copyright`                    | Ownership, attribution, and usage guidance                           |
 
 Category browsing is path-hierarchy driven, so nested folders like
 `ICPC/Regionals/Asia Pacific/Asia Pacific Championship` are navigable at each level.
@@ -158,8 +160,10 @@ Category browsing is path-hierarchy driven, so nested folders like
 - Theme supports `light` and `dark`.
 - Active theme is selected in the header and persisted in browser local storage.
 - Theme is applied at the document root via `data-theme`, so all routed pages share one consistent palette.
-- Open Graph/Twitter metadata has static defaults in `index.html` and `public/404.html`, then route-level values are updated client-side in the SPA.
-- Due to static hosting constraints, non-JS crawlers may still consume the default metadata rather than route-specific values.
+- Open Graph/Twitter metadata still has static defaults in `index.html` and `public/404.html`.
+- Build now generates route HTML pages with crawlable metadata for `/search`, `/categories` + hierarchy sub-routes, `/contribute`, `/copyright`, and `/editorials/:editorialId`.
+- `search/categories/contribute/copyright` share one preview image; editorial detail routes use generated per-editorial preview PNG images.
+- `public/404.html` remains the fallback path-restoration mechanism for unknown/non-generated routes.
 
 ## 8. Upload guidance flow
 

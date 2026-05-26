@@ -46,7 +46,8 @@ npm run build
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.
 - Language: switch UI language at runtime (`en`, `ko`, `ja`); the selected language is also saved in local storage.
-- Social previews: Open Graph/Twitter metadata is provided with static defaults and client-side route updates for richer link cards.
+- Social previews: Build output now includes route-specific Open Graph/Twitter HTML pages for `/search`, `/categories` (including hierarchy sub-routes), `/contribute`, `/copyright`, and `/editorials/:editorialId`.
+- Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a generated per-editorial preview image.
 
 ## The way the system works
 

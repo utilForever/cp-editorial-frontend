@@ -4,16 +4,24 @@ interface PageMetadata {
   title: string
   description: string
   imageUrl?: string
+  imageAlt?: string
   locale?: string
   type?: 'website' | 'article'
 }
 
+const DEFAULT_OG_IMAGE_VERSION = '20260525'
+const EDITORIAL_OG_IMAGE_VERSION = '20260526'
+
 const SITE_URL = 'https://editorial.coduck.io'
-const OG_IMAGE_VERSION = '20260525'
-const DEFAULT_IMAGE_URL = `${SITE_URL}/images/editorial-home.png?v=${OG_IMAGE_VERSION}`
+const DEFAULT_IMAGE_URL = `${SITE_URL}/images/editorial-home.png?v=${DEFAULT_OG_IMAGE_VERSION}`
 const OG_IMAGE_TYPE = 'image/png'
 const OG_IMAGE_WIDTH = '1200'
 const OG_IMAGE_HEIGHT = '630'
+const DEFAULT_OG_IMAGE_ALT = 'Coduck - CP Editorial preview image'
+
+export function buildEditorialPreviewImagePath(editorialId: string): string {
+  return `/images/editorials/${encodeURIComponent(editorialId)}.png?v=${EDITORIAL_OG_IMAGE_VERSION}`
+}
 
 function toAbsoluteUrl(value: string): string {
   return new URL(value, SITE_URL).toString()
@@ -62,6 +70,7 @@ export function usePageMetadata({
   title,
   description,
   imageUrl = DEFAULT_IMAGE_URL,
+  imageAlt = DEFAULT_OG_IMAGE_ALT,
   locale,
   type = 'website',
 }: PageMetadata) {
@@ -82,11 +91,11 @@ export function usePageMetadata({
     setMetaTag('property', 'og:image:type', OG_IMAGE_TYPE)
     setMetaTag('property', 'og:image:width', OG_IMAGE_WIDTH)
     setMetaTag('property', 'og:image:height', OG_IMAGE_HEIGHT)
-    setMetaTag('property', 'og:image:alt', 'Coduck - CP Editorial preview image')
+    setMetaTag('property', 'og:image:alt', imageAlt)
     setMetaTag('property', 'og:locale', ogLocale)
     setMetaTag('name', 'twitter:card', 'summary_large_image')
     setMetaTag('name', 'twitter:title', title)
     setMetaTag('name', 'twitter:description', description)
     setMetaTag('name', 'twitter:image', resolvedImageUrl)
-  }, [description, imageUrl, locale, title, type])
+  }, [description, imageAlt, imageUrl, locale, title, type])
 }
