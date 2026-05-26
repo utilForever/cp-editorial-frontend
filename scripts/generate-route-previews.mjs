@@ -377,20 +377,24 @@ function fitTextToWidth(value, maxWidth, fontSize) {
 function appendWrappedWord(word, currentLine, lines, { maxWidth, fontSize }) {
   const candidate = currentLine.length === 0 ? word : `${currentLine} ${word}`
   if (estimateTextWidth(candidate, fontSize) <= maxWidth) {
-    return { currentLine: candidate, consumedWord: true, hasOverflow: false }
+    return { currentLine: candidate, consumedWord: true, hasOverflow: false, remainingWord: '' }
   }
 
   if (currentLine.length > 0) {
     lines.push(currentLine)
-    return { currentLine: '', consumedWord: false, hasOverflow: false }
+    return { currentLine: '', consumedWord: false, hasOverflow: false, remainingWord: word }
   }
 
   const clampedWord = clampTextToWidth(word, maxWidth, fontSize)
-  lines.push(clampedWord.length > 0 ? clampedWord : word[0])
+  const lineChunk = clampedWord.length > 0 ? clampedWord : word[0]
+  lines.push(lineChunk)
+  const remainingWord = word.slice(lineChunk.length)
+
   return {
     currentLine: '',
-    consumedWord: true,
-    hasOverflow: clampedWord.length < word.length,
+    consumedWord: remainingWord.length === 0,
+    hasOverflow: remainingWord.length > 0,
+    remainingWord,
   }
 }
 
@@ -415,6 +419,9 @@ function wrapText(value, { maxWidth, maxLines, fontSize }) {
       fontSize,
     })
     currentLine = result.currentLine
+    if (!result.consumedWord && result.remainingWord.length > 0) {
+      words[wordIndex] = result.remainingWord
+    }
     if (result.consumedWord) {
       wordIndex += 1
     }
