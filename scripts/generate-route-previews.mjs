@@ -322,7 +322,7 @@ function estimateCharacterWidth(character, fontSize) {
   if (/[a-z]/u.test(character)) {
     return fontSize * 0.56
   }
-  if (/[0-9]/u.test(character)) {
+  if (/\d/u.test(character)) {
     return fontSize * 0.58
   }
 
