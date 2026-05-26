@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
-import { usePageMetadata } from '../shared/hooks/usePageMetadata'
+import { buildEditorialPreviewImagePath, usePageMetadata } from '../shared/hooks/usePageMetadata'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
 
 export function EditorialDetailPage() {
@@ -23,10 +23,13 @@ export function EditorialDetailPage() {
   const metadataDescription = editorial
     ? getLocalizedText(editorial.summary, i18n.resolvedLanguage)
     : t('editorial.notFound')
+  const editorialImageUrl = editorial ? buildEditorialPreviewImagePath(editorial.id) : undefined
 
   usePageMetadata({
     title: editorial ? `${localizedTitle} | ${appTitle}` : appTitle,
     description: metadataDescription,
+    imageUrl: editorialImageUrl,
+    imageAlt: editorial ? `${localizedTitle} preview image` : undefined,
     locale: i18n.resolvedLanguage,
     type: editorial ? 'article' : 'website',
   })
