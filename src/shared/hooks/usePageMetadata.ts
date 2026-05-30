@@ -10,7 +10,7 @@ interface PageMetadata {
 }
 
 const DEFAULT_OG_IMAGE_VERSION = '20260525'
-const EDITORIAL_OG_IMAGE_VERSION = '20260526'
+const EDITORIAL_OG_IMAGE_VERSION = '20260530'
 
 const SITE_URL = 'https://editorial.coduck.io'
 const DEFAULT_IMAGE_URL = `${SITE_URL}/images/editorial-home.png?v=${DEFAULT_OG_IMAGE_VERSION}`

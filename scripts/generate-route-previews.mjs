@@ -7,7 +7,7 @@ const SITE_URL = 'https://editorial.coduck.io'
 const APP_TITLE = 'Coduck - CP Editorial'
 const DEFAULT_DESCRIPTION = 'A curated archive for competitive-programming contest editorials.'
 const SHARED_IMAGE_URL = `${SITE_URL}/images/editorial-home.png?v=20260525`
-const EDITORIAL_IMAGE_VERSION = '20260526'
+const EDITORIAL_IMAGE_VERSION = '20260530'
 const OG_IMAGE_WIDTH = 1200
 const OG_IMAGE_HEIGHT = 630
 
@@ -19,10 +19,10 @@ const INDEX_DATA_PATH = path.join(DIST_DIR, 'data', 'editorial-index.json')
 const EDITORIAL_IMAGE_OUTPUT_DIR = path.join(DIST_DIR, 'images', 'editorials')
 const EDITORIAL_INFO_BASE_IMAGE_DIST_PATH = path.join(DIST_DIR, 'images', 'editorial-info-base.png')
 const OG_FONT_DIRECTORY = path.join(PROJECT_ROOT, 'scripts', 'assets', 'fonts')
-const OG_PRETENDARD_REGULAR_FONT_PATH = path.join(OG_FONT_DIRECTORY, 'PretendardStd-Regular.otf')
-const OG_PRETENDARD_BOLD_FONT_PATH = path.join(OG_FONT_DIRECTORY, 'PretendardStd-Bold.otf')
-const OG_DEFAULT_FONT_FAMILY = 'Pretendard Std'
-const OG_TEXT_FONT_FAMILY = "'Pretendard Std', 'Pretendard'"
+const OG_PRETENDARD_REGULAR_FONT_PATH = path.join(OG_FONT_DIRECTORY, 'Pretendard-Regular.otf')
+const OG_PRETENDARD_BOLD_FONT_PATH = path.join(OG_FONT_DIRECTORY, 'Pretendard-Bold.otf')
+const OG_DEFAULT_FONT_FAMILY = 'Pretendard'
+const OG_TEXT_FONT_FAMILY = "'Pretendard'"
 const OG_RESVG_OPTIONS = {
   font: {
     fontFiles: [OG_PRETENDARD_REGULAR_FONT_PATH, OG_PRETENDARD_BOLD_FONT_PATH],
