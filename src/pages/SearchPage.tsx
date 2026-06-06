@@ -110,19 +110,21 @@ export function SearchPage() {
 
   return (
     <section className="page">
-      <h1>{t('search.heading')}</h1>
-      <p className="page__description">{t('search.description')}</p>
-      <div className="toolbar">
-        <label className="muted" htmlFor="search-input">
-          {t('search.label')}
-        </label>
-        <input
-          className="input"
-          id="search-input"
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder={t('search.placeholder')}
-          value={query}
-        />
+      <div className="page__header">
+        <h1>{t('search.heading')}</h1>
+        <p className="page__description">{t('search.description')}</p>
+        <div className="toolbar">
+          <label className="muted" htmlFor="search-input">
+            {t('search.label')}
+          </label>
+          <input
+            className="input"
+            id="search-input"
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={t('search.placeholder')}
+            value={query}
+          />
+        </div>
       </div>
       <p className="muted">{t('search.contestCount', { count: contestResults.length })}</p>
 
