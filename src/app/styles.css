@@ -698,6 +698,23 @@ a {
   height: 1rem;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .action-link,
+  .theme-toggle {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .action-link:hover,
+  .theme-toggle:hover {
+    filter: none;
+  }
+}
+
 .layout__link:focus-visible,
 .layout__brand:focus-visible,
 .layout__footer-link:focus-visible,
