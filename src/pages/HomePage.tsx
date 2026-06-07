@@ -23,30 +23,35 @@ export function HomePage() {
   const contestCount = new Set(data.editorials.map((editorial) => editorial.contest)).size
 
   return (
-    <section className="page">
-      <h1>{t('home.heading')}</h1>
-      <p className="page__description">{t('home.description')}</p>
-      <div className="home-hero-icon-wrap">
-        <img
-          alt={t('appTitle')}
-          className="home-icon"
-          decoding="async"
-          src="/home-icon.png?v=8eac82ad"
-        />
-      </div>
+    <section className="page home-page">
+      <div className="home-dashboard">
+        <div className="home-dashboard__intro">
+          <h1>{t('home.heading')}</h1>
+          <p className="page__description">{t('home.description')}</p>
+        </div>
 
-      <div className="stats-grid">
-        <div className="stat-card">
-          <p className="stat-card__label">{t('home.stats.editorials')}</p>
-          <p className="stat-card__value">{data.editorials.length}</p>
+        <div className="home-hero-icon-wrap">
+          <img
+            alt={t('appTitle')}
+            className="home-icon"
+            decoding="async"
+            src="/home-icon.png?v=8eac82ad"
+          />
         </div>
-        <div className="stat-card">
-          <p className="stat-card__label">{t('home.stats.contests')}</p>
-          <p className="stat-card__value">{contestCount}</p>
-        </div>
-        <div className="stat-card">
-          <p className="stat-card__label">{t('home.stats.indexVersion')}</p>
-          <p className="stat-card__value">{data.version}</p>
+
+        <div className="stats-grid home-dashboard__stats">
+          <div className="stat-card">
+            <p className="stat-card__label">{t('home.stats.editorials')}</p>
+            <p className="stat-card__value">{data.editorials.length}</p>
+          </div>
+          <div className="stat-card">
+            <p className="stat-card__label">{t('home.stats.contests')}</p>
+            <p className="stat-card__value">{contestCount}</p>
+          </div>
+          <div className="stat-card">
+            <p className="stat-card__label">{t('home.stats.indexVersion')}</p>
+            <p className="stat-card__value">{data.version}</p>
+          </div>
         </div>
       </div>
 
