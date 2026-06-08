@@ -1,16 +1,27 @@
+import { type FormEvent, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
 import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 
 export function HomePage() {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
   const { data, isLoading, error } = useEditorialIndex()
+  const [query, setQuery] = useState('')
 
   usePageMetadata({
     title: t('appTitle'),
     description: t('home.description'),
     locale: i18n.resolvedLanguage,
   })
+
+  function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const normalizedQuery = query.trim()
+    void navigate(normalizedQuery ? `/search?q=${encodeURIComponent(normalizedQuery)}` : '/search')
+  }
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
@@ -28,6 +39,29 @@ export function HomePage() {
         <div className="home-dashboard__intro">
           <h1>{t('home.heading')}</h1>
           <p className="page__description">{t('home.description')}</p>
+
+          <div className="home-entry">
+            <form className="home-entry__search" onSubmit={handleSearchSubmit}>
+              <label className="home-entry__label" htmlFor="home-search-input">
+                {t('home.entry.label')}
+              </label>
+              <div className="home-entry__controls">
+                <input
+                  className="input home-entry__input"
+                  id="home-search-input"
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={t('home.entry.placeholder')}
+                  value={query}
+                />
+                <button className="home-entry__button" type="submit">
+                  {t('home.entry.submit')}
+                </button>
+              </div>
+            </form>
+            <Link className="home-entry__link" to="/categories">
+              {t('home.entry.browseCategories')}
+            </Link>
+          </div>
         </div>
 
         <div className="home-hero-icon-wrap">
