@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { type ReactNode, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
@@ -13,6 +13,15 @@ interface ContestResult {
   editorials: EditorialRecord[]
 }
 
+interface CategorySummary {
+  category: string
+  contestCount: number
+  editorialCount: number
+}
+
+/**
+ * Checks every searchable editorial field, including localized text, against a normalized query.
+ */
 function matchesEditorialKeywords(
   editorial: EditorialRecord,
   query: string,
@@ -32,6 +41,9 @@ function matchesEditorialKeywords(
   return text.includes(query.toLowerCase())
 }
 
+/**
+ * Groups editorials by their top-level category and contest for stable search result sections.
+ */
 function groupByContest(editorials: EditorialRecord[]): ContestResult[] {
   const groups = new Map<string, ContestResult>()
 
@@ -64,6 +76,35 @@ function groupByContest(editorials: EditorialRecord[]): ContestResult[] {
     }))
 }
 
+/**
+ * Builds the category totals shown before a user enters a search query.
+ */
+function summarizeByCategory(contestResults: ContestResult[]): CategorySummary[] {
+  const summaries = new Map<string, CategorySummary>()
+
+  contestResults.forEach((result) => {
+    const currentSummary = summaries.get(result.category)
+    if (!currentSummary) {
+      summaries.set(result.category, {
+        category: result.category,
+        contestCount: 1,
+        editorialCount: result.editorials.length,
+      })
+      return
+    }
+
+    currentSummary.contestCount += 1
+    currentSummary.editorialCount += result.editorials.length
+  })
+
+  return Array.from(summaries.values()).sort((left, right) =>
+    left.category.localeCompare(right.category),
+  )
+}
+
+/**
+ * Returns matching contest groups while leaving empty-query display to the summary state.
+ */
 function filterContestResults(
   contestResults: ContestResult[],
   query: string,
@@ -71,7 +112,7 @@ function filterContestResults(
 ): ContestResult[] {
   const normalizedQuery = query.trim().toLowerCase()
   if (normalizedQuery.length === 0) {
-    return contestResults
+    return []
   }
 
   return contestResults
@@ -84,12 +125,17 @@ function filterContestResults(
     .filter((result) => result.editorials.length > 0)
 }
 
+/**
+ * Route-level search experience with separate empty-query summaries and keyword results.
+ */
 export function SearchPage() {
   const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
   const [searchParams] = useSearchParams()
   const urlQuery = searchParams.get('q') ?? ''
   const [query, setQuery] = useState(urlQuery)
+  const normalizedQuery = query.trim()
+  const isEmptySearch = normalizedQuery.length === 0
 
   usePageMetadata({
     title: `${t('search.heading')} | ${t('appTitle')}`,
@@ -97,10 +143,17 @@ export function SearchPage() {
     locale: i18n.resolvedLanguage,
   })
 
-  const contestResults = useMemo(() => {
-    const grouped = groupByContest(data.editorials)
-    return filterContestResults(grouped, query, i18n.resolvedLanguage)
-  }, [data.editorials, i18n.resolvedLanguage, query])
+  const allContestResults = useMemo(() => groupByContest(data.editorials), [data.editorials])
+
+  const contestResults = useMemo(
+    () => filterContestResults(allContestResults, query, i18n.resolvedLanguage),
+    [allContestResults, i18n.resolvedLanguage, query],
+  )
+
+  const categorySummaries = useMemo(
+    () => summarizeByCategory(allContestResults),
+    [allContestResults],
+  )
 
   useEffect(() => {
     setQuery(urlQuery)
@@ -114,29 +167,58 @@ export function SearchPage() {
     return <p className="error">{error.message}</p>
   }
 
-  return (
-    <section className="page">
-      <div className="page__header">
-        <h1>{t('search.heading')}</h1>
-        <p className="page__description">{t('search.description')}</p>
-        <div className="toolbar">
-          <label className="muted" htmlFor="search-input">
-            {t('search.label')}
-          </label>
-          <input
-            className="input"
-            id="search-input"
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={t('search.placeholder')}
-            value={query}
-          />
+  let resultsContent: ReactNode
+  if (isEmptySearch) {
+    resultsContent = (
+      <div className="search-start">
+        <div className="stats-grid">
+          <div className="stat-card">
+            <p className="stat-card__label">{t('search.start.categories')}</p>
+            <p className="stat-card__value">{categorySummaries.length}</p>
+          </div>
+          <div className="stat-card">
+            <p className="stat-card__label">{t('search.start.competitions')}</p>
+            <p className="stat-card__value">{allContestResults.length}</p>
+          </div>
+          <div className="stat-card">
+            <p className="stat-card__label">{t('search.start.editorials')}</p>
+            <p className="stat-card__value">{data.editorials.length}</p>
+          </div>
+        </div>
+
+        <div className="search-start__body">
+          <div>
+            <h2 className="search-start__heading">{t('search.start.heading')}</h2>
+            <p className="muted">{t('search.start.description')}</p>
+          </div>
+
+          <ul className="search-summary-list">
+            {categorySummaries.map((summary) => (
+              <li className="search-summary" key={summary.category}>
+                <Link
+                  className="search-summary__title"
+                  to={`/categories/${encodeURIComponent(summary.category)}`}
+                >
+                  {summary.category}
+                </Link>
+                <p className="card__meta">
+                  {`${t('search.start.competitionCount', {
+                    count: summary.contestCount,
+                  })} · ${t('search.editorialCount', { count: summary.editorialCount })}`}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <p className="muted">{t('search.contestCount', { count: contestResults.length })}</p>
+    )
+  } else if (contestResults.length === 0) {
+    resultsContent = <p className="muted">{t('search.empty')}</p>
+  } else {
+    resultsContent = (
+      <>
+        <p className="muted">{t('search.contestCount', { count: contestResults.length })}</p>
 
-      {contestResults.length === 0 ? (
-        <p className="muted">{t('search.empty')}</p>
-      ) : (
         <ul className="card-list">
           {contestResults.map((result) => (
             <li className="card" key={`${result.category}::${result.contest}`}>
@@ -191,7 +273,29 @@ export function SearchPage() {
             </li>
           ))}
         </ul>
-      )}
+      </>
+    )
+  }
+
+  return (
+    <section className="page">
+      <div className="page__header">
+        <h1>{t('search.heading')}</h1>
+        <p className="page__description">{t('search.description')}</p>
+        <div className="toolbar">
+          <label className="muted" htmlFor="search-input">
+            {t('search.label')}
+          </label>
+          <input
+            className="input"
+            id="search-input"
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={t('search.placeholder')}
+            value={query}
+          />
+        </div>
+      </div>
+      {resultsContent}
     </section>
   )
 }

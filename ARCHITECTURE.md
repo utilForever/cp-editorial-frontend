@@ -129,16 +129,16 @@ Normalization rejects invalid index data (missing required fields or empty local
 
 ## 5. Routing model
 
-| Route                           | Purpose                                                              |
-| ------------------------------- | -------------------------------------------------------------------- |
-| `/`                             | Home summary, index stats, and “What is CP Editorial?” article       |
-| `/search`                       | Keyword search grouped by category + contest, then editorial entries |
-| `/categories`                   | Category listing                                                     |
-| `/categories/*`                 | Hierarchical browse pages for each directory level                   |
-| `/editorials/:editorialId`      | Editorial detail page                                                |
-| `/editorials/:editorialId/view` | Inline PDF viewer for editorial content                              |
-| `/contribute`                   | Upload/contribution guide for `cp-editorial-data`                    |
-| `/copyright`                    | Ownership, attribution, and usage guidance                           |
+| Route                           | Purpose                                                         |
+| ------------------------------- | --------------------------------------------------------------- |
+| `/`                             | Home summary, index stats, and “What is CP Editorial?” article  |
+| `/search`                       | Empty-search summaries, then keyword results grouped by contest |
+| `/categories`                   | Category listing                                                |
+| `/categories/*`                 | Hierarchical browse pages for each directory level              |
+| `/editorials/:editorialId`      | Editorial detail page                                           |
+| `/editorials/:editorialId/view` | Inline PDF viewer for editorial content                         |
+| `/contribute`                   | Upload/contribution guide for `cp-editorial-data`               |
+| `/copyright`                    | Ownership, attribution, and usage guidance                      |
 
 Category browsing is path-hierarchy driven, so nested folders like
 `ICPC/Regionals/Asia Pacific/Asia Pacific Championship` are navigable at each level.
