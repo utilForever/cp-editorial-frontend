@@ -569,6 +569,14 @@ a {
   align-items: flex-start;
 }
 
+.category-card__top .card__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .category-card__count {
   flex: 0 0 auto;
   margin: 0;
