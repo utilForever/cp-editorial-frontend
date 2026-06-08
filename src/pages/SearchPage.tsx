@@ -257,8 +257,13 @@ export function SearchPage() {
   const { data, isLoading, error } = useEditorialIndex()
   const [searchParams] = useSearchParams()
   const urlQuery = searchParams.get('q') ?? ''
+  const urlCategoryParam = searchParams.get('category')?.trim()
+  const urlCategory =
+    urlCategoryParam !== undefined && urlCategoryParam.length > 0
+      ? urlCategoryParam
+      : ALL_FILTER_VALUE
   const [query, setQuery] = useState(urlQuery)
-  const [selectedCategory, setSelectedCategory] = useState(ALL_FILTER_VALUE)
+  const [selectedCategory, setSelectedCategory] = useState(urlCategory)
   const [selectedYear, setSelectedYear] = useState(ALL_FILTER_VALUE)
   const normalizedQuery = query.trim()
   const hasActiveFilters =
@@ -313,6 +318,10 @@ export function SearchPage() {
   useEffect(() => {
     setQuery(urlQuery)
   }, [urlQuery])
+
+  useEffect(() => {
+    setSelectedCategory(urlCategory)
+  }, [urlCategory])
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
