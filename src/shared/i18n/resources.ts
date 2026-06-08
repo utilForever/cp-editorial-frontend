@@ -11,6 +11,7 @@ export const resources = {
         categories: 'Categories',
         contribute: 'Upload Guide',
         copyright: 'Copyright',
+        menu: 'Menu',
       },
       footer: {
         description: 'A curated archive for competitive-programming contest editorials.',
@@ -206,6 +207,7 @@ export const resources = {
         categories: '카테고리',
         contribute: '업로드 가이드',
         copyright: '저작권',
+        menu: '메뉴',
       },
       footer: {
         description: '경쟁 프로그래밍 대회 에디토리얼을 모아 둔 아카이브입니다.',
@@ -396,6 +398,7 @@ export const resources = {
         categories: 'カテゴリ',
         contribute: 'アップロードガイド',
         copyright: '著作権',
+        menu: 'メニュー',
       },
       footer: {
         description: '競技プログラミング大会のエディトリアルを集約したアーカイブです。',

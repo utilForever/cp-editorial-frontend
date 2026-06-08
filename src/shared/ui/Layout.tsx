@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useThemePreference } from '../hooks/useThemePreference'
@@ -8,10 +9,47 @@ function navLinkClassName({ isActive }: { isActive: boolean }) {
   return `layout__link${isActive ? ' layout__link--active' : ''}`
 }
 
+function MenuIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="layout__menu-icon"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  )
+}
+
 export function Layout() {
   const { t } = useTranslation()
   const { theme, setTheme } = useThemePreference()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const year = new Date().getFullYear()
+  const mobileMenuId = 'mobile-navigation-menu'
+
+  function renderSecondaryLinks(onNavigate?: () => void) {
+    return (
+      <>
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/" end>
+          {t('nav.home')}
+        </NavLink>
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/categories">
+          {t('nav.categories')}
+        </NavLink>
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/contribute">
+          {t('nav.contribute')}
+        </NavLink>
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/copyright">
+          {t('nav.copyright')}
+        </NavLink>
+      </>
+    )
+  }
 
   return (
     <div className="layout">
@@ -21,23 +59,40 @@ export function Layout() {
             {t('appTitle')}
           </Link>
           <nav className="layout__nav">
-            <NavLink className={navLinkClassName} to="/" end>
-              {t('nav.home')}
-            </NavLink>
-            <NavLink className={navLinkClassName} to="/search">
+            <NavLink
+              className={({ isActive }) =>
+                `${navLinkClassName({ isActive })} layout__link--primary`
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+              to="/search"
+            >
               {t('nav.search')}
             </NavLink>
-            <NavLink className={navLinkClassName} to="/categories">
-              {t('nav.categories')}
-            </NavLink>
-            <NavLink className={navLinkClassName} to="/contribute">
-              {t('nav.contribute')}
-            </NavLink>
-            <NavLink className={navLinkClassName} to="/copyright">
-              {t('nav.copyright')}
-            </NavLink>
-            <ThemeSelector onThemeChange={setTheme} theme={theme} />
-            <LanguageSelector />
+            <div className="layout__nav-desktop">
+              {renderSecondaryLinks()}
+              <ThemeSelector onThemeChange={setTheme} theme={theme} />
+              <LanguageSelector />
+            </div>
+            <button
+              aria-controls={mobileMenuId}
+              aria-expanded={isMobileMenuOpen}
+              aria-label={t('nav.menu')}
+              className="layout__menu-button"
+              onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+              type="button"
+            >
+              <MenuIcon />
+              <span>{t('nav.menu')}</span>
+            </button>
+            <div className="layout__mobile-menu" hidden={!isMobileMenuOpen} id={mobileMenuId}>
+              <div className="layout__mobile-links">
+                {renderSecondaryLinks(() => setIsMobileMenuOpen(false))}
+              </div>
+              <div className="layout__mobile-preferences">
+                <ThemeSelector onThemeChange={setTheme} theme={theme} />
+                <LanguageSelector id="mobile-language-selector" />
+              </div>
+            </div>
           </nav>
         </div>
       </header>
