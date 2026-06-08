@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { type ReactNode, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
@@ -152,6 +152,116 @@ export function SearchPage() {
     return <p className="error">{error.message}</p>
   }
 
+  let resultsContent: ReactNode
+  if (isEmptySearch) {
+    resultsContent = (
+      <div className="search-start">
+        <div className="stats-grid">
+          <div className="stat-card">
+            <p className="stat-card__label">{t('search.start.categories')}</p>
+            <p className="stat-card__value">{categorySummaries.length}</p>
+          </div>
+          <div className="stat-card">
+            <p className="stat-card__label">{t('search.start.competitions')}</p>
+            <p className="stat-card__value">{allContestResults.length}</p>
+          </div>
+          <div className="stat-card">
+            <p className="stat-card__label">{t('search.start.editorials')}</p>
+            <p className="stat-card__value">{data.editorials.length}</p>
+          </div>
+        </div>
+
+        <div className="search-start__body">
+          <div>
+            <h2 className="search-start__heading">{t('search.start.heading')}</h2>
+            <p className="muted">{t('search.start.description')}</p>
+          </div>
+
+          <ul className="search-summary-list">
+            {categorySummaries.map((summary) => (
+              <li className="search-summary" key={summary.category}>
+                <Link
+                  className="search-summary__title"
+                  to={`/categories/${encodeURIComponent(summary.category)}`}
+                >
+                  {summary.category}
+                </Link>
+                <p className="card__meta">
+                  {`${t('search.start.competitionCount', {
+                    count: summary.contestCount,
+                  })} · ${t('search.editorialCount', { count: summary.editorialCount })}`}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  } else if (contestResults.length === 0) {
+    resultsContent = <p className="muted">{t('search.empty')}</p>
+  } else {
+    resultsContent = (
+      <>
+        <p className="muted">{t('search.contestCount', { count: contestResults.length })}</p>
+
+        <ul className="card-list">
+          {contestResults.map((result) => (
+            <li className="card" key={`${result.category}::${result.contest}`}>
+              <div className="card__header">
+                <p className="card__meta">{result.category}</p>
+                <h2 className="card__title">{result.contest}</h2>
+                <p className="card__meta">
+                  {t('search.editorialCount', { count: result.editorials.length })}
+                </p>
+              </div>
+
+              <ul className="competition-editorials">
+                {result.editorials.map((editorial) => {
+                  const links = buildEditorialLinks(editorial.path)
+                  const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
+
+                  return (
+                    <li className="competition-editorials__item" key={editorial.id}>
+                      <div className="competition-editorials__main">
+                        <Link
+                          className="competition-editorials__title"
+                          to={`/editorials/${editorial.id}`}
+                        >
+                          {localizedTitle}
+                        </Link>
+                        <p className="card__meta">{editorial.path}</p>
+                      </div>
+                      <div className="action-links">
+                        <Link
+                          aria-label={t('editorial.viewAria', { title: localizedTitle })}
+                          className="action-link"
+                          rel="noreferrer"
+                          target="_blank"
+                          to={`/editorials/${editorial.id}/view`}
+                        >
+                          {t('editorial.view')}
+                        </Link>
+                        <a
+                          aria-label={t('editorial.downloadAria', { title: localizedTitle })}
+                          className="action-link action-link--secondary"
+                          href={links.downloadUrl}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          {t('editorial.download')}
+                        </a>
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
   return (
     <section className="page">
       <div className="page__header">
@@ -170,110 +280,7 @@ export function SearchPage() {
           />
         </div>
       </div>
-      {isEmptySearch ? (
-        <div className="search-start">
-          <div className="stats-grid">
-            <div className="stat-card">
-              <p className="stat-card__label">{t('search.start.categories')}</p>
-              <p className="stat-card__value">{categorySummaries.length}</p>
-            </div>
-            <div className="stat-card">
-              <p className="stat-card__label">{t('search.start.competitions')}</p>
-              <p className="stat-card__value">{allContestResults.length}</p>
-            </div>
-            <div className="stat-card">
-              <p className="stat-card__label">{t('search.start.editorials')}</p>
-              <p className="stat-card__value">{data.editorials.length}</p>
-            </div>
-          </div>
-
-          <div className="search-start__body">
-            <div>
-              <h2 className="search-start__heading">{t('search.start.heading')}</h2>
-              <p className="muted">{t('search.start.description')}</p>
-            </div>
-
-            <ul className="search-summary-list">
-              {categorySummaries.map((summary) => (
-                <li className="search-summary" key={summary.category}>
-                  <Link
-                    className="search-summary__title"
-                    to={`/categories/${encodeURIComponent(summary.category)}`}
-                  >
-                    {summary.category}
-                  </Link>
-                  <p className="card__meta">
-                    {`${t('search.start.competitionCount', {
-                      count: summary.contestCount,
-                    })} · ${t('search.editorialCount', { count: summary.editorialCount })}`}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ) : contestResults.length === 0 ? (
-        <p className="muted">{t('search.empty')}</p>
-      ) : (
-        <>
-          <p className="muted">{t('search.contestCount', { count: contestResults.length })}</p>
-
-          <ul className="card-list">
-            {contestResults.map((result) => (
-              <li className="card" key={`${result.category}::${result.contest}`}>
-                <div className="card__header">
-                  <p className="card__meta">{result.category}</p>
-                  <h2 className="card__title">{result.contest}</h2>
-                  <p className="card__meta">
-                    {t('search.editorialCount', { count: result.editorials.length })}
-                  </p>
-                </div>
-
-                <ul className="competition-editorials">
-                  {result.editorials.map((editorial) => {
-                    const links = buildEditorialLinks(editorial.path)
-                    const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
-
-                    return (
-                      <li className="competition-editorials__item" key={editorial.id}>
-                        <div className="competition-editorials__main">
-                          <Link
-                            className="competition-editorials__title"
-                            to={`/editorials/${editorial.id}`}
-                          >
-                            {localizedTitle}
-                          </Link>
-                          <p className="card__meta">{editorial.path}</p>
-                        </div>
-                        <div className="action-links">
-                          <Link
-                            aria-label={t('editorial.viewAria', { title: localizedTitle })}
-                            className="action-link"
-                            rel="noreferrer"
-                            target="_blank"
-                            to={`/editorials/${editorial.id}/view`}
-                          >
-                            {t('editorial.view')}
-                          </Link>
-                          <a
-                            aria-label={t('editorial.downloadAria', { title: localizedTitle })}
-                            className="action-link action-link--secondary"
-                            href={links.downloadUrl}
-                            rel="noreferrer"
-                            target="_blank"
-                          >
-                            {t('editorial.download')}
-                          </a>
-                        </div>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
+      {resultsContent}
     </section>
   )
 }
