@@ -13,6 +13,9 @@ interface CategorySummary {
   contestExamples: string[]
 }
 
+/**
+ * Adds a representative example while keeping examples unique and capped.
+ */
 function addUniqueValue(values: string[], value: string, limit: number): void {
   if (values.includes(value) || values.length >= limit) {
     return
@@ -21,6 +24,9 @@ function addUniqueValue(values: string[], value: string, limit: number): void {
   values.push(value)
 }
 
+/**
+ * Groups editorials into top-level category cards with compact browsing context.
+ */
 function summarizeCategories(
   editorials: EditorialRecord[],
   uncategorizedLabel: string,
