@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import type { EditorialRecord } from '../entities/editorial/model/types'
@@ -66,6 +67,7 @@ function summarizeCategories(editorials: EditorialRecord[]): CategorySummary[] {
 export function CategoriesPage() {
   const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
+  const categories = useMemo(() => summarizeCategories(data.editorials), [data.editorials])
 
   usePageMetadata({
     title: `${t('categories.heading')} | ${t('appTitle')}`,
@@ -80,8 +82,6 @@ export function CategoriesPage() {
   if (error) {
     return <p className="error">{error.message}</p>
   }
-
-  const categories = summarizeCategories(data.editorials)
 
   return (
     <section className="page">
