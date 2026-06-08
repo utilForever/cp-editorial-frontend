@@ -38,6 +38,12 @@ export const resources = {
       home: {
         heading: 'Find Contest Editorials',
         description: 'Search competitions and quickly open or download editorials by keyword.',
+        entry: {
+          label: 'Start with a keyword',
+          placeholder: 'Try ICPC, Codeforces, 2024...',
+          submit: 'Search',
+          browseCategories: 'Browse categories',
+        },
         stats: {
           editorials: 'Editorials',
           contests: 'Competitions',
@@ -218,6 +224,12 @@ export const resources = {
         heading: '대회 에디토리얼 찾기',
         description:
           '대회 이름 키워드로 원하는 대회를 찾아 해설을 열람하거나 다운로드할 수 있습니다.',
+        entry: {
+          label: '키워드로 바로 시작하기',
+          placeholder: 'ICPC, Codeforces, 2024 등을 입력해 보세요...',
+          submit: '검색',
+          browseCategories: '카테고리 보기',
+        },
         stats: {
           editorials: '에디토리얼 수',
           contests: '대회 수',
@@ -392,6 +404,12 @@ export const resources = {
         heading: '大会エディトリアルを探す',
         description:
           '大会名のキーワードで大会を見つけ、エディトリアルを表示・ダウンロードできます。',
+        entry: {
+          label: 'キーワードから始める',
+          placeholder: 'ICPC、Codeforces、2024 など...',
+          submit: '検索',
+          browseCategories: 'カテゴリを見る',
+        },
         stats: {
           editorials: 'エディトリアル数',
           contests: '大会数',

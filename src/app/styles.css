@@ -481,6 +481,83 @@ a {
   gap: 0.9rem;
 }
 
+.home-entry {
+  width: min(720px, 100%);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.home-entry__search {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.home-entry__label {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.home-entry__controls {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background-color: var(--color-surface);
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface) 88%,
+    var(--color-surface-container-low)
+  );
+  box-shadow: var(--elevation-2);
+  padding: 0.65rem;
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.home-entry__input {
+  flex: 1 1 240px;
+  width: 100%;
+}
+
+.home-entry__button,
+.home-entry__link {
+  border-radius: 999px;
+  min-height: 3rem;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.home-entry__button {
+  border: 1px solid var(--color-primary-strong);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--elevation-1);
+}
+
+.home-entry__button:hover {
+  background-color: var(--color-primary-strong);
+  box-shadow: var(--elevation-2);
+}
+
+.home-entry__link {
+  width: fit-content;
+  border: 1px solid var(--color-download-border);
+  background-color: var(--color-download-bg);
+  color: var(--color-download-text);
+  box-shadow: var(--elevation-1);
+}
+
+.home-entry__link:hover {
+  box-shadow: var(--elevation-2);
+  filter: saturate(1.08);
+}
+
 .home-dashboard__stats {
   grid-column: 1 / -1;
 }
@@ -701,6 +778,8 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .card,
   .action-link,
+  .home-entry__button,
+  .home-entry__link,
   .theme-toggle {
     transition: none;
   }
@@ -710,6 +789,7 @@ a {
   }
 
   .action-link:hover,
+  .home-entry__link:hover,
   .theme-toggle:hover {
     filter: none;
   }
@@ -722,6 +802,8 @@ a {
 .card__title:focus-visible,
 .competition-editorials__title:focus-visible,
 .action-link:focus-visible,
+.home-entry__button:focus-visible,
+.home-entry__link:focus-visible,
 .input:focus-visible,
 .language-selector:focus-visible,
 .theme-toggle:focus-visible {
@@ -759,6 +841,15 @@ a {
 
   .home-hero-icon-wrap {
     min-height: 12rem;
+  }
+
+  .home-entry__controls {
+    display: grid;
+  }
+
+  .home-entry__button,
+  .home-entry__link {
+    width: 100%;
   }
 
   .competition-editorials__item {
