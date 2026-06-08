@@ -74,6 +74,28 @@ export const resources = {
         view: 'View',
         download: 'Download',
         empty: 'No competitions match your search.',
+        refine: {
+          category: 'Category',
+          year: 'Year',
+          allCategories: 'All categories',
+          allYears: 'All years',
+          clear: 'Clear',
+        },
+        context: {
+          label: 'Editorial context',
+          year: '{{year}}',
+        },
+        match: {
+          label: 'Matched fields',
+          fields: {
+            title: 'Title',
+            contest: 'Contest',
+            entry: 'Entry',
+            category: 'Category',
+            summary: 'Summary',
+            filename: 'Filename',
+          },
+        },
         start: {
           heading: 'Start with a keyword',
           description:
@@ -269,6 +291,28 @@ export const resources = {
         view: '열기',
         download: '다운로드',
         empty: '일치하는 대회가 없습니다.',
+        refine: {
+          category: '카테고리',
+          year: '연도',
+          allCategories: '전체 카테고리',
+          allYears: '전체 연도',
+          clear: '초기화',
+        },
+        context: {
+          label: '에디토리얼 맥락',
+          year: '{{year}}년',
+        },
+        match: {
+          label: '일치한 필드',
+          fields: {
+            title: '제목',
+            contest: '대회',
+            entry: '항목',
+            category: '카테고리',
+            summary: '요약',
+            filename: '파일명',
+          },
+        },
         start: {
           heading: '키워드로 검색을 시작하세요',
           description:
@@ -461,6 +505,28 @@ export const resources = {
         view: '表示',
         download: 'ダウンロード',
         empty: '一致する大会がありません。',
+        refine: {
+          category: 'カテゴリ',
+          year: '年',
+          allCategories: 'すべてのカテゴリ',
+          allYears: 'すべての年',
+          clear: 'クリア',
+        },
+        context: {
+          label: 'エディトリアルの文脈',
+          year: '{{year}}年',
+        },
+        match: {
+          label: '一致した項目',
+          fields: {
+            title: 'タイトル',
+            contest: '大会',
+            entry: '項目',
+            category: 'カテゴリ',
+            summary: '概要',
+            filename: 'ファイル名',
+          },
+        },
         start: {
           heading: 'キーワードから検索を始める',
           description:
