@@ -152,7 +152,7 @@ function summarizeByCategory(contestResults: ContestResult[]): CategorySummary[]
 }
 
 /**
- * Returns matching contest groups while leaving empty-query display to the summary state.
+ * Extracts the first contest year visible in editorial metadata.
  */
 function getEditorialYear(editorial: EditorialRecord): string | null {
   const searchableText = [
@@ -167,18 +167,39 @@ function getEditorialYear(editorial: EditorialRecord): string | null {
   return match?.[0] ?? null
 }
 
+/**
+ * Builds the visible category breadcrumb for an editorial result.
+ */
 function getCategoryBreadcrumb(editorial: EditorialRecord, fallback: string): string {
   return editorial.categories.length > 0 ? editorial.categories.join(' > ') : fallback
 }
 
+/**
+ * Checks whether an editorial belongs to the active category filter.
+ */
 function isEditorialInCategory(editorial: EditorialRecord, category: string): boolean {
   return category === ALL_FILTER_VALUE || editorial.categories.includes(category)
 }
 
+/**
+ * Falls back to the unfiltered state when a URL category is stale or unknown.
+ */
+function normalizeCategoryFilter(category: string, categoryOptions: string[]): string {
+  return category === ALL_FILTER_VALUE || categoryOptions.includes(category)
+    ? category
+    : ALL_FILTER_VALUE
+}
+
+/**
+ * Checks whether an editorial belongs to the active year filter.
+ */
 function isEditorialInYear(editorial: EditorialRecord, year: string): boolean {
   return year === ALL_FILTER_VALUE || getEditorialYear(editorial) === year
 }
 
+/**
+ * Returns matching contest groups while leaving empty-query display to the summary state.
+ */
 function filterContestResults(
   contestResults: ContestResult[],
   query: string,
@@ -210,6 +231,9 @@ function filterContestResults(
     .filter((result) => result.editorials.length > 0)
 }
 
+/**
+ * Highlights the first query match inside a bounded result snippet.
+ */
 function buildHighlightedSnippet(value: string, query: string, maxLength = 96): ReactNode {
   const normalizedQuery = query.trim()
   if (normalizedQuery.length === 0) {
@@ -257,8 +281,23 @@ export function SearchPage() {
   const { data, isLoading, error } = useEditorialIndex()
   const [searchParams] = useSearchParams()
   const urlQuery = searchParams.get('q') ?? ''
+  const urlCategoryParam = searchParams.get('category')?.trim()
+  const requestedUrlCategory =
+    urlCategoryParam !== undefined && urlCategoryParam.length > 0
+      ? urlCategoryParam
+      : ALL_FILTER_VALUE
+
+  const categoryOptions = useMemo(
+    () =>
+      Array.from(new Set(data.editorials.flatMap((editorial) => editorial.categories))).sort(
+        (left, right) => left.localeCompare(right),
+      ),
+    [data.editorials],
+  )
+
+  const urlCategory = normalizeCategoryFilter(requestedUrlCategory, categoryOptions)
   const [query, setQuery] = useState(urlQuery)
-  const [selectedCategory, setSelectedCategory] = useState(ALL_FILTER_VALUE)
+  const [selectedCategory, setSelectedCategory] = useState(urlCategory)
   const [selectedYear, setSelectedYear] = useState(ALL_FILTER_VALUE)
   const normalizedQuery = query.trim()
   const hasActiveFilters =
@@ -290,14 +329,6 @@ export function SearchPage() {
     [allContestResults],
   )
 
-  const categoryOptions = useMemo(
-    () =>
-      Array.from(new Set(data.editorials.flatMap((editorial) => editorial.categories))).sort(
-        (left, right) => left.localeCompare(right),
-      ),
-    [data.editorials],
-  )
-
   const yearOptions = useMemo(
     () =>
       Array.from(
@@ -313,6 +344,10 @@ export function SearchPage() {
   useEffect(() => {
     setQuery(urlQuery)
   }, [urlQuery])
+
+  useEffect(() => {
+    setSelectedCategory(urlCategory)
+  }, [urlCategory])
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>

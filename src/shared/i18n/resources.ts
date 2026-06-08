@@ -109,9 +109,21 @@ export const resources = {
       },
       categories: {
         heading: 'Browse by Category',
+        description:
+          'Top-level categories collect related contest families. Use the path and contest examples to choose where to continue browsing.',
+        uncategorized: 'Uncategorized',
         empty: 'No categories are available yet.',
         count_one: '{{count}} editorial',
         count_other: '{{count}} editorials',
+        summary: {
+          withPaths_one: 'Includes {{count}} representative child path.',
+          withPaths_other: 'Includes {{count}} representative child paths.',
+          direct: 'Lists contests directly under this category.',
+        },
+        pathExamples: 'Path examples',
+        contestExamples: 'Contest examples',
+        browse: 'Browse',
+        search: 'Search this category',
       },
       category: {
         heading: 'Category: {{category}}',
@@ -326,9 +338,21 @@ export const resources = {
       },
       categories: {
         heading: '카테고리별 보기',
+        description:
+          '최상위 카테고리는 관련 대회 계열을 묶습니다. 경로와 대회 예시를 보고 다음 탐색 위치를 고르세요.',
+        uncategorized: '미분류',
         empty: '등록된 카테고리가 없습니다.',
         count_one: '{{count}}개 에디토리얼',
         count_other: '{{count}}개 에디토리얼',
+        summary: {
+          withPaths_one: '대표 하위 경로 {{count}}개를 포함합니다.',
+          withPaths_other: '대표 하위 경로 {{count}}개를 포함합니다.',
+          direct: '이 카테고리 바로 아래의 대회를 보여줍니다.',
+        },
+        pathExamples: '경로 예시',
+        contestExamples: '대회 예시',
+        browse: '탐색',
+        search: '이 카테고리 검색',
       },
       category: {
         heading: '카테고리: {{category}}',
@@ -540,9 +564,21 @@ export const resources = {
       },
       categories: {
         heading: 'カテゴリ別に見る',
+        description:
+          'トップレベルカテゴリは関連する大会群をまとめます。パスと大会例を見ながら、次に進む場所を選べます。',
+        uncategorized: '未分類',
         empty: 'カテゴリはまだありません。',
         count_one: '{{count}} 件のエディトリアル',
         count_other: '{{count}} 件のエディトリアル',
+        summary: {
+          withPaths_one: '{{count}} 件の代表的な子パスがあります。',
+          withPaths_other: '{{count}} 件の代表的な子パスがあります。',
+          direct: 'このカテゴリ直下の大会を表示します。',
+        },
+        pathExamples: 'パス例',
+        contestExamples: '大会例',
+        browse: '閲覧',
+        search: 'このカテゴリを検索',
       },
       category: {
         heading: 'カテゴリ: {{category}}',
