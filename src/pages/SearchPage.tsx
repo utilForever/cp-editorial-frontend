@@ -19,6 +19,9 @@ interface CategorySummary {
   editorialCount: number
 }
 
+/**
+ * Checks every searchable editorial field, including localized text, against a normalized query.
+ */
 function matchesEditorialKeywords(
   editorial: EditorialRecord,
   query: string,
@@ -38,6 +41,9 @@ function matchesEditorialKeywords(
   return text.includes(query.toLowerCase())
 }
 
+/**
+ * Groups editorials by their top-level category and contest for stable search result sections.
+ */
 function groupByContest(editorials: EditorialRecord[]): ContestResult[] {
   const groups = new Map<string, ContestResult>()
 
@@ -70,6 +76,9 @@ function groupByContest(editorials: EditorialRecord[]): ContestResult[] {
     }))
 }
 
+/**
+ * Builds the category totals shown before a user enters a search query.
+ */
 function summarizeByCategory(contestResults: ContestResult[]): CategorySummary[] {
   const summaries = new Map<string, CategorySummary>()
 
@@ -93,6 +102,9 @@ function summarizeByCategory(contestResults: ContestResult[]): CategorySummary[]
   )
 }
 
+/**
+ * Returns matching contest groups while leaving empty-query display to the summary state.
+ */
 function filterContestResults(
   contestResults: ContestResult[],
   query: string,
@@ -113,6 +125,9 @@ function filterContestResults(
     .filter((result) => result.editorials.length > 0)
 }
 
+/**
+ * Route-level search experience with separate empty-query summaries and keyword results.
+ */
 export function SearchPage() {
   const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
