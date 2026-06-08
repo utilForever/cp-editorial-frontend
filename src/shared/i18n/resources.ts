@@ -73,6 +73,16 @@ export const resources = {
         view: 'View',
         download: 'Download',
         empty: 'No competitions match your search.',
+        start: {
+          heading: 'Start with a keyword',
+          description:
+            'Search by competition, year, category, or editorial title to show the full matching editorial list.',
+          categories: 'Categories',
+          competitions: 'Competitions',
+          editorials: 'Editorials',
+          competitionCount_one: '{{count}} competition',
+          competitionCount_other: '{{count}} competitions',
+        },
       },
       categories: {
         heading: 'Browse by Category',
@@ -257,6 +267,16 @@ export const resources = {
         view: '열기',
         download: '다운로드',
         empty: '일치하는 대회가 없습니다.',
+        start: {
+          heading: '키워드로 검색을 시작하세요',
+          description:
+            '대회명, 연도, 카테고리, 해설 제목을 검색하면 일치하는 전체 해설 목록이 표시됩니다.',
+          categories: '카테고리',
+          competitions: '대회',
+          editorials: '해설',
+          competitionCount_one: '{{count}}개 대회',
+          competitionCount_other: '{{count}}개 대회',
+        },
       },
       categories: {
         heading: '카테고리별 보기',
@@ -438,6 +458,16 @@ export const resources = {
         view: '表示',
         download: 'ダウンロード',
         empty: '一致する大会がありません。',
+        start: {
+          heading: 'キーワードから検索を始める',
+          description:
+            '大会名、開催年、カテゴリ、エディトリアル名で検索すると、一致するエディトリアル一覧をすべて表示します。',
+          categories: 'カテゴリ',
+          competitions: '大会',
+          editorials: 'エディトリアル',
+          competitionCount_one: '{{count}} 件の大会',
+          competitionCount_other: '{{count}} 件の大会',
+        },
       },
       categories: {
         heading: 'カテゴリ別に見る',
