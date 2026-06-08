@@ -175,6 +175,12 @@ function isEditorialInCategory(editorial: EditorialRecord, category: string): bo
   return category === ALL_FILTER_VALUE || editorial.categories.includes(category)
 }
 
+function normalizeCategoryFilter(category: string, categoryOptions: string[]): string {
+  return category === ALL_FILTER_VALUE || categoryOptions.includes(category)
+    ? category
+    : ALL_FILTER_VALUE
+}
+
 function isEditorialInYear(editorial: EditorialRecord, year: string): boolean {
   return year === ALL_FILTER_VALUE || getEditorialYear(editorial) === year
 }
@@ -258,10 +264,20 @@ export function SearchPage() {
   const [searchParams] = useSearchParams()
   const urlQuery = searchParams.get('q') ?? ''
   const urlCategoryParam = searchParams.get('category')?.trim()
-  const urlCategory =
+  const requestedUrlCategory =
     urlCategoryParam !== undefined && urlCategoryParam.length > 0
       ? urlCategoryParam
       : ALL_FILTER_VALUE
+
+  const categoryOptions = useMemo(
+    () =>
+      Array.from(new Set(data.editorials.flatMap((editorial) => editorial.categories))).sort(
+        (left, right) => left.localeCompare(right),
+      ),
+    [data.editorials],
+  )
+
+  const urlCategory = normalizeCategoryFilter(requestedUrlCategory, categoryOptions)
   const [query, setQuery] = useState(urlQuery)
   const [selectedCategory, setSelectedCategory] = useState(urlCategory)
   const [selectedYear, setSelectedYear] = useState(ALL_FILTER_VALUE)
@@ -293,14 +309,6 @@ export function SearchPage() {
   const categorySummaries = useMemo(
     () => summarizeByCategory(allContestResults),
     [allContestResults],
-  )
-
-  const categoryOptions = useMemo(
-    () =>
-      Array.from(new Set(data.editorials.flatMap((editorial) => editorial.categories))).sort(
-        (left, right) => left.localeCompare(right),
-      ),
-    [data.editorials],
   )
 
   const yearOptions = useMemo(
