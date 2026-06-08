@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
@@ -87,7 +87,9 @@ function filterContestResults(
 export function SearchPage() {
   const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
-  const [query, setQuery] = useState('')
+  const [searchParams] = useSearchParams()
+  const urlQuery = searchParams.get('q') ?? ''
+  const [query, setQuery] = useState(urlQuery)
 
   usePageMetadata({
     title: `${t('search.heading')} | ${t('appTitle')}`,
@@ -99,6 +101,10 @@ export function SearchPage() {
     const grouped = groupByContest(data.editorials)
     return filterContestResults(grouped, query, i18n.resolvedLanguage)
   }, [data.editorials, i18n.resolvedLanguage, query])
+
+  useEffect(() => {
+    setQuery(urlQuery)
+  }, [urlQuery])
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
