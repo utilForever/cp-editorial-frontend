@@ -32,19 +32,19 @@ export function Layout() {
   const year = new Date().getFullYear()
   const mobileMenuId = 'mobile-navigation-menu'
 
-  function renderSecondaryLinks() {
+  function renderSecondaryLinks(onNavigate?: () => void) {
     return (
       <>
-        <NavLink className={navLinkClassName} to="/" end>
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/" end>
           {t('nav.home')}
         </NavLink>
-        <NavLink className={navLinkClassName} to="/categories">
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/categories">
           {t('nav.categories')}
         </NavLink>
-        <NavLink className={navLinkClassName} to="/contribute">
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/contribute">
           {t('nav.contribute')}
         </NavLink>
-        <NavLink className={navLinkClassName} to="/copyright">
+        <NavLink className={navLinkClassName} onClick={onNavigate} to="/copyright">
           {t('nav.copyright')}
         </NavLink>
       </>
@@ -85,8 +85,8 @@ export function Layout() {
               <span>{t('nav.menu')}</span>
             </button>
             <div className="layout__mobile-menu" hidden={!isMobileMenuOpen} id={mobileMenuId}>
-              <div className="layout__mobile-links" onClick={() => setIsMobileMenuOpen(false)}>
-                {renderSecondaryLinks()}
+              <div className="layout__mobile-links">
+                {renderSecondaryLinks(() => setIsMobileMenuOpen(false))}
               </div>
               <div className="layout__mobile-preferences">
                 <ThemeSelector onThemeChange={setTheme} theme={theme} />
