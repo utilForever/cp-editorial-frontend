@@ -13,32 +13,81 @@ interface ContestResult {
   editorials: EditorialRecord[]
 }
 
+interface ContestSearchResult {
+  category: string
+  contest: string
+  editorials: EditorialSearchResult[]
+}
+
 interface CategorySummary {
   category: string
   contestCount: number
   editorialCount: number
 }
 
+type SearchFieldId = 'title' | 'contest' | 'entry' | 'category' | 'summary' | 'filename'
+
+interface SearchField {
+  id: SearchFieldId
+  value: string
+}
+
+interface SearchMatch {
+  field: SearchFieldId
+  value: string
+}
+
+interface EditorialSearchResult {
+  editorial: EditorialRecord
+  matches: SearchMatch[]
+}
+
+const ALL_FILTER_VALUE = 'all'
+
+const SEARCH_FIELD_LABEL_KEYS: Record<SearchFieldId, string> = {
+  title: 'search.match.fields.title',
+  contest: 'search.match.fields.contest',
+  entry: 'search.match.fields.entry',
+  category: 'search.match.fields.category',
+  summary: 'search.match.fields.summary',
+  filename: 'search.match.fields.filename',
+}
+
 /**
- * Checks every searchable editorial field, including localized text, against a normalized query.
+ * Builds the user-facing fields searched for each editorial.
  */
-function matchesEditorialKeywords(
+function getSearchFields(editorial: EditorialRecord, language: string | undefined): SearchField[] {
+  const fields: SearchField[] = [
+    { id: 'title', value: getLocalizedText(editorial.title, language) },
+    { id: 'contest', value: editorial.contest },
+    { id: 'entry', value: editorial.problem },
+    { id: 'category', value: editorial.categories.join(' > ') },
+    { id: 'summary', value: getLocalizedText(editorial.summary, language) },
+    { id: 'filename', value: editorial.filename },
+  ]
+
+  return fields.filter((field) => field.value.trim().length > 0)
+}
+
+/**
+ * Returns visible match metadata for the current query.
+ */
+function findEditorialMatches(
   editorial: EditorialRecord,
   query: string,
   language: string | undefined,
-): boolean {
-  const text = [
-    editorial.contest,
-    editorial.categories.join(' '),
-    editorial.filename,
-    editorial.path,
-    getLocalizedText(editorial.title, language),
-    getLocalizedText(editorial.summary, language),
-  ]
-    .join(' ')
-    .toLowerCase()
+): SearchMatch[] {
+  const normalizedQuery = query.trim().toLowerCase()
+  if (normalizedQuery.length === 0) {
+    return []
+  }
 
-  return text.includes(query.toLowerCase())
+  return getSearchFields(editorial, language)
+    .filter((field) => field.value.toLowerCase().includes(normalizedQuery))
+    .map((field) => ({
+      field: field.id,
+      value: field.value,
+    }))
 }
 
 /**
@@ -105,24 +154,99 @@ function summarizeByCategory(contestResults: ContestResult[]): CategorySummary[]
 /**
  * Returns matching contest groups while leaving empty-query display to the summary state.
  */
+function getEditorialYear(editorial: EditorialRecord): string | null {
+  const searchableText = [
+    editorial.contest,
+    editorial.problem,
+    editorial.filename,
+    editorial.path,
+    ...Object.values(editorial.title),
+  ].join(' ')
+  const match = /\b(?:19|20)\d{2}\b/u.exec(searchableText)
+
+  return match?.[0] ?? null
+}
+
+function getCategoryBreadcrumb(editorial: EditorialRecord, fallback: string): string {
+  return editorial.categories.length > 0 ? editorial.categories.join(' > ') : fallback
+}
+
+function isEditorialInCategory(editorial: EditorialRecord, category: string): boolean {
+  return category === ALL_FILTER_VALUE || editorial.categories.includes(category)
+}
+
+function isEditorialInYear(editorial: EditorialRecord, year: string): boolean {
+  return year === ALL_FILTER_VALUE || getEditorialYear(editorial) === year
+}
+
 function filterContestResults(
   contestResults: ContestResult[],
   query: string,
   language: string | undefined,
-): ContestResult[] {
-  const normalizedQuery = query.trim().toLowerCase()
-  if (normalizedQuery.length === 0) {
+  category: string,
+  year: string,
+): ContestSearchResult[] {
+  const normalizedQuery = query.trim()
+  const hasActiveFilters = category !== ALL_FILTER_VALUE || year !== ALL_FILTER_VALUE
+  if (normalizedQuery.length === 0 && !hasActiveFilters) {
     return []
   }
 
   return contestResults
     .map((result) => ({
       ...result,
-      editorials: result.editorials.filter((editorial) =>
-        matchesEditorialKeywords(editorial, normalizedQuery, language),
-      ),
+      editorials: result.editorials
+        .map((editorial) => ({
+          editorial,
+          matches: findEditorialMatches(editorial, normalizedQuery, language),
+        }))
+        .filter(
+          (result) =>
+            (normalizedQuery.length === 0 || result.matches.length > 0) &&
+            isEditorialInCategory(result.editorial, category) &&
+            isEditorialInYear(result.editorial, year),
+        ),
     }))
     .filter((result) => result.editorials.length > 0)
+}
+
+function buildHighlightedSnippet(value: string, query: string, maxLength = 96): ReactNode {
+  const normalizedQuery = query.trim()
+  if (normalizedQuery.length === 0) {
+    return value
+  }
+
+  const valueLowerCase = value.toLowerCase()
+  const queryLowerCase = normalizedQuery.toLowerCase()
+  const matchIndex = valueLowerCase.indexOf(queryLowerCase)
+  if (matchIndex < 0) {
+    return value
+  }
+
+  const availableContextLength = Math.max(maxLength - normalizedQuery.length, 0)
+  const preferredStart = matchIndex - Math.floor(availableContextLength / 2)
+  const start = Math.max(0, Math.min(preferredStart, Math.max(value.length - maxLength, 0)))
+  const end = Math.min(value.length, start + maxLength)
+  const snippet = `${start > 0 ? '...' : ''}${value.slice(start, end)}${
+    end < value.length ? '...' : ''
+  }`
+  const snippetMatchIndex = snippet.toLowerCase().indexOf(queryLowerCase)
+
+  if (snippetMatchIndex < 0) {
+    return snippet
+  }
+
+  const before = snippet.slice(0, snippetMatchIndex)
+  const match = snippet.slice(snippetMatchIndex, snippetMatchIndex + normalizedQuery.length)
+  const after = snippet.slice(snippetMatchIndex + normalizedQuery.length)
+
+  return (
+    <>
+      {before}
+      <mark className="search-highlight">{match}</mark>
+      {after}
+    </>
+  )
 }
 
 /**
@@ -134,8 +258,12 @@ export function SearchPage() {
   const [searchParams] = useSearchParams()
   const urlQuery = searchParams.get('q') ?? ''
   const [query, setQuery] = useState(urlQuery)
+  const [selectedCategory, setSelectedCategory] = useState(ALL_FILTER_VALUE)
+  const [selectedYear, setSelectedYear] = useState(ALL_FILTER_VALUE)
   const normalizedQuery = query.trim()
-  const isEmptySearch = normalizedQuery.length === 0
+  const hasActiveFilters =
+    selectedCategory !== ALL_FILTER_VALUE || selectedYear !== ALL_FILTER_VALUE
+  const isStartState = normalizedQuery.length === 0 && !hasActiveFilters
 
   usePageMetadata({
     title: `${t('search.heading')} | ${t('appTitle')}`,
@@ -146,13 +274,40 @@ export function SearchPage() {
   const allContestResults = useMemo(() => groupByContest(data.editorials), [data.editorials])
 
   const contestResults = useMemo(
-    () => filterContestResults(allContestResults, query, i18n.resolvedLanguage),
-    [allContestResults, i18n.resolvedLanguage, query],
+    () =>
+      filterContestResults(
+        allContestResults,
+        query,
+        i18n.resolvedLanguage,
+        selectedCategory,
+        selectedYear,
+      ),
+    [allContestResults, i18n.resolvedLanguage, query, selectedCategory, selectedYear],
   )
 
   const categorySummaries = useMemo(
     () => summarizeByCategory(allContestResults),
     [allContestResults],
+  )
+
+  const categoryOptions = useMemo(
+    () =>
+      Array.from(new Set(data.editorials.flatMap((editorial) => editorial.categories))).sort(
+        (left, right) => left.localeCompare(right),
+      ),
+    [data.editorials],
+  )
+
+  const yearOptions = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          data.editorials
+            .map((editorial) => getEditorialYear(editorial))
+            .filter((year): year is string => year !== null),
+        ),
+      ).sort((left, right) => right.localeCompare(left)),
+    [data.editorials],
   )
 
   useEffect(() => {
@@ -168,7 +323,7 @@ export function SearchPage() {
   }
 
   let resultsContent: ReactNode
-  if (isEmptySearch) {
+  if (isStartState) {
     resultsContent = (
       <div className="search-start">
         <div className="stats-grid">
@@ -226,14 +381,19 @@ export function SearchPage() {
                 <p className="card__meta">{result.category}</p>
                 <h2 className="card__title">{result.contest}</h2>
                 <p className="card__meta">
-                  {t('search.editorialCount', { count: result.editorials.length })}
+                  {`${result.category} · ${t('search.editorialCount', {
+                    count: result.editorials.length,
+                  })}`}
                 </p>
               </div>
 
               <ul className="competition-editorials">
-                {result.editorials.map((editorial) => {
+                {result.editorials.map(({ editorial, matches }) => {
                   const links = buildEditorialLinks(editorial.path)
                   const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
+                  const breadcrumb = getCategoryBreadcrumb(editorial, t('category.unknown'))
+                  const editorialYear = getEditorialYear(editorial)
+                  const visibleMatches = matches.slice(0, 3)
 
                   return (
                     <li className="competition-editorials__item" key={editorial.id}>
@@ -242,9 +402,30 @@ export function SearchPage() {
                           className="competition-editorials__title"
                           to={`/editorials/${editorial.id}`}
                         >
-                          {localizedTitle}
+                          {buildHighlightedSnippet(localizedTitle, normalizedQuery, 120)}
                         </Link>
-                        <p className="card__meta">{editorial.path}</p>
+                        <div aria-label={t('search.context.label')} className="result-context">
+                          <span className="result-context__item">{breadcrumb}</span>
+                          {editorialYear ? (
+                            <span className="result-context__item">
+                              {t('search.context.year', { year: editorialYear })}
+                            </span>
+                          ) : null}
+                        </div>
+                        {visibleMatches.length > 0 ? (
+                          <ul className="match-list" aria-label={t('search.match.label')}>
+                            {visibleMatches.map((match) => (
+                              <li className="match-chip" key={`${editorial.id}::${match.field}`}>
+                                <span className="match-chip__field">
+                                  {t(SEARCH_FIELD_LABEL_KEYS[match.field])}
+                                </span>
+                                <span className="match-chip__value">
+                                  {buildHighlightedSnippet(match.value, normalizedQuery)}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
                       </div>
                       <div className="action-links">
                         <Link
@@ -293,6 +474,50 @@ export function SearchPage() {
             placeholder={t('search.placeholder')}
             value={query}
           />
+          <label className="muted" htmlFor="category-filter">
+            {t('search.refine.category')}
+          </label>
+          <select
+            className="select"
+            id="category-filter"
+            onChange={(event) => setSelectedCategory(event.target.value)}
+            value={selectedCategory}
+          >
+            <option value={ALL_FILTER_VALUE}>{t('search.refine.allCategories')}</option>
+            {categoryOptions.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          <label className="muted" htmlFor="year-filter">
+            {t('search.refine.year')}
+          </label>
+          <select
+            className="select select--year"
+            id="year-filter"
+            onChange={(event) => setSelectedYear(event.target.value)}
+            value={selectedYear}
+          >
+            <option value={ALL_FILTER_VALUE}>{t('search.refine.allYears')}</option>
+            {yearOptions.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+          <button
+            className="clear-button"
+            disabled={normalizedQuery.length === 0 && !hasActiveFilters}
+            onClick={() => {
+              setQuery('')
+              setSelectedCategory(ALL_FILTER_VALUE)
+              setSelectedYear(ALL_FILTER_VALUE)
+            }}
+            type="button"
+          >
+            {t('search.refine.clear')}
+          </button>
         </div>
       </div>
       {resultsContent}
