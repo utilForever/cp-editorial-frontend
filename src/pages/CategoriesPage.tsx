@@ -21,7 +21,10 @@ function addUniqueValue(values: string[], value: string, limit: number): void {
   values.push(value)
 }
 
-function summarizeCategories(editorials: EditorialRecord[]): CategorySummary[] {
+function summarizeCategories(
+  editorials: EditorialRecord[],
+  uncategorizedLabel: string,
+): CategorySummary[] {
   const summaries = new Map<
     string,
     {
@@ -33,7 +36,7 @@ function summarizeCategories(editorials: EditorialRecord[]): CategorySummary[] {
   >()
 
   editorials.forEach((editorial) => {
-    const category = editorial.categories[0] ?? 'Uncategorized'
+    const category = editorial.categories[0] ?? uncategorizedLabel
     const currentSummary = summaries.get(category) ?? {
       editorialCount: 0,
       childPaths: new Set<string>(),
@@ -67,7 +70,11 @@ function summarizeCategories(editorials: EditorialRecord[]): CategorySummary[] {
 export function CategoriesPage() {
   const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
-  const categories = useMemo(() => summarizeCategories(data.editorials), [data.editorials])
+  const uncategorizedLabel = t('categories.uncategorized')
+  const categories = useMemo(
+    () => summarizeCategories(data.editorials, uncategorizedLabel),
+    [data.editorials, uncategorizedLabel],
+  )
 
   usePageMetadata({
     title: `${t('categories.heading')} | ${t('appTitle')}`,

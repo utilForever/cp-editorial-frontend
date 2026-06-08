@@ -111,6 +111,7 @@ export const resources = {
         heading: 'Browse by Category',
         description:
           'Top-level categories collect related contest families. Use the path and contest examples to choose where to continue browsing.',
+        uncategorized: 'Uncategorized',
         empty: 'No categories are available yet.',
         count_one: '{{count}} editorial',
         count_other: '{{count}} editorials',
@@ -339,6 +340,7 @@ export const resources = {
         heading: '카테고리별 보기',
         description:
           '최상위 카테고리는 관련 대회 계열을 묶습니다. 경로와 대회 예시를 보고 다음 탐색 위치를 고르세요.',
+        uncategorized: '미분류',
         empty: '등록된 카테고리가 없습니다.',
         count_one: '{{count}}개 에디토리얼',
         count_other: '{{count}}개 에디토리얼',
@@ -564,6 +566,7 @@ export const resources = {
         heading: 'カテゴリ別に見る',
         description:
           'トップレベルカテゴリは関連する大会群をまとめます。パスと大会例を見ながら、次に進む場所を選べます。',
+        uncategorized: '未分類',
         empty: 'カテゴリはまだありません。',
         count_one: '{{count}} 件のエディトリアル',
         count_other: '{{count}} 件のエディトリアル',
