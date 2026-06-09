@@ -1,10 +1,23 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
 import { usePageMetadata } from '../shared/hooks/usePageMetadata'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
+
+function getDirectorySegments(path: string): string[] {
+  const segments = path
+    .split('/')
+    .map((segment) => segment.trim())
+    .filter((segment) => segment.length > 0)
+
+  return segments.slice(0, -1)
+}
+
+function buildCategoryRoute(segments: string[]): string {
+  return `/categories/${segments.map(encodeURIComponent).join('/')}`
+}
 
 export function EditorialViewerPage() {
   const { t, i18n } = useTranslation()
@@ -118,13 +131,40 @@ export function EditorialViewerPage() {
   }
 
   const links = buildEditorialLinks(editorial.path)
+  const detailRoute = `/editorials/${editorial.id}`
+  const directorySegments = getDirectorySegments(editorial.path)
+  const contestRoute = buildCategoryRoute(directorySegments)
+  const categoryLinks = editorial.categories.map((category, index) => ({
+    label: category,
+    route: buildCategoryRoute(editorial.categories.slice(0, index + 1)),
+  }))
+  const categoryLabel = editorial.categories.length > 0 ? editorial.categories.join(' > ') : '-'
 
   return (
     <article className="page">
       <h1>{localizedTitle}</h1>
       <p className="page__description">{t('editorial.viewerDescription')}</p>
-      <p className="muted">{`${t('editorial.path')}: ${editorial.path}`}</p>
+
+      <div className="stats-grid">
+        <div className="stat-card">
+          <p className="stat-card__label">{t('editorial.contest')}</p>
+          <Link className="stat-card__value stat-card__link" to={contestRoute}>
+            {editorial.contest}
+          </Link>
+        </div>
+        <div className="stat-card">
+          <p className="stat-card__label">{t('editorial.category')}</p>
+          <p className="stat-card__value">{categoryLabel}</p>
+        </div>
+      </div>
+
       <div className="action-links">
+        <Link className="action-link" to={detailRoute}>
+          {t('editorial.backToDetail')}
+        </Link>
+        <Link className="action-link action-link--secondary" to={contestRoute}>
+          {t('editorial.browseContest')}
+        </Link>
         <a
           aria-label={t('editorial.downloadAria', { title: localizedTitle })}
           className="action-link action-link--secondary"
@@ -136,7 +176,36 @@ export function EditorialViewerPage() {
         </a>
       </div>
 
-      {pdfError && <p className="error">{t('editorial.viewerLoadFailed')}</p>}
+      {categoryLinks.length > 0 && (
+        <nav aria-label={t('editorial.categoryNavigation')} className="tag-list">
+          {categoryLinks.map((category) => (
+            <Link className="tag tag--link" key={category.route} to={category.route}>
+              {category.label}
+            </Link>
+          ))}
+        </nav>
+      )}
+
+      {pdfError && (
+        <section aria-label={t('editorial.viewerFailureActions')} className="viewer-fallback">
+          <p className="error">{t('editorial.viewerLoadFailed')}</p>
+          <p className="muted">{t('editorial.viewerFailureDescription')}</p>
+          <div className="action-links">
+            <a
+              aria-label={t('editorial.downloadAria', { title: localizedTitle })}
+              className="action-link"
+              href={links.downloadUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {t('editorial.download')}
+            </a>
+            <Link className="action-link action-link--secondary" to={detailRoute}>
+              {t('editorial.backToDetail')}
+            </Link>
+          </div>
+        </section>
+      )}
       {!pdfError && !pdfUrl && <p className="muted">{t('editorial.viewerLoading')}</p>}
 
       {pdfUrl && (
@@ -155,10 +224,27 @@ export function EditorialViewerPage() {
               target="_blank"
             >
               {t('editorial.download')}
-            </a>
+            </a>{' '}
+            <Link className="action-link action-link--secondary" to={detailRoute}>
+              {t('editorial.backToDetail')}
+            </Link>
           </p>
         </object>
       )}
+
+      <details className="source-metadata">
+        <summary>{t('editorial.sourceMetadata')}</summary>
+        <dl className="source-metadata__list">
+          <div className="source-metadata__row">
+            <dt>{t('editorial.path')}</dt>
+            <dd>{editorial.path}</dd>
+          </div>
+          <div className="source-metadata__row">
+            <dt>{t('editorial.filename')}</dt>
+            <dd>{editorial.filename}</dd>
+          </div>
+        </dl>
+      </details>
     </article>
   )
 }
