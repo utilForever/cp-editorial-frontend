@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
+import { buildCategoryRoute, getDirectorySegments } from '../shared/api/categoryRoutes'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
 import { usePageMetadata } from '../shared/hooks/usePageMetadata'
@@ -26,15 +27,6 @@ function decodeHierarchyPath(value: string | undefined): string[] {
     .map(decodePathSegment)
     .map((segment) => segment.trim())
     .filter((segment) => segment.length > 0)
-}
-
-function getDirectorySegments(path: string): string[] {
-  const segments = path
-    .split('/')
-    .map((segment) => segment.trim())
-    .filter((segment) => segment.length > 0)
-
-  return segments.slice(0, -1)
 }
 
 function isMatchingPrefix(segments: string[], prefix: string[]): boolean {
@@ -80,7 +72,7 @@ export function CategoryPage() {
         .map(([name, count]) => ({
           name,
           count,
-          route: `/categories/${[...selectedSegments, name].map(encodeURIComponent).join('/')}`,
+          route: buildCategoryRoute([...selectedSegments, name]),
         }))
         .sort((left, right) => left.name.localeCompare(right.name)),
       editorialsAtNode: sortedEditorialsAtNode,
