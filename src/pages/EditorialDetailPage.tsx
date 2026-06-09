@@ -2,23 +2,11 @@ import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
+import { buildCategoryRoute, getDirectorySegments } from '../shared/api/categoryRoutes'
 import { buildEditorialLinks } from '../shared/api/editorialLinks'
 import { useEditorialIndex } from '../shared/hooks/useEditorialIndex'
 import { buildEditorialPreviewImagePath, usePageMetadata } from '../shared/hooks/usePageMetadata'
 import { getLocalizedText } from '../shared/i18n/getLocalizedText'
-
-function getDirectorySegments(path: string): string[] {
-  const segments = path
-    .split('/')
-    .map((segment) => segment.trim())
-    .filter((segment) => segment.length > 0)
-
-  return segments.slice(0, -1)
-}
-
-function buildCategoryRoute(segments: string[]): string {
-  return `/categories/${segments.map(encodeURIComponent).join('/')}`
-}
 
 function getRelatedEditorials(
   editorials: EditorialRecord[],
