@@ -1027,6 +1027,15 @@ a {
   box-shadow: var(--elevation-2);
 }
 
+.viewer-fallback {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.viewer-fallback .error {
+  margin: 0;
+}
+
 .tag-list {
   display: flex;
   gap: 0.4rem;
