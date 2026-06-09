@@ -125,23 +125,30 @@ export function CategoryPage() {
   return (
     <section className="page">
       <h1>{heading}</h1>
-      <p className="page__description">
-        <Link to="/categories">{t('categories.heading')}</Link>
-        {selectedSegments.map((segment, index) => {
-          const isCurrent = index === selectedSegments.length - 1
-          const route = `/categories/${selectedSegments
-            .slice(0, index + 1)
-            .map(encodeURIComponent)
-            .join('/')}`
+      <nav aria-label={t('category.breadcrumb')} className="breadcrumb">
+        <ol className="breadcrumb__list">
+          <li className="breadcrumb__item">
+            <Link to="/categories">{t('categories.heading')}</Link>
+          </li>
+          {selectedSegments.map((segment, index) => {
+            const isCurrent = index === selectedSegments.length - 1
+            const route = `/categories/${selectedSegments
+              .slice(0, index + 1)
+              .map(encodeURIComponent)
+              .join('/')}`
 
-          return (
-            <span key={`${segment}-${index}`}>
-              {' > '}
-              {isCurrent ? segment : <Link to={route}>{segment}</Link>}
-            </span>
-          )
-        })}
-      </p>
+            return (
+              <li className="breadcrumb__item" key={`${segment}-${index}`}>
+                {isCurrent ? (
+                  <span aria-current="page">{segment}</span>
+                ) : (
+                  <Link to={route}>{segment}</Link>
+                )}
+              </li>
+            )
+          })}
+        </ol>
+      </nav>
 
       {childNodes.length > 0 && (
         <ul className="card-list">

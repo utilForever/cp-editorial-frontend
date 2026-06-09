@@ -126,6 +126,7 @@ export const resources = {
         search: 'Search this category',
       },
       category: {
+        breadcrumb: 'Category breadcrumb',
         heading: 'Category: {{category}}',
         unknown: 'Unknown',
         empty: 'No contests are available in this category.',
@@ -361,6 +362,7 @@ export const resources = {
         search: '이 카테고리 검색',
       },
       category: {
+        breadcrumb: '카테고리 이동 경로',
         heading: '카테고리: {{category}}',
         unknown: '알 수 없음',
         empty: '해당 카테고리에 대회가 없습니다.',
@@ -593,6 +595,7 @@ export const resources = {
         search: 'このカテゴリを検索',
       },
       category: {
+        breadcrumb: 'カテゴリのパンくずリスト',
         heading: 'カテゴリ: {{category}}',
         unknown: '不明',
         empty: 'このカテゴリに大会はありません。',
