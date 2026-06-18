@@ -160,19 +160,17 @@ export function CategoryPage() {
       {editorialsAtNode.length > 0 && (
         <>
           <p className="muted">{t('contest.editorialCount', { count: editorialsAtNode.length })}</p>
-          <ul className="card-list">
+          <ul className="editorial-row-list">
             {editorialsAtNode.map((editorial) => {
               const links = buildEditorialLinks(editorial.path)
               const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
 
               return (
-                <li className="card" key={editorial.id}>
-                  <Link className="card__title" to={`/editorials/${editorial.id}`}>
+                <li className="editorial-row" key={editorial.id}>
+                  <Link className="editorial-row__title" to={`/editorials/${editorial.id}`}>
                     {localizedTitle}
                   </Link>
-                  <p className="card__meta">{editorial.filename}</p>
-                  <p className="card__meta">{editorial.path}</p>
-                  <div className="action-links">
+                  <div className="action-links editorial-row__actions">
                     <Link
                       aria-label={t('editorial.viewAria', { title: localizedTitle })}
                       className="action-link"
