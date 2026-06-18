@@ -9,7 +9,7 @@ interface CategorySummary {
   category: string
   editorialCount: number
   childPathCount: number
-  childPathExamples: string[]
+  childCategoryExamples: string[]
   contestExamples: string[]
 }
 
@@ -36,7 +36,7 @@ function summarizeCategories(
     {
       editorialCount: number
       childPaths: Set<string>
-      childPathExamples: string[]
+      childCategoryExamples: string[]
       contestExamples: string[]
     }
   >()
@@ -46,7 +46,7 @@ function summarizeCategories(
     const currentSummary = summaries.get(category) ?? {
       editorialCount: 0,
       childPaths: new Set<string>(),
-      childPathExamples: [],
+      childCategoryExamples: [],
       contestExamples: [],
     }
 
@@ -55,7 +55,7 @@ function summarizeCategories(
     if (editorial.categories.length > 1) {
       const childPath = editorial.categories.slice(0, 3).join(' > ')
       currentSummary.childPaths.add(childPath)
-      addUniqueValue(currentSummary.childPathExamples, childPath, 3)
+      addUniqueValue(currentSummary.childCategoryExamples, childPath, 3)
     }
 
     addUniqueValue(currentSummary.contestExamples, editorial.contest, 3)
@@ -67,7 +67,7 @@ function summarizeCategories(
       category,
       editorialCount: summary.editorialCount,
       childPathCount: summary.childPaths.size,
-      childPathExamples: summary.childPathExamples,
+      childCategoryExamples: summary.childCategoryExamples,
       contestExamples: summary.contestExamples,
     }))
     .sort((left, right) => left.category.localeCompare(right.category))
@@ -126,13 +126,13 @@ export function CategoriesPage() {
                   : t('categories.summary.direct')}
               </p>
 
-              {summary.childPathExamples.length > 0 && (
+              {summary.childCategoryExamples.length > 0 && (
                 <div className="category-card__section">
-                  <p className="category-card__label">{t('categories.pathExamples')}</p>
+                  <p className="category-card__label">{t('categories.categoryExamples')}</p>
                   <ul className="category-card__chips">
-                    {summary.childPathExamples.map((path) => (
-                      <li className="category-card__chip" key={path}>
-                        {path}
+                    {summary.childCategoryExamples.map((category) => (
+                      <li className="category-card__chip" key={category}>
+                        {category}
                       </li>
                     ))}
                   </ul>
