@@ -65,7 +65,7 @@ jobs:
             -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
 
       - name: SonarCloud quality gate
-        uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
+        uses: SonarSource/sonarqube-quality-gate-action@v1.2.1
         timeout-minutes: 5
         env:
           SONAR_HOST_URL: https://sonarcloud.io
