@@ -46,6 +46,7 @@ npm run build
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.
 - Language: switch UI language at runtime (`en`, `ko`, `ja`); the selected language is also saved in local storage.
+- Search: the query, category, and year are stored in the URL (`q`, `category`, `year`) so Back, refresh, and shared links restore the same search. Changes replace the current history entry, and Clear removes the search parameters.
 - Social previews: Build output now includes route-specific Open Graph/Twitter HTML pages for `/search`, `/categories` (including hierarchy sub-routes), `/contribute`, `/copyright`, and `/editorials/:editorialId`.
 - Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a generated per-editorial preview image.
 
