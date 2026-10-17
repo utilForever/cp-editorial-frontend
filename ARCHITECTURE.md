@@ -143,6 +143,14 @@ Normalization rejects invalid index data (missing required fields or empty local
 Category browsing is path-hierarchy driven, so nested folders like
 `ICPC/Regionals/Asia Pacific/Asia Pacific Championship` are navigable at each level.
 
+Search conditions are stored in the `q`, `category`, and `year` URL parameters.
+Controls update optimistically during router transitions, then use the committed URL values.
+No effect copies an earlier URL query over newer input.
+Edits replace the current history entry; opening an editorial preserves that search entry for Back.
+Clear removes all three search parameters while retaining unrelated parameters.
+Empty or unknown category/year values display the unfiltered default; valid filters are resolved
+once the editorial index finishes loading.
+
 ## 6. Internationalization
 
 - Framework: `i18next` + `react-i18next`
@@ -182,6 +190,7 @@ The website includes a dedicated `/contribute` page with instructions:
 2. Lint (`npm run lint`)
 3. Static analysis/type-check (`npm run analyze`)
 4. Build (`npm run build`)
+5. Chromium browser regression tests (`npm test`, after installing the Playwright browser)
 
 Runs on pull requests and pushes to `main`.
 
