@@ -42,6 +42,17 @@ npm run analyze
 npm run build
 ```
 
+### Browser regression tests
+
+```bash
+npx playwright install chromium
+npm test
+```
+
+The tests start a local Vite server and use a fixed editorial index to check search URLs,
+detail/Back navigation, refresh, filter defaults, and Clear. The rapid-input regression test
+uses the repository's full editorial index.
+
 ## UI preferences
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.

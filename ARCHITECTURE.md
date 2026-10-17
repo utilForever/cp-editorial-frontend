@@ -190,6 +190,7 @@ The website includes a dedicated `/contribute` page with instructions:
 2. Lint (`npm run lint`)
 3. Static analysis/type-check (`npm run analyze`)
 4. Build (`npm run build`)
+5. Chromium browser regression tests (`npm test`, after installing the Playwright browser)
 
 Runs on pull requests and pushes to `main`.
 
