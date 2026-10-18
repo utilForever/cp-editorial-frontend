@@ -141,15 +141,16 @@ test('updates and removes each parameter independently, preserving literal query
 
   const query = ' 중앙 & + /? # '
   await page.locator('#search-input').fill(query)
+  await expect(page).toHaveURL((url) => url.searchParams.get('q') === query)
   await page.reload()
   await expectSearch(page, query, 'University', '2026')
   expect(new URL(page.url()).searchParams.get('q')).toBe(query)
 
   await page.locator('#category-filter').selectOption('all')
-  expect(new URL(page.url()).searchParams.has('category')).toBe(false)
+  await expect(page).toHaveURL((url) => !url.searchParams.has('category'))
   await page.locator('#year-filter').selectOption('all')
   await expectSearch(page, query, 'all', 'all')
-  expect(new URL(page.url()).searchParams.has('year')).toBe(false)
+  await expect(page).toHaveURL((url) => !url.searchParams.has('year'))
   await page.locator('#search-input').fill('')
   await expect(page).toHaveURL('/search?source=shared')
 })
