@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useMemo, useState } from 'react'
+import { type ReactNode, startTransition, useMemo, useOptimistic } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams } from 'react-router-dom'
 import type { EditorialRecord } from '../entities/editorial/model/types'
@@ -279,8 +279,10 @@ function buildHighlightedSnippet(value: string, query: string, maxLength = 96): 
 export function SearchPage() {
   const { t, i18n } = useTranslation()
   const { data, isLoading, error } = useEditorialIndex()
-  const [searchParams] = useSearchParams()
-  const urlQuery = searchParams.get('q') ?? ''
+  const [urlSearchParams, setSearchParams] = useSearchParams()
+  // Keep the latest input visible until the URL navigation commits.
+  const [searchParams, setOptimisticSearchParams] = useOptimistic(urlSearchParams)
+  const query = searchParams.get('q') ?? ''
   const urlCategoryParam = searchParams.get('category')?.trim()
   const requestedUrlCategory =
     urlCategoryParam !== undefined && urlCategoryParam.length > 0
@@ -295,10 +297,21 @@ export function SearchPage() {
     [data.editorials],
   )
 
-  const urlCategory = normalizeCategoryFilter(requestedUrlCategory, categoryOptions)
-  const [query, setQuery] = useState(urlQuery)
-  const [selectedCategory, setSelectedCategory] = useState(urlCategory)
-  const [selectedYear, setSelectedYear] = useState(ALL_FILTER_VALUE)
+  const yearOptions = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          data.editorials
+            .map((editorial) => getEditorialYear(editorial))
+            .filter((year): year is string => year !== null),
+        ),
+      ).sort((left, right) => right.localeCompare(left)),
+    [data.editorials],
+  )
+
+  const selectedCategory = normalizeCategoryFilter(requestedUrlCategory, categoryOptions)
+  const requestedYear = searchParams.get('year')?.trim() ?? ALL_FILTER_VALUE
+  const selectedYear = yearOptions.includes(requestedYear) ? requestedYear : ALL_FILTER_VALUE
   const normalizedQuery = query.trim()
   const hasActiveFilters =
     selectedCategory !== ALL_FILTER_VALUE || selectedYear !== ALL_FILTER_VALUE
@@ -329,25 +342,22 @@ export function SearchPage() {
     [allContestResults],
   )
 
-  const yearOptions = useMemo(
-    () =>
-      Array.from(
-        new Set(
-          data.editorials
-            .map((editorial) => getEditorialYear(editorial))
-            .filter((year): year is string => year !== null),
-        ),
-      ).sort((left, right) => right.localeCompare(left)),
-    [data.editorials],
-  )
+  function replaceSearchParams(nextParams: URLSearchParams) {
+    startTransition(() => {
+      setOptimisticSearchParams(nextParams)
+      setSearchParams(nextParams, { replace: true })
+    })
+  }
 
-  useEffect(() => {
-    setQuery(urlQuery)
-  }, [urlQuery])
-
-  useEffect(() => {
-    setSelectedCategory(urlCategory)
-  }, [urlCategory])
+  function updateSearchParam(name: 'q' | 'category' | 'year', value: string) {
+    const nextParams = new URLSearchParams(searchParams)
+    if (value === '' || (name !== 'q' && value === ALL_FILTER_VALUE)) {
+      nextParams.delete(name)
+    } else {
+      nextParams.set(name, value)
+    }
+    replaceSearchParams(nextParams)
+  }
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
@@ -505,7 +515,7 @@ export function SearchPage() {
           <input
             className="input"
             id="search-input"
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => updateSearchParam('q', event.target.value)}
             placeholder={t('search.placeholder')}
             value={query}
           />
@@ -515,7 +525,7 @@ export function SearchPage() {
           <select
             className="select"
             id="category-filter"
-            onChange={(event) => setSelectedCategory(event.target.value)}
+            onChange={(event) => updateSearchParam('category', event.target.value)}
             value={selectedCategory}
           >
             <option value={ALL_FILTER_VALUE}>{t('search.refine.allCategories')}</option>
@@ -531,7 +541,7 @@ export function SearchPage() {
           <select
             className="select select--year"
             id="year-filter"
-            onChange={(event) => setSelectedYear(event.target.value)}
+            onChange={(event) => updateSearchParam('year', event.target.value)}
             value={selectedYear}
           >
             <option value={ALL_FILTER_VALUE}>{t('search.refine.allYears')}</option>
@@ -543,11 +553,15 @@ export function SearchPage() {
           </select>
           <button
             className="clear-button"
-            disabled={normalizedQuery.length === 0 && !hasActiveFilters}
+            disabled={
+              !searchParams.has('q') && !searchParams.has('category') && !searchParams.has('year')
+            }
             onClick={() => {
-              setQuery('')
-              setSelectedCategory(ALL_FILTER_VALUE)
-              setSelectedYear(ALL_FILTER_VALUE)
+              const nextParams = new URLSearchParams(searchParams)
+              nextParams.delete('q')
+              nextParams.delete('category')
+              nextParams.delete('year')
+              replaceSearchParams(nextParams)
             }}
             type="button"
           >

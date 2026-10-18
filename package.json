@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "analyze": "tsc -b --pretty false",
+    "test": "playwright test --config scripts/playwright.config.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
