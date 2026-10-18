@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { EditorialIndex } from '../../entities/editorial/model/types'
-import { fetchEditorialIndex } from '../api/editorialRepository'
+import { fetchEditorialIndex, getCachedEditorialIndex } from '../api/editorialRepository'
 
 interface EditorialIndexState {
   data: EditorialIndex
@@ -14,8 +14,8 @@ const INITIAL_INDEX: EditorialIndex = {
 }
 
 export function useEditorialIndex(): EditorialIndexState {
-  const [data, setData] = useState<EditorialIndex>(INITIAL_INDEX)
-  const [isLoading, setIsLoading] = useState(true)
+  const [data, setData] = useState<EditorialIndex>(() => getCachedEditorialIndex() ?? INITIAL_INDEX)
+  const [isLoading, setIsLoading] = useState(() => getCachedEditorialIndex() === null)
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
