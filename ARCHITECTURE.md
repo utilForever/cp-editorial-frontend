@@ -127,6 +127,13 @@ The frontend consumes a static index with this shape:
 
 Normalization rejects invalid index data (missing required fields or empty localized title content) with explicit errors.
 
+### Loading and freshness policy
+
+- The editorial repository shares one in-flight request and keeps the successfully normalized index in memory for the lifetime of the page.
+- All `useEditorialIndex` consumers reuse that request; newly mounted consumers start with cached data without an index loading state after a successful load.
+- Failed network, HTTP, JSON, or normalization attempts are not cached. Errors remain visible, and navigating to another data page or reloading retries the load.
+- The first request uses `cache: 'no-cache'` to revalidate any browser HTTP cache. SPA navigation keeps the same index snapshot; a full reload or new tab checks for updated deployment data. There is no background polling or persistent application cache.
+
 ## 5. Routing model
 
 | Route                           | Purpose                                                         |
