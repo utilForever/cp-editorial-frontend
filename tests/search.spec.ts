@@ -175,3 +175,127 @@ test('trims an incoming category and year without discarding valid filters durin
   await expectSearch(page, '', 'University', '2026')
   await expectCpcResult(page)
 })
+
+test('matches every token regardless of order, whitespace, case or repetition', async ({
+  page,
+}) => {
+  await page.goto('/search')
+
+  const input = page.locator('#search-input')
+  const results = page.locator('.competition-editorials__title')
+
+  for (const query of ['2026 CPC', 'CPC 2026', '  cPc   2026  ', 'CPC 2026 CPC']) {
+    await input.fill(query)
+    await expect(results).toHaveText([
+      '2026 중앙대학교 프로그래밍 경진대회 (CPC)',
+      '2026 중앙대학교 프로그래밍 경진대회 (CPC)',
+    ])
+    await expect(results.first()).toHaveAttribute('href', '/editorials/olympiad-2026')
+    await expect(results.last()).toHaveAttribute('href', '/editorials/cpc-2026')
+    await expect(results.first().locator('mark')).toHaveText(['2026', 'CPC'])
+  }
+
+  await input.fill('CPC 2026 nonexistent')
+  await expect(results).toHaveCount(0)
+  await expect(page.getByText('No competitions match your search.', { exact: true })).toBeVisible()
+
+  await input.fill('   ')
+  await expect(page.locator('.search-start')).toBeVisible()
+})
+
+test('combines tokens across fields with category and year filters', async ({ page }) => {
+  await page.goto('/search')
+
+  const input = page.locator('#search-input')
+  const results = page.locator('.competition-editorials__title')
+
+  await input.fill('CPC University')
+  await expect(results).toHaveCount(2)
+  await page.locator('#year-filter').selectOption('2026')
+  await expectCpcResult(page)
+  await page.locator('#category-filter').selectOption('University')
+  await expectCpcResult(page)
+  await expect(
+    page.locator('.match-chip').filter({ hasText: 'Category' }).locator('mark'),
+  ).toHaveText(['University'])
+
+  await page.locator('#category-filter').selectOption('Olympiad')
+  await expect(results).toHaveCount(0)
+  await input.fill('2026 CPC')
+  await expect(results).toHaveCount(1)
+  await expect(results).toHaveAttribute('href', '/editorials/olympiad-2026')
+  await page.locator('#year-filter').selectOption('2025')
+  await expect(results).toHaveCount(0)
+})
+
+test('ranks exact fields, whole words, substrings and metadata while keeping stable contest groups', async ({
+  page,
+}) => {
+  const rankedIndex = {
+    ...editorialIndex,
+    editorials: [
+      { id: 'metadata', contest: 'A metadata', title: 'Guide', filename: 'A.pdf' },
+      { id: 'substring', contest: 'ICPC', title: 'ICPC 2026', filename: 'A.pdf' },
+      { id: 'group-substring', contest: 'Finals', title: 'ICPC 2026', filename: 'A.pdf' },
+      { id: 'word-b', contest: 'Finals', title: '2026 CPC Finals B', filename: 'B.pdf' },
+      { id: 'word-a', contest: 'Finals', title: '2026 CPC Finals A', filename: 'A.pdf' },
+      { id: 'exact-contest', contest: 'CPC', title: 'Guide', filename: 'A.pdf' },
+      { id: 'exact-title', contest: 'Z organizers', title: 'CPC', filename: 'A.pdf' },
+    ].map(({ title, ...record }) => ({
+      ...editorialIndex.editorials[0],
+      ...record,
+      title: { en: title },
+      summary: { en: '2026 CPC' },
+    })),
+  }
+
+  await page.route('**/data/editorial-index.json', (route) => route.fulfill({ json: rankedIndex }))
+  await page.goto('/search?q=CPC')
+
+  const expectedGroups = ['CPC', 'Z organizers', 'Finals', 'ICPC', 'A metadata']
+  const expectedResults = [
+    'Guide',
+    'CPC',
+    '2026 CPC Finals A',
+    '2026 CPC Finals B',
+    'ICPC 2026',
+    'ICPC 2026',
+    'Guide',
+  ]
+
+  await expect(page.locator('.card__title')).toHaveText(expectedGroups)
+  await expect(page.locator('.competition-editorials__title')).toHaveText(expectedResults)
+  await page.reload()
+  await expect(page.locator('.card__title')).toHaveText(expectedGroups)
+  await expect(page.locator('.competition-editorials__title')).toHaveText(expectedResults)
+})
+
+test('highlights literal punctuation, overlapping tokens and distant matches in every matched field', async ({
+  page,
+}) => {
+  const title = `2026 ${'contest '.repeat(20)}(CPC)`
+
+  await page.route('**/data/editorial-index.json', (route) =>
+    route.fulfill({
+      json: {
+        ...editorialIndex,
+        editorials: [
+          {
+            ...editorialIndex.editorials[0],
+            title: { en: title },
+            summary: { en: 'C++ [final] solutions' },
+          },
+        ],
+      },
+    }),
+  )
+  await page.goto(`/search?${new URLSearchParams({ q: '2026 CPC PC C++ [final]' })}`)
+  await expectCpcResult(page)
+  await expect(page.locator('.competition-editorials__title mark')).toHaveText(['2026', 'CPC'])
+  await expect(
+    page.locator('.match-chip').filter({ hasText: 'Summary' }).locator('mark'),
+  ).toHaveText(['C++', '[final]'])
+
+  await page.locator('#search-input').fill('2026 .*')
+  await expect(page.locator('.competition-editorials__title')).toHaveCount(0)
+})
