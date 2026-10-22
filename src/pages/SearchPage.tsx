@@ -43,6 +43,11 @@ interface EditorialSearchResult {
   score: number
 }
 
+interface HighlightRange {
+  start: number
+  end: number
+}
+
 const ALL_FILTER_VALUE = 'all'
 
 const SEARCH_FIELD_LABEL_KEYS: Record<SearchFieldId, string> = {
@@ -289,31 +294,56 @@ function buildHighlightedSnippet(value: string, tokens: string[], maxLength = 96
     .sort((left, right) => right.length - left.length)
     .map(escapeSearchToken)
     .join('|')
-  const matches = Array.from(value.matchAll(new RegExp(pattern, 'giu')))
+  const matches = Array.from(value.toLowerCase().matchAll(new RegExp(`(?=(${pattern}))`, 'gu')))
 
   if (matches.length === 0) {
     return value
   }
 
-  const firstMatch = matches[0]
-  const lastMatch = matches[matches.length - 1]
-  const matchLength = lastMatch.index + lastMatch[0].length - firstMatch.index
+  // Map lowercase offsets back to source characters: İ becomes two code units (i + dot).
+  const offsets: HighlightRange[] = []
+  let sourceIndex = 0
+
+  for (const character of value) {
+    const range = { start: sourceIndex, end: sourceIndex + character.length }
+
+    offsets.push(...Array.from({ length: character.toLowerCase().length }, () => range))
+    sourceIndex = range.end
+  }
+
+  const ranges: HighlightRange[] = []
+
+  for (const match of matches) {
+    const start = offsets[match.index].start
+    const end = offsets[match.index + match[1].length - 1].end
+    const previous = ranges[ranges.length - 1]
+
+    if (previous && start <= previous.end) {
+      previous.end = Math.max(previous.end, end)
+    } else {
+      ranges.push({ start, end })
+    }
+  }
+
+  const firstMatch = ranges[0]
+  const lastMatch = ranges[ranges.length - 1]
+  const matchLength = lastMatch.end - firstMatch.start
   const snippetLength = Math.max(maxLength, matchLength)
-  const preferredStart = firstMatch.index - Math.floor((snippetLength - matchLength) / 2)
+  const preferredStart = firstMatch.start - Math.floor((snippetLength - matchLength) / 2)
   const start = Math.max(0, Math.min(preferredStart, Math.max(value.length - snippetLength, 0)))
   const end = Math.min(value.length, start + snippetLength)
   const parts: ReactNode[] = [start > 0 ? '...' : '']
 
   let cursor = start
 
-  for (const match of matches) {
+  for (const range of ranges) {
     parts.push(
-      value.slice(cursor, match.index),
-      <mark className="search-highlight" key={match.index}>
-        {match[0]}
+      value.slice(cursor, range.start),
+      <mark className="search-highlight" key={range.start}>
+        {value.slice(range.start, range.end)}
       </mark>,
     )
-    cursor = match.index + match[0].length
+    cursor = range.end
   }
 
   parts.push(value.slice(cursor, end), end < value.length ? '...' : '')

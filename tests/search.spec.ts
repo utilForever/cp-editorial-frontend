@@ -318,3 +318,46 @@ test('prioritizes complete multi-word titles and contests in the real index', as
   await page.locator('#search-input').fill('Welcome Contest')
   await expect(page.locator('.card__title').first()).toHaveText('Welcome Contest')
 })
+
+test('highlights overlapping tokens and Unicode lowercase expansions without shifting the text', async ({
+  page,
+}) => {
+  const title = '🏆 İstanbul ICPC 2026'
+
+  await page.route('**/data/editorial-index.json', (route) =>
+    route.fulfill({
+      json: {
+        ...editorialIndex,
+        editorials: [
+          {
+            ...editorialIndex.editorials[0],
+            title: { en: title },
+            summary: { en: 'İstanbul 2026' },
+          },
+        ],
+      },
+    }),
+  )
+  await page.goto('/search')
+
+  for (const query of ['İstanbul ICP CPC 2026', '2026 cpc icp i\u0307stanbul']) {
+    await page.locator('#search-input').fill(query)
+    await expectCpcResult(page)
+    await expect(page.locator('.competition-editorials__title')).toHaveText(title)
+    await expect(page.locator('.competition-editorials__title mark')).toHaveText([
+      'İstanbul',
+      'ICPC',
+      '2026',
+    ])
+    await expect(
+      page.locator('.match-chip').filter({ hasText: 'Summary' }).locator('mark'),
+    ).toHaveText(['İstanbul', '2026'])
+  }
+
+  await page.locator('#search-input').fill('i ICP CPC 2026')
+  await expect(page.locator('.competition-editorials__title mark')).toHaveText([
+    'İ',
+    'ICPC',
+    '2026',
+  ])
+})
