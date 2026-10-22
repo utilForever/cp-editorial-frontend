@@ -299,3 +299,22 @@ test('highlights literal punctuation, overlapping tokens and distant matches in 
   await page.locator('#search-input').fill('2026 .*')
   await expect(page.locator('.competition-editorials__title')).toHaveCount(0)
 })
+
+test('prioritizes complete multi-word titles and contests in the real index', async ({ page }) => {
+  await page.unroute('**/data/editorial-index.json')
+  await page.goto('/search')
+
+  const title = 'Day 2 - Jingzhe Tang Contest'
+
+  for (const query of [
+    title,
+    '  DAY  2  -  JINGZHE  TANG  CONTEST  ',
+    'Contest Tang Jingzhe - 2 Day',
+  ]) {
+    await page.locator('#search-input').fill(query)
+    await expect(page.locator('.competition-editorials__title').first()).toHaveText(title)
+  }
+
+  await page.locator('#search-input').fill('Welcome Contest')
+  await expect(page.locator('.card__title').first()).toHaveText('Welcome Contest')
+})

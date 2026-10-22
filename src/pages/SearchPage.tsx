@@ -96,10 +96,26 @@ function escapeSearchToken(token: string): string {
   return token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
+function getSearchTokens(value: string): string[] {
+  return Array.from(new Set(value.toLowerCase().split(/\s+/u).filter(Boolean)))
+}
+
 function scoreEditorialMatches(matches: SearchMatch[], tokens: string[]): number {
   const primaryValues = matches
     .filter((match) => match.field === 'title' || match.field === 'contest')
     .map((match) => match.value.toLowerCase())
+
+  const hasCompleteFieldMatch = primaryValues.some((value) => {
+    const fieldTokens = getSearchTokens(value)
+    return (
+      fieldTokens.length === tokens.length && fieldTokens.every((token) => tokens.includes(token))
+    )
+  })
+
+  if (hasCompleteFieldMatch) {
+    // A complete field outranks the maximum partial score of three points per token.
+    return tokens.length * 3 + 1
+  }
 
   // Count each token once: exact field > whole word > substring > other metadata.
   return tokens.reduce((score, token) => {
@@ -315,10 +331,7 @@ export function SearchPage() {
   // Keep the latest input visible until the URL navigation commits.
   const [searchParams, setOptimisticSearchParams] = useOptimistic(urlSearchParams)
   const query = searchParams.get('q') ?? ''
-  const tokens = useMemo(
-    () => Array.from(new Set(query.toLowerCase().split(/\s+/u).filter(Boolean))),
-    [query],
-  )
+  const tokens = useMemo(() => getSearchTokens(query), [query])
   const urlCategoryParam = searchParams.get('category')?.trim()
   const requestedUrlCategory =
     urlCategoryParam !== undefined && urlCategoryParam.length > 0
