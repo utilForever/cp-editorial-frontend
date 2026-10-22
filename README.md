@@ -49,15 +49,14 @@ npx playwright install chromium
 npm test
 ```
 
-The tests start a local Vite server and use a fixed editorial index to check search URLs,
-detail/Back navigation, refresh, filter defaults, and Clear. The rapid-input regression test
-uses the repository's full editorial index.
+The tests start a local Vite server and use fixed editorial indexes to check search URLs, detail/Back navigation, refresh, filter defaults, Clear, multi-word matching, relevance ordering, and highlights. The rapid-input and complete-match ordering tests use the repository's full editorial index.
 
 ## UI preferences
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.
 - Language: switch UI language at runtime (`en`, `ko`, `ja`); the selected language is also saved in local storage.
 - Search: the query, category, and year are stored in the URL (`q`, `category`, `year`) so Back, refresh, and shared links restore the same search. Changes replace the current history entry, and Clear removes the search parameters.
+- Search matching: each whitespace-separated word must appear in at least one searchable field, ignoring case and word order. Category and year filters still apply. Results stay grouped by contest, prioritizing complete title/contest word matches, then stronger partial matches. Matching words are highlighted, including overlapping matches and Unicode text.
 - Editorial data: the index is loaded and normalized once per page session, then reused across SPA navigation. Reload the page or open a new tab to check for updated deployment data. Failed loads can be retried by navigating to another data page or reloading.
 - Social previews: Build output now includes route-specific Open Graph/Twitter HTML pages for `/search`, `/categories` (including hierarchy sub-routes), `/contribute`, `/copyright`, and `/editorials/:editorialId`.
 - Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a generated per-editorial preview image.

@@ -147,16 +147,11 @@ Normalization rejects invalid index data (missing required fields or empty local
 | `/contribute`                   | Upload/contribution guide for `cp-editorial-data`               |
 | `/copyright`                    | Ownership, attribution, and usage guidance                      |
 
-Category browsing is path-hierarchy driven, so nested folders like
-`ICPC/Regionals/Asia Pacific/Asia Pacific Championship` are navigable at each level.
+Category browsing is path-hierarchy driven, so nested folders like `ICPC/Regionals/Asia Pacific/Asia Pacific Championship` are navigable at each level.
 
-Search conditions are stored in the `q`, `category`, and `year` URL parameters.
-Controls update optimistically during router transitions, then use the committed URL values.
-No effect copies an earlier URL query over newer input.
-Edits replace the current history entry; opening an editorial preserves that search entry for Back.
-Clear removes all three search parameters while retaining unrelated parameters.
-Empty or unknown category/year values display the unfiltered default; valid filters are resolved
-once the editorial index finishes loading.
+Search conditions are stored in the `q`, `category`, and `year` URL parameters. Controls update optimistically during router transitions, then use the committed URL values. No effect copies an earlier URL query over newer input. Edits replace the current history entry; opening an editorial preserves that search entry for Back. Clear removes all three search parameters while retaining unrelated parameters. Empty or unknown category/year values display the unfiltered default; valid filters are resolved once the editorial index finishes loading.
+
+Search splits the query on whitespace, lowercases and deduplicates tokens, and requires every token to occur in at least one visible title, contest, entry, category, summary, or filename field. Category and year filters apply alongside token matching. A full title or contest containing exactly the same distinct tokens ranks first, regardless of token order, whitespace, or case. Other results sum each token's strongest title/contest match: exact field (3), whole word (2), substring (1), or other metadata only (0). Whole-word boundaries respect Unicode letters, numbers, combining marks, and underscores. Editorials sort by total score within each contest; contest groups sort by their best editorial. Ties retain the existing category/contest and filename order. Empty queries retain summaries or filter-only results. Every matching field is shown, with literal token highlights using the same lowercase comparison as search. Overlapping matches are merged, and lowercase offsets are mapped back to the original characters so Unicode expansions do not shift highlights. Snippets expand when necessary to keep distant matches visible.
 
 ## 6. Internationalization
 
