@@ -97,17 +97,14 @@ function findEditorialMatches(
     }))
 }
 
-function getDistinctMatchContext(
-  matches: SearchMatch[],
-  title: string,
-  tokens: string[],
-): SearchMatch[] {
+function getDistinctMatchContext(matches: SearchMatch[], title: string, tokens: string[]) {
   const normalize = (value: string) => value.toLowerCase().trim().replace(/\s+/gu, ' ')
   const seen = new Set([normalize(title)])
+  const seenSnippets = new Set<string>()
 
-  return matches.filter((match) => {
+  return matches.flatMap((match) => {
     const value = normalize(match.value)
-    if (seen.has(value)) return false
+    if (seen.has(value)) return []
 
     if (match.field === 'filename') {
       const stem = value.replace(/\.[^.]+$/u, '')
@@ -115,11 +112,16 @@ function getDistinctMatchContext(
       const matchesExtension = tokens.some(
         (token) => value.includes(token) && !stem.includes(token),
       )
-      if (seen.has(stem) && !matchesExtension) return false
+      if (seen.has(stem) && !matchesExtension) return []
     }
 
+    const snippet = buildHighlightedSnippet(match.value, tokens)
+    const snippetKey = normalize(snippet.text)
+    if (seenSnippets.has(snippetKey)) return []
+
     seen.add(value)
-    return true
+    seenSnippets.add(snippetKey)
+    return [{ ...match, snippet: snippet.content }]
   })
 }
 
@@ -311,9 +313,13 @@ function filterContestResults(
 /**
  * Highlights all tokens, expanding the snippet when matches are far apart.
  */
-function buildHighlightedSnippet(value: string, tokens: string[], maxLength = 96): ReactNode {
+function buildHighlightedSnippet(
+  value: string,
+  tokens: string[],
+  maxLength = 96,
+): { text: string; content: ReactNode } {
   if (tokens.length === 0) {
-    return value
+    return { text: value, content: value }
   }
 
   const pattern = [...tokens]
@@ -323,7 +329,7 @@ function buildHighlightedSnippet(value: string, tokens: string[], maxLength = 96
   const matches = Array.from(value.toLowerCase().matchAll(new RegExp(`(?=(${pattern}))`, 'gu')))
 
   if (matches.length === 0) {
-    return value
+    return { text: value, content: value }
   }
 
   // Map lowercase offsets back to source characters: İ becomes two code units (i + dot).
@@ -358,7 +364,9 @@ function buildHighlightedSnippet(value: string, tokens: string[], maxLength = 96
   const preferredStart = firstMatch.start - Math.floor((snippetLength - matchLength) / 2)
   const start = Math.max(0, Math.min(preferredStart, Math.max(value.length - snippetLength, 0)))
   const end = Math.min(value.length, start + snippetLength)
-  const parts: ReactNode[] = [start > 0 ? '...' : '']
+  const prefix = start > 0 ? '...' : ''
+  const suffix = end < value.length ? '...' : ''
+  const parts: ReactNode[] = [prefix]
 
   let cursor = start
 
@@ -372,9 +380,9 @@ function buildHighlightedSnippet(value: string, tokens: string[], maxLength = 96
     cursor = range.end
   }
 
-  parts.push(value.slice(cursor, end), end < value.length ? '...' : '')
+  parts.push(value.slice(cursor, end), suffix)
 
-  return parts
+  return { text: `${prefix}${value.slice(start, end)}${suffix}`, content: parts }
 }
 
 /**
@@ -551,7 +559,7 @@ export function SearchPage() {
                           className="competition-editorials__title"
                           to={`/editorials/${editorial.id}`}
                         >
-                          {buildHighlightedSnippet(localizedTitle, tokens, 120)}
+                          {buildHighlightedSnippet(localizedTitle, tokens, 120).content}
                         </Link>
                         <div aria-label={t('search.context.label')} className="result-context">
                           <span className="result-context__item">{breadcrumb}</span>
@@ -568,9 +576,7 @@ export function SearchPage() {
                                 <span className="match-chip__field">
                                   {t(SEARCH_FIELD_LABEL_KEYS[match.field])}
                                 </span>
-                                <span className="match-chip__value">
-                                  {buildHighlightedSnippet(match.value, tokens)}
-                                </span>
+                                <span className="match-chip__value">{match.snippet}</span>
                               </li>
                             ))}
                           </ul>

@@ -473,6 +473,43 @@ for (const locale of [
       await expect(row('duplicate').locator('.match-chip mark').last()).toHaveText(highlight)
     }
   })
+
+  test(`deduplicates snippets with different hidden endings in ${locale.language}`, async ({
+    page,
+  }) => {
+    const prefix = `2026 ${`${locale.name} `.repeat(12)}`
+    await page.addInitScript((language) => {
+      localStorage.setItem('cp-editorial-language', language)
+    }, locale.language)
+    await page.route('**/data/editorial-index.json', (route) =>
+      route.fulfill({
+        json: {
+          ...editorialIndex,
+          editorials: [
+            {
+              ...editorialIndex.editorials[0],
+              title: { [locale.language]: 'Guide' },
+              problem: `${prefix}first round`,
+              summary: { [locale.language]: `${prefix}second round` },
+              filename: `${prefix}first round.pdf`,
+            },
+          ],
+        },
+      }),
+    )
+    await page.goto('/search?q=2026')
+    await expectCpcResult(page)
+    await expect(page.getByRole('list', { name: locale.label })).toBeVisible()
+    await expect(page.locator('.match-chip__field')).toHaveText([locale.entry])
+    await expect(page.locator('.match-chip__value')).toHaveText([`${prefix.slice(0, 96)}...`])
+    await expect(page.locator('.match-chip mark')).toHaveText(['2026'])
+
+    await page.locator('#search-input').fill('2026 round')
+    await expect(page.locator('.match-chip__field')).toHaveText([locale.entry, locale.summary])
+    await expect(page.locator('.match-chip__value').first()).toContainText('first round')
+    await expect(page.locator('.match-chip__value').last()).toContainText('second round')
+    await expect(page.locator('.match-chip mark')).toHaveText(['2026', 'round', '2026', 'round'])
+  })
 }
 
 test('retains distinct matching context for tokens spread across every field', async ({ page }) => {
