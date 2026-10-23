@@ -116,7 +116,11 @@ function getDistinctMatchContext(matches: SearchMatch[], title: string, tokens: 
     }
 
     const snippet = buildHighlightedSnippet(match.value, tokens)
-    const snippetKey = normalize(snippet.text)
+    // Generated ellipses must not hide a field that actually matched punctuation.
+    const snippetKey = JSON.stringify([
+      normalize(snippet.text),
+      tokens.filter((token) => value.includes(token)),
+    ])
     if (seenSnippets.has(snippetKey)) return []
 
     seen.add(value)

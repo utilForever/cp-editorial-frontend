@@ -512,6 +512,35 @@ for (const locale of [
   })
 }
 
+test('keeps literal punctuation matches when generated ellipses look identical', async ({
+  page,
+}) => {
+  const prefix = `2026 ${'programming contest '.repeat(8)}`
+  const visibleText = `${prefix.slice(0, 96)}...`
+  await page.route('**/data/editorial-index.json', (route) =>
+    route.fulfill({
+      json: {
+        ...editorialIndex,
+        editorials: [
+          {
+            ...editorialIndex.editorials[0],
+            title: { en: 'Guide' },
+            problem: `${prefix}first round`,
+            summary: { en: visibleText },
+            filename: `${prefix}first round.pdf`,
+          },
+        ],
+      },
+    }),
+  )
+  await page.goto('/search?q=2026')
+  await expect(page.locator('.match-chip__field')).toHaveText(['Entry'])
+  await page.locator('#search-input').fill('2026 ...')
+  await expect(page.locator('.match-chip__field')).toHaveText(['Entry', 'Summary'])
+  await expect(page.locator('.match-chip__value')).toHaveText([visibleText, visibleText])
+  await expect(page.locator('.match-chip mark')).toHaveText(['2026', '2026', '...'])
+})
+
 test('retains distinct matching context for tokens spread across every field', async ({ page }) => {
   await page.route('**/data/editorial-index.json', (route) =>
     route.fulfill({
