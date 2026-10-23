@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Resvg } from '@resvg/resvg-js'
+import { createStableEditorialId } from '../src/entities/editorial/model/editorialId.mjs'
 
 const SITE_URL = 'https://editorial.coduck.io'
 const APP_TITLE = 'Coduck - CP Editorial'
@@ -142,21 +143,6 @@ function getLocalizedText(content, preferredLocale) {
   }
 
   return ''
-}
-
-function hashStableString(value) {
-  let hash = 0
-  for (const character of value) {
-    hash = (hash * 31 + (character.codePointAt(0) ?? 0)) >>> 0
-  }
-
-  return hash.toString(36)
-}
-
-function createStableEditorialId(record) {
-  const base =
-    `${record.contest.trim()}::${record.problem.trim()}::${record.path.trim()}`.toLowerCase()
-  return `ed-${hashStableString(base)}`
 }
 
 function assertString(value, label) {
