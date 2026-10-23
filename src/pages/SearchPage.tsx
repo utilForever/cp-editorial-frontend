@@ -40,6 +40,12 @@ interface SearchMatch {
 interface EditorialSearchResult {
   editorial: EditorialRecord
   matches: SearchMatch[]
+  score: number
+}
+
+interface HighlightRange {
+  start: number
+  end: number
 }
 
 const ALL_FILTER_VALUE = 'all'
@@ -74,20 +80,65 @@ function getSearchFields(editorial: EditorialRecord, language: string | undefine
  */
 function findEditorialMatches(
   editorial: EditorialRecord,
-  query: string,
+  tokens: string[],
   language: string | undefined,
 ): SearchMatch[] {
-  const normalizedQuery = query.trim().toLowerCase()
-  if (normalizedQuery.length === 0) {
+  const fields = getSearchFields(editorial, language)
+
+  if (!tokens.every((token) => fields.some((field) => field.value.toLowerCase().includes(token)))) {
     return []
   }
 
-  return getSearchFields(editorial, language)
-    .filter((field) => field.value.toLowerCase().includes(normalizedQuery))
+  return fields
+    .filter((field) => tokens.some((token) => field.value.toLowerCase().includes(token)))
     .map((field) => ({
       field: field.id,
       value: field.value,
     }))
+}
+
+function escapeSearchToken(token: string): string {
+  return token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function getSearchTokens(value: string): string[] {
+  return Array.from(new Set(value.toLowerCase().split(/\s+/u).filter(Boolean)))
+}
+
+function scoreEditorialMatches(matches: SearchMatch[], tokens: string[]): number {
+  const primaryValues = matches
+    .filter((match) => match.field === 'title' || match.field === 'contest')
+    .map((match) => match.value.toLowerCase())
+
+  const hasCompleteFieldMatch = primaryValues.some((value) => {
+    const fieldTokens = getSearchTokens(value)
+    return (
+      fieldTokens.length === tokens.length && fieldTokens.every((token) => tokens.includes(token))
+    )
+  })
+
+  if (hasCompleteFieldMatch) {
+    // A complete field outranks the maximum partial score of three points per token.
+    return tokens.length * 3 + 1
+  }
+
+  // Count each token once: exact field > whole word > substring > other metadata.
+  return tokens.reduce((score, token) => {
+    const wholeWord = new RegExp(
+      `(?:^|[^\\p{L}\\p{N}\\p{M}_])${escapeSearchToken(token)}(?=$|[^\\p{L}\\p{N}\\p{M}_])`,
+      'u',
+    )
+    const strength = Math.max(
+      0,
+      ...primaryValues.map((value) => {
+        if (value === token) return 3
+        if (wholeWord.test(value)) return 2
+        return value.includes(token) ? 1 : 0
+      }),
+    )
+
+    return score + strength
+  }, 0)
 }
 
 /**
@@ -202,14 +253,13 @@ function isEditorialInYear(editorial: EditorialRecord, year: string): boolean {
  */
 function filterContestResults(
   contestResults: ContestResult[],
-  query: string,
+  tokens: string[],
   language: string | undefined,
   category: string,
   year: string,
 ): ContestSearchResult[] {
-  const normalizedQuery = query.trim()
   const hasActiveFilters = category !== ALL_FILTER_VALUE || year !== ALL_FILTER_VALUE
-  if (normalizedQuery.length === 0 && !hasActiveFilters) {
+  if (tokens.length === 0 && !hasActiveFilters) {
     return []
   }
 
@@ -217,60 +267,88 @@ function filterContestResults(
     .map((result) => ({
       ...result,
       editorials: result.editorials
-        .map((editorial) => ({
-          editorial,
-          matches: findEditorialMatches(editorial, normalizedQuery, language),
-        }))
         .filter(
-          (result) =>
-            (normalizedQuery.length === 0 || result.matches.length > 0) &&
-            isEditorialInCategory(result.editorial, category) &&
-            isEditorialInYear(result.editorial, year),
-        ),
+          (editorial) =>
+            isEditorialInCategory(editorial, category) && isEditorialInYear(editorial, year),
+        )
+        .map((editorial) => {
+          const matches = findEditorialMatches(editorial, tokens, language)
+          return { editorial, matches, score: scoreEditorialMatches(matches, tokens) }
+        })
+        .filter((result) => tokens.length === 0 || result.matches.length > 0)
+        .sort((left, right) => right.score - left.score),
     }))
     .filter((result) => result.editorials.length > 0)
+    .sort((left, right) => right.editorials[0].score - left.editorials[0].score)
 }
 
 /**
- * Highlights the first query match inside a bounded result snippet.
+ * Highlights all tokens, expanding the snippet when matches are far apart.
  */
-function buildHighlightedSnippet(value: string, query: string, maxLength = 96): ReactNode {
-  const normalizedQuery = query.trim()
-  if (normalizedQuery.length === 0) {
+function buildHighlightedSnippet(value: string, tokens: string[], maxLength = 96): ReactNode {
+  if (tokens.length === 0) {
     return value
   }
 
-  const valueLowerCase = value.toLowerCase()
-  const queryLowerCase = normalizedQuery.toLowerCase()
-  const matchIndex = valueLowerCase.indexOf(queryLowerCase)
-  if (matchIndex < 0) {
+  const pattern = [...tokens]
+    .sort((left, right) => right.length - left.length)
+    .map(escapeSearchToken)
+    .join('|')
+  const matches = Array.from(value.toLowerCase().matchAll(new RegExp(`(?=(${pattern}))`, 'gu')))
+
+  if (matches.length === 0) {
     return value
   }
 
-  const availableContextLength = Math.max(maxLength - normalizedQuery.length, 0)
-  const preferredStart = matchIndex - Math.floor(availableContextLength / 2)
-  const start = Math.max(0, Math.min(preferredStart, Math.max(value.length - maxLength, 0)))
-  const end = Math.min(value.length, start + maxLength)
-  const snippet = `${start > 0 ? '...' : ''}${value.slice(start, end)}${
-    end < value.length ? '...' : ''
-  }`
-  const snippetMatchIndex = snippet.toLowerCase().indexOf(queryLowerCase)
+  // Map lowercase offsets back to source characters: İ becomes two code units (i + dot).
+  const offsets: HighlightRange[] = []
+  let sourceIndex = 0
 
-  if (snippetMatchIndex < 0) {
-    return snippet
+  for (const character of value) {
+    const range = { start: sourceIndex, end: sourceIndex + character.length }
+
+    offsets.push(...Array.from({ length: character.toLowerCase().length }, () => range))
+    sourceIndex = range.end
   }
 
-  const before = snippet.slice(0, snippetMatchIndex)
-  const match = snippet.slice(snippetMatchIndex, snippetMatchIndex + normalizedQuery.length)
-  const after = snippet.slice(snippetMatchIndex + normalizedQuery.length)
+  const ranges: HighlightRange[] = []
 
-  return (
-    <>
-      {before}
-      <mark className="search-highlight">{match}</mark>
-      {after}
-    </>
-  )
+  for (const match of matches) {
+    const start = offsets[match.index].start
+    const end = offsets[match.index + match[1].length - 1].end
+    const previous = ranges[ranges.length - 1]
+
+    if (previous && start <= previous.end) {
+      previous.end = Math.max(previous.end, end)
+    } else {
+      ranges.push({ start, end })
+    }
+  }
+
+  const firstMatch = ranges[0]
+  const lastMatch = ranges[ranges.length - 1]
+  const matchLength = lastMatch.end - firstMatch.start
+  const snippetLength = Math.max(maxLength, matchLength)
+  const preferredStart = firstMatch.start - Math.floor((snippetLength - matchLength) / 2)
+  const start = Math.max(0, Math.min(preferredStart, Math.max(value.length - snippetLength, 0)))
+  const end = Math.min(value.length, start + snippetLength)
+  const parts: ReactNode[] = [start > 0 ? '...' : '']
+
+  let cursor = start
+
+  for (const range of ranges) {
+    parts.push(
+      value.slice(cursor, range.start),
+      <mark className="search-highlight" key={range.start}>
+        {value.slice(range.start, range.end)}
+      </mark>,
+    )
+    cursor = range.end
+  }
+
+  parts.push(value.slice(cursor, end), end < value.length ? '...' : '')
+
+  return parts
 }
 
 /**
@@ -283,6 +361,7 @@ export function SearchPage() {
   // Keep the latest input visible until the URL navigation commits.
   const [searchParams, setOptimisticSearchParams] = useOptimistic(urlSearchParams)
   const query = searchParams.get('q') ?? ''
+  const tokens = useMemo(() => getSearchTokens(query), [query])
   const urlCategoryParam = searchParams.get('category')?.trim()
   const requestedUrlCategory =
     urlCategoryParam !== undefined && urlCategoryParam.length > 0
@@ -312,10 +391,9 @@ export function SearchPage() {
   const selectedCategory = normalizeCategoryFilter(requestedUrlCategory, categoryOptions)
   const requestedYear = searchParams.get('year')?.trim() ?? ALL_FILTER_VALUE
   const selectedYear = yearOptions.includes(requestedYear) ? requestedYear : ALL_FILTER_VALUE
-  const normalizedQuery = query.trim()
   const hasActiveFilters =
     selectedCategory !== ALL_FILTER_VALUE || selectedYear !== ALL_FILTER_VALUE
-  const isStartState = normalizedQuery.length === 0 && !hasActiveFilters
+  const isStartState = tokens.length === 0 && !hasActiveFilters
 
   usePageMetadata({
     title: `${t('search.heading')} | ${t('appTitle')}`,
@@ -329,12 +407,12 @@ export function SearchPage() {
     () =>
       filterContestResults(
         allContestResults,
-        query,
+        tokens,
         i18n.resolvedLanguage,
         selectedCategory,
         selectedYear,
       ),
-    [allContestResults, i18n.resolvedLanguage, query, selectedCategory, selectedYear],
+    [allContestResults, i18n.resolvedLanguage, tokens, selectedCategory, selectedYear],
   )
 
   const categorySummaries = useMemo(
@@ -438,7 +516,6 @@ export function SearchPage() {
                   const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
                   const breadcrumb = getCategoryBreadcrumb(editorial, t('category.unknown'))
                   const editorialYear = getEditorialYear(editorial)
-                  const visibleMatches = matches.slice(0, 3)
 
                   return (
                     <li className="competition-editorials__item" key={editorial.id}>
@@ -447,7 +524,7 @@ export function SearchPage() {
                           className="competition-editorials__title"
                           to={`/editorials/${editorial.id}`}
                         >
-                          {buildHighlightedSnippet(localizedTitle, normalizedQuery, 120)}
+                          {buildHighlightedSnippet(localizedTitle, tokens, 120)}
                         </Link>
                         <div aria-label={t('search.context.label')} className="result-context">
                           <span className="result-context__item">{breadcrumb}</span>
@@ -457,15 +534,15 @@ export function SearchPage() {
                             </span>
                           ) : null}
                         </div>
-                        {visibleMatches.length > 0 ? (
+                        {matches.length > 0 ? (
                           <ul className="match-list" aria-label={t('search.match.label')}>
-                            {visibleMatches.map((match) => (
+                            {matches.map((match) => (
                               <li className="match-chip" key={`${editorial.id}::${match.field}`}>
                                 <span className="match-chip__field">
                                   {t(SEARCH_FIELD_LABEL_KEYS[match.field])}
                                 </span>
                                 <span className="match-chip__value">
-                                  {buildHighlightedSnippet(match.value, normalizedQuery)}
+                                  {buildHighlightedSnippet(match.value, tokens)}
                                 </span>
                               </li>
                             ))}
