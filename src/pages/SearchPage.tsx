@@ -97,6 +97,32 @@ function findEditorialMatches(
     }))
 }
 
+function getDistinctMatchContext(
+  matches: SearchMatch[],
+  title: string,
+  tokens: string[],
+): SearchMatch[] {
+  const normalize = (value: string) => value.toLowerCase().trim().replace(/\s+/gu, ' ')
+  const seen = new Set([normalize(title)])
+
+  return matches.filter((match) => {
+    const value = normalize(match.value)
+    if (seen.has(value)) return false
+
+    if (match.field === 'filename') {
+      const stem = value.replace(/\.[^.]+$/u, '')
+      // Keep the filename when its extension explains a token absent from the stem.
+      const matchesExtension = tokens.some(
+        (token) => value.includes(token) && !stem.includes(token),
+      )
+      if (seen.has(stem) && !matchesExtension) return false
+    }
+
+    seen.add(value)
+    return true
+  })
+}
+
 function escapeSearchToken(token: string): string {
   return token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
@@ -514,6 +540,7 @@ export function SearchPage() {
                 {result.editorials.map(({ editorial, matches }) => {
                   const links = buildEditorialLinks(editorial.path)
                   const localizedTitle = getLocalizedText(editorial.title, i18n.resolvedLanguage)
+                  const matchContext = getDistinctMatchContext(matches, localizedTitle, tokens)
                   const breadcrumb = getCategoryBreadcrumb(editorial, t('category.unknown'))
                   const editorialYear = getEditorialYear(editorial)
 
@@ -534,9 +561,9 @@ export function SearchPage() {
                             </span>
                           ) : null}
                         </div>
-                        {matches.length > 0 ? (
+                        {matchContext.length > 0 ? (
                           <ul className="match-list" aria-label={t('search.match.label')}>
-                            {matches.map((match) => (
+                            {matchContext.map((match) => (
                               <li className="match-chip" key={`${editorial.id}::${match.field}`}>
                                 <span className="match-chip__field">
                                   {t(SEARCH_FIELD_LABEL_KEYS[match.field])}
