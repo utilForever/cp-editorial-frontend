@@ -121,7 +121,8 @@ The frontend consumes a static index with this shape:
 
 - Routing must not depend on filename language.
 - Editorial IDs are derived from stable fields (`contest`, `problem`, `path`) when explicit `id` is not provided.
-- This prevents link breakage if filename language changes.
+- Runtime normalization and route-preview generation share `src/entities/editorial/model/editorialId.mjs`. It trims each field, joins them with `::`, lowercases the result, and hashes UTF-16 code units to preserve existing runtime IDs, including supplementary CJK characters and emoji.
+- Explicit non-empty IDs are trimmed and preserved. Changing a source field can change a derived ID; retain an explicit ID when renaming a file must preserve its route.
 
 ### Validation policy
 
