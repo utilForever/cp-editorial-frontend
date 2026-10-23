@@ -361,3 +361,220 @@ test('highlights overlapping tokens and Unicode lowercase expansions without shi
     '2026',
   ])
 })
+
+for (const locale of [
+  {
+    language: 'en',
+    name: 'Programming contest',
+    label: 'Matched fields',
+    entry: 'Entry',
+    summary: 'Summary',
+    filename: 'Filename',
+    year: '2026',
+  },
+  {
+    language: 'ko',
+    name: '프로그래밍 경진대회',
+    label: '일치한 필드',
+    entry: '항목',
+    summary: '요약',
+    filename: '파일명',
+    year: '2026년',
+  },
+  {
+    language: 'ja',
+    name: 'プログラミングコンテスト',
+    label: '一致した項目',
+    entry: '項目',
+    summary: '概要',
+    filename: 'ファイル名',
+    year: '2026年',
+  },
+]) {
+  test(`deduplicates match context and keeps long titles readable in ${locale.language}`, async ({
+    page,
+  }, testInfo) => {
+    const title = `2026 ${`${locale.name} `.repeat(12)}CPC`
+    const baseRecord = {
+      ...editorialIndex.editorials[0],
+      title: { [locale.language]: title },
+      problem: title.toUpperCase().replace(/ /gu, '  '),
+      filename: `${title.toUpperCase()}.PDF`,
+    }
+    await page.addInitScript((language) => {
+      localStorage.setItem('cp-editorial-language', language)
+    }, locale.language)
+    await page.route('**/data/editorial-index.json', (route) =>
+      route.fulfill({
+        json: {
+          ...editorialIndex,
+          editorials: [
+            { ...baseRecord, id: 'duplicate' },
+            {
+              ...baseRecord,
+              id: 'summary',
+              summary: { [locale.language]: '2026 detailed solutions' },
+            },
+            {
+              ...baseRecord,
+              id: 'original-entry',
+              problem: '2026 Original entry',
+              summary: { [locale.language]: '2026   ORIGINAL entry' },
+              filename: '2026 original entry.PDF',
+            },
+          ],
+        },
+      }),
+    )
+    await page.goto('/search?q=2026')
+
+    const row = (id: string) =>
+      page.locator('.competition-editorials__item').filter({
+        has: page.locator(`a[href="/editorials/${id}"]`),
+      })
+    await expect(row('duplicate').locator('.match-list')).toHaveCount(0)
+    await expect(row('summary').getByRole('list', { name: locale.label })).toBeVisible()
+    await expect(row('summary').locator('.match-chip__field')).toHaveText([locale.summary])
+    await expect(row('summary').locator('.match-chip__value')).toHaveText([
+      '2026 detailed solutions',
+    ])
+    await expect(row('original-entry').locator('.match-chip__field')).toHaveText([locale.entry])
+    await expect(row('original-entry').locator('.match-chip__value')).toHaveText([
+      '2026 Original entry',
+    ])
+
+    await page.locator('#search-input').fill('2026 CPC')
+    for (const width of [1280, 375]) {
+      await page.setViewportSize({ width, height: 900 })
+      const titleLink = row('duplicate').locator('.competition-editorials__title')
+      await expect(titleLink).toHaveText(title)
+      await expect(titleLink).toHaveAccessibleName(title)
+      await expect(titleLink.locator('mark')).toHaveText(['2026', 'CPC'])
+      await expect(row('duplicate').locator('.result-context__item')).toHaveText([
+        'University',
+        locale.year,
+      ])
+      expect(
+        await titleLink.evaluate((element) => element.scrollWidth <= element.clientWidth + 1),
+      ).toBe(true)
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+      ).toBe(true)
+      await row('duplicate').screenshot({ path: testInfo.outputPath(`context-${width}.png`) })
+    }
+
+    for (const [query, highlight] of [
+      ['2026 .pdf', '.PDF'],
+      ['pdf', 'PDF'],
+      ['cpc.pdf', 'CPC.PDF'],
+    ]) {
+      await page.locator('#search-input').fill(query)
+      await expect(row('duplicate').locator('.match-chip__field')).toHaveText([locale.filename])
+      await expect(row('duplicate').locator('.match-chip mark').last()).toHaveText(highlight)
+    }
+  })
+
+  test(`deduplicates snippets with different hidden endings in ${locale.language}`, async ({
+    page,
+  }) => {
+    const prefix = `2026 ${`${locale.name} `.repeat(12)}`
+    await page.addInitScript((language) => {
+      localStorage.setItem('cp-editorial-language', language)
+    }, locale.language)
+    await page.route('**/data/editorial-index.json', (route) =>
+      route.fulfill({
+        json: {
+          ...editorialIndex,
+          editorials: [
+            {
+              ...editorialIndex.editorials[0],
+              title: { [locale.language]: 'Guide' },
+              problem: `${prefix}first round`,
+              summary: { [locale.language]: `${prefix}second round` },
+              filename: `${prefix}first round.pdf`,
+            },
+          ],
+        },
+      }),
+    )
+    await page.goto('/search?q=2026')
+    await expectCpcResult(page)
+    await expect(page.getByRole('list', { name: locale.label })).toBeVisible()
+    await expect(page.locator('.match-chip__field')).toHaveText([locale.entry])
+    await expect(page.locator('.match-chip__value')).toHaveText([`${prefix.slice(0, 96)}...`])
+    await expect(page.locator('.match-chip mark')).toHaveText(['2026'])
+
+    await page.locator('#search-input').fill('2026 round')
+    await expect(page.locator('.match-chip__field')).toHaveText([locale.entry, locale.summary])
+    await expect(page.locator('.match-chip__value').first()).toContainText('first round')
+    await expect(page.locator('.match-chip__value').last()).toContainText('second round')
+    await expect(page.locator('.match-chip mark')).toHaveText(['2026', 'round', '2026', 'round'])
+  })
+}
+
+test('keeps literal punctuation matches when generated ellipses look identical', async ({
+  page,
+}) => {
+  const prefix = `2026 ${'programming contest '.repeat(8)}`
+  const visibleText = `${prefix.slice(0, 96)}...`
+  await page.route('**/data/editorial-index.json', (route) =>
+    route.fulfill({
+      json: {
+        ...editorialIndex,
+        editorials: [
+          {
+            ...editorialIndex.editorials[0],
+            title: { en: 'Guide' },
+            problem: `${prefix}first round`,
+            summary: { en: visibleText },
+            filename: `${prefix}first round.pdf`,
+          },
+        ],
+      },
+    }),
+  )
+  await page.goto('/search?q=2026')
+  await expect(page.locator('.match-chip__field')).toHaveText(['Entry'])
+  await page.locator('#search-input').fill('2026 ...')
+  await expect(page.locator('.match-chip__field')).toHaveText(['Entry', 'Summary'])
+  await expect(page.locator('.match-chip__value')).toHaveText([visibleText, visibleText])
+  await expect(page.locator('.match-chip mark')).toHaveText(['2026', '2026', '...'])
+})
+
+test('retains distinct matching context for tokens spread across every field', async ({ page }) => {
+  await page.route('**/data/editorial-index.json', (route) =>
+    route.fulfill({
+      json: {
+        ...editorialIndex,
+        editorials: [
+          {
+            ...editorialIndex.editorials[0],
+            title: { en: 'Title 2026' },
+            contest: 'Contest 2026',
+            problem: 'Entry 2026',
+            categories: ['Category 2026'],
+            summary: { en: 'Summary 2026' },
+            filename: 'File 2026.pdf',
+          },
+        ],
+      },
+    }),
+  )
+  await page.goto('/search?q=title+contest+entry+category+summary+file')
+  await expectCpcResult(page)
+  await expect(page.locator('.competition-editorials__title mark')).toHaveText(['Title'])
+  await expect(page.locator('.match-chip__field')).toHaveText([
+    'Contest',
+    'Entry',
+    'Category',
+    'Summary',
+    'Filename',
+  ])
+  await expect(page.locator('.match-chip mark')).toHaveText([
+    'Contest',
+    'Entry',
+    'Category',
+    'Summary',
+    'File',
+  ])
+})
