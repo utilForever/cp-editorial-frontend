@@ -51,6 +51,8 @@ npm test
 
 The tests start a local Vite server and use fixed editorial indexes to check search URLs, detail/Back navigation, refresh, filter defaults, Clear, multi-word matching, relevance ordering, and highlights. The rapid-input and complete-match ordering tests use the repository's full editorial index.
 
+ID regression tests also generate preview HTML and PNG files in an isolated test output directory and check that browser detail routes and preview images use the same IDs for ASCII, Korean, supplementary CJK, emoji, and explicit IDs.
+
 ## UI preferences
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.

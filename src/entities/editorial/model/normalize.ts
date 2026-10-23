@@ -1,3 +1,4 @@
+import { createStableEditorialId } from './editorialId.mjs'
 import type {
   EditorialIndex,
   EditorialRecord,
@@ -5,6 +6,8 @@ import type {
   RawEditorialIndex,
   RawEditorialRecord,
 } from './types'
+
+export { createStableEditorialId } from './editorialId.mjs'
 
 const DEFAULT_INDEX_VERSION = 'unversioned'
 
@@ -64,24 +67,6 @@ function assertNoDotSegments(path: string, label: string) {
   if (segments.some((segment) => segment === '.' || segment === '..')) {
     throw new Error(`Invalid editorial index: "${label}" must not include dot-segment paths.`)
   }
-}
-
-function hashStableString(value: string): string {
-  let hash = 0
-
-  for (let index = 0; index < value.length; index += 1) {
-    hash = (hash * 31 + value.charCodeAt(index)) >>> 0
-  }
-
-  return hash.toString(36)
-}
-
-export function createStableEditorialId(
-  record: Pick<RawEditorialRecord, 'contest' | 'problem' | 'path'>,
-): string {
-  const base =
-    `${record.contest.trim()}::${record.problem.trim()}::${record.path.trim()}`.toLowerCase()
-  return `ed-${hashStableString(base)}`
 }
 
 function assertRawEditorialRecord(value: unknown, index: number): RawEditorialRecord {
