@@ -9,7 +9,14 @@ const compat = new FlatCompat({
 
 module.exports = [
   {
-    ignores: ['dist', 'node_modules', 'test-results', 'eslint.config.cjs', 'scripts/**/*.mjs'],
+    ignores: [
+      'dist',
+      'node_modules',
+      '.cache',
+      'test-results',
+      'eslint.config.cjs',
+      'scripts/**/*.mjs',
+    ],
   },
   ...compat.config({
     env: { browser: true, es2021: true },

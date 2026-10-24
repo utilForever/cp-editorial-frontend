@@ -53,6 +53,28 @@ The tests start a local Vite server and use fixed editorial indexes to check sea
 
 ID regression tests also generate preview HTML and PNG files in an isolated test output directory and check that browser detail routes and preview images use the same IDs for ASCII, Korean, supplementary CJK, emoji, and explicit IDs.
 
+Preview regression tests check PNG dimensions and size, rebuilding after clearing `dist`, cache reuse, and invalidation when editorial metadata, the generator, any bundled font, the background, or dependencies change. Rendered-image snapshots check mixed Korean, Latin, Japanese, supplementary CJK, and emoji in bold titles and regular footers, including wrapping and truncation of long Unicode titles.
+
+### Social-preview build cache
+
+Editorial previews remain 1200 × 630 PNGs at the same per-editorial URLs. The build uses `sharp` to compress rendered images to a 256-colour palette. Pretendard remains the primary font; bundled Source Han Sans and monochrome Noto Emoji supply missing CJK characters and emoji. System fonts are disabled for reproducible rendering. These fonts are build inputs only and are not downloaded by site visitors. Versions, sources, and licenses are recorded in [the font directory](scripts/assets/fonts/README.md).
+
+Generated images are cached in `.cache/route-previews`, outside Vite's cleared `dist` directory. Each build copies the required images into `dist` and regenerates route HTML. Cache keys cover normalized editorial metadata, generator/template code, font and background bytes, the dependency lockfile, and the Node.js/platform version. CI and deployment restore this cache across runs, including editorial-data dispatches. Missing caches simply trigger a complete render; deleting `.cache/route-previews` forces one. Old entries can be removed with that directory to reclaim disk space.
+
+The generator logs rendered/reused counts, total image bytes, and elapsed preview-generation time.
+
+Initial optimization measurements, before adding the bundled fallback fonts, were taken on 2026-10-24 with the checked-in 247-record index, Windows x64, Node.js 24.14.1, and an Intel Core i9-10940X. Each row is one local run of the preview generator (including route HTML and process startup), excluding Vite, TypeScript, and uploads; these are not production timings. The baseline uses the generator from `cb29660` with the same index and assets.
+
+| Generator              | Editorial PNG bytes |   MiB | Duration | Rendered / reused |
+| ---------------------- | ------------------: | ----: | -------: | ----------------: |
+| Baseline               |         283,425,134 | 270.3 |  119.7 s |           247 / 0 |
+| Optimized, empty cache |          79,050,546 |  75.4 |  126.6 s |           247 / 0 |
+| Optimized, warm cache  |          79,050,546 |  75.4 |    3.8 s |           0 / 247 |
+
+This reduces editorial image bytes by 72.1%. Palette encoding and loading bundled fallback fonts add work to a cold build; caching removes repeated rendering and encoding. Korean and long English title samples were visually checked. To compare locally, run `npm run build` with `.cache/route-previews` absent, then run it again with the cache retained and compare the `[route-previews]` log lines. Vite clears `dist` on both runs.
+
+After adding the fallback fonts, a full build on the same machine produced all 247 existing previews byte-for-byte unchanged. The generator reported 131.85 s with no cache hits and 0.96 s with all images reused (1.27 s including process startup for the warm run). No font files were included in `dist`. The mixed-script and long-Unicode snapshot cases also rendered identically on Node.js 20.20.2 and 24.14.1.
+
 ## UI preferences
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.
@@ -61,7 +83,7 @@ ID regression tests also generate preview HTML and PNG files in an isolated test
 - Search matching: each whitespace-separated word must appear in at least one searchable field, ignoring case and word order. Category and year filters still apply. Results stay grouped by contest, prioritizing complete title/contest word matches, then stronger partial matches. Matching words are highlighted, including overlapping matches and Unicode text. Match context omits repeated title/field text (ignoring case and whitespace) and filenames that only add an extension, unless that extension explains a search word. Snippets that become identical after shortening are also shown only once, unless they explain different search words. Distinct matching text and category/year context remain visible.
 - Editorial data: the index is loaded and normalized once per page session, then reused across SPA navigation. Reload the page or open a new tab to check for updated deployment data. Failed loads can be retried by navigating to another data page or reloading.
 - Social previews: Build output now includes route-specific Open Graph/Twitter HTML pages for `/search`, `/categories` (including hierarchy sub-routes), `/contribute`, `/copyright`, and `/editorials/:editorialId`.
-- Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a generated per-editorial preview image.
+- Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a compressed per-editorial PNG; unchanged images are reused during builds.
 
 ## The way the system works
 

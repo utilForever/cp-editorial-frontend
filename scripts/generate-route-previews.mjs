@@ -1,7 +1,9 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Resvg } from '@resvg/resvg-js'
+import sharp from 'sharp'
 import { createStableEditorialId } from '../src/entities/editorial/model/editorialId.mjs'
 
 const SITE_URL = 'https://editorial.coduck.io'
@@ -18,15 +20,24 @@ const DIST_DIR = path.join(PROJECT_ROOT, 'dist')
 const TEMPLATE_HTML_PATH = path.join(DIST_DIR, 'index.html')
 const INDEX_DATA_PATH = path.join(DIST_DIR, 'data', 'editorial-index.json')
 const EDITORIAL_IMAGE_OUTPUT_DIR = path.join(DIST_DIR, 'images', 'editorials')
+// shortcut: old cache entries remain; add pruning if local disk usage becomes significant.
+const EDITORIAL_IMAGE_CACHE_DIR = path.join(PROJECT_ROOT, '.cache', 'route-previews')
 const EDITORIAL_INFO_BASE_IMAGE_DIST_PATH = path.join(DIST_DIR, 'images', 'editorial-info-base.png')
 const OG_FONT_DIRECTORY = path.join(PROJECT_ROOT, 'scripts', 'assets', 'fonts')
-const OG_PRETENDARD_REGULAR_FONT_PATH = path.join(OG_FONT_DIRECTORY, 'Pretendard-Regular.otf')
-const OG_PRETENDARD_BOLD_FONT_PATH = path.join(OG_FONT_DIRECTORY, 'Pretendard-Bold.otf')
+const OG_FONT_FILES = [
+  'Pretendard-Regular.otf',
+  'Pretendard-Bold.otf',
+  'SourceHanSans-Regular.otf',
+  'SourceHanSans-Bold.otf',
+  'NotoEmoji.ttf',
+].map((filename) => path.join(OG_FONT_DIRECTORY, filename))
 const OG_DEFAULT_FONT_FAMILY = 'Pretendard'
 const OG_TEXT_FONT_FAMILY = "'Pretendard'"
+const OG_TEXT_SEGMENTER = new Intl.Segmenter('en', { granularity: 'grapheme' })
 const OG_RESVG_OPTIONS = {
   font: {
-    fontFiles: [OG_PRETENDARD_REGULAR_FONT_PATH, OG_PRETENDARD_BOLD_FONT_PATH],
+    loadSystemFonts: false,
+    fontFiles: OG_FONT_FILES,
     defaultFontFamily: OG_DEFAULT_FONT_FAMILY,
     sansSerifFamily: OG_DEFAULT_FONT_FAMILY,
   },
@@ -69,6 +80,26 @@ function escapeHtml(value) {
 
 function escapeXml(value) {
   return escapeHtml(value)
+}
+
+function buildTextSpans(value, y) {
+  const parts = value.split(/(\p{Script=Han}+|\p{RGI_Emoji})/v)
+  if (parts.length === 1) {
+    return escapeXml(value)
+  }
+
+  // Separate chunks avoid Resvg's fallback bug when emoji shaping changes the glyph count.
+  return parts
+    .map((part, index) => {
+      const family =
+        index % 2 === 0
+          ? 'Pretendard'
+          : /^\p{Script=Han}/u.test(part)
+            ? 'Source Han Sans'
+            : 'Noto Emoji'
+      return part ? `<tspan y="${y}" font-family="${family}">${escapeXml(part)}</tspan>` : ''
+    })
+    .join('')
 }
 
 function normalizeRoutePath(pathname) {
@@ -285,6 +316,7 @@ function isWideCodePoint(codePoint) {
     (codePoint >= 0xfe10 && codePoint <= 0xfe6f) ||
     (codePoint >= 0xff01 && codePoint <= 0xff60) ||
     (codePoint >= 0xffe0 && codePoint <= 0xffe6) ||
+    (codePoint >= 0x20000 && codePoint <= 0x3ffff) ||
     (codePoint >= 0x1f300 && codePoint <= 0x1faff)
   )
 }
@@ -331,8 +363,10 @@ function estimateTextWidth(value, fontSize) {
 
 function clampTextToWidth(value, maxWidth, fontSize) {
   let clamped = value.trimEnd()
+  const graphemes = Array.from(OG_TEXT_SEGMENTER.segment(clamped), ({ segment }) => segment)
   while (clamped.length > 0 && estimateTextWidth(clamped, fontSize) > maxWidth) {
-    clamped = clamped.slice(0, -1).trimEnd()
+    graphemes.pop()
+    clamped = graphemes.join('').trimEnd()
   }
 
   return clamped
@@ -340,10 +374,7 @@ function clampTextToWidth(value, maxWidth, fontSize) {
 
 function appendEllipsis(line, maxWidth, fontSize) {
   const ellipsis = '...'
-  let base = line.trimEnd()
-  while (base.length > 0 && estimateTextWidth(`${base}${ellipsis}`, fontSize) > maxWidth) {
-    base = base.slice(0, -1).trimEnd()
-  }
+  const base = clampTextToWidth(line, maxWidth - estimateTextWidth(ellipsis, fontSize), fontSize)
 
   return base.length > 0 ? `${base}${ellipsis}` : ellipsis
 }
@@ -372,7 +403,8 @@ function appendWrappedWord(word, currentLine, lines, { maxWidth, fontSize }) {
   }
 
   const clampedWord = clampTextToWidth(word, maxWidth, fontSize)
-  const lineChunk = clampedWord.length > 0 ? clampedWord : word[0]
+  const lineChunk =
+    clampedWord.length > 0 ? clampedWord : Array.from(OG_TEXT_SEGMENTER.segment(word))[0].segment
   lines.push(lineChunk)
   const remainingWord = word.slice(lineChunk.length)
 
@@ -450,13 +482,13 @@ function buildEditorialImageSvg(editorial, title, description, backgroundImageDa
   const contestText = contestLines
     .map(
       (line, index) =>
-        `<text x="${OG_TEXT_X}" y="${OG_CONTEST_Y + index * OG_CONTEST_LINE_HEIGHT}" fill="#7a5528" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_CONTEST_FONT_SIZE}" font-weight="700">${escapeXml(line)}</text>`,
+        `<text x="${OG_TEXT_X}" y="${OG_CONTEST_Y + index * OG_CONTEST_LINE_HEIGHT}" fill="#7a5528" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_CONTEST_FONT_SIZE}" font-weight="700">${buildTextSpans(line, OG_CONTEST_Y + index * OG_CONTEST_LINE_HEIGHT)}</text>`,
     )
     .join('\n')
   const titleText = titleLines
     .map(
       (line, index) =>
-        `<text x="${OG_TEXT_X}" y="${OG_TITLE_Y + index * OG_TITLE_LINE_HEIGHT}" fill="#3b2712" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_TITLE_FONT_SIZE}" font-weight="700">${escapeXml(line)}</text>`,
+        `<text x="${OG_TEXT_X}" y="${OG_TITLE_Y + index * OG_TITLE_LINE_HEIGHT}" fill="#3b2712" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_TITLE_FONT_SIZE}" font-weight="700">${buildTextSpans(line, OG_TITLE_Y + index * OG_TITLE_LINE_HEIGHT)}</text>`,
     )
     .join('\n')
 
@@ -475,7 +507,7 @@ function buildEditorialImageSvg(editorial, title, description, backgroundImageDa
   <text x="${OG_TEXT_X}" y="${OG_BRAND_Y}" fill="#9a6a2f" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_BRAND_FONT_SIZE}" font-weight="700">Coduck · CP Editorial</text>
   ${contestText}
   ${titleText}
-  <text x="${OG_TEXT_X}" y="${OG_FOOTER_Y}" fill="#6f4d26" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_FOOTER_FONT_SIZE}">${escapeXml(footerLine)}</text>
+  <text x="${OG_TEXT_X}" y="${OG_FOOTER_Y}" fill="#6f4d26" font-family="${OG_TEXT_FONT_FAMILY}" font-size="${OG_FOOTER_FONT_SIZE}">${buildTextSpans(footerLine, OG_FOOTER_Y)}</text>
 </svg>`.trim()
 }
 
@@ -493,32 +525,67 @@ async function writeRoutePage(pathname, html) {
 
 async function generateEditorialImages(editorials) {
   await mkdir(EDITORIAL_IMAGE_OUTPUT_DIR, { recursive: true })
+  await mkdir(EDITORIAL_IMAGE_CACHE_DIR, { recursive: true })
   const editorialBaseImageBytes = await readFile(EDITORIAL_INFO_BASE_IMAGE_DIST_PATH)
   const editorialBaseImageDataUri = `data:image/png;base64,${editorialBaseImageBytes.toString('base64')}`
+  const inputHash = createHash('sha256')
+    .update(`${process.platform}/${process.arch}/${process.versions.node}`)
+    .update(editorialBaseImageBytes)
+  for (const inputPath of [
+    fileURLToPath(import.meta.url),
+    ...OG_FONT_FILES,
+    path.join(PROJECT_ROOT, 'package-lock.json'),
+  ]) {
+    inputHash.update(await readFile(inputPath))
+  }
 
   let generatedCount = 0
+  let reusedCount = 0
+  let totalBytes = 0
   for (const editorial of editorials) {
-    const localizedTitle =
-      getLocalizedText(editorial.title, 'en') || editorial.problem || editorial.contest
-    const categoryFooter =
-      editorial.categories.length > 0
-        ? editorial.categories.join(' > ')
-        : `${editorial.contest} editorial`
-    const svg = buildEditorialImageSvg(
-      editorial,
-      localizedTitle,
-      categoryFooter,
-      editorialBaseImageDataUri,
-    )
-    const rendered = new Resvg(svg, OG_RESVG_OPTIONS).render().asPng()
+    const cacheKey = inputHash.copy().update(JSON.stringify(editorial)).digest('hex')
+    const cachePath = path.join(EDITORIAL_IMAGE_CACHE_DIR, `${cacheKey}.png`)
+    let imageBytes
+    try {
+      imageBytes = await readFile(cachePath)
+      reusedCount += 1
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        throw error
+      }
+
+      const localizedTitle =
+        getLocalizedText(editorial.title, 'en') || editorial.problem || editorial.contest
+      const categoryFooter =
+        editorial.categories.length > 0
+          ? editorial.categories.join(' > ')
+          : `${editorial.contest} editorial`
+      const svg = buildEditorialImageSvg(
+        editorial,
+        localizedTitle,
+        categoryFooter,
+        editorialBaseImageDataUri,
+      )
+      const rendered = new Resvg(svg, OG_RESVG_OPTIONS).render()
+      imageBytes = await sharp(rendered.pixels, {
+        raw: { width: rendered.width, height: rendered.height, channels: 4 },
+      })
+        .png({ palette: true, compressionLevel: 9 })
+        .toBuffer()
+      // Publish only complete images so an interrupted build cannot leave a partial cache hit.
+      const temporaryPath = `${cachePath}.${process.pid}.tmp`
+      await writeFile(temporaryPath, imageBytes)
+      await rename(temporaryPath, cachePath)
+      generatedCount += 1
+    }
     const encodedId = encodeURIComponent(editorial.id)
     const outputPath = path.join(EDITORIAL_IMAGE_OUTPUT_DIR, `${encodedId}.png`)
 
-    await writeFile(outputPath, rendered)
-    generatedCount += 1
+    await writeFile(outputPath, imageBytes)
+    totalBytes += imageBytes.length
   }
 
-  return generatedCount
+  return { generatedCount, reusedCount, totalBytes }
 }
 
 function buildRouteMetadata(editorials) {
@@ -607,6 +674,7 @@ function buildRouteMetadata(editorials) {
 }
 
 async function main() {
+  const startedAt = performance.now()
   const [templateHtml, rawIndexText] = await Promise.all([
     readFile(TEMPLATE_HTML_PATH, 'utf8'),
     readFile(INDEX_DATA_PATH, 'utf8'),
@@ -616,7 +684,7 @@ async function main() {
   const editorials = normalizeEditorialIndex(rawIndex)
   const routeMetadata = buildRouteMetadata(editorials)
 
-  const generatedImageCount = await generateEditorialImages(editorials)
+  const images = await generateEditorialImages(editorials)
   let generatedPageCount = 0
 
   for (const metadata of routeMetadata.values()) {
@@ -626,7 +694,7 @@ async function main() {
   }
 
   console.log(
-    `[route-previews] Generated ${generatedPageCount} route pages and ${generatedImageCount} editorial images.`,
+    `[route-previews] Generated ${generatedPageCount} route pages and ${images.generatedCount} editorial images; reused ${images.reusedCount} images. ${images.totalBytes} image bytes in ${((performance.now() - startedAt) / 1000).toFixed(2)}s.`,
   )
 }
 

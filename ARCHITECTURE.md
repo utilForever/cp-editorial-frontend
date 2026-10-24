@@ -174,6 +174,8 @@ Search splits the query on whitespace, lowercases and deduplicates tokens, and r
 - Open Graph/Twitter metadata still has static defaults in `index.html` and `public/404.html`.
 - Build now generates route HTML pages with crawlable metadata for `/search`, `/categories` + hierarchy sub-routes, `/contribute`, `/copyright`, and `/editorials/:editorialId`.
 - `search/categories/contribute/copyright` share one preview image; editorial detail routes use generated per-editorial preview PNG images.
+- Editorial PNGs keep their existing URLs and 1200 × 630 dimensions. Pretendard remains the primary font; Han ideographs and recognized emoji sequences use separate SVG text chunks with bundled Source Han Sans (Regular/Bold) and monochrome Noto Emoji. This avoids Resvg's fallback limitation when emoji shaping changes the glyph count, and preserves Pretendard for surrounding Korean/Latin text. Truncation keeps grapheme clusters intact. System fonts stay disabled, and the CJK fallback uses Japanese default glyph forms. Fonts are build inputs, not public webfont assets. Then `sharp` quantizes the pixels to a 256-colour PNG palette.
+- `.cache/route-previews` stores images outside Vite's cleared output directory. SHA-256 keys include normalized editorial metadata, the generator (including its SVG template and encoding settings), every font in the renderer's font-file list, the background image, `package-lock.json`, and the Node.js version/platform/architecture. Complete PNGs are atomically renamed into the cache. Missing entries are rendered; other filesystem errors fail the build. Route HTML is always regenerated, and all current images are written into `dist`, even on a full cache hit. The cache is disposable; older entries remain until it is cleared.
 - `public/404.html` remains the fallback path-restoration mechanism for unknown/non-generated routes.
 
 ## 8. Upload guidance flow
@@ -196,6 +198,8 @@ The website includes a dedicated `/contribute` page with instructions:
 5. Chromium browser regression tests (`npm test`, after installing the Playwright browser)
 
 Runs on pull requests and pushes to `main`.
+
+CI and deployment cache `.cache/route-previews` with `actions/cache`. The archive key covers the render inputs and editorial index; the restore prefix omits the index so data updates can reuse unchanged editorial images. Deployment restores after index generation so `repository_dispatch` builds use the new data in their archive key. The generator independently validates each image's input hash before reuse.
 
 `sonarcloud.yml` adds code-quality scanning on pull requests and pushes to `main`:
 
