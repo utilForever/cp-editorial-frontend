@@ -11,12 +11,25 @@ export function EditorialViewerPage() {
   const { t, i18n } = useTranslation()
   const { editorialId } = useParams()
   const { data, isLoading, error } = useEditorialIndex()
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null)
-  const [pdfError, setPdfError] = useState<Error | null>(null)
+  const [attempt, setAttempt] = useState(0)
+  const [pdfResult, setPdfResult] = useState<{
+    path: string
+    attempt: number
+    url?: string
+    error?: 'timeout' | 'load'
+  } | null>(null)
 
   const editorial = useMemo(
     () => data.editorials.find((item) => item.id === editorialId),
     [data.editorials, editorialId],
+  )
+  const isPdf = editorial?.path.toLowerCase().endsWith('.pdf') ?? false
+  const currentPdf =
+    pdfResult?.path === editorial?.path && pdfResult?.attempt === attempt ? pdfResult : null
+  const pdfUrl = currentPdf?.url
+  const pdfError = currentPdf?.error
+  const viewerDescription = t(
+    isPdf ? 'editorial.viewerDescription' : 'editorial.viewerSourceDescription',
   )
 
   const appTitle = t('appTitle')
@@ -25,7 +38,7 @@ export function EditorialViewerPage() {
     : appTitle
   const metadataDescription = editorial
     ? getLocalizedText(editorial.summary, i18n.resolvedLanguage)
-    : t('editorial.viewerDescription')
+    : viewerDescription
 
   usePageMetadata({
     title: editorial
@@ -37,24 +50,19 @@ export function EditorialViewerPage() {
   })
 
   useEffect(() => {
-    if (!editorial) {
-      setPdfUrl(null)
-      setPdfError(null)
+    setPdfResult(null)
+    if (!editorial || !isPdf) {
       return
     }
 
     const links = buildEditorialLinks(editorial.path)
-    let isMounted = true
+    const request = { path: editorial.path, attempt }
     let objectUrl: string | null = null
     const abortController = new AbortController()
-    let didTimeout = false
     const timeoutId = globalThis.setTimeout(() => {
-      didTimeout = true
+      setPdfResult({ ...request, error: 'timeout' })
       abortController.abort()
     }, 15000)
-
-    setPdfUrl(null)
-    setPdfError(null)
 
     void fetch(links.downloadUrl, { signal: abortController.signal })
       .then(async (response) => {
@@ -63,48 +71,33 @@ export function EditorialViewerPage() {
         }
 
         const bytes = await response.arrayBuffer()
+        if (abortController.signal.aborted) {
+          return
+        }
+
         const pdfBlob = new Blob([bytes], { type: 'application/pdf' })
         objectUrl = URL.createObjectURL(pdfBlob)
-
-        if (!isMounted) {
-          URL.revokeObjectURL(objectUrl)
-          return
-        }
-
-        setPdfUrl(objectUrl)
+        setPdfResult({ ...request, url: objectUrl })
       })
-      .catch((fetchError: unknown) => {
-        if (!isMounted) {
+      .catch(() => {
+        if (abortController.signal.aborted) {
           return
         }
 
-        if (fetchError instanceof DOMException && fetchError.name === 'AbortError') {
-          if (didTimeout) {
-            setPdfError(new Error('Timed out while loading editorial PDF.'))
-          }
-          return
-        }
-
-        const nextError =
-          fetchError instanceof Error
-            ? fetchError
-            : new Error('Unknown error while loading editorial PDF.')
-
-        setPdfError(nextError)
+        setPdfResult({ ...request, error: 'load' })
       })
       .finally(() => {
         globalThis.clearTimeout(timeoutId)
       })
 
     return () => {
-      isMounted = false
       abortController.abort()
       globalThis.clearTimeout(timeoutId)
       if (objectUrl) {
         URL.revokeObjectURL(objectUrl)
       }
     }
-  }, [editorial])
+  }, [editorial, isPdf, attempt])
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
@@ -131,7 +124,7 @@ export function EditorialViewerPage() {
   return (
     <article className="page">
       <h1>{localizedTitle}</h1>
-      <p className="page__description">{t('editorial.viewerDescription')}</p>
+      <p className="page__description">{viewerDescription}</p>
 
       <div className="stats-grid">
         <div className="stat-card">
@@ -153,6 +146,11 @@ export function EditorialViewerPage() {
         <Link className="action-link action-link--secondary" to={contestRoute}>
           {t('editorial.browseContest')}
         </Link>
+        {!isPdf && (
+          <a className="action-link" href={links.downloadUrl} rel="noreferrer" target="_blank">
+            {t('editorial.openSource')}
+          </a>
+        )}
         <a
           aria-label={t('editorial.downloadAria', { title: localizedTitle })}
           className="action-link action-link--secondary"
@@ -174,11 +172,26 @@ export function EditorialViewerPage() {
         </nav>
       )}
 
-      {pdfError && (
+      {isPdf && pdfError && (
         <section aria-label={t('editorial.viewerFailureActions')} className="viewer-fallback">
-          <p className="error">{t('editorial.viewerLoadFailed')}</p>
-          <p className="muted">{t('editorial.viewerFailureDescription')}</p>
+          <p className="error" role="alert">
+            {t(pdfError === 'timeout' ? 'editorial.viewerTimeout' : 'editorial.viewerLoadFailed')}
+          </p>
+          <p className="muted">
+            {t(
+              pdfError === 'timeout'
+                ? 'editorial.viewerTimeoutDescription'
+                : 'editorial.viewerFailureDescription',
+            )}
+          </p>
           <div className="action-links">
+            <button
+              className="action-link"
+              onClick={() => setAttempt((value) => value + 1)}
+              type="button"
+            >
+              {t('editorial.retry')}
+            </button>
             <a
               aria-label={t('editorial.downloadAria', { title: localizedTitle })}
               className="action-link"
@@ -194,9 +207,13 @@ export function EditorialViewerPage() {
           </div>
         </section>
       )}
-      {!pdfError && !pdfUrl && <p className="muted">{t('editorial.viewerLoading')}</p>}
+      {isPdf && !pdfError && !pdfUrl && (
+        <p className="muted" role="status">
+          {t('editorial.viewerLoading')}
+        </p>
+      )}
 
-      {pdfUrl && (
+      {isPdf && pdfUrl && (
         <object
           aria-label={t('editorial.viewAria', { title: localizedTitle })}
           className="editorial-viewer"
