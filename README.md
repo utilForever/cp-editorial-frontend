@@ -51,6 +51,8 @@ npm test
 
 The tests start a local Vite server and use fixed editorial indexes to check search URLs, detail/Back navigation, refresh, filter defaults, Clear, multi-word matching, relevance ordering, and highlights. The rapid-input and complete-match ordering tests use the repository's full editorial index.
 
+Viewer regression tests cover localized loading, timeout and failure recovery, retries, cancellation and Blob URL cleanup, late response bodies, and direct opening of Markdown/text sources without PDF requests.
+
 ID regression tests also generate preview HTML and PNG files in an isolated test output directory and check that browser detail routes and preview images use the same IDs for ASCII, Korean, supplementary CJK, emoji, and explicit IDs.
 
 Preview regression tests check PNG dimensions and size, rebuilding after clearing `dist`, cache reuse, and invalidation when editorial metadata, the generator, any bundled font, the background, or dependencies change. Rendered-image snapshots check mixed Korean, Latin, Japanese, supplementary CJK, and emoji in bold titles and regular footers, including wrapping and truncation of long Unicode titles.
@@ -82,6 +84,7 @@ After adding the fallback fonts, a full build on the same machine produced all 2
 - Search: the query, category, and year are stored in the URL (`q`, `category`, `year`) so Back, refresh, and shared links restore the same search. Changes replace the current history entry, and Clear removes the search parameters.
 - Search matching: each whitespace-separated word must appear in at least one searchable field, ignoring case and word order. Category and year filters still apply. Results stay grouped by contest, prioritizing complete title/contest word matches, then stronger partial matches. Matching words are highlighted, including overlapping matches and Unicode text. Match context omits repeated title/field text (ignoring case and whitespace) and filenames that only add an extension, unless that extension explains a search word. Snippets that become identical after shortening are also shown only once, unless they explain different search words. Distinct matching text and category/year context remain visible.
 - Editorial data: the index is loaded and normalized once per page session, then reused across SPA navigation. Reload the page or open a new tab to check for updated deployment data. Failed loads can be retried by navigating to another data page or reloading.
+- Editorial viewer: PDFs load into the browser preview with a 15-second timeout. Failures offer Retry without reloading the app; timeout guidance also suggests opening the source through Download for large files or slow connections. Markdown and text files offer a direct source link in a new tab. Download and return/navigation links remain available for all formats.
 - Social previews: Build output now includes route-specific Open Graph/Twitter HTML pages for `/search`, `/categories` (including hierarchy sub-routes), `/contribute`, `/copyright`, and `/editorials/:editorialId`.
 - Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a compressed per-editorial PNG; unchanged images are reused during builds.
 

@@ -144,11 +144,13 @@ Normalization rejects invalid index data (missing required fields or empty local
 | `/categories`                   | Category listing                                                |
 | `/categories/*`                 | Hierarchical browse pages for each directory level              |
 | `/editorials/:editorialId`      | Editorial detail page                                           |
-| `/editorials/:editorialId/view` | Inline PDF viewer for editorial content                         |
+| `/editorials/:editorialId/view` | PDF preview or direct source opening for non-PDF content        |
 | `/contribute`                   | Upload/contribution guide for `cp-editorial-data`               |
 | `/copyright`                    | Ownership, attribution, and usage guidance                      |
 
 Category browsing is path-hierarchy driven, so nested folders like `ICPC/Regionals/Asia Pacific/Asia Pacific Championship` are navigable at each level.
+
+The editorial viewer checks the source path's extension case-insensitively. PDFs retain the full-response ArrayBuffer → PDF Blob → object URL preview, with a 15-second timeout covering both the request and body download. Timeout guidance is distinct from other errors in all UI locales. Retry starts a fresh attempt without reloading the app. Results belong to a source path and attempt; aborted requests cannot create object URLs or update the result. Each attempt clears its timer on completion or cleanup, aborts on retry/navigation, and revokes its object URL on cleanup. Non-PDF sources (including the supported Markdown and text formats) are never fetched or embedded by the viewer; they offer an encoded raw-source link in a new tab with `rel="noreferrer"`. Download and return/navigation actions remain available. No rich text renderer or progressive PDF loading is used.
 
 Search conditions are stored in the `q`, `category`, and `year` URL parameters. Controls update optimistically during router transitions, then use the committed URL values. No effect copies an earlier URL query over newer input. Edits replace the current history entry; opening an editorial preserves that search entry for Back. Clear removes all three search parameters while retaining unrelated parameters. Empty or unknown category/year values display the unfiltered default; valid filters are resolved once the editorial index finishes loading.
 
