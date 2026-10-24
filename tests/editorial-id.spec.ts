@@ -1,7 +1,5 @@
-import { execFile } from 'node:child_process'
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
+import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { promisify } from 'node:util'
 import { expect, test } from '@playwright/test'
 import {
   createStableEditorialId,
@@ -9,8 +7,8 @@ import {
 } from '../src/entities/editorial/model/normalize'
 import type { RawEditorialRecord } from '../src/entities/editorial/model/types'
 import { buildEditorialPreviewImagePath } from '../src/shared/hooks/usePageMetadata'
+import { generatePreviews, preparePreviewProject } from './fixtures/preview-project'
 
-const execFileAsync = promisify(execFile)
 const cases = [
   { problem: '2026 CPC', expectedId: 'ed-1jds1ef' },
   { problem: '2026 대회', expectedId: 'ed-3cqq6h' },
@@ -63,25 +61,9 @@ test('generates Unicode route pages and images at the IDs used by the browser', 
   page,
 }, testInfo) => {
   const root = testInfo.outputPath('preview-project')
-  for (const [source, destination] of [
-    ['scripts/generate-route-previews.mjs', 'scripts/generate-route-previews.mjs'],
-    [
-      'src/entities/editorial/model/editorialId.mjs',
-      'src/entities/editorial/model/editorialId.mjs',
-    ],
-    ['scripts/assets/fonts/Pretendard-Regular.otf', 'scripts/assets/fonts/Pretendard-Regular.otf'],
-    ['scripts/assets/fonts/Pretendard-Bold.otf', 'scripts/assets/fonts/Pretendard-Bold.otf'],
-    ['public/images/editorial-info-base.png', 'dist/images/editorial-info-base.png'],
-    ['index.html', 'dist/index.html'],
-  ]) {
-    const target = path.join(root, destination)
-    await mkdir(path.dirname(target), { recursive: true })
-    await copyFile(source, target)
-  }
+  await preparePreviewProject(root, records)
   const editorialIndex = { editorials: records }
-  await mkdir(path.join(root, 'dist/data'), { recursive: true })
-  await writeFile(path.join(root, 'dist/data/editorial-index.json'), JSON.stringify(editorialIndex))
-  await execFileAsync(process.execPath, [path.join(root, 'scripts/generate-route-previews.mjs')])
+  await generatePreviews(root)
 
   await page.route('**/data/editorial-index.json', (route) =>
     route.fulfill({ json: editorialIndex }),
