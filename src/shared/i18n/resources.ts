@@ -160,10 +160,14 @@ export const resources = {
         downloadAria: 'Download editorial: {{title}}',
         notFound: 'Editorial not found.',
         viewerDescription: 'Preview this editorial PDF directly in your browser.',
+        retry: 'Retry',
         viewerLoading: 'Preparing PDF viewer...',
+        viewerTimeout: 'Loading the PDF timed out after 15 seconds.',
+        viewerTimeoutDescription:
+          'Large files or slow connections may need more time. Check your connection and retry, or use Download to open the source directly.',
         viewerLoadFailed: 'Unable to load this PDF in the browser viewer.',
         viewerFailureDescription:
-          'You can still download the source file or return to the editorial detail page.',
+          'Try again, download the source file, or return to the editorial detail page.',
         viewerFailureActions: 'PDF viewer fallback actions',
         viewerFallback: 'If preview is not available, use:',
       },
@@ -400,10 +404,14 @@ export const resources = {
         downloadAria: '{{title}} 에디토리얼 다운로드',
         notFound: '에디토리얼을 찾을 수 없습니다.',
         viewerDescription: '브라우저에서 이 에디토리얼 PDF를 바로 볼 수 있습니다.',
+        retry: '다시 시도',
         viewerLoading: 'PDF 뷰어를 준비하는 중입니다...',
+        viewerTimeout: 'PDF 로딩이 15초를 초과해 중단되었습니다.',
+        viewerTimeoutDescription:
+          '파일이 크거나 연결이 느리면 시간이 더 필요할 수 있습니다. 연결 상태를 확인하고 다시 시도하거나, 다운로드로 원본 파일을 직접 열어 주세요.',
         viewerLoadFailed: '브라우저 뷰어에서 이 PDF를 불러오지 못했습니다.',
         viewerFailureDescription:
-          '원본 파일을 다운로드하거나 에디토리얼 상세 페이지로 돌아갈 수 있습니다.',
+          '다시 시도하거나, 원본 파일을 다운로드하거나, 에디토리얼 상세 페이지로 돌아갈 수 있습니다.',
         viewerFailureActions: 'PDF 뷰어 대체 동작',
         viewerFallback: '미리보기가 불가능하면 다음을 사용하세요:',
       },
@@ -637,10 +645,14 @@ export const resources = {
         downloadAria: '{{title}} のエディトリアルをダウンロード',
         notFound: 'エディトリアルが見つかりません。',
         viewerDescription: 'このエディトリアル PDF をブラウザで直接表示します。',
+        retry: '再試行',
         viewerLoading: 'PDF ビューアーを準備しています...',
+        viewerTimeout: 'PDF の読み込みが 15 秒を超えたため中断されました。',
+        viewerTimeoutDescription:
+          '大きなファイルや低速の接続では時間がかかることがあります。接続を確認して再試行するか、ダウンロードから元ファイルを直接開いてください。',
         viewerLoadFailed: 'ブラウザビューアーでこの PDF を読み込めませんでした。',
         viewerFailureDescription:
-          '元ファイルをダウンロードするか、エディトリアル詳細ページに戻ることができます。',
+          '再試行するか、元ファイルをダウンロードするか、エディトリアル詳細ページに戻ることができます。',
         viewerFailureActions: 'PDF ビューアーの代替操作',
         viewerFallback: 'プレビューできない場合は次を使用してください:',
       },
