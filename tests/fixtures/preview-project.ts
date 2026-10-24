@@ -15,6 +15,7 @@ export async function preparePreviewProject(root: string, records: RawEditorialR
     ],
     ['public/images/editorial-info-base.png', 'dist/images/editorial-info-base.png'],
     ['index.html', 'dist/index.html'],
+    ['package-lock.json', 'package-lock.json'],
   ]) {
     const target = path.join(root, destination)
     await mkdir(path.dirname(target), { recursive: true })

@@ -1,4 +1,5 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Resvg } from '@resvg/resvg-js'
@@ -19,6 +20,8 @@ const DIST_DIR = path.join(PROJECT_ROOT, 'dist')
 const TEMPLATE_HTML_PATH = path.join(DIST_DIR, 'index.html')
 const INDEX_DATA_PATH = path.join(DIST_DIR, 'data', 'editorial-index.json')
 const EDITORIAL_IMAGE_OUTPUT_DIR = path.join(DIST_DIR, 'images', 'editorials')
+// shortcut: old cache entries remain; add pruning if local disk usage becomes significant.
+const EDITORIAL_IMAGE_CACHE_DIR = path.join(PROJECT_ROOT, '.cache', 'route-previews')
 const EDITORIAL_INFO_BASE_IMAGE_DIST_PATH = path.join(DIST_DIR, 'images', 'editorial-info-base.png')
 const OG_FONT_DIRECTORY = path.join(PROJECT_ROOT, 'scripts', 'assets', 'fonts')
 const OG_FONT_FILES = [
@@ -522,37 +525,67 @@ async function writeRoutePage(pathname, html) {
 
 async function generateEditorialImages(editorials) {
   await mkdir(EDITORIAL_IMAGE_OUTPUT_DIR, { recursive: true })
+  await mkdir(EDITORIAL_IMAGE_CACHE_DIR, { recursive: true })
   const editorialBaseImageBytes = await readFile(EDITORIAL_INFO_BASE_IMAGE_DIST_PATH)
   const editorialBaseImageDataUri = `data:image/png;base64,${editorialBaseImageBytes.toString('base64')}`
+  const inputHash = createHash('sha256')
+    .update(`${process.platform}/${process.arch}/${process.versions.node}`)
+    .update(editorialBaseImageBytes)
+  for (const inputPath of [
+    fileURLToPath(import.meta.url),
+    ...OG_FONT_FILES,
+    path.join(PROJECT_ROOT, 'package-lock.json'),
+  ]) {
+    inputHash.update(await readFile(inputPath))
+  }
 
   let generatedCount = 0
+  let reusedCount = 0
+  let totalBytes = 0
   for (const editorial of editorials) {
-    const localizedTitle =
-      getLocalizedText(editorial.title, 'en') || editorial.problem || editorial.contest
-    const categoryFooter =
-      editorial.categories.length > 0
-        ? editorial.categories.join(' > ')
-        : `${editorial.contest} editorial`
-    const svg = buildEditorialImageSvg(
-      editorial,
-      localizedTitle,
-      categoryFooter,
-      editorialBaseImageDataUri,
-    )
-    const image = new Resvg(svg, OG_RESVG_OPTIONS).render()
-    const rendered = await sharp(image.pixels, {
-      raw: { width: image.width, height: image.height, channels: 4 },
-    })
-      .png({ palette: true, compressionLevel: 9 })
-      .toBuffer()
+    const cacheKey = inputHash.copy().update(JSON.stringify(editorial)).digest('hex')
+    const cachePath = path.join(EDITORIAL_IMAGE_CACHE_DIR, `${cacheKey}.png`)
+    let imageBytes
+    try {
+      imageBytes = await readFile(cachePath)
+      reusedCount += 1
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        throw error
+      }
+
+      const localizedTitle =
+        getLocalizedText(editorial.title, 'en') || editorial.problem || editorial.contest
+      const categoryFooter =
+        editorial.categories.length > 0
+          ? editorial.categories.join(' > ')
+          : `${editorial.contest} editorial`
+      const svg = buildEditorialImageSvg(
+        editorial,
+        localizedTitle,
+        categoryFooter,
+        editorialBaseImageDataUri,
+      )
+      const rendered = new Resvg(svg, OG_RESVG_OPTIONS).render()
+      imageBytes = await sharp(rendered.pixels, {
+        raw: { width: rendered.width, height: rendered.height, channels: 4 },
+      })
+        .png({ palette: true, compressionLevel: 9 })
+        .toBuffer()
+      // Publish only complete images so an interrupted build cannot leave a partial cache hit.
+      const temporaryPath = `${cachePath}.${process.pid}.tmp`
+      await writeFile(temporaryPath, imageBytes)
+      await rename(temporaryPath, cachePath)
+      generatedCount += 1
+    }
     const encodedId = encodeURIComponent(editorial.id)
     const outputPath = path.join(EDITORIAL_IMAGE_OUTPUT_DIR, `${encodedId}.png`)
 
-    await writeFile(outputPath, rendered)
-    generatedCount += 1
+    await writeFile(outputPath, imageBytes)
+    totalBytes += imageBytes.length
   }
 
-  return generatedCount
+  return { generatedCount, reusedCount, totalBytes }
 }
 
 function buildRouteMetadata(editorials) {
@@ -641,6 +674,7 @@ function buildRouteMetadata(editorials) {
 }
 
 async function main() {
+  const startedAt = performance.now()
   const [templateHtml, rawIndexText] = await Promise.all([
     readFile(TEMPLATE_HTML_PATH, 'utf8'),
     readFile(INDEX_DATA_PATH, 'utf8'),
@@ -650,7 +684,7 @@ async function main() {
   const editorials = normalizeEditorialIndex(rawIndex)
   const routeMetadata = buildRouteMetadata(editorials)
 
-  const generatedImageCount = await generateEditorialImages(editorials)
+  const images = await generateEditorialImages(editorials)
   let generatedPageCount = 0
 
   for (const metadata of routeMetadata.values()) {
@@ -660,7 +694,7 @@ async function main() {
   }
 
   console.log(
-    `[route-previews] Generated ${generatedPageCount} route pages and ${generatedImageCount} editorial images.`,
+    `[route-previews] Generated ${generatedPageCount} route pages and ${images.generatedCount} editorial images; reused ${images.reusedCount} images. ${images.totalBytes} image bytes in ${((performance.now() - startedAt) / 1000).toFixed(2)}s.`,
   )
 }
 
