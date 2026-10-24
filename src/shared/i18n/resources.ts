@@ -160,6 +160,9 @@ export const resources = {
         downloadAria: 'Download editorial: {{title}}',
         notFound: 'Editorial not found.',
         viewerDescription: 'Preview this editorial PDF directly in your browser.',
+        viewerSourceDescription:
+          'Preview is available for PDF files. Open this source file in a new tab to read or save it.',
+        openSource: 'Open source file',
         retry: 'Retry',
         viewerLoading: 'Preparing PDF viewer...',
         viewerTimeout: 'Loading the PDF timed out after 15 seconds.',
@@ -404,6 +407,9 @@ export const resources = {
         downloadAria: '{{title}} 에디토리얼 다운로드',
         notFound: '에디토리얼을 찾을 수 없습니다.',
         viewerDescription: '브라우저에서 이 에디토리얼 PDF를 바로 볼 수 있습니다.',
+        viewerSourceDescription:
+          '미리보기는 PDF 파일에서 지원됩니다. 이 원본 파일은 새 탭에서 열어 읽거나 저장할 수 있습니다.',
+        openSource: '원본 파일 열기',
         retry: '다시 시도',
         viewerLoading: 'PDF 뷰어를 준비하는 중입니다...',
         viewerTimeout: 'PDF 로딩이 15초를 초과해 중단되었습니다.',
@@ -645,6 +651,9 @@ export const resources = {
         downloadAria: '{{title}} のエディトリアルをダウンロード',
         notFound: 'エディトリアルが見つかりません。',
         viewerDescription: 'このエディトリアル PDF をブラウザで直接表示します。',
+        viewerSourceDescription:
+          'プレビューは PDF ファイルに対応しています。この元ファイルは新しいタブで開いて閲覧または保存できます。',
+        openSource: '元ファイルを開く',
         retry: '再試行',
         viewerLoading: 'PDF ビューアーを準備しています...',
         viewerTimeout: 'PDF の読み込みが 15 秒を超えたため中断されました。',

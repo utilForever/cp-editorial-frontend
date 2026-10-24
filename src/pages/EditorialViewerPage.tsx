@@ -23,10 +23,14 @@ export function EditorialViewerPage() {
     () => data.editorials.find((item) => item.id === editorialId),
     [data.editorials, editorialId],
   )
+  const isPdf = editorial?.path.toLowerCase().endsWith('.pdf') ?? false
   const currentPdf =
     pdfResult?.path === editorial?.path && pdfResult?.attempt === attempt ? pdfResult : null
   const pdfUrl = currentPdf?.url
   const pdfError = currentPdf?.error
+  const viewerDescription = t(
+    isPdf ? 'editorial.viewerDescription' : 'editorial.viewerSourceDescription',
+  )
 
   const appTitle = t('appTitle')
   const localizedTitle = editorial
@@ -34,7 +38,7 @@ export function EditorialViewerPage() {
     : appTitle
   const metadataDescription = editorial
     ? getLocalizedText(editorial.summary, i18n.resolvedLanguage)
-    : t('editorial.viewerDescription')
+    : viewerDescription
 
   usePageMetadata({
     title: editorial
@@ -47,7 +51,7 @@ export function EditorialViewerPage() {
 
   useEffect(() => {
     setPdfResult(null)
-    if (!editorial) {
+    if (!editorial || !isPdf) {
       return
     }
 
@@ -93,7 +97,7 @@ export function EditorialViewerPage() {
         URL.revokeObjectURL(objectUrl)
       }
     }
-  }, [editorial, attempt])
+  }, [editorial, isPdf, attempt])
 
   if (isLoading) {
     return <p className="muted">{t('common.loading')}</p>
@@ -120,7 +124,7 @@ export function EditorialViewerPage() {
   return (
     <article className="page">
       <h1>{localizedTitle}</h1>
-      <p className="page__description">{t('editorial.viewerDescription')}</p>
+      <p className="page__description">{viewerDescription}</p>
 
       <div className="stats-grid">
         <div className="stat-card">
@@ -142,6 +146,11 @@ export function EditorialViewerPage() {
         <Link className="action-link action-link--secondary" to={contestRoute}>
           {t('editorial.browseContest')}
         </Link>
+        {!isPdf && (
+          <a className="action-link" href={links.downloadUrl} rel="noreferrer" target="_blank">
+            {t('editorial.openSource')}
+          </a>
+        )}
         <a
           aria-label={t('editorial.downloadAria', { title: localizedTitle })}
           className="action-link action-link--secondary"
@@ -163,7 +172,7 @@ export function EditorialViewerPage() {
         </nav>
       )}
 
-      {pdfError && (
+      {isPdf && pdfError && (
         <section aria-label={t('editorial.viewerFailureActions')} className="viewer-fallback">
           <p className="error" role="alert">
             {t(pdfError === 'timeout' ? 'editorial.viewerTimeout' : 'editorial.viewerLoadFailed')}
@@ -198,13 +207,13 @@ export function EditorialViewerPage() {
           </div>
         </section>
       )}
-      {!pdfError && !pdfUrl && (
+      {isPdf && !pdfError && !pdfUrl && (
         <p className="muted" role="status">
           {t('editorial.viewerLoading')}
         </p>
       )}
 
-      {pdfUrl && (
+      {isPdf && pdfUrl && (
         <object
           aria-label={t('editorial.viewAria', { title: localizedTitle })}
           className="editorial-viewer"
