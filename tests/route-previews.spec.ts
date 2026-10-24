@@ -45,3 +45,28 @@ test('compresses editorial preview images', async () => {
     await sharp(image).raw().toBuffer()
   }
 })
+
+test('keeps Pretendard text and renders CJK and emoji fallbacks in titles and footers', async () => {
+  const root = test.info().outputPath('preview-project')
+  const records = [
+    ['multilingual', 'ABC 한글 日本語 中文 𠮷 🦆 👩‍💻 👍🏽 🇰🇷'],
+    ['wrapped-unicode', '𠮷👩‍💻'.repeat(20)],
+  ].map(([id, text]) => ({
+    id,
+    contest: 'Coduck <2026> & 日本語 🦆',
+    problem: text,
+    path: `Unicode/${id}.pdf`,
+    filename: `${id}.pdf`,
+    title: { en: text },
+    categories: [text],
+  }))
+  await preparePreviewProject(root, records)
+  await generatePreviews(root)
+  for (const { id } of records) {
+    const image = await sharp(path.join(root, `dist/images/editorials/${id}.png`))
+      .extract({ left: 80, top: 140, width: 700, height: 420 })
+      .png()
+      .toBuffer()
+    expect(image).toMatchSnapshot(`${id}.png`, { maxDiffPixels: 0 })
+  }
+})

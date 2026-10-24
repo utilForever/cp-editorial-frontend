@@ -53,11 +53,11 @@ The tests start a local Vite server and use fixed editorial indexes to check sea
 
 ID regression tests also generate preview HTML and PNG files in an isolated test output directory and check that browser detail routes and preview images use the same IDs for ASCII, Korean, supplementary CJK, emoji, and explicit IDs.
 
-Preview regression tests check PNG dimensions, palette encoding, and image size for Korean and long English titles.
+Preview regression tests check PNG dimensions, palette encoding, and image size for Korean and long English titles. Rendered-image snapshots check mixed Korean, Latin, Japanese, supplementary CJK, and emoji in bold titles and regular footers, including wrapping and truncation of long Unicode titles.
 
 ### Social-preview images
 
-Editorial previews remain 1200 × 630 PNGs at the same per-editorial URLs. The build uses `sharp` to compress rendered images to a 256-colour palette.
+Editorial previews remain 1200 × 630 PNGs at the same per-editorial URLs. The build uses `sharp` to compress rendered images to a 256-colour palette. Pretendard remains the primary font; bundled Source Han Sans and monochrome Noto Emoji supply missing CJK characters and emoji. System fonts are disabled for reproducible rendering. These fonts are build inputs only and are not downloaded by site visitors. Versions, sources, and licenses are recorded in [the font directory](scripts/assets/fonts/README.md).
 
 ## UI preferences
 
