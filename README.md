@@ -53,6 +53,12 @@ The tests start a local Vite server and use fixed editorial indexes to check sea
 
 ID regression tests also generate preview HTML and PNG files in an isolated test output directory and check that browser detail routes and preview images use the same IDs for ASCII, Korean, supplementary CJK, emoji, and explicit IDs.
 
+Preview regression tests check PNG dimensions, palette encoding, and image size for Korean and long English titles.
+
+### Social-preview images
+
+Editorial previews remain 1200 × 630 PNGs at the same per-editorial URLs. The build uses `sharp` to compress rendered images to a 256-colour palette.
+
 ## UI preferences
 
 - Theme: switch between light and dark mode from the header; the selected mode is saved in local storage.
@@ -61,7 +67,7 @@ ID regression tests also generate preview HTML and PNG files in an isolated test
 - Search matching: each whitespace-separated word must appear in at least one searchable field, ignoring case and word order. Category and year filters still apply. Results stay grouped by contest, prioritizing complete title/contest word matches, then stronger partial matches. Matching words are highlighted, including overlapping matches and Unicode text. Match context omits repeated title/field text (ignoring case and whitespace) and filenames that only add an extension, unless that extension explains a search word. Snippets that become identical after shortening are also shown only once, unless they explain different search words. Distinct matching text and category/year context remain visible.
 - Editorial data: the index is loaded and normalized once per page session, then reused across SPA navigation. Reload the page or open a new tab to check for updated deployment data. Failed loads can be retried by navigating to another data page or reloading.
 - Social previews: Build output now includes route-specific Open Graph/Twitter HTML pages for `/search`, `/categories` (including hierarchy sub-routes), `/contribute`, `/copyright`, and `/editorials/:editorialId`.
-- Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a generated per-editorial preview image.
+- Preview images: `search/categories/contribute/copyright` share one preview image, while each editorial detail route gets a compressed per-editorial PNG.
 
 ## The way the system works
 

@@ -174,6 +174,7 @@ Search splits the query on whitespace, lowercases and deduplicates tokens, and r
 - Open Graph/Twitter metadata still has static defaults in `index.html` and `public/404.html`.
 - Build now generates route HTML pages with crawlable metadata for `/search`, `/categories` + hierarchy sub-routes, `/contribute`, `/copyright`, and `/editorials/:editorialId`.
 - `search/categories/contribute/copyright` share one preview image; editorial detail routes use generated per-editorial preview PNG images.
+- Editorial PNGs keep their existing URLs and 1200 × 630 dimensions. The build uses `sharp` to quantize rendered pixels to a 256-colour PNG palette.
 - `public/404.html` remains the fallback path-restoration mechanism for unknown/non-generated routes.
 
 ## 8. Upload guidance flow

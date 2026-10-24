@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Resvg } from '@resvg/resvg-js'
+import sharp from 'sharp'
 import { createStableEditorialId } from '../src/entities/editorial/model/editorialId.mjs'
 
 const SITE_URL = 'https://editorial.coduck.io'
@@ -510,7 +511,12 @@ async function generateEditorialImages(editorials) {
       categoryFooter,
       editorialBaseImageDataUri,
     )
-    const rendered = new Resvg(svg, OG_RESVG_OPTIONS).render().asPng()
+    const image = new Resvg(svg, OG_RESVG_OPTIONS).render()
+    const rendered = await sharp(image.pixels, {
+      raw: { width: image.width, height: image.height, channels: 4 },
+    })
+      .png({ palette: true, compressionLevel: 9 })
+      .toBuffer()
     const encodedId = encodeURIComponent(editorial.id)
     const outputPath = path.join(EDITORIAL_IMAGE_OUTPUT_DIR, `${encodedId}.png`)
 
