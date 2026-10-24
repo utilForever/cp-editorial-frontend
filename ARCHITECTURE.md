@@ -199,6 +199,8 @@ The website includes a dedicated `/contribute` page with instructions:
 
 Runs on pull requests and pushes to `main`.
 
+CI and deployment cache `.cache/route-previews` with `actions/cache`. The archive key covers the render inputs and editorial index; the restore prefix omits the index so data updates can reuse unchanged editorial images. Deployment restores after index generation so `repository_dispatch` builds use the new data in their archive key. The generator independently validates each image's input hash before reuse.
+
 `sonarcloud.yml` adds code-quality scanning on pull requests and pushes to `main`:
 
 1. Validates SonarCloud repository configuration (`SONAR_TOKEN`, `SONAR_ORGANIZATION`, `SONAR_PROJECT_KEY`)
