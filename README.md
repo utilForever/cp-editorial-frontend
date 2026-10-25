@@ -79,7 +79,7 @@ After adding the fallback fonts, a full build on the same machine produced all 2
 
 ## UI preferences
 
-The interface follows [Microsoft Fluent 2](https://fluent2.microsoft.design/) guidance using existing React components and semantic CSS tokens. Neutral surfaces, a blue primary action, consistent spacing and typography, and visible keyboard focus apply across all routes in light and dark themes. Long titles wrap, filters keep their labels, and narrow screens stack controls. The mobile menu supports Escape and returns focus to its trigger after dismissal or navigation; a skip link moves directly to the content. Loading, empty and failure states include localized status announcements and recovery guidance.
+The interface follows [Microsoft Fluent 2](https://fluent2.microsoft.design/) guidance using existing React components and semantic CSS tokens. The duck logo informs the palette: ivory and warm charcoal surfaces, amber primary actions, olive links and selection, and brown-toned text. Consistent spacing, typography and visible keyboard focus apply across all routes in light and dark themes. Long titles wrap, filters keep their labels, and narrow screens stack controls. The mobile menu supports Escape and returns focus to its trigger after dismissal or navigation; a skip link moves directly to the content. Loading, empty and failure states include localized status announcements and recovery guidance.
 
 See the [design reference and before/after gallery](docs/design/fluent-2/README.md) for the responsive Home/Search proposal, token/state decisions and validation scope.
 

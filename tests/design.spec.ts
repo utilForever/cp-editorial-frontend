@@ -259,7 +259,7 @@ for (const theme of ['light', 'dark']) {
         'surface-container-high',
         'primary-soft',
       ]) {
-        for (const foreground of ['text-primary', 'muted', 'primary-strong'])
+        for (const foreground of ['text-primary', 'muted', 'primary-strong', 'primary'])
           pairs.push([foreground, background, 4.5])
         for (const foreground of ['border-strong', 'focus-ring'])
           pairs.push([foreground, background, 3])

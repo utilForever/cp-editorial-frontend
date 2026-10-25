@@ -2,7 +2,7 @@
 
 ## Direction
 
-The [responsive proposal](mockup.html) was prepared before the implementation. Open it in a browser and choose Home/Search, desktop/320px, and light/dark to compare the intended hierarchy. Its token and key-state table records the direction. It is a design reference, not a second application.
+The [responsive proposal](mockup.html) was prepared before the implementation, then its palette was refined to match the existing duck logo. Open it in a browser and choose Home/Search, desktop/320px, and light/dark to compare the intended hierarchy. Its token and key-state table records the direction. It is a design reference, not a second application.
 
 The implementation uses the existing React components, native controls and CSS. A Fluent UI dependency would replace working routing, controls and preference integration without removing substantial repeated behavior. The only new shared component is `PageState`, replacing repeated loading/failure/missing-record markup.
 
@@ -10,7 +10,9 @@ References: [tokens](https://fluent2.microsoft.design/design-tokens), [color](ht
 
 ## Rules
 
-- Neutral canvas and surfaces separate controls, contest groups and content; blue marks the primary action and selection. View comes before Download and Browse contest on the detail screen.
+- The existing `public/home-icon.png` supplies the color direction: the duck's cream feathers and notebook paper inform ivory surfaces, the pencil and books inform amber actions, and the mug informs olive links and selection. Light mode uses dark brown text; dark mode uses warm charcoal surfaces and pale amber/olive accents. View comes before Download and Browse contest on the detail screen.
+- Primary actions use `#8b5018` in light mode and `#e6ad54` in dark mode. Links/selection use `#4f5d2f` and `#c4d39a`. These are contrast-adjusted relatives of the illustrated colors, not exact pixel samples. Error colors retain their separate meaning.
+- The unchanged transparent logo keeps an ivory backing in both themes so its dark wordmark remains readable on the dark canvas.
 - Spacing follows a 4px base. Controls use 4px corners, surfaces 8px. Only the search control group has a small shadow; static cards no longer move on hover.
 - Body text is 16px, metadata 14px, section headings 20px, page headings 28–32px, and the desktop Home title 40px. Sizes use rem with unitless line height and local Korean/Japanese font fallbacks.
 - Controls have a minimum 44px height. Default, hover, pressed, focus-visible and disabled states share token roles. Navigation selection also has an underline; errors contain text and recovery actions.
