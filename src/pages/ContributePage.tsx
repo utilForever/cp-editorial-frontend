@@ -24,7 +24,7 @@ export function ContributePage() {
   })
 
   return (
-    <section className="page">
+    <section className="page prose-page">
       <h1>{t('contribute.heading')}</h1>
       <p className="page__description">
         <Trans

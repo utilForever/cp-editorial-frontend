@@ -28,8 +28,8 @@ export function LanguageSelector({ id = 'language-selector' }: LanguageSelectorP
     : DEFAULT_LANGUAGE
 
   return (
-    <label className="muted" htmlFor={id}>
-      {t('language.label')}{' '}
+    <label className="language-control" htmlFor={id}>
+      <span>{t('language.label')}</span>
       <select
         className="language-selector"
         id={id}

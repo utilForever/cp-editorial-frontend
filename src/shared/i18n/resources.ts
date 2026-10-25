@@ -4,6 +4,10 @@ export const resources = {
       appTitle: 'Coduck - CP Editorial',
       common: {
         loading: 'Loading editorial index...',
+        loadError: 'Unable to load editorials',
+        loadErrorHelp: 'Check your connection and reload the page to try again.',
+        emptyHelp: 'Try searching or browsing another category.',
+        reload: 'Reload page',
       },
       nav: {
         home: 'Home',
@@ -12,6 +16,8 @@ export const resources = {
         contribute: 'Upload Guide',
         copyright: 'Copyright',
         menu: 'Menu',
+        primary: 'Main navigation',
+        skipToContent: 'Skip to content',
       },
       footer: {
         description: 'A curated archive for competitive-programming contest editorials.',
@@ -74,6 +80,7 @@ export const resources = {
         view: 'View',
         download: 'Download',
         empty: 'No competitions match your search.',
+        emptyHelp: 'Try fewer keywords or clear the category and year filters.',
         refine: {
           category: 'Category',
           year: 'Year',
@@ -252,6 +259,10 @@ export const resources = {
       appTitle: 'Coduck - CP Editorial',
       common: {
         loading: '에디토리얼 인덱스를 불러오는 중입니다...',
+        loadError: '해설을 불러올 수 없습니다',
+        loadErrorHelp: '연결 상태를 확인한 뒤 페이지를 새로고침해 다시 시도해 주세요.',
+        emptyHelp: '검색하거나 다른 카테고리를 탐색해 보세요.',
+        reload: '새로고침',
       },
       nav: {
         home: '홈',
@@ -260,6 +271,8 @@ export const resources = {
         contribute: '업로드 가이드',
         copyright: '저작권',
         menu: '메뉴',
+        primary: '주 메뉴',
+        skipToContent: '본문으로 바로가기',
       },
       footer: {
         description: '경쟁 프로그래밍 대회 에디토리얼을 모아 둔 아카이브입니다.',
@@ -321,6 +334,7 @@ export const resources = {
         view: '열기',
         download: '다운로드',
         empty: '일치하는 대회가 없습니다.',
+        emptyHelp: '검색어를 줄이거나 카테고리와 연도 필터를 초기화해 보세요.',
         refine: {
           category: '카테고리',
           year: '연도',
@@ -495,6 +509,10 @@ export const resources = {
       appTitle: 'Coduck - CP Editorial',
       common: {
         loading: 'エディトリアルインデックスを読み込み中...',
+        loadError: 'エディトリアルを読み込めません',
+        loadErrorHelp: '接続を確認し、ページを再読み込みしてお試しください。',
+        emptyHelp: '検索するか、別のカテゴリを探してみてください。',
+        reload: '再読み込み',
       },
       nav: {
         home: 'ホーム',
@@ -503,6 +521,8 @@ export const resources = {
         contribute: 'アップロードガイド',
         copyright: '著作権',
         menu: 'メニュー',
+        primary: 'メインナビゲーション',
+        skipToContent: '本文へ移動',
       },
       footer: {
         description: '競技プログラミング大会のエディトリアルを集約したアーカイブです。',
@@ -565,6 +585,7 @@ export const resources = {
         view: '表示',
         download: 'ダウンロード',
         empty: '一致する大会がありません。',
+        emptyHelp: 'キーワードを減らすか、カテゴリと年のフィルターをクリアしてください。',
         refine: {
           category: 'カテゴリ',
           year: '年',

@@ -1,3 +1,4 @@
+import { PageState } from '../shared/ui/PageState'
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
@@ -100,15 +101,15 @@ export function EditorialViewerPage() {
   }, [editorial, isPdf, attempt])
 
   if (isLoading) {
-    return <p className="muted">{t('common.loading')}</p>
+    return <PageState loading title={t('common.loading')} />
   }
 
   if (error) {
-    return <p className="error">{error.message}</p>
+    return <PageState error={error} title={t('common.loadError')} />
   }
 
   if (!editorial) {
-    return <p className="error">{t('editorial.notFound')}</p>
+    return <PageState title={t('editorial.notFound')} />
   }
 
   const links = buildEditorialLinks(editorial.path)
@@ -122,7 +123,7 @@ export function EditorialViewerPage() {
   const categoryLabel = editorial.categories.length > 0 ? editorial.categories.join(' > ') : '-'
 
   return (
-    <article className="page">
+    <article className="page viewer-page">
       <h1>{localizedTitle}</h1>
       <p className="page__description">{viewerDescription}</p>
 
@@ -140,7 +141,7 @@ export function EditorialViewerPage() {
       </div>
 
       <div className="action-links">
-        <Link className="action-link" to={detailRoute}>
+        <Link className="action-link action-link--secondary" to={detailRoute}>
           {t('editorial.backToDetail')}
         </Link>
         <Link className="action-link action-link--secondary" to={contestRoute}>
@@ -208,7 +209,7 @@ export function EditorialViewerPage() {
         </section>
       )}
       {isPdf && !pdfError && !pdfUrl && (
-        <p className="muted" role="status">
+        <p className="page-state" role="status">
           {t('editorial.viewerLoading')}
         </p>
       )}

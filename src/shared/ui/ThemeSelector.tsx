@@ -54,6 +54,7 @@ export function ThemeSelector({ theme, onThemeChange }: ThemeSelectorProps) {
       type="button"
     >
       {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
+      <span className="theme-toggle__label">{t(`theme.${theme}`)}</span>
     </button>
   )
 }

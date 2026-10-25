@@ -11,7 +11,7 @@ export function CopyrightPage() {
   })
 
   return (
-    <section className="page">
+    <section className="page prose-page">
       <h1>{t('copyrightPage.heading')}</h1>
       <p className="page__description">{t('copyrightPage.description')}</p>
 

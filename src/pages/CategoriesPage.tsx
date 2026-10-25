@@ -1,3 +1,4 @@
+import { PageState } from '../shared/ui/PageState'
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -89,11 +90,11 @@ export function CategoriesPage() {
   })
 
   if (isLoading) {
-    return <p className="muted">{t('common.loading')}</p>
+    return <PageState loading title={t('common.loading')} />
   }
 
   if (error) {
-    return <p className="error">{error.message}</p>
+    return <PageState error={error} title={t('common.loadError')} />
   }
 
   return (
@@ -103,18 +104,22 @@ export function CategoriesPage() {
         <p className="page__description">{t('categories.description')}</p>
       </div>
       {categories.length === 0 ? (
-        <p className="muted">{t('categories.empty')}</p>
+        <div className="page-state" role="status">
+          {t('categories.empty')}
+        </div>
       ) : (
-        <ul className="card-list">
+        <ul className="card-list category-grid">
           {categories.map((summary) => (
             <li className="card category-card" key={summary.category}>
               <div className="category-card__top">
-                <Link
-                  className="card__title"
-                  to={`/categories/${encodeURIComponent(summary.category)}`}
-                >
-                  {summary.category}
-                </Link>
+                <h2 className="category-card__heading">
+                  <Link
+                    className="card__title"
+                    to={`/categories/${encodeURIComponent(summary.category)}`}
+                  >
+                    {summary.category}
+                  </Link>
+                </h2>
                 <p className="category-card__count">
                   {t('categories.count', { count: summary.editorialCount })}
                 </p>
