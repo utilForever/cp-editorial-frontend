@@ -1,3 +1,4 @@
+import { PageState } from '../shared/ui/PageState'
 import { type FormEvent, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
@@ -24,11 +25,11 @@ export function HomePage() {
   }
 
   if (isLoading) {
-    return <p className="muted">{t('common.loading')}</p>
+    return <PageState loading title={t('common.loading')} />
   }
 
   if (error) {
-    return <p className="error">{error.message}</p>
+    return <PageState error={error} title={t('common.loadError')} />
   }
 
   const contestCount = new Set(data.editorials.map((editorial) => editorial.contest)).size
@@ -65,12 +66,7 @@ export function HomePage() {
         </div>
 
         <div className="home-hero-icon-wrap">
-          <img
-            alt={t('appTitle')}
-            className="home-icon"
-            decoding="async"
-            src="/home-icon.png?v=8eac82ad"
-          />
+          <img alt="" className="home-icon" decoding="async" src="/home-icon.png?v=8eac82ad" />
         </div>
 
         <div className="stats-grid home-dashboard__stats">

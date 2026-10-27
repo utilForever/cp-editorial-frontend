@@ -1,3 +1,4 @@
+import { PageState } from '../shared/ui/PageState'
 import { type ReactNode, startTransition, useMemo, useOptimistic } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams } from 'react-router-dom'
@@ -476,11 +477,11 @@ export function SearchPage() {
   }
 
   if (isLoading) {
-    return <p className="muted">{t('common.loading')}</p>
+    return <PageState loading title={t('common.loading')} />
   }
 
   if (error) {
-    return <p className="error">{error.message}</p>
+    return <PageState error={error} title={t('common.loadError')} />
   }
 
   let resultsContent: ReactNode
@@ -529,11 +530,20 @@ export function SearchPage() {
       </div>
     )
   } else if (contestResults.length === 0) {
-    resultsContent = <p className="muted">{t('search.empty')}</p>
+    resultsContent = (
+      <div className="page-state">
+        <div role="status">
+          <h2 className="card__title">{t('search.empty')}</h2>
+        </div>
+        <p className="muted">{t('search.emptyHelp')}</p>
+      </div>
+    )
   } else {
     resultsContent = (
       <>
-        <p className="muted">{t('search.contestCount', { count: contestResults.length })}</p>
+        <p className="muted" role="status">
+          {t('search.contestCount', { count: contestResults.length })}
+        </p>
 
         <ul className="card-list">
           {contestResults.map((result) => (
@@ -542,9 +552,9 @@ export function SearchPage() {
                 <p className="card__meta">{result.category}</p>
                 <h2 className="card__title">{result.contest}</h2>
                 <p className="card__meta">
-                  {`${result.category} · ${t('search.editorialCount', {
+                  {t('search.editorialCount', {
                     count: result.editorials.length,
-                  })}`}
+                  })}
                 </p>
               </div>
 
@@ -563,7 +573,10 @@ export function SearchPage() {
                           className="competition-editorials__title"
                           to={`/editorials/${editorial.id}`}
                         >
-                          {buildHighlightedSnippet(localizedTitle, tokens, 120).content}
+                          {
+                            buildHighlightedSnippet(localizedTitle, tokens, localizedTitle.length)
+                              .content
+                          }
                         </Link>
                         <div aria-label={t('search.context.label')} className="result-context">
                           <span className="result-context__item">{breadcrumb}</span>
@@ -622,10 +635,10 @@ export function SearchPage() {
       <div className="page__header">
         <h1>{t('search.heading')}</h1>
         <p className="page__description">{t('search.description')}</p>
-        <div className="toolbar">
-          <label className="muted" htmlFor="search-input">
-            {t('search.label')}
-          </label>
+      </div>
+      <search className="toolbar" aria-label={t('search.heading')}>
+        <div className="field field--query">
+          <label htmlFor="search-input">{t('search.label')}</label>
           <input
             className="input"
             id="search-input"
@@ -633,9 +646,9 @@ export function SearchPage() {
             placeholder={t('search.placeholder')}
             value={query}
           />
-          <label className="muted" htmlFor="category-filter">
-            {t('search.refine.category')}
-          </label>
+        </div>
+        <div className="field">
+          <label htmlFor="category-filter">{t('search.refine.category')}</label>
           <select
             className="select"
             id="category-filter"
@@ -649,9 +662,9 @@ export function SearchPage() {
               </option>
             ))}
           </select>
-          <label className="muted" htmlFor="year-filter">
-            {t('search.refine.year')}
-          </label>
+        </div>
+        <div className="field">
+          <label htmlFor="year-filter">{t('search.refine.year')}</label>
           <select
             className="select select--year"
             id="year-filter"
@@ -665,24 +678,24 @@ export function SearchPage() {
               </option>
             ))}
           </select>
-          <button
-            className="clear-button"
-            disabled={
-              !searchParams.has('q') && !searchParams.has('category') && !searchParams.has('year')
-            }
-            onClick={() => {
-              const nextParams = new URLSearchParams(searchParams)
-              nextParams.delete('q')
-              nextParams.delete('category')
-              nextParams.delete('year')
-              replaceSearchParams(nextParams)
-            }}
-            type="button"
-          >
-            {t('search.refine.clear')}
-          </button>
         </div>
-      </div>
+        <button
+          className="clear-button"
+          disabled={
+            !searchParams.has('q') && !searchParams.has('category') && !searchParams.has('year')
+          }
+          onClick={() => {
+            const nextParams = new URLSearchParams(searchParams)
+            nextParams.delete('q')
+            nextParams.delete('category')
+            nextParams.delete('year')
+            replaceSearchParams(nextParams)
+          }}
+          type="button"
+        >
+          {t('search.refine.clear')}
+        </button>
+      </search>
       {resultsContent}
     </section>
   )

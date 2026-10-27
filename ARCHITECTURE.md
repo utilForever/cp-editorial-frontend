@@ -170,6 +170,16 @@ Search splits the query on whitespace, lowercases and deduplicates tokens, and r
 
 ## 7. UI preferences
 
+### Presentation foundation
+
+`src/app/styles.css` applies Fluent 2 web guidance to the existing components without a new UI dependency. Semantic tokens cover canvas/surfaces, text, brand actions, borders, feedback, focus, spacing (4px base), typography, radii and elevation. Both themes use the same token roles. The existing duck logo informs warm ivory/charcoal surfaces, amber primary actions and olive links/selection; accent shades are adjusted for contrast in each theme. Rem-based typography uses local Segoe/system fonts with Korean and Japanese fallbacks; no runtime fonts are added. Titles and metadata wrap rather than being clipped. Search keeps full editorial titles while the existing context-snippet bounds and highlighting logic remain in use.
+
+Native links, buttons, inputs and selects retain their browser semantics. Shared focus-visible outlines, hover/pressed states and reduced-motion handling apply throughout. Selected navigation combines color with an underline and `aria-current`; forced-color mode retains a distinct outside outline for keyboard focus. Category/editorial title links keep the default underline. Theme buttons include their visible current-theme label and switch action in the accessible name, using the existing locale strings. The header stays in document flow so expanded menus and zoomed text cannot cover the reading area. At narrow widths navigation uses a disclosure (not an ARIA application menu); Escape and link activation return focus to its trigger, while Tab or Shift+Tab leaving the menu and its trigger closes the disclosure without stealing focus. A skip link targets the focusable main landmark.
+
+`PageState` is shared by index loading/failure and missing-record routes. Failures retain diagnostic text, add localized recovery instructions and offer a full-page reload to retry the existing index loader. Search result counts and empty results use status announcements; PDF recovery keeps the existing alert, Retry, Download and return actions. These presentation changes do not change caching or PDF request lifecycles.
+
+`tests/design.spec.ts` covers keyboard navigation, preference persistence, loading recovery, theme contrast and overflow at 320/768/1280 CSS pixels with normal and 200% root text sizing in all three locales. See `docs/design/fluent-2/README.md` for the proposal, screenshots and manual validation boundaries.
+
 - Theme supports `light` and `dark`.
 - Active theme is selected in the header and persisted in browser local storage.
 - Theme is applied at the document root via `data-theme`, so all routed pages share one consistent palette.

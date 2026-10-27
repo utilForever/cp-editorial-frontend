@@ -1,3 +1,4 @@
+import { PageState } from '../shared/ui/PageState'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
@@ -71,15 +72,15 @@ export function EditorialDetailPage() {
   })
 
   if (isLoading) {
-    return <p className="muted">{t('common.loading')}</p>
+    return <PageState loading title={t('common.loading')} />
   }
 
   if (error) {
-    return <p className="error">{error.message}</p>
+    return <PageState error={error} title={t('common.loadError')} />
   }
 
   if (!editorial) {
-    return <p className="error">{t('editorial.notFound')}</p>
+    return <PageState title={t('editorial.notFound')} />
   }
 
   const links = buildEditorialLinks(editorial.path)
@@ -92,29 +93,13 @@ export function EditorialDetailPage() {
   const categoryLabel = editorial.categories.length > 0 ? editorial.categories.join(' > ') : '-'
 
   return (
-    <article className="page">
+    <article className="page editorial-detail">
       <h1>{localizedTitle}</h1>
       <p className="page__description">
         {getLocalizedText(editorial.summary, i18n.resolvedLanguage)}
       </p>
 
-      <div className="stats-grid">
-        <div className="stat-card">
-          <p className="stat-card__label">{t('editorial.contest')}</p>
-          <Link className="stat-card__value stat-card__link" to={contestRoute}>
-            {editorial.contest}
-          </Link>
-        </div>
-        <div className="stat-card">
-          <p className="stat-card__label">{t('editorial.category')}</p>
-          <p className="stat-card__value">{categoryLabel}</p>
-        </div>
-      </div>
-
       <div className="action-links">
-        <Link className="action-link action-link--secondary" to={contestRoute}>
-          {t('editorial.browseContest')}
-        </Link>
         <Link
           aria-label={t('editorial.viewAria', { title: localizedTitle })}
           className="action-link"
@@ -133,6 +118,22 @@ export function EditorialDetailPage() {
         >
           {t('editorial.download')}
         </a>
+        <Link className="action-link action-link--secondary" to={contestRoute}>
+          {t('editorial.browseContest')}
+        </Link>
+      </div>
+
+      <div className="stats-grid">
+        <div className="stat-card">
+          <p className="stat-card__label">{t('editorial.contest')}</p>
+          <Link className="stat-card__value stat-card__link" to={contestRoute}>
+            {editorial.contest}
+          </Link>
+        </div>
+        <div className="stat-card">
+          <p className="stat-card__label">{t('editorial.category')}</p>
+          <p className="stat-card__value">{categoryLabel}</p>
+        </div>
       </div>
 
       {categoryLinks.length > 0 && (

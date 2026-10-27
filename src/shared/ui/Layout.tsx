@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useThemePreference } from '../hooks/useThemePreference'
@@ -29,8 +29,15 @@ export function Layout() {
   const { t } = useTranslation()
   const { theme, setTheme } = useThemePreference()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
   const year = new Date().getFullYear()
   const mobileMenuId = 'mobile-navigation-menu'
+
+  function closeMobileMenu() {
+    setIsMobileMenuOpen(false)
+    menuButtonRef.current?.focus()
+  }
 
   function renderSecondaryLinks(onNavigate?: () => void) {
     return (
@@ -53,12 +60,32 @@ export function Layout() {
 
   return (
     <div className="layout">
+      <a className="skip-link" href="#main-content">
+        {t('nav.skipToContent')}
+      </a>
       <header className="layout__header">
         <div className="layout__header-inner">
           <Link className="layout__brand" to="/">
             {t('appTitle')}
           </Link>
-          <nav className="layout__nav">
+          <nav
+            aria-label={t('nav.primary')}
+            className="layout__nav"
+            onBlur={(event) => {
+              if (
+                !menuButtonRef.current?.contains(event.relatedTarget) &&
+                !mobileMenuRef.current?.contains(event.relatedTarget)
+              ) {
+                setIsMobileMenuOpen(false)
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Escape' && isMobileMenuOpen) {
+                event.preventDefault()
+                closeMobileMenu()
+              }
+            }}
+          >
             <NavLink
               className={({ isActive }) =>
                 `${navLinkClassName({ isActive })} layout__link--primary`
@@ -79,15 +106,20 @@ export function Layout() {
               aria-label={t('nav.menu')}
               className="layout__menu-button"
               onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+              ref={menuButtonRef}
+              title={t('nav.menu')}
               type="button"
             >
               <MenuIcon />
               <span>{t('nav.menu')}</span>
             </button>
-            <div className="layout__mobile-menu" hidden={!isMobileMenuOpen} id={mobileMenuId}>
-              <div className="layout__mobile-links">
-                {renderSecondaryLinks(() => setIsMobileMenuOpen(false))}
-              </div>
+            <div
+              className="layout__mobile-menu"
+              hidden={!isMobileMenuOpen}
+              id={mobileMenuId}
+              ref={mobileMenuRef}
+            >
+              <div className="layout__mobile-links">{renderSecondaryLinks(closeMobileMenu)}</div>
               <div className="layout__mobile-preferences">
                 <ThemeSelector onThemeChange={setTheme} theme={theme} />
                 <LanguageSelector id="mobile-language-selector" />
@@ -96,7 +128,7 @@ export function Layout() {
           </nav>
         </div>
       </header>
-      <main className="layout__content">
+      <main className="layout__content" id="main-content" tabIndex={-1}>
         <Outlet />
       </main>
       <footer className="layout__footer">

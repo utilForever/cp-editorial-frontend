@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CP Editorial — Fluent 2 design direction</title>
+    <style>
+      :root {
+        font:
+          16px/1.5 'Segoe UI',
+          system-ui,
+          sans-serif;
+        color: #302719;
+        background: #f8f5ee;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+      }
+      h1 {
+        font-size: 28px;
+        margin: 0;
+      }
+      h2 {
+        font-size: 20px;
+        margin: 0;
+      }
+      p {
+        margin: 8px 0 24px;
+      }
+      button,
+      select,
+      input {
+        font: inherit;
+      }
+      button,
+      select {
+        padding: 8px 16px;
+        border: 1px solid #80735c;
+        border-radius: 4px;
+        background: #fffdf8;
+        color: #302719;
+      }
+      button {
+        cursor: pointer;
+      }
+      :focus-visible {
+        outline: 2px solid #4f5d2f;
+        outline-offset: 3px;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 24px 0;
+        align-items: center;
+      }
+      iframe {
+        display: block;
+        width: 100%;
+        height: 1000px;
+        border: 0;
+        outline: 1px solid #d6cbb6;
+        outline-offset: -1px;
+        margin: auto;
+        background: #fffdf8;
+      }
+      iframe.mobile {
+        width: 320px;
+        max-width: 100%;
+      }
+      @media (max-width: 368px) {
+        body {
+          padding-inline: 0;
+        }
+      }
+      .reference {
+        margin-top: 32px;
+        max-width: 960px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td,
+      th {
+        text-align: left;
+        border-bottom: 1px solid #d6cbb6;
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CP Editorial / Fluent 2</h1>
+    <p>
+      Design proposal with a logo-inspired palette: cream paper, amber pencil and olive mug. Search
+      is the first action.
+    </p>
+    <div class="controls">
+      <label
+        >Screen
+        <select id="screen">
+          <option value="home">Home</option>
+          <option value="search">Search</option>
+        </select></label
+      >
+      <label
+        >Width
+        <select id="width">
+          <option value="desktop">Desktop · fluid to 1280px</option>
+          <option value="mobile">Mobile · 320px</option>
+        </select></label
+      >
+      <label
+        >Theme
+        <select id="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select></label
+      >
+    </div>
+    <iframe title="Responsive design proposal"></iframe>
+    <section class="reference">
+      <h2>Tokens and key states</h2>
+      <p>
+        Use existing CSS and native controls. No component dependency: current interactions need
+        styling, labeling and focus management, rather than replacement.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Light / dark</th>
+            <th>Rule</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Canvas / surface</td>
+            <td>#f8f5ee / #fffdf8 → #1d1c17 / #26251f</td>
+            <td>Ivory paper in light mode; warm charcoal surfaces in dark mode.</td>
+          </tr>
+          <tr>
+            <td>Text / secondary</td>
+            <td>#302719 / #625b4b → #f7efdc / #c8c0ad</td>
+            <td>4.5:1 minimum, including metadata.</td>
+          </tr>
+          <tr>
+            <td>Brand</td>
+            <td>Amber #8b5018 → #e6ad54; olive #4f5d2f → #c4d39a</td>
+            <td>Amber primary actions; olive links and selected navigation, with an underline.</td>
+          </tr>
+          <tr>
+            <td>Controls</td>
+            <td>#80735c → #a3977e borders</td>
+            <td>44px minimum targets; 4px corners; darker hover/pressed, 2px focus outline.</td>
+          </tr>
+          <tr>
+            <td>Layout</td>
+            <td>4 / 8 / 12 / 16 / 24 / 32 / 48px</td>
+            <td>Related labels stay with controls; grids collapse; titles wrap in full.</td>
+          </tr>
+          <tr>
+            <td>Typography</td>
+            <td>14 / 16 / 20 / 28 / 40px</td>
+            <td>System fonts with Korean/Japanese fallbacks; rem sizes and unitless leading.</td>
+          </tr>
+          <tr>
+            <td>Feedback</td>
+            <td>Neutral status; red error panel</td>
+            <td>
+              Text + status/alert announcement; recovery link or Retry. Disabled controls use native
+              disabled.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Reference: <a href="https://fluent2.microsoft.design/">Microsoft Fluent 2</a>. Mobile
+        navigation expands in document flow; Escape returns focus to Menu. A skip link leads to the
+        main region.
+      </p>
+    </section>
+    <script>
+      const screen = document.querySelector('#screen')
+      const width = document.querySelector('#width')
+      const theme = document.querySelector('#theme')
+      const frame = document.querySelector('iframe')
+      function render() {
+        frame.className = width.value
+        const dark = theme.value === 'dark'
+        frame.srcdoc = `<!doctype html><html lang="en"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+        *{box-sizing:border-box}body{margin:0;font:16px/1.5 'Segoe UI',system-ui,sans-serif;color:${dark ? '#f7efdc' : '#302719'};background:${dark ? '#1d1c17' : '#f8f5ee'}}header{background:${dark ? '#26251f' : '#fffdf8'};border-bottom:1px solid ${dark ? '#504b3c' : '#d6cbb6'}}nav,main{max-width:1120px;margin:auto;padding:24px}nav{display:flex;align-items:center;gap:24px;padding-block:16px;flex-wrap:wrap}nav strong{margin-right:auto}a{color:${dark ? '#c4d39a' : '#4f5d2f'};text-decoration:underline;text-underline-offset:4px}h1{font-size:40px;line-height:1.2;font-weight:600;margin:0 0 16px}h2{font-size:20px;margin:0}p{color:${dark ? '#c8c0ad' : '#625b4b'};margin:8px 0 24px}section{margin-block:24px}.surface{padding:24px;background:${dark ? '#26251f' : '#fffdf8'};border:1px solid ${dark ? '#504b3c' : '#d6cbb6'};border-radius:8px}label{display:grid;gap:8px;font-size:14px;font-weight:600}input,select,button{font:inherit;min-width:0;min-height:44px;border:1px solid ${dark ? '#a3977e' : '#80735c'};border-radius:4px;padding:8px 12px;background:${dark ? '#323127' : '#fffdf8'};color:inherit}button{font-weight:600;cursor:pointer}button.primary{background:${dark ? '#e6ad54' : '#8b5018'};color:${dark ? '#30210d' : '#fffdf8'};border-color:transparent}button:hover{filter:brightness(.9)}button:disabled{opacity:.5;cursor:default}:focus-visible{outline:2px solid ${dark ? '#d2e1ad' : '#4f5d2f'};outline-offset:3px}.row{display:flex;gap:12px;align-items:end}.row label{flex:1}.hero{padding-block:32px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.stats strong{font-size:28px;display:block}.stats span,.meta{color:${dark ? '#c8c0ad' : '#625b4b'};font-size:14px}.result{padding-block:20px;border-top:1px solid ${dark ? '#504b3c' : '#d6cbb6'};display:flex;justify-content:space-between;gap:16px}.result a{font-weight:600}mark{background:${dark ? '#514119' : '#f9e4ac'};color:${dark ? '#ffe2a0' : '#51390f'}} .actions{display:flex;gap:8px}.active{font-weight:600;border-bottom:3px solid ${dark ? '#c4d39a' : '#4f5d2f'}}@media(max-width:700px){nav,main{padding:16px}nav .secondary{display:none}h1{font-size:28px}.row,.result{display:grid}.surface{padding:16px}.stats{grid-template-columns:1fr}.hero{padding-block:16px}button{width:100%}label{width:100%}}
+        </style><header><nav><strong>Coduck - CP Editorial</strong><a class="${screen.value === 'search' ? 'active' : ''}" href="#">Search</a><a class="secondary" href="#">Home</a><a class="secondary" href="#">Categories</a><a class="secondary" href="#">Upload Guide</a><span>☰ Menu</span></nav></header><main>${
+          screen.value === 'home'
+            ? `
+        <section class="hero"><span class="meta">Competitive programming · Editorial archive</span><h1>Find Contest Editorials</h1><p>Search competitions and quickly open or download editorials by keyword.</p><div class="surface"><div class="row"><label>Start with a keyword<input placeholder="Try ICPC, Codeforces, 2024..."></label><button class="primary">Search</button></div></div><p><a href="#">Browse categories →</a></p></section><section class="stats"><div class="surface"><span>Editorials</span><strong>247</strong></div><div class="surface"><span>Competitions</span><strong>68</strong></div><div class="surface"><span>Index version</span><strong>2026.10.25</strong></div></section><section class="surface"><h2>What is CP Editorial?</h2><p>A curated archive for competitive-programming contest editorials.</p><a href="#">cp-editorial-data</a></section>`
+            : `
+        <section><h1>Find Competitions</h1><p>Use contest names or related keywords to find a competition and access its editorials.</p></section><section class="surface row"><label>Keyword<input value="ICPC"></label><label>Category<select><option>All categories</option></select></label><label>Year<select><option>All years</option></select></label><button>Clear</button></section><p>1 competition found</p><section class="surface"><span class="meta">ICPC › Regionals</span><h2>Asia Pacific Championship</h2><p>2 editorials</p><div class="result"><div><a href="#">The 2024 <mark>ICPC</mark> Asia Pacific Championship</a><p>ICPC › Regionals · 2024</p></div><div class="actions"><button class="primary">View</button><button>Download</button></div></div><div class="result"><div><a href="#">The 2025 <mark>ICPC</mark> Asia Pacific Championship</a><p>ICPC › Regionals · 2025</p></div><div class="actions"><button class="primary">View</button><button>Download</button></div></div></section>`
+        }</main></html>`
+      }
+      for (const control of [screen, width, theme]) control.addEventListener('change', render)
+      render()
+    </script>
+  </body>
+</html>

@@ -1,3 +1,4 @@
+import { PageState } from '../shared/ui/PageState'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, Navigate, useParams } from 'react-router-dom'
@@ -99,11 +100,11 @@ export function CategoryPage() {
   })
 
   if (isLoading) {
-    return <p className="muted">{t('common.loading')}</p>
+    return <PageState loading title={t('common.loading')} />
   }
 
   if (error) {
-    return <p className="error">{error.message}</p>
+    return <PageState error={error} title={t('common.loadError')} />
   }
 
   if (selectedSegments.length === 0) {
@@ -111,12 +112,11 @@ export function CategoryPage() {
   }
 
   if (!hasMatches) {
-    return <p className="muted">{t('contest.empty')}</p>
+    return <PageState title={t('contest.empty')} />
   }
 
   return (
     <section className="page">
-      <h1>{heading}</h1>
       <nav aria-label={t('category.breadcrumb')} className="breadcrumb">
         <ol className="breadcrumb__list">
           <li className="breadcrumb__item">
@@ -141,9 +141,10 @@ export function CategoryPage() {
           })}
         </ol>
       </nav>
+      <h1>{heading}</h1>
 
       {childNodes.length > 0 && (
-        <ul className="card-list">
+        <ul className="card-list category-grid">
           {childNodes.map((childNode) => (
             <li className="card" key={childNode.route}>
               <Link className="card__title" to={childNode.route}>
