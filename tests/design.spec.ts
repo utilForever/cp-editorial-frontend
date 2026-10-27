@@ -260,6 +260,18 @@ test('active navigation has a distinct keyboard focus outline in forced colors',
   expect(Number.parseFloat(focusOffset)).toBeGreaterThan(0)
 })
 
+test('category and editorial title links are underlined without hovering', async ({ page }) => {
+  for (const [path, selector] of [
+    ['/categories', 'a.card__title'],
+    ['/categories/University/CPC', '.editorial-row__title'],
+    ['/search', '.search-summary__title'],
+    ['/search?q=2026', '.competition-editorials__title'],
+  ]) {
+    await page.goto(path)
+    await expect(page.locator(selector).first()).toHaveCSS('text-decoration-line', 'underline')
+  }
+})
+
 test('index failures announce guidance and reload recovers; empty and missing states provide navigation', async ({
   page,
 }) => {

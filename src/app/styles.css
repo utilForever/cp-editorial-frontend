@@ -494,18 +494,6 @@ a:active {
   font-weight: 600;
   line-height: 1.4;
 }
-a.card__title,
-.competition-editorials__title,
-.editorial-row__title,
-.search-summary__title {
-  text-decoration: none;
-}
-a.card__title:hover,
-.competition-editorials__title:hover,
-.editorial-row__title:hover,
-.search-summary__title:hover {
-  text-decoration: underline;
-}
 .card__meta,
 .muted {
   margin: 0;

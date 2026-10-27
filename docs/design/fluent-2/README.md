@@ -39,11 +39,11 @@ Screenshots use the same deterministic four-record sample index in English, with
 
 ## Validation scope
 
-Local validation passed `format:check` → `lint` → `analyze` → `build`, followed by all 72 Playwright tests (45 existing and 27 added). The production build retained 319 route pages and 247 editorial preview images.
+Local validation passed `format:check` → `lint` → `analyze` → `build`, followed by all 73 Playwright tests (45 existing and 28 added). The production build retained 319 route pages and 247 editorial preview images.
 
 `tests/design.spec.ts` checks all screen types in en/ko/ja, light/dark, at 320/768/1280 CSS pixels, then doubles root text size on each route. It uses long multilingual titles and checks element/document overflow. The 320 CSS pixel viewport covers reflow equivalent to a 1280px viewport at 400% page zoom. Native input/select editing and PDF document content are excluded from text-clipping assertions; browser-native controls retain their full accessible values.
 
-Keyboard regression covers Skip → main, Menu → Escape, menu navigation → trigger, Search → query/category/year → result → View/Download. Separate checks cover leaving the menu in both Tab directions, keeping it open between its trigger and controls, visible theme labels in accessible names for en/ko/ja, forced-color focus, saved theme/language, reduced motion, failure reload, missing records, empty results and Clear. Theme tests calculate WCAG sRGB contrast for text (4.5:1) and control/focus boundaries (3:1), including primary action default/hover/pressed and highlight/error pairs.
+Keyboard regression covers Skip → main, Menu → Escape, menu navigation → trigger, Search → query/category/year → result → View/Download. Separate checks cover leaving the menu in both Tab directions, keeping it open between its trigger and controls, visible theme labels in accessible names for en/ko/ja, forced-color focus, persistent title-link underlines, saved theme/language, reduced motion, failure reload, missing records, empty results and Clear. Theme tests calculate WCAG sRGB contrast for text (4.5:1) and control/focus boundaries (3:1), including primary action default/hover/pressed and highlight/error pairs.
 
 Existing tests continue to cover search URLs, Back/refresh, matching/ranking/highlighting, IDs, metadata and preview contracts, caching, PDF timeout/failure/retry/cleanup and Markdown/text source links. No data schema, index generation or preview generator changes are required.
 
