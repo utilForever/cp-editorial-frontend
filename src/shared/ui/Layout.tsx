@@ -30,6 +30,7 @@ export function Layout() {
   const { theme, setTheme } = useThemePreference()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
   const year = new Date().getFullYear()
   const mobileMenuId = 'mobile-navigation-menu'
 
@@ -71,7 +72,10 @@ export function Layout() {
             aria-label={t('nav.primary')}
             className="layout__nav"
             onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget)) {
+              if (
+                !menuButtonRef.current?.contains(event.relatedTarget) &&
+                !mobileMenuRef.current?.contains(event.relatedTarget)
+              ) {
                 setIsMobileMenuOpen(false)
               }
             }}
@@ -109,7 +113,12 @@ export function Layout() {
               <MenuIcon />
               <span>{t('nav.menu')}</span>
             </button>
-            <div className="layout__mobile-menu" hidden={!isMobileMenuOpen} id={mobileMenuId}>
+            <div
+              className="layout__mobile-menu"
+              hidden={!isMobileMenuOpen}
+              id={mobileMenuId}
+              ref={mobileMenuRef}
+            >
               <div className="layout__mobile-links">{renderSecondaryLinks(closeMobileMenu)}</div>
               <div className="layout__mobile-preferences">
                 <ThemeSelector onThemeChange={setTheme} theme={theme} />

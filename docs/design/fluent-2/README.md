@@ -17,7 +17,7 @@ References: [tokens](https://fluent2.microsoft.design/design-tokens), [color](ht
 - Body text is 16px, metadata 14px, section headings 20px, page headings 28–32px, and the desktop Home title 40px. Sizes use rem with unitless line height and local Korean/Japanese font fallbacks.
 - Controls have a minimum 44px height. Default, hover, pressed, focus-visible and disabled states share token roles. Navigation selection also has an underline; errors contain text and recovery actions.
 - Labels stay attached to fields. Long titles and category names wrap; search titles are no longer shortened. Supporting match snippets retain their existing bounds.
-- At narrow widths the navigation disclosure expands in document flow. Escape and navigating from it return focus to Menu. Tab exits normally and closes it. Skip to content precedes the brand link.
+- At narrow widths the navigation disclosure expands in document flow. Escape and navigating from it return focus to Menu. Tab or Shift+Tab leaving the menu and trigger closes it without changing the destination of focus. Skip to content precedes the brand link.
 - All routes share status surfaces and typography. Information pages have a narrower reading measure. PDF presentation stays inside a bounded reading area with recovery controls outside it.
 
 ## Comparison gallery
@@ -43,7 +43,7 @@ Local validation passed `format:check` → `lint` → `analyze` → `build`, fol
 
 `tests/design.spec.ts` checks all screen types in en/ko/ja, light/dark, at 320/768/1280 CSS pixels, then doubles root text size on each route. It uses long multilingual titles and checks element/document overflow. The 320 CSS pixel viewport covers reflow equivalent to a 1280px viewport at 400% page zoom. Native input/select editing and PDF document content are excluded from text-clipping assertions; browser-native controls retain their full accessible values.
 
-Keyboard regression covers Skip → main, Menu → Escape, menu navigation → trigger, Search → query/category/year → result → View/Download. Separate checks cover leaving the menu by Tab, saved theme/language, reduced motion, failure reload, missing records, empty results and Clear. Theme tests calculate WCAG sRGB contrast for text (4.5:1) and control/focus boundaries (3:1), including primary action default/hover/pressed and highlight/error pairs.
+Keyboard regression covers Skip → main, Menu → Escape, menu navigation → trigger, Search → query/category/year → result → View/Download. Separate checks cover leaving the menu in both Tab directions, keeping it open between its trigger and controls, saved theme/language, reduced motion, failure reload, missing records, empty results and Clear. Theme tests calculate WCAG sRGB contrast for text (4.5:1) and control/focus boundaries (3:1), including primary action default/hover/pressed and highlight/error pairs.
 
 Existing tests continue to cover search URLs, Back/refresh, matching/ranking/highlighting, IDs, metadata and preview contracts, caching, PDF timeout/failure/retry/cleanup and Markdown/text source links. No data schema, index generation or preview generator changes are required.
 
