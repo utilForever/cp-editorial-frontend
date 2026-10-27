@@ -242,6 +242,24 @@ for (const locale of ['en', 'ko', 'ja'] as const) {
   })
 }
 
+test('active navigation has a distinct keyboard focus outline in forced colors', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await page.emulateMedia({ forcedColors: 'active' })
+  await page.goto('/search')
+  const active = page.locator('.layout__nav > a[aria-current="page"]')
+  const restOffset = await active.evaluate((element) => getComputedStyle(element).outlineOffset)
+  await page.keyboard.press('Tab') // Skip
+  await page.keyboard.press('Tab') // Brand
+  await page.keyboard.press('Tab') // Active Search
+  await expect(active).toBeFocused()
+  await expect(active).toHaveCSS('outline-style', 'solid')
+  const focusOffset = await active.evaluate((element) => getComputedStyle(element).outlineOffset)
+  expect(focusOffset).not.toBe(restOffset)
+  expect(Number.parseFloat(focusOffset)).toBeGreaterThan(0)
+})
+
 test('index failures announce guidance and reload recovers; empty and missing states provide navigation', async ({
   page,
 }) => {
