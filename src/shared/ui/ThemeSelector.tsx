@@ -46,7 +46,7 @@ export function ThemeSelector({ theme, onThemeChange }: ThemeSelectorProps) {
 
   return (
     <button
-      aria-label={toggleLabel}
+      aria-label={`${t(`theme.${theme}`)} — ${toggleLabel}`}
       aria-pressed={theme === 'dark'}
       className="theme-toggle"
       onClick={() => onThemeChange(nextTheme)}

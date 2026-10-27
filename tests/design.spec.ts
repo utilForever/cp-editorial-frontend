@@ -215,6 +215,33 @@ test('menu Tab exit closes it, preferences persist, and reduced motion disables 
   await expect(page.locator('.home-entry__button')).toHaveCSS('transition-duration', '0s')
 })
 
+for (const locale of ['en', 'ko', 'ja'] as const) {
+  test(`theme button includes its visible label and action in ${locale}`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 900 })
+    await page.addInitScript((locale) => {
+      localStorage.setItem('cp-editorial-language', locale)
+      localStorage.setItem('cp-editorial-theme', 'light')
+    }, locale)
+    await page.goto('/')
+    const copy = resources[locale].translation
+    await page.getByRole('button', { name: copy.nav.menu, exact: true }).click()
+    const button = page.locator('.layout__mobile-preferences .theme-toggle')
+    for (const theme of ['light', 'dark'] as const) {
+      await expect(button.locator('.theme-toggle__label')).toBeVisible()
+      await expect(button.locator('.theme-toggle__label')).toHaveText(copy.theme[theme])
+      await expect(button).toHaveAccessibleName(new RegExp(copy.theme[theme]))
+      await expect(button).toHaveAccessibleName(
+        new RegExp(theme === 'light' ? copy.theme.switchToDark : copy.theme.switchToLight),
+      )
+      await button.click()
+      await expect(page.locator('html')).toHaveAttribute(
+        'data-theme',
+        theme === 'light' ? 'dark' : 'light',
+      )
+    }
+  })
+}
+
 test('index failures announce guidance and reload recovers; empty and missing states provide navigation', async ({
   page,
 }) => {
