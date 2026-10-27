@@ -272,6 +272,24 @@ test('category and editorial title links are underlined without hovering', async
   }
 })
 
+test('mobile mockup keeps a 320px content viewport on narrow and wide screens', async ({
+  page,
+}) => {
+  await page.goto('/docs/design/fluent-2/mockup.html')
+  await page.locator('#width').selectOption('mobile')
+  for (const width of [320, 768, 1280]) {
+    await page.setViewportSize({ width, height: 900 })
+    await expect
+      .poll(() =>
+        page
+          .frameLocator('iframe')
+          .locator('body')
+          .evaluate(() => window.innerWidth),
+      )
+      .toBe(320)
+  }
+})
+
 test('index failures announce guidance and reload recovers; empty and missing states provide navigation', async ({
   page,
 }) => {
